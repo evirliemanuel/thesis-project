@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lieverandiver.thesisproject">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Testing_Only">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SubjectViewActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".AttendanceActivity" />
+        <activity android:name=".GradingCriteriaActivity" />
+        <activity android:name=".AttendanceActitivity_View" />
+        <activity android:name=".StudentActivity_View" />
+        <activity android:name=".QuizActivity_View" />
+        <activity android:name=".QuizActivity_Add" />
+        <activity android:name=".StudentActivity_Profile_Grade" />
+        <activity android:name=".QuizActivity_View_Record" />
+        <activity android:name=".Clazz_QuizActivity" />
+        <activity android:name=".Clazz_ActivityActivity" />
+        <activity android:name=".Clazz_AttendanceActivity" />
+        <activity android:name=".Clazz_AssignmentActivity" />
+        <activity android:name=".Clazz_BehaviorActivity" />
+        <activity android:name=".Clazz_ProjectActivity" />
+        <activity android:name=".Clazz_PortfolioActivity" />
+        <activity android:name=".Clazz_ExamActivty" />
+        <activity android:name=".Input_Quiz_Activity"></activity>
+        <activity android:name=".Teacher_Activity_Teacher_Profile"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_teacher_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorClouds"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context="com.lieverandiver.thesisproject.MainActivity">
+   <!--tools:context="com.lieverandiver.thesisproject.Teacher_Activity_Teacher_Profile"-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:background="@color/cardview_light_background">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/cover_photos"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/cover_photos">
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/teacher_activity_profile_img_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center|top"
+            android:background="@drawable/student_profile_male"
+            />
+
+        <FrameLayout
+            android:layout_below="@+id/cover_photos"
+            android:layout_toEndOf="@+id/teacher_activity_profile_img_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/teacher_activity_profile_txtname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manuel, Virlie E."
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/teacher_activity_profile_txtdepartment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Department"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+            <Button
+                android:layout_gravity="right"
+                android:clickable="true"
+                android:id="@+id/teacher_activity_profile_imgsetting"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/setting_icon"/>
+
+        </FrameLayout>
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_teacher_profile_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sadaaaasda"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        card_view:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/icon_calendar" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Subject"
+                        android:textColor="@color/colorMidNightBlue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/a_teacher_profile_subject_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/activity_teacher_profile_cardview">
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>
