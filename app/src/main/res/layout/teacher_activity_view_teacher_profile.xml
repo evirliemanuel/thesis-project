@@ -50,7 +50,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/teacher_activity_profile_txtname"
+                    android:id="@+id/txtv_fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Manuel, Virlie E."
@@ -58,7 +58,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/teacher_activity_profile_txtdepartment"
+                    android:id="@+id/txtv_dept"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Department"

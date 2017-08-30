@@ -14,13 +14,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Violet"
+        android:background="#FF0DDD"
         android:orientation="horizontal">
 
         <ImageView
+            android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
+            android:background="@color/colorWhite"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -38,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Portfolio"
+                android:text="Quiz"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:textSize="22sp" />
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:text="July 1, 1991"
+                android:text="Tap here to view"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
         </LinearLayout>

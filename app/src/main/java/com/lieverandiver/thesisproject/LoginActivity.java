@@ -10,7 +10,6 @@ import com.lieverandiver.thesisproject.fragment.LoginFragment;
 import com.lieverandiver.thesisproject.helper.TeacherHelper;
 import com.remswork.project.alice.exception.TeacherException;
 import com.remswork.project.alice.model.Teacher;
-import com.remswork.project.alice.service.TeacherService;
 import com.remswork.project.alice.service.impl.TeacherServiceImpl;
 
 import java.util.List;
@@ -18,12 +17,28 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity implements LoginFragment.LoginFragmentListener{
 
     private TeacherServiceImpl teacherService;
+    private TeacherHelper teacherHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         teacherService = new TeacherServiceImpl();
+        teacherHelper = new TeacherHelper(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            if (teacherHelper.loadUser().authenticate()) {
+                Intent intent = new Intent(this, Home_Activity.class);
+                intent.putExtra("teacherId", teacherHelper.loadUser().get().getId());
+                startActivity(intent);
+            }
+        }catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -35,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
             for(Teacher teacher : teacherList ) {
                 if(teacher.getUserDetail().getUsername().equals(username.trim()) &&
                         teacher.getUserDetail().getPassword().equals(password.trim())) {
-                    TeacherHelper.setTeacher(teacher);
+                    teacherHelper.saveUser(teacher.getId());
                     Intent intent = new Intent(this, Home_Activity.class);
                     intent.putExtra("teacherId", teacher.getId());
                     isVaild = true;

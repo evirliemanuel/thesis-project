@@ -1,22 +1,18 @@
 package com.lieverandiver.thesisproject.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
 import com.lieverandiver.thesisproject.helper.TeacherHelper;
-import com.remswork.project.alice.exception.TeacherException;
 import com.remswork.project.alice.model.Teacher;
-import com.remswork.project.alice.service.impl.TeacherServiceImpl;
-
-import static com.lieverandiver.thesisproject.helper.TeacherHelper.teacher;
 
 /**
  * Created by Verlie on 8/30/2017.
@@ -25,6 +21,9 @@ import static com.lieverandiver.thesisproject.helper.TeacherHelper.teacher;
 public class Home_Logs_Slidebar_Fragment extends Fragment {
 
     private TextView textName;
+    private LinearLayout viewLogout;
+    private TeacherHelper teacherHelper;
+    private Handler handler;
 
 
     public Home_Logs_Slidebar_Fragment(){
@@ -40,22 +39,40 @@ public class Home_Logs_Slidebar_Fragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
-//        try {
-//            Bundle bundle = getArguments();
- //           int teacherId = bundle.getInt("teacherId");
-            Teacher teacher = TeacherHelper.getTeacher();
+        handler = new Handler(getActivity().getMainLooper());
+        View view = inflater.inflate(R.layout.home_fragment_slidebar_logs, container, false);
+        textName = (TextView) view.findViewById(R.id.text_full_name);
+        viewLogout = (LinearLayout) view.findViewById(R.id.btn_logout);
+        viewLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                teacherHelper.removeUser();
+                getActivity().finish();
+            }
+        });
+        displayEvenDelay();
+        return view;
+    }
 
-            Log.i("MyTAG", (teacher != null ? teacher.getFirstName() : "Error") );
-            View view = inflater.inflate(R.layout.home_fragment_slidebar_logs, container, false);
-            textName = (TextView) view.findViewById(R.id.text_full_name);
-        textName.setText(teacher.getLastName() + " " + teacher.getFirstName() + " " + teacher.getMiddleName().toCharArray()[0] + ".");
-            return view;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
+    public void displayEvenDelay() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                teacherHelper = new TeacherHelper(getContext());
+                final Teacher teacher = teacherHelper.loadUser().get();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        textName.setText(teacher.getLastName() + " " + teacher.getFirstName() + " " +
+                                teacher.getMiddleName().toCharArray()[0] + ".");
+                    }
+                });
+
+            }
+        }).start();
     }
 }
 

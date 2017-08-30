@@ -11,6 +11,7 @@
     android:layout_marginBottom="10dp"
     card_view:cardElevation="5dp"
     android:clickable="true"
+    android:background="@drawable/basic_ripple"
     card_view:cardCornerRadius="5dp"
 
     >
