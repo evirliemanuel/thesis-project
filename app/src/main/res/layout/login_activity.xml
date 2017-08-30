@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="70dp"
-        tools:layout="@layout/fragment_login"
+        tools:layout="@layout/login_fragment"
         android:name="com.lieverandiver.thesisproject.fragment.LoginFragment"
          />
 
