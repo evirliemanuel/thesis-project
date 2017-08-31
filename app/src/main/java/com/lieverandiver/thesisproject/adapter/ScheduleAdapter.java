@@ -1,6 +1,7 @@
-package com.lieverandiver.thesisproject;
+package com.lieverandiver.thesisproject.adapter;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,19 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.remswork.project.alice.model.Class;
+import com.lieverandiver.thesisproject.R;
+import com.lieverandiver.thesisproject.helper.ScheduleHelper;
 import com.remswork.project.alice.model.Schedule;
 import com.remswork.project.alice.model.Subject;
-import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.SubjectServiceImpl;
 
 import java.util.List;
 
-/**
- * Created by Verlie on 8/30/2017.
- */
-
-@Deprecated
-public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>{
+public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
 
     private Context context;
     private List<Schedule> scheduleList;
@@ -40,8 +37,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     }
 
     @Override
-    public void onBindViewHolder(ScheduleAdapter
-                                             .ScheduleViewHolder holder, int position) {
+    public void onBindViewHolder(ScheduleViewHolder holder, int position) {
         Schedule schedule = scheduleList.get(position);
         holder.setView(schedule, position);
     }
@@ -52,14 +48,15 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     }
 
 
-    protected class ScheduleViewHolder extends RecyclerView.ViewHolder {
+    class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
 
         private ImageView imageView;
         private TextView textViewSubject;
         private TextView textViewSchedule;
+        private volatile  Subject subject;
 
-        public ScheduleViewHolder(View itemView) {
+        ScheduleViewHolder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(
                     R.id.fragment_slidebar_cardview_schedule_imageview);
@@ -70,24 +67,33 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
         }
 
-        public void setView(final Schedule schedule, final int position) {
-            try {
-                ClassServiceImpl classService = new ClassServiceImpl();
-                Subject subject = new Subject();
-                for(Class _class : classService.getClassList()) {
-                    for(Schedule _schedule : _class.getScheduleList()) {
-                        if(_schedule.getId() == schedule.getId()) {
-                            subject = _class.getSubject();
-                            break;
-                        }
-                    }
-                }
+        void setView(final Schedule schedule, final int position) {
+            new Thread(new Runnable() {
 
-                textViewSchedule.setText(subject.getName());
-                textViewSchedule.setText(schedule.getDay());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                @Override
+                public void run() {
+                    try {
+
+                        final ScheduleHelper scheduleHelper = new ScheduleHelper();
+                        final Subject subject = new SubjectServiceImpl()
+                                .getSubjectByScheduleId(schedule.getId());
+
+                        new Handler(context.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                imageView.setImageResource(scheduleHelper.imageDisplay(schedule
+                                        .getDay()));
+                                textViewSubject.setText(subject.getName());
+                                textViewSchedule.setText(scheduleHelper.display("", schedule
+                                        .getTime(), schedule.getPeriod()));
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }).start();
         }
     }
 }

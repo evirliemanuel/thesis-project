@@ -18,6 +18,8 @@ import com.lieverandiver.thesisproject.fragment.Home_Student_Slidebar_Fragment;
 import com.lieverandiver.thesisproject.fragment.SlidebarClazz_Fragment_View;
 import com.lieverandiver.thesisproject.fragment.SlidebarSchedule_Fragment_View;
 import com.lieverandiver.thesisproject.fragment.SlidebarStudent_Fragment_View;
+import com.lieverandiver.thesisproject.fragment.SliderClassFragment;
+import com.lieverandiver.thesisproject.fragment.SliderScheduleFragment;
 import com.lieverandiver.thesisproject.helper.TeacherHelper;
 
 import java.util.ArrayList;
@@ -53,8 +55,8 @@ public class Home_Activity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Home_Schedule_Slidebar_Fragment(), "Shedule");
-        adapter.addFragment(new Home_Class_Slidebar_Fragment(), "Class");
+        adapter.addFragment(new SliderScheduleFragment(), "Shedule");
+        adapter.addFragment(new SliderClassFragment(), "Class");
         adapter.addFragment(new Home_Student_Slidebar_Fragment(), "Student");
         adapter.addFragment(new Home_Logs_Slidebar_Fragment(), "|||");
         viewPager.setAdapter(adapter);

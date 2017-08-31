@@ -6,16 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.lieverandiver.thesisproject.LoginActivity">
 
-
-
     <LinearLayout
         android:id="@+id/activity_login_header"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="@color/colorPrimaryDark"
-        android:orientation="horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:orientation="horizontal" />
 
     <ImageView
         android:id="@+id/activity_ccslogo"
@@ -34,5 +30,17 @@
         tools:layout="@layout/login_fragment"
         android:name="com.lieverandiver.thesisproject.fragment.LoginFragment"
          />
+
+    <FrameLayout
+        android:id="@+id/white_screen_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A6FFFFFF" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressbar_login"
+        android:layout_gravity="center"/>
 
 </FrameLayout>

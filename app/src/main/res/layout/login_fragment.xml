@@ -47,12 +47,11 @@
         android:id="@+id/fragment_login_button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="38dp"
         android:width="300dp"
         android:height="70dp"
         android:text="Login"
+        android:layout_centerHorizontal="true"
         android:theme="@style/AppTheme.Base.Button.Normal"
         android:layout_below="@+id/fragment_login_password_layout"
         android:layout_alignStart="@+id/fragment_login_password_layout" />

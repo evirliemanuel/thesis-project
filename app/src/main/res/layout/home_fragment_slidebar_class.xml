@@ -5,4 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.lieverandiver.thesisproject.fragment.Home_Class_Slidebar_Fragment">
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/class_recyclerview"
+        android:layout_margin="20dp">
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

@@ -8,10 +8,6 @@ import com.remswork.project.alice.exception.TeacherException;
 import com.remswork.project.alice.model.Teacher;
 import com.remswork.project.alice.service.impl.TeacherServiceImpl;
 
-/**
- * Created by Verlie on 8/30/2017.
- */
-
 public class TeacherHelper {
 
     private long id;
@@ -23,14 +19,16 @@ public class TeacherHelper {
     }
 
     public TeacherHelper loadUser() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail",
+                Context.MODE_PRIVATE);
         id = sharedPreferences.getLong("teacherId", 0);
         Log.i("aliceTAG", "Load : Teacher id = " + id);
         return this;
     }
 
     public TeacherHelper saveUser(long teacherId) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail",
+                Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong("teacherId", teacherId);
         editor.apply();
@@ -39,7 +37,8 @@ public class TeacherHelper {
     }
 
     public TeacherHelper removeUser() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail",
+                Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong("teacherId", 0);
         editor.apply();
@@ -47,7 +46,8 @@ public class TeacherHelper {
     }
 
     public TeacherHelper saveUser(Teacher teacher) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("aliceUserDetail",
+                Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong("teacherId", teacher.getId());
         editor.apply();

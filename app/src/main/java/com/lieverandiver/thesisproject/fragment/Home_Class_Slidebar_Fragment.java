@@ -13,6 +13,7 @@ import com.lieverandiver.thesisproject.R;
  * Created by Verlie on 8/30/2017.
  */
 
+@Deprecated
 public class Home_Class_Slidebar_Fragment extends Fragment {
 
     public Home_Class_Slidebar_Fragment(){

@@ -7,36 +7,27 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.lieverandiver.thesisproject.R;
-import com.lieverandiver.thesisproject.ScheduleAdapter;
+import com.lieverandiver.thesisproject.adapter.ScheduleAdapter;
 import com.lieverandiver.thesisproject.helper.TeacherHelper;
-import com.remswork.project.alice.exception.ClassException;
-import com.remswork.project.alice.model.Class;
+import com.remswork.project.alice.exception.ScheduleException;
 import com.remswork.project.alice.model.Schedule;
-import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.ScheduleServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Verlie on 8/30/2017.
- */
-
-@Deprecated
-public class Home_Schedule_Slidebar_Fragment extends Fragment{
+public class SliderScheduleFragment extends Fragment {
 
     private RecyclerView scheduleRecyclerView;
     private View customView;
     private Handler handler;
-
-    public Home_Schedule_Slidebar_Fragment(){
-
-    }
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,35 +39,27 @@ public class Home_Schedule_Slidebar_Fragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         customView = inflater.inflate(R.layout.home_fragment_slidebar_schedule, container, false);
+        progressBar = (ProgressBar) customView.findViewById(R.id.progressbar_schedule);
+        scheduleRecyclerView = (RecyclerView)
+                customView.findViewById(R.id.shedule_recyclerview);
         handler = new Handler(getActivity().getMainLooper());
+        progressBar.setVisibility(View.VISIBLE);
         init();
         return customView;
     }
 
     public void init() {
-
         new Thread(new Runnable() {
+
             @Override
             public void run() {
                 try {
                     final List<Schedule> scheduleList = new ArrayList<>();
-                    TeacherHelper teacherHelper = new TeacherHelper(getContext());
-                    ClassServiceImpl classService = new ClassServiceImpl();
-                    Class _class = null;
-                    for(Class c  : classService.getClassList()) {
-                        if(c.getTeacher() == null)
-                            continue;
-                        if(c.getTeacher().getId() == teacherHelper.loadUser().get().getId()) {
-                            _class = c;
-                            Log.i("myTAG","id : " + c.getId());
-                            break;
-                        }
-                    }
+                    final TeacherHelper teacherHelper = new TeacherHelper(getContext());
 
-                    //test
-                    _class = classService.getClassById(40);
-                    if(_class != null) {
-                        for (Schedule schedule : classService.getScheduleList(_class.getId()))
+                    if (teacherHelper.loadUser().get() != null) {
+                        for (Schedule schedule : new ScheduleServiceImpl()
+                                .getScheduleListByTeacherId(teacherHelper.loadUser().get().getId()))
                             scheduleList.add(schedule);
                     }
                     handler.post(new Runnable() {
@@ -84,23 +67,21 @@ public class Home_Schedule_Slidebar_Fragment extends Fragment{
                         public void run() {
                             scheduleRecyclerView = (RecyclerView)
                                     customView.findViewById(R.id.shedule_recyclerview);
-                            ScheduleAdapter scheduleAdapter = new ScheduleAdapter(getContext(), scheduleList);
+                            ScheduleAdapter scheduleAdapter = new ScheduleAdapter(
+                                    getContext(), scheduleList);
                             scheduleRecyclerView.setAdapter(scheduleAdapter);
-
-                            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                            LinearLayoutManager layoutManager =
+                                    new LinearLayoutManager(getContext());
                             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
                             scheduleRecyclerView.setLayoutManager(layoutManager);
                             scheduleRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
-
-                } catch (ClassException e) {
+                } catch (ScheduleException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
-
-
     }
 }
