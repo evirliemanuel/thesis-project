@@ -806,22 +806,15 @@
                                 android:textSize="18sp"
                                 />
 
-
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
-
-
-
-
             </LinearLayout>
 
         </ScrollView>
-
-
 
     </LinearLayout>
 

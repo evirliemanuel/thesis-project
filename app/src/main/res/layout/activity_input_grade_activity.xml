@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Class_Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -66,6 +69,10 @@
                 android:textStyle="bold"
                 android:id="@+id/a_activity_input_date"/>
 
+
+
+
+
             <Spinner
                 android:layout_marginTop="10dp"
                 android:id="@+id/a_activity_input_spiner"
@@ -76,7 +83,7 @@
 
             <TextView
                 android:id="@+id/a_activity_input_total"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginLeft="5dp"
                 android:layout_below="@+id/ddd"
                 android:layout_width="wrap_content"
@@ -87,8 +94,13 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"/>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
 
             <Button
+                android:layout_gravity="right"
                 android:id="@+id/a_activity_submit_button"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -99,6 +111,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"/>
+
+            </FrameLayout>
         </LinearLayout>
 
 
@@ -106,12 +120,11 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/a_activity_input_studentname_container"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/a_cardview_only_grading_type">
+        android:layout_marginRight="10dp">
 
     </android.support.v7.widget.RecyclerView>
 
