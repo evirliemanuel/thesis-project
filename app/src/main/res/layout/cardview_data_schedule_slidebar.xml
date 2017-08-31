@@ -14,7 +14,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       >
+        android:clickable="true"
+        android:id="@+id/button_click"
+        android:background="@drawable/basic_ripple">
 
         <ImageView
             android:id="@+id/fragment_slidebar_cardview_schedule_imageview"

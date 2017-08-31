@@ -11,6 +11,7 @@ import android.widget.TextView;
  * Created by Verlie on 8/30/2017.
  */
 
+@Deprecated
 public class Home_ActivityClass extends AppCompatActivity{
 
    private TextView txtViewSubjectName;

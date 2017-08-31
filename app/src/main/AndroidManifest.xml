@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ClassViewActivity" />
+        <activity android:name=".StudentViewActivity" />
         <activity android:name=".SubjectViewActivity" />
         <activity android:name=".Testing_Only" />
         <activity android:name=".Home_Activity" />

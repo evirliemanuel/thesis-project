@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lieverandiver.thesisproject.Home_ActivityClass">
+    tools:context="com.lieverandiver.thesisproject.ClassViewActivity">
 
 
     <RelativeLayout
@@ -388,7 +388,7 @@
                         android:layout_height="3dp">
 
                     </LinearLayout>
-
+                    <!--
                     <android.support.v7.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -397,7 +397,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp">
                     </android.support.v7.widget.RecyclerView>
-
+                    -->
                 </LinearLayout>
 
 

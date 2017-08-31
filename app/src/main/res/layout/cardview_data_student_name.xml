@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/f_data_cardview_studentname_name"
     android:layout_width="match_parent"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginTop="5dp"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    card_view:cardElevation="5dp"
+    android:layout_marginBottom="5dp"
     android:clickable="true"
-    card_view:cardCornerRadius="5dp"
-    >
+    android:orientation="vertical"
+    card_view:cardCornerRadius="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite">
+        android:background="@drawable/basic_ripple_moca"
+        android:clickable="true">
+
         <RelativeLayout
-            android:layout_marginBottom="10dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp">
 
+            <ImageView
+                android:id="@+id/student_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/student_profile_male" />
+
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/f_data_studentname_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Manuel, Virlie E."
-                android:textSize="22sp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:text="Loading ..."
+                android:textSize="18sp"
+                android:textColor="@color/colorWhite"/>
 
         </RelativeLayout>
 

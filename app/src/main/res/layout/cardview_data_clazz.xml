@@ -10,19 +10,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true">
 
         <ImageView
-            android:id="@+id/fragment_slidebar_cardview_clazz_imageview"
+            android:id="@+id/button_click"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="@color/colorAccent"
-            android:clickable="true" />
+            android:background="@drawable/basic_ripple_white"
+            android:clickable="true"
+           />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/fragment_slidebar_cardview_clazz_imageview"
+            android:layout_below="@+id/button_click"
             android:background="@color/colorWhite"
             android:padding="10dp">
 
