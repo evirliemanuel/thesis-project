@@ -8,6 +8,6 @@ public class Clazz_PortfolioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clazz_portfolio);
+        setContentView(R.layout.activity_class_portfolio);
     }
 }

@@ -17,10 +17,11 @@
     >
 
     <LinearLayout
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorTweeterBlue">
+        android:background="@drawable/basic_ripple_blue">
 
         <ImageView
             android:layout_width="30dp"

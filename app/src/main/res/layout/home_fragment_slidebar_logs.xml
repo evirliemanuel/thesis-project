@@ -211,7 +211,7 @@
                 android:id="@+id/btn_logout">
 
                 <ImageView
-                    android:background="@drawable/setting_icon"
+                    android:background="@drawable/icon_logout"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_width="50dp"

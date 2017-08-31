@@ -8,6 +8,6 @@ public class Clazz_QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clazz_quiz);
+        setContentView(R.layout.activity_class_quiz);
     }
 }
