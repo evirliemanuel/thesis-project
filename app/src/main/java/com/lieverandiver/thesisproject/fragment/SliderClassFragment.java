@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 
 import com.lieverandiver.thesisproject.R;
 import com.lieverandiver.thesisproject.adapter.ClassAdapter;
+import com.lieverandiver.thesisproject.helper.TeacherHelper;
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.model.Class;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
@@ -43,7 +44,8 @@ public class SliderClassFragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    List<Class> classList = new ClassServiceImpl().getClassList();
+                    List<Class> classList = new ClassServiceImpl().getClassListByTeacherId(
+                            new TeacherHelper(getContext()).loadUser().get().getId());
                     final ClassAdapter classAdapter = new ClassAdapter(getContext(), classList);
                     final RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
 

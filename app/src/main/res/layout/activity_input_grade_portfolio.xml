@@ -11,27 +11,37 @@
         />
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
+
+
+        <EditText
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Portfolio"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorWhite"/>
-        <ImageView
-            android:id="@+id/btn_cancel"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/cancel_icon"
-            android:clickable="true"/>
+            android:hint="Activity Name"
+
+            android:backgroundTint="@color/colorGray"
+            android:textSize="25sp"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_gravity="right"
+                android:id="@+id/btn_cancel"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/cancel_icon"
+                android:clickable="true"/>
+        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>
 

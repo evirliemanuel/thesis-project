@@ -83,8 +83,9 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
                             public void run() {
                                 imageView.setImageResource(scheduleHelper.imageDisplay(schedule
                                         .getDay()));
-                                textViewSubject.setText(subject.getName());
-                                textViewSchedule.setText(scheduleHelper.display("", schedule
+                                textViewSubject
+                                        .setText((subject != null ? subject.getName() : "None"));
+                                textViewSchedule.setText(scheduleHelper.display(schedule.getRoom(), schedule
                                         .getTime(), schedule.getPeriod()));
                             }
                         });

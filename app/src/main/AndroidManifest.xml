@@ -9,19 +9,41 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Teacher_GradingFactor_Activity_Midterm">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ClassViewActivity" />
+        <activity android:name=".Teacher_Activity_View_Subject_Datails" />
+        <activity android:name=".Activity_Class_Add_Assignment" />
+        <activity android:name=".Activity_Class_Add_Attendance" />
+        <activity android:name=".Activity_Class_Add_Exam" />
+        <activity android:name=".Activity_Class_Add_Project" />
+        <activity android:name=".Activity_Class_Add_Quiz" />
+
+        <activity android:name=".Activity_Class_InputActivity" />
+        <activity android:name=".Activity_Class_InputAssignment" />
+        <activity android:name=".Activity_Class_InputAttendance" />
+        <activity android:name=".Activity_Class_InputExam" />
+        <activity android:name=".Activity_Class_InputProject" />
+        <activity android:name=".Activity_Class_InputQuiz" />
+
+        <activity android:name=".Activity_Class_View_Activity" />
+        <activity android:name=".Activity_Class_View_Assignment" />
+        <activity android:name=".Activity_Class_View_Attendance" />
+        <activity android:name=".Activity_Class_View_Exam" />
+        <activity android:name=".Activity_Class_View_Project" />
+        <activity android:name=".Activity_Class_View_Quiz" />
+
+
         <activity android:name=".StudentViewActivity" />
+
+
         <activity android:name=".SubjectViewActivity" />
-        <activity android:name=".Testing_Only" />
         <activity android:name=".Home_Activity" />
-        <activity android:name=".AttendanceActivity" />
+        <activity android:name=".ClassViewActivity" />
         <activity android:name=".GradingCriteriaActivity" />
         <activity android:name=".AttendanceActitivity_View" />
         <activity android:name=".StudentActivity_View" />
@@ -29,16 +51,8 @@
         <activity android:name=".QuizActivity_Add" />
         <activity android:name=".StudentActivity_Profile_Grade" />
         <activity android:name=".QuizActivity_View_Record" />
-        <activity android:name=".Clazz_QuizActivity" />
-        <activity android:name=".Clazz_ActivityActivity" />
-        <activity android:name=".Clazz_AttendanceActivity" />
-        <activity android:name=".Clazz_AssignmentActivity" />
-        <activity android:name=".Clazz_BehaviorActivity" />
-        <activity android:name=".Clazz_ProjectActivity" />
-        <activity android:name=".Clazz_PortfolioActivity" />
-        <activity android:name=".Clazz_ExamActivty" />
-        <activity android:name=".Input_Quiz_Activity"></activity>
         <activity android:name=".Teacher_Activity_Teacher_Profile"/>
+
     </application>
 
 </manifest>

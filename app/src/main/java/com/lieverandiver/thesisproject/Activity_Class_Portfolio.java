@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by Verlie on 8/31/2017.
  */
-
+@Deprecated
 public class Activity_Class_Portfolio extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

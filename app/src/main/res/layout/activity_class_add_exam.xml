@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_clazz__activity"
+    android:id="@+id/activity_clazz__exam_activty"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="com.lieverandiver.thesisproject.Activity_Class_Activity">
+    tools:context="com.lieverandiver.thesisproject.Activity_Class_InputExam">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,9 +14,8 @@
 
         <include
             android:id="@+id/activity_main_custom_toolbar"
-            layout="@layout/custom_toolbar_red"
+            layout="@layout/custom_toolbar_pink"
             />
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -26,7 +24,7 @@
                 android:layout_gravity="left"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Activity"
+                android:text="Exam"
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="30sp"
@@ -36,15 +34,15 @@
                 android:layout_marginRight="20dp"
                 android:layout_gravity="right"
                 android:id="@+id/btn_cancel"
-               android:layout_marginTop="25dp"
+                android:layout_marginTop="25dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/cancel_icon"
                 android:clickable="true"/>
         </FrameLayout>
     </RelativeLayout>
-
     <android.support.v7.widget.CardView
+        android:id="@+id/carview_add"
         android:layout_width="match_parent"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -84,7 +82,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Activities"
+                    android:text="Exam"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -101,6 +99,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"

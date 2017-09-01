@@ -5,13 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by Verlie on 8/31/2017.
+ * Created by Verlie on 9/1/2017.
  */
 
-public class Activity_Class_Assignment extends AppCompatActivity {
+public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_assignment);
+        setContentView(R.layout.teacher_activity_view_subject_datails);
     }
 }
