@@ -15,12 +15,7 @@ import com.lieverandiver.thesisproject.R;
 import com.lieverandiver.thesisproject.helper.TeacherHelper;
 import com.remswork.project.alice.model.Teacher;
 
-/**
- * Created by Verlie on 8/30/2017.
- */
-
-@Deprecated
-public class Home_Logs_Slidebar_Fragment extends Fragment {
+public class SliderSettingFragment extends Fragment {
 
     private TextView textName;
     private TextView textNameLabel;
@@ -29,13 +24,6 @@ public class Home_Logs_Slidebar_Fragment extends Fragment {
     private LinearLayout viewLogout;
     private TeacherHelper teacherHelper;
     private Handler handler;
-
-
-    public Home_Logs_Slidebar_Fragment(){
-
-
-
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

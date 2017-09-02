@@ -55,11 +55,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentA
         }
 
         void setView(final Student student, final int position) {
-            String display = String.format(Locale.ENGLISH, "%s \t %s %s. %s",
+            String display = String.format(Locale.ENGLISH, "%s \t%s %s. %s - %d",
                     "1-A",
                     student.getFirstName(),
                     student.getMiddleName().substring(0, 1),
-                    student.getLastName());
+                    student.getLastName(),
+                    student.getStudentNumber());
             studentDetail.setText(display);
         }
     }

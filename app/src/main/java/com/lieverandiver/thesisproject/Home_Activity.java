@@ -15,6 +15,7 @@ import com.lieverandiver.thesisproject.fragment.Home_Logs_Slidebar_Fragment;
 import com.lieverandiver.thesisproject.fragment.Home_Student_Slidebar_Fragment;
 import com.lieverandiver.thesisproject.fragment.SliderClassFragment;
 import com.lieverandiver.thesisproject.fragment.SliderScheduleFragment;
+import com.lieverandiver.thesisproject.fragment.SliderSettingFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
         adapter.addFragment(new SliderScheduleFragment(), "Shedule");
         adapter.addFragment(new SliderClassFragment(), "Class");
         adapter.addFragment(new Home_Student_Slidebar_Fragment(), "Student");
-        adapter.addFragment(new Home_Logs_Slidebar_Fragment(), "|||");
+        adapter.addFragment(new SliderSettingFragment(), "Setting");
         viewPager.setAdapter(adapter);
     }
 

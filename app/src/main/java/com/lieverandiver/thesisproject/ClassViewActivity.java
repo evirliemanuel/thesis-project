@@ -2,6 +2,7 @@ package com.lieverandiver.thesisproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -39,35 +40,53 @@ public class ClassViewActivity extends AppCompatActivity {
 
     }
 
-    public void init(long classId) {
-        try {
-            ClassServiceImpl classService = new  ClassServiceImpl();
-            Class _class = classService.getClassById(classId);
-            txtViewSubjectName
-                    .setText((_class.getSubject() != null ? _class.getSubject().getName() : "None"));
-            txtViewSectionName
-                    .setText((_class.getSection() != null ? _class.getSection().getName() : "None"));
-            txtViewDepName
-                    .setText((_class.getSection() != null ? _class.getSection()
-                        .getDepartment().getName() : "None"));
-            viewSchedule.setOnClickListener(new Button.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(ClassViewActivity.this, ScheduleViewActivity.class);
-                }
-            });
+    public void init(final long classId) {
+        final Handler handler = new Handler(getMainLooper());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            ClassServiceImpl classService = new  ClassServiceImpl();
+                            Class _class = classService.getClassById(classId);
+                            txtViewSubjectName
+                                    .setText((_class.getSubject() != null ? _class.getSubject().getName() : "None"));
+                            txtViewSectionName
+                                    .setText((_class.getSection() != null ? _class.getSection().getName() : "None"));
+                            txtViewDepName
+                                    .setText((_class.getSection() != null ? _class.getSection()
+                                            .getDepartment().getName() : "None"));
+                            viewSchedule.setOnClickListener(new Button.OnClickListener(){
+                                @Override
+                                public synchronized void onClick(View v) {
+                                    Intent intent = getIntent().setClass(ClassViewActivity.this,
+                                            ScheduleViewActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
 
-            viewStudent.setOnClickListener(new Button.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Intent intent =
-                            getIntent().setClass(ClassViewActivity.this, StudentViewActivity.class);
-                    startActivity(intent);
-                }
-            });
-        } catch (ClassException e) {
-            e.printStackTrace();
-        }
+                            viewStudent.setOnClickListener(new Button.OnClickListener(){
+                                @Override
+                                public synchronized void onClick(View v) {
+                                    Intent intent =
+                                            getIntent().setClass(ClassViewActivity.this, StudentViewActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
+                        } catch (ClassException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        }).start();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
