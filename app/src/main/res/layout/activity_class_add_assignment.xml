@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="com.lieverandiver.thesisproject.Activity_Class_InputAssignment">
+    tools:context=".Activity_Class_InputAssignment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,14 +19,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <LinearLayout
+
+                android:background="@drawable/ripple_nocolor"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="left"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:text="Assignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/new_icon_back_button"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginLeft="65dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginLeft="20dp"
-                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asgnments"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"/>
             <ImageView
@@ -101,7 +115,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 

@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Quiz"
+                android:text="Loading..."
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 android:textSize="22sp" />

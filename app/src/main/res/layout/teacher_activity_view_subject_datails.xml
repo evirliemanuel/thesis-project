@@ -8,13 +8,23 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".Teacher_Activity_View_Subject_Datails">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:id="@+id/cover_photos"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="@drawable/cover_photos">
-    </LinearLayout>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/back_button"
+            android:background="@drawable/new_icon_back_button"/>
+
+
+    </RelativeLayout>
 
 
     <LinearLayout

@@ -16,13 +16,23 @@
         android:paddingBottom="10dp"
         android:background="@color/cardview_light_background">
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="vertical"
             android:id="@+id/cover_photos"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="@drawable/cover_photos">
-        </LinearLayout>
+
+            <Button
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/back_button"
+                android:background="@drawable/new_icon_back_button"/>
+
+
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/teacher_activity_profile_img_profile"
@@ -131,9 +141,9 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/a_teacher_profile_subject_container"
+        android:id="@+id/recyclerview_view_subject"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_alignParentBottom="true"

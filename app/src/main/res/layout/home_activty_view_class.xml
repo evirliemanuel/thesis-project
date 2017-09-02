@@ -57,6 +57,7 @@
                 android:clickable="true"/>
         </FrameLayout>
     </RelativeLayout>
+
     <android.support.v7.widget.CardView
         android:id="@+id/a_class_f_view_header"
         android:layout_width="match_parent"

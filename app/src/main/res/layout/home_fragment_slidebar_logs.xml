@@ -19,9 +19,11 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/btn_profile"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite">
+                android:background="@drawable/basic_ripple">
 
                 <RelativeLayout
                     android:layout_width="50dp"

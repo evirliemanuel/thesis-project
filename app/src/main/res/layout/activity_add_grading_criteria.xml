@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="com.lieverandiver.thesisproject.GradingCriteriaActivity">
+    tools:context=".GradingCriteriaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
