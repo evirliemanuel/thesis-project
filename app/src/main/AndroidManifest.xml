@@ -39,13 +39,18 @@
 
 
         <activity android:name=".StudentViewActivity" />
+<<<<<<< HEAD
         <activity android:name=".Teacher_Activity_View_Subject_Datails" />
         Teacher_Activity_View_Subject_Datails
         <activity android:name=".Teacher_GradingFactor_Activity_Midterm" />
         <activity android:name=".Teacher_GradingFactor_Activity_Finals" />
 
 
+=======
+>>>>>>> 398347b9547d050b7eb67a3c78a6db7ca7c79838
         <activity android:name=".SubjectViewActivity" />
+        <activity android:name=".ScheduleViewActivity" />
+
         <activity android:name=".Home_Activity" />
         <activity android:name=".ClassViewActivity" />
         <activity android:name=".GradingCriteriaActivity" />

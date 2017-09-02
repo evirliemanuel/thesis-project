@@ -4,6 +4,8 @@
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="android:colorControlActivated">@color/colorActive</item>
         <item name="android:colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
     </style>
 
 

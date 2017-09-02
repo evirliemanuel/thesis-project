@@ -13,18 +13,42 @@
         android:layout_height="match_parent"
         android:clickable="true">
 
-        <ImageView
-            android:id="@+id/button_click"
+        <FrameLayout
+            android:id="@+id/image_parent_layout"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="@drawable/basic_ripple_white"
-            android:clickable="true"
-           />
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/button_click"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/colorAccent"
+                android:clickable="true" />
+
+            <RelativeLayout
+                android:id="@+id/class_cardview_progressbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="#87ffffff">
+
+                <ProgressBar
+                    android:id="@+id/class_cardview_progressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button_click"
+            android:layout_below="@+id/image_parent_layout"
             android:background="@color/colorWhite"
             android:padding="10dp">
 
