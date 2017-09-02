@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Student;
+import com.remswork.project.alice.model.Subject;
 
 import java.util.List;
 import java.util.Locale;

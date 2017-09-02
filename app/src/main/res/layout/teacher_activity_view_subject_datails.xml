@@ -114,6 +114,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/a_class_f_view_subject_code"
                             android:layout_marginTop="13dp"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
@@ -122,6 +123,7 @@
                             android:textSize="12sp"
                             android:textColor="@color/colorMidNightBlue" />
                         <TextView
+                            android:id="@+id/a_class_f_view_subject_desc"
                             android:layout_marginTop="5dp"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
@@ -130,6 +132,7 @@
                             android:textSize="12sp"
                             android:textColor="@color/colorMidNightBlue" />
                         <TextView
+                            android:id="@+id/a_class_f_view_subject_unit"
                             android:layout_marginTop="5dp"
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"

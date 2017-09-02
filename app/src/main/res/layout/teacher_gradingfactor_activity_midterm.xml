@@ -44,7 +44,7 @@
 
                             <TextView
                                 android:layout_marginTop="20dp"
-                                android:id="@+id/f_gc_text_subjectname"
+                                android:id="@+id/midterm_subjectname"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Subject Name"
@@ -118,7 +118,7 @@
                                         android:layout_marginRight="10dp">
 
                                         <TextView
-                                            android:id="@+id/txtv_final_percent"
+                                            android:id="@+id/txtv_midterm_percent"
                                             android:layout_marginTop="5dp"
                                             android:textAlignment="center"
                                             android:layout_width="wrap_content"
@@ -130,7 +130,7 @@
                                             />
 
                                         <Spinner
-                                            android:id="@+id/finals_spinner_percent"
+                                            android:id="@+id/midterm_spinner_percent"
                                             android:layout_marginTop="5dp"
                                             android:layout_width="50dp"
                                             android:layout_height="wrap_content">
@@ -168,6 +168,7 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/midterm_save"
                 android:clickable="true"
                 android:background="@drawable/basic_ripple"
                 android:layout_width="match_parent"
@@ -214,7 +215,7 @@
                     android:padding="5dp"
                     android:textSize="30dp"
                     android:layout_margin="10dp"
-                    android:id="@+id/total_percent" />
+                    android:id="@+id/total_percentm" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -325,7 +326,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/activity_switch_red"
+                                            android:id="@+id/activity_switch_redm"
                                             style="@style/AppTheme.Switch"
                                           />
 
@@ -340,7 +341,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/activty_linear"
+                            android:id="@+id/activty_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -357,8 +358,18 @@
                                 android:layout_height="match_parent">
 
 
+                                <SeekBar
+
+                                    android:layout_marginTop="10dp"
+                                    android:layout_gravity="left"
+                                    android:id="@+id/activity_seekbarm"
+                                    android:layout_width="300dp"
+                                    android:layout_height="wrap_content"
+
+                                    />
+
                                 <TextView
-                                    android:id="@+id/actitvity_percent_text"
+                                    android:id="@+id/activity_percent_textm"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -368,16 +379,6 @@
                                     android:textAlignment="center"
                                     android:hint="0%"
                                     android:textSize="18sp"
-                                    />
-
-                                <SeekBar
-
-                                    android:layout_marginTop="10dp"
-                                    android:layout_gravity="left"
-                                    android:id="@+id/activity_seekbar"
-                                    android:layout_width="300dp"
-                                    android:layout_height="wrap_content"
-
                                     />
 
                             </FrameLayout>
@@ -474,7 +475,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/assignment_switch_red"
+                                            android:id="@+id/assignment_switch_redm"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -489,7 +490,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/assignment_linear"
+                            android:id="@+id/assignment_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -505,7 +506,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/assignment_percent_text"
+                                    android:id="@+id/assignment_percent_textm"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -521,7 +522,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/assignment_seekbar"
+                                    android:id="@+id/assignment_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -623,7 +624,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/attendance_switch_red"
+                                            android:id="@+id/attendance_switch_redm"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -638,7 +639,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/attendance_linear"
+                            android:id="@+id/attendance_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -656,7 +657,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/attendance_seekbar"
+                                    android:id="@+id/attendance_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -664,7 +665,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/attendance_percent_text"
+                                    android:id="@+id/attendance_percent_textm"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -774,7 +775,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/exam_switch_red"
+                                            android:id="@+id/exam_switch_redm"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -790,7 +791,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/exam_linear"
+                            android:id="@+id/exam_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -808,7 +809,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/exam_seekbar"
+                                    android:id="@+id/exam_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -816,7 +817,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/exam_percent_text"
+                                    android:id="@+id/exam_percent_textm"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -928,7 +929,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/project_switch_red"
+                                            android:id="@+id/project_switch_redm"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -943,7 +944,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/project_linear"
+                            android:id="@+id/project_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -961,7 +962,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/project_seekbar"
+                                    android:id="@+id/project_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -969,7 +970,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/project_percent_text"
+                                    android:id="@+id/project_percent_textm"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -1082,7 +1083,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/quiz_switch_red"
+                                            android:id="@+id/quiz_switch_redm"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -1097,7 +1098,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/quiz_linear"
+                            android:id="@+id/quiz_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -1115,7 +1116,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/quiz_seekbar"
+                                    android:id="@+id/quiz_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -1123,7 +1124,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/quiz_percent_text"
+                                    android:id="@+id/quiz_percent_textm"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"

@@ -1,6 +1,6 @@
 package com.lieverandiver.thesisproject.fragment;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,13 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.lieverandiver.thesisproject.Home_Activity;
 import com.lieverandiver.thesisproject.R;
-import com.lieverandiver.thesisproject.Teacher_Activity_Teacher_Profile;
 import com.lieverandiver.thesisproject.helper.TeacherHelper;
 import com.remswork.project.alice.model.Teacher;
 
@@ -28,6 +27,7 @@ public class SliderSettingFragment extends Fragment {
     private TeacherHelper teacherHelper;
     private Handler handler;
     private LinearLayout linearLayoutprofile;
+    private OnProfileClickListener onProfileClickListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,13 @@ public class SliderSettingFragment extends Fragment {
         layout = (LinearLayout) view.findViewById(R.id.profile_layout);
         viewLogout = (LinearLayout) view.findViewById(R.id.btn_logout);
         linearLayoutprofile =(LinearLayout) view.findViewById(R.id.btn_profile);
+
+        linearLayoutprofile.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onProfileClickListener.viewProfile(teacherHelper.loadUser().get());
+            }
+        });
         viewLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +65,14 @@ public class SliderSettingFragment extends Fragment {
         displayEvenDelay();
         return view;
 
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof OnProfileClickListener) {
+            onProfileClickListener = (OnProfileClickListener) context;
+        }
     }
 
     public void displayEvenDelay() {
@@ -81,6 +96,9 @@ public class SliderSettingFragment extends Fragment {
         }).start();
     }
 
+    public interface OnProfileClickListener {
+        public void viewProfile(Teacher teacher);
+    }
 
 }
 

@@ -16,12 +16,16 @@ import com.lieverandiver.thesisproject.fragment.Home_Student_Slidebar_Fragment;
 import com.lieverandiver.thesisproject.fragment.SliderClassFragment;
 import com.lieverandiver.thesisproject.fragment.SliderScheduleFragment;
 import com.lieverandiver.thesisproject.fragment.SliderSettingFragment;
+import com.remswork.project.alice.model.Teacher;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.webkit.WebSettings.PluginState.ON;
 
-public class Home_Activity extends AppCompatActivity implements ClassAdapter.ClassAdapterListener {
+
+public class Home_Activity extends AppCompatActivity implements ClassAdapter.ClassAdapterListener,
+        SliderSettingFragment.OnProfileClickListener{
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -56,6 +60,13 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
     public void showClassView(final long classId) {
         Intent intent = new Intent(this, ClassViewActivity.class);
         intent.putExtra("classId", classId);
+        startActivity(intent);
+    }
+
+    @Override
+    public void viewProfile(Teacher teacher) {
+        Intent intent = new Intent(this, Teacher_Activity_Teacher_Profile.class);
+        intent.putExtra("teacherId", teacher.getId());
         startActivity(intent);
     }
 

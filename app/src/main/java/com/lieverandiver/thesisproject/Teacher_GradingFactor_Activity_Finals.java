@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -44,10 +45,25 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity {
     private LinearLayout linearLayout4;
     private LinearLayout linearLayout5;
     private LinearLayout linearLayout6;
+
+    private TextView textViewf1;
+    private TextView textViewf2;
+    private Spinner spinnerf;
+    private  TextView textViewf3;
+    private LinearLayout linearLayoutf;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_gradingfactor_activity_finals);
+
+        linearLayoutf = (LinearLayout) findViewById(R.id.finals_save);
+        textViewf1 = (TextView) findViewById(R.id.finals_subjectname);
+        textViewf2 = (TextView) findViewById(R.id.txtv_final_percent);
+        spinnerf = (Spinner) findViewById(R.id.midterm_spinner_percent);
+
+        textViewf3 = (TextView) findViewById(R.id.total_percent);
+
 
 
 
