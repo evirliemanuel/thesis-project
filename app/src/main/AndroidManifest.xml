@@ -9,14 +9,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Teacher_GradingFactor_Activity_Midterm">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Teacher_Activity_View_Subject_Datails" />
+        <activity android:name=".Activity_Class_Add_Activity" />
         <activity android:name=".Activity_Class_Add_Assignment" />
         <activity android:name=".Activity_Class_Add_Attendance" />
         <activity android:name=".Activity_Class_Add_Exam" />
@@ -39,6 +39,10 @@
 
 
         <activity android:name=".StudentViewActivity" />
+        <activity android:name=".Teacher_Activity_View_Subject_Datails" />
+        Teacher_Activity_View_Subject_Datails
+        <activity android:name=".Teacher_GradingFactor_Activity_Midterm" />
+        <activity android:name=".Teacher_GradingFactor_Activity_Finals" />
 
 
         <activity android:name=".SubjectViewActivity" />
