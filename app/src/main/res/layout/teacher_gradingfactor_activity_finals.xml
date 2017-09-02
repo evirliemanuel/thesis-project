@@ -15,7 +15,6 @@
         android:layout_alignParentStart="true">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/a_class_f_view_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardElevation="3dp">
@@ -32,30 +31,50 @@
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
+
                     <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_marginTop="20dp"
-                            android:id="@+id/f_gc_text_subjectname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Subject Name"
-                            android:layout_marginLeft="20dp"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="22sp"
-                            android:textStyle="bold"/>
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/f_gc_text_subjectname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Subject Name"
+                                android:layout_marginLeft="20dp"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="22sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:layout_gravity="right"
+                                android:id="@+id/btn_cancel"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="22dp"
+                                android:layout_marginBottom="16dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/cancel_icon"
+                                android:clickable="true"/>
+
+                        </FrameLayout>
+
+
 
                         <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="2dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
-                            card_view:cardElevation="3dp">
+                            android:layout_marginRight="2dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -99,7 +118,7 @@
                                         android:layout_marginRight="10dp">
 
                                         <TextView
-                                            android:id="@+id/txtv_percent_finals"
+                                            android:id="@+id/txtv_final_percent"
                                             android:layout_marginTop="5dp"
                                             android:textAlignment="center"
                                             android:layout_width="wrap_content"
@@ -111,7 +130,7 @@
                                             />
 
                                         <Spinner
-                                            android:id="@+id/spinner_finals"
+                                            android:id="@+id/finals_spinner_percent"
                                             android:layout_marginTop="5dp"
                                             android:layout_width="50dp"
                                             android:layout_height="wrap_content">
@@ -125,7 +144,6 @@
                             </LinearLayout>
 
                         </android.support.v7.widget.CardView>
-
 
                     </LinearLayout>
                 </LinearLayout>

@@ -40,4 +40,21 @@ public class ScheduleHelper {
         else
             return R.drawable.logo_day_sunday;
     }
+
+    public int dayInNumber(String day) {
+        if(day.equalsIgnoreCase("Monday"))
+            return 2;
+        if(day.equalsIgnoreCase("Tuesday"))
+            return 3;
+        if(day.equalsIgnoreCase("Wednesday"))
+            return 4;
+        if(day.equalsIgnoreCase("Thursday"))
+            return 5;
+        if(day.equalsIgnoreCase("Friday"))
+            return 6;
+        if(day.equalsIgnoreCase("Saturday"))
+            return 7;
+        else
+            return 1;
+    }
 }
