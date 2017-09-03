@@ -9,6 +9,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.ClassAdapter;
 import com.lieverandiver.thesisproject.fragment.Home_Logs_Slidebar_Fragment;
@@ -30,6 +37,12 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Button btnBack;
+    private ToggleButton btnSearch;
+    private Button btnSearchOk;
+    private Button btnSearchCancel;
+    private EditText editTextSearch;
+    private FrameLayout frameLayoutSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +57,34 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+
+        btnSearch = (ToggleButton)findViewById(R.id.btn_search_class);
+        btnSearchOk = (Button)findViewById(R.id._btn_search_ok_class);
+        btnBack = (Button) findViewById(R.id.btn_back_student);
+        editTextSearch =(EditText)findViewById(R.id.etxt_search_class);
+        frameLayoutSearch = (FrameLayout)findViewById(R.id.frame_search_class);
+
+        frameLayoutSearch.setVisibility(View.GONE);
+
+
+        btnSearch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    frameLayoutSearch.setVisibility(View.VISIBLE);
+                    tabLayout.setVisibility(View.GONE);
+                } else {
+                    frameLayoutSearch.setVisibility(View.GONE);
+                    tabLayout.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
+
+
+
+
+
     }
 
 

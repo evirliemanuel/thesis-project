@@ -4,10 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+<<<<<<< Updated upstream
 import android.widget.Toast;
+=======
+import android.widget.ToggleButton;
+>>>>>>> Stashed changes
 
 import com.lieverandiver.thesisproject.helper.FormulaHelper;
 import com.remswork.project.alice.exception.GradingFactorException;
@@ -31,6 +37,15 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
     private TextView unit;
     Subject subject = new Subject();
 
+    private TextView textViewMidtermPercent;
+    private TextView textViewFinalsPercent;
+    private RecyclerView recyclerViewMidterm;
+    private RecyclerView recyclerViewFinals;
+
+    private ToggleButton toggleButtonM;
+    private ToggleButton toggleButtonF;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,14 +59,45 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        textViewMidtermPercent= (TextView) findViewById(R.id.midterm_percent_sub_view);
+        textViewMidtermPercent= (TextView) findViewById(R.id.finals_percent_sub_view);
+        recyclerViewMidterm= (RecyclerView) findViewById(R.id.midterm_recycleview);
+        recyclerViewFinals= (RecyclerView) findViewById(R.id.finals_recycleview);
+
         linearLayoutm = (LinearLayout)findViewById(R.id.midterm_setting);
         linearLayoutf = (LinearLayout)findViewById(R.id.finals_setting);
-
-
         name = (TextView) findViewById(R.id.a_class_f_view_subject_name);
         code = (TextView) findViewById(R.id.a_class_f_view_subject_code);
         desc = (TextView) findViewById(R.id.a_class_f_view_subject_desc);
         unit = (TextView) findViewById(R.id.a_class_f_view_subject_unit);
+
+        toggleButtonM =(ToggleButton)findViewById(R.id.toggle_midview);
+        toggleButtonF =(ToggleButton)findViewById(R.id.toggle_finview);
+
+
+        recyclerViewMidterm.setVisibility(View.GONE);
+        recyclerViewFinals.setVisibility(View.GONE);
+
+
+        toggleButtonM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    recyclerViewMidterm.setVisibility(View.VISIBLE);
+                } else {
+                    recyclerViewMidterm.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        toggleButtonF.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    recyclerViewFinals.setVisibility(View.VISIBLE);
+                } else {
+                    recyclerViewFinals.setVisibility(View.GONE);
+                }
+            }
+        });
 
         name.setText(subject.getName());
         code.setText(subject.getCode());

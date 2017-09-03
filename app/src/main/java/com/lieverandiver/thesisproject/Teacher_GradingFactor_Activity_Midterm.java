@@ -128,8 +128,6 @@ public class Teacher_GradingFactor_Activity_Midterm extends AppCompatActivity{
             textView5 = (TextView) findViewById(R.id.project_percent_textm);
             textView6 = (TextView) findViewById(R.id.quiz_percent_textm);
 
-
-
             aSwitch1 = (Switch) findViewById(R.id.activity_switch_redm);
             aSwitch2 = (Switch) findViewById(R.id.assignment_switch_redm);
             aSwitch3 = (Switch) findViewById(R.id.attendance_switch_redm);

@@ -267,7 +267,8 @@
                                     android:layout_marginLeft="10dp"
                                     android:orientation="horizontal">
 
-                                    <ImageView
+                                    <ToggleButton
+                                        android:id="@+id/toggle_midview"
                                         android:layout_width="30dp"
                                         android:layout_height="30dp"
                                         android:layout_gravity="center"
@@ -309,13 +310,23 @@
                                     android:textStyle="bold"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="18sp"
-                                    android:id="@+id/midterm_percent" />
+                                    android:id="@+id/midterm_percent_sub_view" />
 
                             </FrameLayout>
+
 
                         </LinearLayout>
 
                     </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/midterm_recycleview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                    </android.support.v7.widget.RecyclerView>
 
 
                 </LinearLayout>
@@ -356,7 +367,8 @@
                                     android:layout_marginLeft="10dp"
                                     android:orientation="horizontal">
 
-                                    <ImageView
+                                    <ToggleButton
+                                        android:id="@+id/toggle_finview"
                                         android:layout_width="30dp"
                                         android:layout_height="30dp"
                                         android:layout_gravity="center"
@@ -399,7 +411,7 @@
                                     android:textStyle="bold"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="18sp"
-                                    android:id="@+id/finals_textview" />
+                                    android:id="@+id/finals_percent_sub_view" />
 
                             </FrameLayout>
 
@@ -409,6 +421,15 @@
 
 
                 </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/finals_recycleview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                </android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
 

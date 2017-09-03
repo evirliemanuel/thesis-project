@@ -6,6 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ToggleButton;
 
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.model.Schedule;
@@ -18,6 +25,12 @@ import java.util.Set;
 public class ScheduleViewActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private Button btnBack;
+    private ToggleButton btnSearch;
+    private Button btnSearchOk;
+    private Button btnSearchCancel;
+    private EditText editTextSearch;
+    private FrameLayout frameLayoutSearch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +38,32 @@ public class ScheduleViewActivity extends AppCompatActivity {
         setContentView(R.layout.teacher_schedule_view);
         recyclerView = (RecyclerView) findViewById(R.id.teacher_schedule_recyclerview);
         init(getIntent().getExtras().getLong("classId"));
+
+        btnSearch = (ToggleButton)findViewById(R.id._btn_search_schedule);
+        btnSearchOk = (Button)findViewById(R.id._btn_search_ok_schedule);
+        btnBack = (Button)findViewById(R.id.btn_back_schedule);
+        editTextSearch =(EditText)findViewById(R.id.etxt_search_schedule);
+        frameLayoutSearch = (FrameLayout)findViewById(R.id.frame_search_schedule);
+
+        frameLayoutSearch.setVisibility(View.GONE);
+
+
+
+        btnSearch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    frameLayoutSearch.setVisibility(View.VISIBLE);
+                } else {
+                    frameLayoutSearch.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
+
+
+
+
     }
 
     public void init(long classId) {

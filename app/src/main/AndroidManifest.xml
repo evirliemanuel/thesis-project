@@ -43,6 +43,10 @@
 
 
         <activity android:name=".StudentViewActivity" />
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         <activity android:name=".ScheduleViewActivity" />
 
         <activity android:name=".Home_Activity" />
