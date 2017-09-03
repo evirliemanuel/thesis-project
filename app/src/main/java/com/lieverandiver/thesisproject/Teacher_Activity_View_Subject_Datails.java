@@ -7,9 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.lieverandiver.thesisproject.adapter.SubjectAdapter;
+import com.lieverandiver.thesisproject.helper.FormulaHelper;
+import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.exception.SubjectException;
+import com.remswork.project.alice.model.Formula;
 import com.remswork.project.alice.model.Subject;
 import com.remswork.project.alice.service.impl.SubjectServiceImpl;
 
@@ -35,7 +38,8 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
         setContentView(R.layout.teacher_activity_view_subject_datails);
 
         try {
-            subject = new SubjectServiceImpl().getSubjectById(getIntent().getExtras().getLong("subjectId"));
+            subject = new SubjectServiceImpl().getSubjectById(getIntent()
+                    .getExtras().getLong("subjectId"));
         } catch (SubjectException e) {
             e.printStackTrace();
         }
@@ -54,6 +58,15 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
         desc.setText(subject.getDescription());
         unit.setText(subject.getUnit() + "");
 
+        try {
+            Formula formula = new FormulaHelper(this).getFormula("1-midterm");
+            if(formula != null) {
+                Toast.makeText(this, formula.getId() + "", Toast.LENGTH_LONG).show();
+            }
+        } catch (GradingFactorException e) {
+            e.printStackTrace();
+        }
+
         linearLayoutm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -61,6 +74,7 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
                         Teacher_GradingFactor_Activity_Midterm.class);
                 intent.putExtra("subjectId", subject.getId());
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -70,6 +84,7 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
                 Intent intent = new Intent(Teacher_Activity_View_Subject_Datails.this,
                         Teacher_GradingFactor_Activity_Finals.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

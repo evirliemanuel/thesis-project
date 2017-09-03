@@ -1,5 +1,6 @@
 package com.lieverandiver.thesisproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,9 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.lieverandiver.thesisproject.helper.FormulaHelper;
 import com.lieverandiver.thesisproject.helper.TeacherHelper;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Formula;
@@ -171,11 +174,22 @@ public class Teacher_GradingFactor_Activity_Midterm extends AppCompatActivity{
                     formula.setProjectPercentage(percent[4]);
                     formula.setQuizPercentage(percent[5]);
                     try {
-                        new FormulaServiceImpl().addFormula(formula, subject.getId(), teacher.getId());
+                        formula = new FormulaServiceImpl().addFormula(formula, subject.getId(),
+                                teacher.getId());
                     } catch (GradingFactorException e) {
                         e.printStackTrace();
                     }
-                    finish();
+                    if(formula !=null) {
+                        new FormulaHelper(Teacher_GradingFactor_Activity_Midterm.this).saveUser(
+                                teacher.getId() + "-midterm", formula.getId());
+                        Intent intent = new Intent(Teacher_GradingFactor_Activity_Midterm.this,
+                                Teacher_Activity_View_Subject_Datails.class);
+                        intent.putExtra("subjectId", subject.getId());
+                        startActivity(intent);
+                        finish();
+                    }else
+                        Toast.makeText(Teacher_GradingFactor_Activity_Midterm.this,
+                                "Please try again", Toast.LENGTH_SHORT).show();
                 }
             });
 

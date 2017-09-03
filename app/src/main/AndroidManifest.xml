@@ -42,7 +42,7 @@
         <activity android:name=".Teacher_GradingFactor_Activity_Finals" />
 
 
-        <activity android:name=".SubjectViewActivity" />
+        <activity android:name=".StudentViewActivity" />
         <activity android:name=".ScheduleViewActivity" />
 
         <activity android:name=".Home_Activity" />
