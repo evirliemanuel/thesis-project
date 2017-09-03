@@ -191,8 +191,13 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                     } else {
                         //do something when unchecked
                         linearLayout1.setVisibility(View.GONE);
-
                     }
+                    int x = 0;
+                    percent[0] = 0;
+                    for(int i=0; i < percent.length; i++)
+                        x += percent[i];
+                    textViewm3.setText(x + "%");
+                    seekBar1.setProgress(0);
                 }
             });
 
@@ -204,8 +209,13 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                     } else {
                         //do something when unchecked
                         linearLayout2.setVisibility(View.GONE);
-
                     }
+                    int x = 0;
+                    percent[1] = 0;
+                    for(int i=0; i < percent.length; i++)
+                        x += percent[i];
+                    textViewm3.setText(x + "%");
+                    seekBar2.setProgress(0);
                 }
             });
 
@@ -217,8 +227,13 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                     } else {
                         //do something when unchecked
                         linearLayout3.setVisibility(View.GONE);
-
                     }
+                    int x = 0;
+                    percent[2] = 0;
+                    for(int i=0; i < percent.length; i++)
+                        x += percent[i];
+                    textViewm3.setText(x + "%");
+                    seekBar3.setProgress(0);
                 }
             });
 
@@ -230,8 +245,13 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                     } else {
                         //do something when unchecked
                         linearLayout4.setVisibility(View.GONE);
-
                     }
+                    int x = 0;
+                    percent[3] = 0;
+                    for(int i=0; i < percent.length; i++)
+                        x += percent[i];
+                    textViewm3.setText(x + "%");
+                    seekBar4.setProgress(0);
                 }
             });
 
@@ -243,8 +263,13 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                     } else {
                         //do something when unchecked
                         linearLayout5.setVisibility(View.GONE);
-
                     }
+                    int x = 0;
+                    percent[4] = 0;
+                    for(int i=0; i < percent.length; i++)
+                        x += percent[i];
+                    textViewm3.setText(x + "%");
+                    seekBar5.setProgress(0);
                 }
             });
 
@@ -256,8 +281,13 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                     } else {
                         //do something when unchecked
                         linearLayout6.setVisibility(View.GONE);
-
                     }
+                    int x = 0;
+                    percent[5] = 0;
+                    for(int i=0; i < percent.length; i++)
+                        x += percent[i];
+                    textViewm3.setText(x + "%");
+                    seekBar6.setProgress(0);
                 }
             });
 
@@ -280,6 +310,7 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                         percent[0] = 100-x;
                         textView1.setText(percent[0] + "");;
                         textViewm3.setText((x + percent[0]) + "%");
+                        seekBar.setProgress(percent[0]);
                     }else
                         percent[0] = 0;
                 }
@@ -314,6 +345,7 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                         percent[1] = 100-x;
                         textView2.setText(percent[1] + "");;
                         textViewm3.setText((x + percent[1]) + "%");
+                        seekBar.setProgress(percent[1]);
                     }else
                         percent[1] = 0;
                 }
@@ -348,6 +380,7 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                         percent[2] = 100-x;
                         textView3.setText(percent[2] + "");;
                         textViewm3.setText((x + percent[2]) + "%");
+                        seekBar.setProgress(percent[2]);
                     }else
                         percent[2] = 0;
                 }
@@ -381,6 +414,7 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                         percent[3] = 100-x;
                         textView4.setText(percent[3] + "");;
                         textViewm3.setText((x + percent[3]) + "%");
+                        seekBar.setProgress(percent[3]);
                     }else
                         percent[3] = 0;
                 }
@@ -415,6 +449,7 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                         percent[4] = 100-x;
                         textView5.setText(percent[4] + "");;
                         textViewm3.setText((x + percent[4]) + "%");
+                        seekBar.setProgress(percent[4]);
                     }else
                         percent[4] = 0;
                 }
@@ -449,6 +484,7 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
                         percent[5] = 100-x;
                         textView6.setText(percent[5] + "");;
                         textViewm3.setText((x + percent[5]) + "%");
+                        seekBar.setProgress(percent[5]);
                     }else
                         percent[5] = 0;
                 }
