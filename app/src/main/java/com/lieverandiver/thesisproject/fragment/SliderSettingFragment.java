@@ -45,7 +45,7 @@ public class SliderSettingFragment extends Fragment {
         progressBar = (ProgressBar) view.findViewById(R.id.profile_progressbar);
         layout = (LinearLayout) view.findViewById(R.id.profile_layout);
         viewLogout = (LinearLayout) view.findViewById(R.id.btn_logout);
-        linearLayoutprofile =(LinearLayout) view.findViewById(R.id.btn_profile);
+        linearLayoutprofile = (LinearLayout) view.findViewById(R.id.btn_profile);
 
         linearLayoutprofile.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -70,7 +70,7 @@ public class SliderSettingFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OnProfileClickListener) {
+        if (context instanceof OnProfileClickListener) {
             onProfileClickListener = (OnProfileClickListener) context;
         }
     }

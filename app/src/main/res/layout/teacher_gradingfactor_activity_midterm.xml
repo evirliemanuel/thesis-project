@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_grading_criteria"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".Teacher_GradingFactor_Activity_Midterm">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:orientation="vertical">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -33,9 +33,9 @@
 
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
                         <FrameLayout
@@ -43,29 +43,28 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:layout_marginTop="20dp"
                                 android:id="@+id/midterm_subjectname"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Subject Name"
                                 android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Subject Name"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="22sp"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold" />
 
                             <ImageView
-                                android:layout_gravity="right"
                                 android:id="@+id/btn_cancel"
-                                android:layout_marginTop="16dp"
-                                android:layout_marginRight="22dp"
-                                android:layout_marginBottom="16dp"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
+                                android:layout_gravity="right"
+                                android:layout_marginBottom="16dp"
+                                android:layout_marginRight="22dp"
+                                android:layout_marginTop="16dp"
                                 android:background="@drawable/cancel_icon"
-                                android:clickable="true"/>
+                                android:clickable="true" />
 
                         </FrameLayout>
-
 
 
                         <android.support.v7.widget.CardView
@@ -73,8 +72,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:layout_marginLeft="2dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="2dp">
+                            android:layout_marginRight="2dp"
+                            android:layout_marginTop="5dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -113,27 +112,27 @@
                                     <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
                                         android:layout_gravity="right"
-                                        android:layout_marginRight="10dp">
+                                        android:layout_marginRight="10dp"
+                                        android:orientation="horizontal">
 
                                         <TextView
                                             android:id="@+id/txtv_midterm_percent"
-                                            android:layout_marginTop="5dp"
-                                            android:textAlignment="center"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp"
                                             android:text="50%"
-                                            android:textStyle="bold"
+                                            android:textAlignment="center"
                                             android:textColor="@color/colorAccent"
                                             android:textSize="18sp"
-                                            />
+                                            android:textStyle="bold"
+                                            android:visibility="gone" />
 
                                         <Spinner
                                             android:id="@+id/midterm_spinner_percent"
-                                            android:layout_marginTop="5dp"
-                                            android:layout_width="50dp"
-                                            android:layout_height="wrap_content">
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="5dp">
 
                                         </Spinner>
 
@@ -152,37 +151,36 @@
         </android.support.v7.widget.CardView>
 
 
-
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="70dp"
             card_view:cardElevation="20dp">
+
             <RelativeLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_gravity="bottom"
-                android:background="@color/colorAccent"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
-            </RelativeLayout>
+                android:layout_marginRight="20dp"
+                android:background="@color/colorAccent"></RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/midterm_save"
-                android:clickable="true"
-                android:background="@drawable/basic_ripple"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginBottom="2dp">
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/basic_ripple"
+                android:clickable="true"
+                android:orientation="horizontal">
 
 
                 <ImageView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/icon_button_add"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/icon_button_add" />
 
                 <LinearLayout
                     android:layout_width="220dp"
@@ -190,32 +188,33 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="16dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/a_add_gc_subject_name_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Save"
                         android:textColor="@color/colorMoca1"
-                        android:textStyle="bold"
+                        android:textSize="20dp"
 
-                        android:textSize="20dp"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tap here to save grading criteria"
-                        android:textColor="@color/colorMoca1"/>
+                        android:textColor="@color/colorMoca1" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="50dp"
+                    android:id="@+id/total_percentm"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="0%"
-                    android:padding="5dp"
-                    android:textSize="30dp"
                     android:layout_margin="10dp"
-                    android:id="@+id/total_percentm" />
+                    android:padding="5dp"
+                    android:text="0%"
+                    android:textSize="30dp" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -228,8 +227,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/colorClouds">
+                android:background="@color/colorClouds"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -239,38 +238,37 @@
                 </LinearLayout>
 
 
-
-            <!--Activity-->
+                <!--Activity-->
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    card_view:cardElevation="5dp"
-                    android:background="@color/cardview_shadow_start_color">
+                    android:background="@color/cardview_shadow_start_color"
+                    card_view:cardElevation="5dp">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
                         android:paddingBottom="8dp"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
-                        android:background="#FFFFFF">
+                        android:paddingTop="8dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:layout_marginTop="1dp"
-                                android:layout_marginBottom="5dp"
                                 android:background="@drawable/basic_ripple"
                                 card_view:cardCornerRadius="5dp">
 
@@ -282,26 +280,26 @@
 
                                     <LinearLayout
 
-                                        android:orientation="horizontal"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:background="@drawable/icon_activity"
+                                            android:layout_gravity="center"
                                             android:layout_marginBottom="16dp"
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
-                                            android:layout_marginTop="16dp" />
+                                            android:layout_marginTop="16dp"
+                                            android:background="@drawable/icon_activity" />
 
                                         <LinearLayout
-                                            android:layout_gravity="center"
-
                                             android:layout_width="wrap_content"
+
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
                                             android:orientation="vertical">
 
                                             <TextView
@@ -309,26 +307,26 @@
                                                 android:layout_height="wrap_content"
                                                 android:text="Activity"
                                                 android:textColor="#FFFFFF"
-                                                android:textStyle="bold"
-                                                android:textSize="22sp" />
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
 
                                         </LinearLayout>
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_marginTop="16dp"
-                                        android:layout_marginRight="16dp"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:layout_gravity="right">
+                                        android:layout_gravity="right"
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginTop="16dp">
+
                                         <Switch
-                                            android:layout_gravity="center"
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
                                             android:id="@+id/activity_switch_redm"
                                             style="@style/AppTheme.Switch"
-                                          />
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_gravity="center" />
 
                                     </LinearLayout>
                                 </FrameLayout>
@@ -336,18 +334,17 @@
                             </android.support.v7.widget.CardView>
 
 
-
                         </LinearLayout>
 
                         <LinearLayout
-                            android:animateLayoutChanges="true"
                             android:id="@+id/activty_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="1dp"
                             android:layout_marginRight="1dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
+                            android:animateLayoutChanges="true"
                             android:background="#ecf0f1"
                             android:orientation="horizontal"
                             android:weightSum="1">
@@ -360,26 +357,25 @@
 
                                 <SeekBar
 
-                                    android:layout_marginTop="10dp"
-                                    android:layout_gravity="left"
                                     android:id="@+id/activity_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_marginTop="10dp"
 
                                     />
 
                                 <TextView
                                     android:id="@+id/activity_percent_textm"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:textAlignment="center"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
                                     android:hint="0%"
-                                    android:textSize="18sp"
-                                    />
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
 
                             </FrameLayout>
                         </LinearLayout>
@@ -393,32 +389,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    card_view:cardElevation="5dp"
-                    android:background="@color/cardview_shadow_start_color">
+                    android:background="@color/cardview_shadow_start_color"
+                    card_view:cardElevation="5dp">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
                         android:paddingBottom="8dp"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
-                        android:background="#FFFFFF">
+                        android:paddingTop="8dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:layout_marginTop="1dp"
-                                android:layout_marginBottom="5dp"
                                 android:background="@drawable/basic_ripple"
                                 card_view:cardCornerRadius="5dp">
 
@@ -430,26 +426,26 @@
 
                                     <LinearLayout
 
-                                        android:orientation="horizontal"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:background="@drawable/icon_assignment"
+                                            android:layout_gravity="center"
                                             android:layout_marginBottom="16dp"
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
-                                            android:layout_marginTop="16dp" />
+                                            android:layout_marginTop="16dp"
+                                            android:background="@drawable/icon_assignment" />
 
                                         <LinearLayout
-                                            android:layout_gravity="center"
-
                                             android:layout_width="wrap_content"
+
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
                                             android:orientation="vertical">
 
                                             <TextView
@@ -458,26 +454,26 @@
                                                 android:layout_height="wrap_content"
                                                 android:text="Assignment"
                                                 android:textColor="#FFFFFF"
-                                                android:textStyle="bold"
-                                                android:textSize="22sp" />
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
 
                                         </LinearLayout>
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_marginTop="16dp"
-                                        android:layout_marginRight="16dp"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:layout_gravity="right">
+                                        android:layout_gravity="right"
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginTop="16dp">
+
                                         <Switch
-                                            android:layout_gravity="center"
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
                                             android:id="@+id/assignment_switch_redm"
                                             style="@style/AppTheme.Switch"
-                                            />
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_gravity="center" />
 
                                     </LinearLayout>
                                 </FrameLayout>
@@ -485,18 +481,17 @@
                             </android.support.v7.widget.CardView>
 
 
-
                         </LinearLayout>
 
                         <LinearLayout
-                            android:animateLayoutChanges="true"
                             android:id="@+id/assignment_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="1dp"
                             android:layout_marginRight="1dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
+                            android:animateLayoutChanges="true"
                             android:background="#ecf0f1"
                             android:orientation="horizontal">
 
@@ -507,29 +502,27 @@
 
                                 <TextView
                                     android:id="@+id/assignment_percent_textm"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:textAlignment="center"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
                                     android:hint="0%"
-                                    android:textSize="18sp"
-                                    />
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
 
                                 <SeekBar
 
-                                    android:layout_marginTop="10dp"
-                                    android:layout_gravity="left"
                                     android:id="@+id/assignment_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_marginTop="10dp"
 
                                     />
 
                             </FrameLayout>
-
 
 
                         </LinearLayout>
@@ -537,37 +530,37 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
-                    <!--Attendance-->
+                <!--Attendance-->
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    card_view:cardElevation="5dp"
-                    android:background="@color/cardview_shadow_start_color">
+                    android:background="@color/cardview_shadow_start_color"
+                    card_view:cardElevation="5dp">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
                         android:paddingBottom="8dp"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
-                        android:background="#FFFFFF">
+                        android:paddingTop="8dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:layout_marginTop="1dp"
-                                android:layout_marginBottom="5dp"
                                 android:background="@drawable/basic_ripple"
                                 card_view:cardCornerRadius="5dp">
 
@@ -579,26 +572,26 @@
 
                                     <LinearLayout
 
-                                        android:orientation="horizontal"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:background="@drawable/icon_attendance"
+                                            android:layout_gravity="center"
                                             android:layout_marginBottom="16dp"
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
-                                            android:layout_marginTop="16dp" />
+                                            android:layout_marginTop="16dp"
+                                            android:background="@drawable/icon_attendance" />
 
                                         <LinearLayout
-                                            android:layout_gravity="center"
-
                                             android:layout_width="wrap_content"
+
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
                                             android:orientation="vertical">
 
                                             <TextView
@@ -607,26 +600,26 @@
                                                 android:layout_height="wrap_content"
                                                 android:text="Attendance"
                                                 android:textColor="#FFFFFF"
-                                                android:textStyle="bold"
-                                                android:textSize="22sp" />
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
 
                                         </LinearLayout>
 
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_marginTop="16dp"
-                                        android:layout_marginRight="16dp"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:layout_gravity="right">
+                                        android:layout_gravity="right"
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginTop="16dp">
+
                                         <Switch
-                                            android:layout_gravity="center"
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
                                             android:id="@+id/attendance_switch_redm"
                                             style="@style/AppTheme.Switch"
-                                            />
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_gravity="center" />
 
                                     </LinearLayout>
                                 </FrameLayout>
@@ -634,18 +627,17 @@
                             </android.support.v7.widget.CardView>
 
 
-
                         </LinearLayout>
 
                         <LinearLayout
-                            android:animateLayoutChanges="true"
                             android:id="@+id/attendance_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="1dp"
                             android:layout_marginRight="1dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
+                            android:animateLayoutChanges="true"
                             android:background="#ecf0f1"
                             android:orientation="horizontal">
 
@@ -655,27 +647,26 @@
 
                                 <SeekBar
 
-                                    android:layout_marginTop="10dp"
-                                    android:layout_gravity="left"
                                     android:id="@+id/attendance_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_marginTop="10dp"
 
                                     />
 
 
                                 <TextView
                                     android:id="@+id/attendance_percent_textm"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:textAlignment="center"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
                                     android:hint="0%"
-                                    android:textSize="18sp"
-                                    />
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
 
                             </FrameLayout>
 
@@ -693,34 +684,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    card_view:cardElevation="5dp"
-                    android:background="@color/cardview_shadow_start_color">
+                    android:background="@color/cardview_shadow_start_color"
+                    card_view:cardElevation="5dp">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
                         android:paddingBottom="8dp"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
-                        android:background="#FFFFFF">
+                        android:paddingTop="8dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:layout_marginTop="1dp"
-                                android:layout_marginBottom="5dp"
                                 android:background="@drawable/basic_ripple"
                                 card_view:cardCornerRadius="5dp">
+
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -729,26 +721,26 @@
 
                                     <LinearLayout
 
-                                        android:orientation="horizontal"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:background="@drawable/icon_exam"
+                                            android:layout_gravity="center"
                                             android:layout_marginBottom="16dp"
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
-                                            android:layout_marginTop="16dp" />
+                                            android:layout_marginTop="16dp"
+                                            android:background="@drawable/icon_exam" />
 
                                         <LinearLayout
-                                            android:layout_gravity="center"
-
                                             android:layout_width="wrap_content"
+
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
                                             android:orientation="vertical">
 
                                             <TextView
@@ -757,8 +749,8 @@
                                                 android:layout_height="wrap_content"
                                                 android:text="Exam"
                                                 android:textColor="#FFFFFF"
-                                                android:textStyle="bold"
-                                                android:textSize="22sp" />
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
 
 
                                         </LinearLayout>
@@ -766,18 +758,18 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_marginTop="16dp"
-                                        android:layout_marginRight="16dp"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:layout_gravity="right">
+                                        android:layout_gravity="right"
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginTop="16dp">
+
                                         <Switch
-                                            android:layout_gravity="center"
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
                                             android:id="@+id/exam_switch_redm"
                                             style="@style/AppTheme.Switch"
-                                            />
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_gravity="center" />
 
                                     </LinearLayout>
                                 </FrameLayout>
@@ -786,18 +778,17 @@
                             </android.support.v7.widget.CardView>
 
 
-
                         </LinearLayout>
 
                         <LinearLayout
-                            android:animateLayoutChanges="true"
                             android:id="@+id/exam_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="1dp"
                             android:layout_marginRight="1dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
+                            android:animateLayoutChanges="true"
                             android:background="#ecf0f1"
                             android:orientation="horizontal">
 
@@ -807,30 +798,28 @@
 
                                 <SeekBar
 
-                                    android:layout_marginTop="10dp"
-                                    android:layout_gravity="left"
                                     android:id="@+id/exam_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_marginTop="10dp"
 
                                     />
 
 
                                 <TextView
                                     android:id="@+id/exam_percent_textm"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:textAlignment="center"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
                                     android:hint="0%"
-                                    android:textSize="18sp"
-                                    />
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
 
                             </FrameLayout>
-
 
 
                         </LinearLayout>
@@ -846,32 +835,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    card_view:cardElevation="5dp"
-                    android:background="@color/cardview_shadow_start_color">
+                    android:background="@color/cardview_shadow_start_color"
+                    card_view:cardElevation="5dp">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
                         android:paddingBottom="8dp"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
-                        android:background="#FFFFFF">
+                        android:paddingTop="8dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:layout_marginTop="1dp"
-                                android:layout_marginBottom="5dp"
                                 android:background="@drawable/basic_ripple"
                                 card_view:cardCornerRadius="5dp">
 
@@ -883,26 +872,26 @@
 
                                     <LinearLayout
 
-                                        android:orientation="horizontal"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:background="@drawable/icon_project"
+                                            android:layout_gravity="center"
                                             android:layout_marginBottom="16dp"
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
-                                            android:layout_marginTop="16dp" />
+                                            android:layout_marginTop="16dp"
+                                            android:background="@drawable/icon_project" />
 
                                         <LinearLayout
-                                            android:layout_gravity="center"
-
                                             android:layout_width="wrap_content"
+
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
                                             android:orientation="vertical">
 
                                             <TextView
@@ -911,8 +900,8 @@
                                                 android:layout_height="wrap_content"
                                                 android:text="Project"
                                                 android:textColor="#FFFFFF"
-                                                android:textStyle="bold"
-                                                android:textSize="22sp" />
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
 
 
                                         </LinearLayout>
@@ -920,18 +909,18 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_marginTop="16dp"
-                                        android:layout_marginRight="16dp"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:layout_gravity="right">
+                                        android:layout_gravity="right"
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginTop="16dp">
+
                                         <Switch
-                                            android:layout_gravity="center"
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
                                             android:id="@+id/project_switch_redm"
                                             style="@style/AppTheme.Switch"
-                                            />
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_gravity="center" />
 
                                     </LinearLayout>
                                 </FrameLayout>
@@ -939,18 +928,17 @@
                             </android.support.v7.widget.CardView>
 
 
-
                         </LinearLayout>
 
                         <LinearLayout
-                            android:animateLayoutChanges="true"
                             android:id="@+id/project_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="1dp"
                             android:layout_marginRight="1dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
+                            android:animateLayoutChanges="true"
                             android:background="#ecf0f1"
                             android:orientation="horizontal">
 
@@ -960,30 +948,28 @@
 
                                 <SeekBar
 
-                                    android:layout_marginTop="10dp"
-                                    android:layout_gravity="left"
                                     android:id="@+id/project_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_marginTop="10dp"
 
                                     />
 
 
                                 <TextView
                                     android:id="@+id/project_percent_textm"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:textAlignment="center"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
                                     android:hint="0%"
-                                    android:textSize="18sp"
-                                    />
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
 
                             </FrameLayout>
-
 
 
                         </LinearLayout>
@@ -1000,32 +986,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    card_view:cardElevation="5dp"
-                    android:background="@color/cardview_shadow_start_color">
+                    android:background="@color/cardview_shadow_start_color"
+                    card_view:cardElevation="5dp">
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:background="#FFFFFF"
+                        android:orientation="vertical"
                         android:paddingBottom="8dp"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
-                        android:background="#FFFFFF">
+                        android:paddingTop="8dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
                                 android:layout_marginLeft="1dp"
                                 android:layout_marginRight="1dp"
                                 android:layout_marginTop="1dp"
-                                android:layout_marginBottom="5dp"
                                 android:background="@drawable/basic_ripple"
                                 card_view:cardCornerRadius="5dp">
 
@@ -1037,26 +1023,26 @@
 
                                     <LinearLayout
 
-                                        android:orientation="horizontal"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
 
 
                                         <ImageView
-                                            android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:background="@drawable/icon_quiz"
+                                            android:layout_gravity="center"
                                             android:layout_marginBottom="16dp"
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
-                                            android:layout_marginTop="16dp" />
+                                            android:layout_marginTop="16dp"
+                                            android:background="@drawable/icon_quiz" />
 
                                         <LinearLayout
-                                            android:layout_gravity="center"
-
                                             android:layout_width="wrap_content"
+
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
                                             android:orientation="vertical">
 
                                             <TextView
@@ -1065,8 +1051,8 @@
                                                 android:layout_height="wrap_content"
                                                 android:text="Quiz"
                                                 android:textColor="#FFFFFF"
-                                                android:textStyle="bold"
-                                                android:textSize="22sp" />
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
 
 
                                         </LinearLayout>
@@ -1074,18 +1060,18 @@
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        android:layout_marginTop="16dp"
-                                        android:layout_marginRight="16dp"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:layout_gravity="right">
+                                        android:layout_gravity="right"
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginTop="16dp">
+
                                         <Switch
-                                            android:layout_gravity="center"
-                                            android:layout_width="50dp"
-                                            android:layout_height="50dp"
                                             android:id="@+id/quiz_switch_redm"
                                             style="@style/AppTheme.Switch"
-                                            />
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_gravity="center" />
 
                                     </LinearLayout>
                                 </FrameLayout>
@@ -1093,18 +1079,17 @@
                             </android.support.v7.widget.CardView>
 
 
-
                         </LinearLayout>
 
                         <LinearLayout
-                            android:animateLayoutChanges="true"
                             android:id="@+id/quiz_linearm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="1dp"
                             android:layout_marginRight="1dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
+                            android:animateLayoutChanges="true"
                             android:background="#ecf0f1"
                             android:orientation="horizontal">
 
@@ -1114,30 +1099,28 @@
 
                                 <SeekBar
 
-                                    android:layout_marginTop="10dp"
-                                    android:layout_gravity="left"
                                     android:id="@+id/quiz_seekbarm"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:layout_marginTop="10dp"
 
                                     />
 
 
                                 <TextView
                                     android:id="@+id/quiz_percent_textm"
-                                    android:layout_gravity="right"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginRight="10dp"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:textAlignment="center"
+                                    android:layout_gravity="right"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="10dp"
                                     android:hint="0%"
-                                    android:textSize="18sp"
-                                    />
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
 
                             </FrameLayout>
-
 
 
                         </LinearLayout>
@@ -1146,15 +1129,7 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
-
-
-
             </LinearLayout>
-
-
-
         </ScrollView>
-
     </LinearLayout>
-
 </RelativeLayout>

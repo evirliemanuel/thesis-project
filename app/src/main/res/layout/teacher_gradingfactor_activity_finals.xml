@@ -208,13 +208,13 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="0%"
                     android:padding="5dp"
                     android:textSize="30dp"
                     android:layout_margin="10dp"
-                    android:id="@+id/total_percent" />
+                    android:id="@+id/total_percentf" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -325,7 +325,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/activity_switch_red"
+                                            android:id="@+id/activity_switch_redf"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -340,7 +340,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/activty_linear"
+                            android:id="@+id/activty_linearf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -358,7 +358,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/activity_seekbar"
+                                    android:id="@+id/activity_seekbarf"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -366,7 +366,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/activity_percent_text"
+                                    android:id="@+id/activity_percent_textf"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -453,7 +453,7 @@
                                             android:orientation="vertical">
 
                                             <TextView
-                                                android:id="@+id/f_gradecriteria_view_assignment"
+                                                android:id="@+id/f_gradecriteria_view_assignmentf"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="Assignment"
@@ -475,7 +475,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/assignment_switch_red"
+                                            android:id="@+id/assignment_switch_redf"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -490,7 +490,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/assignment_linear"
+                            android:id="@+id/assignment_linearf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -508,7 +508,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/assignment_seekbar"
+                                    android:id="@+id/assignment_seekbarf"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -516,7 +516,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/assignment_percent_text"
+                                    android:id="@+id/assignment_percent_textf"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -602,7 +602,7 @@
                                             android:orientation="vertical">
 
                                             <TextView
-                                                android:id="@+id/f_gradecriteria_view_attendance"
+                                                android:id="@+id/f_gradecriteria_view_attendancef"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="Attendance"
@@ -624,7 +624,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/attendance_switch_red"
+                                            android:id="@+id/attendance_switch_redf"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -639,7 +639,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/attendance_linear"
+                            android:id="@+id/attendance_linearf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -657,7 +657,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/attendance_seekbar"
+                                    android:id="@+id/attendance_seekbarf"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -665,7 +665,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/attendance_percent_text"
+                                    android:id="@+id/attendance_percent_textf"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -752,7 +752,7 @@
                                             android:orientation="vertical">
 
                                             <TextView
-                                                android:id="@+id/f_gradecriteria_view_exam"
+                                                android:id="@+id/f_gradecriteria_view_examf"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="Exam"
@@ -775,7 +775,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/exam_switch_red"
+                                            android:id="@+id/exam_switch_redf"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -791,7 +791,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/exam_linear"
+                            android:id="@+id/exam_linearf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -809,7 +809,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/exam_seekbar"
+                                    android:id="@+id/exam_seekbarf"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -817,7 +817,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/exam_percent_text"
+                                    android:id="@+id/exam_percent_textf"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -906,7 +906,7 @@
                                             android:orientation="vertical">
 
                                             <TextView
-                                                android:id="@+id/f_gradecriteria_view_project"
+                                                android:id="@+id/f_gradecriteria_view_projectf"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="Project"
@@ -929,7 +929,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/project_switch_red"
+                                            android:id="@+id/project_switch_redf"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -944,7 +944,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/project_linear"
+                            android:id="@+id/project_linearf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -962,7 +962,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/project_seekbar"
+                                    android:id="@+id/project_seekbarf"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -970,7 +970,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/project_percent_text"
+                                    android:id="@+id/project_percent_textf"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
@@ -1060,7 +1060,7 @@
                                             android:orientation="vertical">
 
                                             <TextView
-                                                android:id="@+id/f_gradecriteria_view_quiz"
+                                                android:id="@+id/f_gradecriteria_view_quizf"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:text="Quiz"
@@ -1083,7 +1083,7 @@
                                             android:layout_gravity="center"
                                             android:layout_width="50dp"
                                             android:layout_height="50dp"
-                                            android:id="@+id/quiz_switch_red"
+                                            android:id="@+id/quiz_switch_redf"
                                             style="@style/AppTheme.Switch"
                                             />
 
@@ -1098,7 +1098,7 @@
 
                         <LinearLayout
                             android:animateLayoutChanges="true"
-                            android:id="@+id/quiz_linear"
+                            android:id="@+id/quiz_linearf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="1dp"
@@ -1116,7 +1116,7 @@
 
                                     android:layout_marginTop="10dp"
                                     android:layout_gravity="left"
-                                    android:id="@+id/quiz_seekbar"
+                                    android:id="@+id/quiz_seekbarf"
                                     android:layout_width="300dp"
                                     android:layout_height="wrap_content"
 
@@ -1124,7 +1124,7 @@
 
 
                                 <TextView
-                                    android:id="@+id/quiz_percent_text"
+                                    android:id="@+id/quiz_percent_textf"
                                     android:layout_gravity="right"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
