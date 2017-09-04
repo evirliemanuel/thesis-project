@@ -124,7 +124,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Semester:"
+                        android:text="Format:"
                         android:textSize="18sp"
                         android:textColor="@color/colorMidNightBlue" />
                 </LinearLayout>
@@ -171,7 +171,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="!st Semester"
+                        android:text="Semester"
                         android:textSize="18sp"
                         android:textColor="@color/colorMidNightBlue" />
                 </LinearLayout>

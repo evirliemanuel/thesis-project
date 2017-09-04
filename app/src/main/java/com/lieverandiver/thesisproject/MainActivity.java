@@ -22,6 +22,7 @@ import com.lieverandiver.thesisproject.fragment.SlidebarStudent_Fragment_View;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;

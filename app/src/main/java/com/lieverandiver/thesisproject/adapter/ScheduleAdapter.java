@@ -30,7 +30,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     }
 
     @Override
-    public ScheduleAdapter.ScheduleViewHolder onCreateViewHolder(
+    public ScheduleViewHolder onCreateViewHolder(
             ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.cardview_data_schedule_slidebar, parent, false);
         return new ScheduleViewHolder(view);
@@ -50,11 +50,33 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     class ScheduleViewHolder extends RecyclerView.ViewHolder {
 
-
         private ImageView imageView;
         private TextView textViewSubject;
         private TextView textViewSchedule;
-        private volatile  Subject subject;
+        private Schedule schedule;
+
+        class ScheduleViewThread extends Thread {
+            @Override
+            public void run() {
+                try {
+                    final ScheduleHelper scheduleHelper = new ScheduleHelper();
+                    final Subject subject = new SubjectServiceImpl()
+                            .getSubjectByScheduleId(schedule.getId());
+                    new Handler(context.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            imageView.setImageResource(scheduleHelper.imageDisplay(
+                                    schedule.getDay()));
+                            textViewSubject.setText((subject != null ? subject.getName() : "None"));
+                            textViewSchedule.setText(scheduleHelper.display(schedule.getRoom(),
+                                    schedule.getTime(), schedule.getPeriod()));
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
         ScheduleViewHolder(View itemView) {
             super(itemView);
@@ -64,37 +86,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
                     R.id.fragment_slidebar_cardview_schedule_text_subject);
             textViewSchedule = (TextView) itemView.findViewById(
                     R.id.fragment_slidebar_cardview_schedule_text_schedule);
-
         }
 
-        void setView(final Schedule schedule, final int position) {
-            new Thread(new Runnable() {
-
-                @Override
-                public void run() {
-                    try {
-
-                        final ScheduleHelper scheduleHelper = new ScheduleHelper();
-                        final Subject subject = new SubjectServiceImpl()
-                                .getSubjectByScheduleId(schedule.getId());
-
-                        new Handler(context.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                imageView.setImageResource(scheduleHelper.imageDisplay(schedule
-                                        .getDay()));
-                                textViewSubject
-                                        .setText((subject != null ? subject.getName() : "None"));
-                                textViewSchedule.setText(scheduleHelper.display(schedule.getRoom(), schedule
-                                        .getTime(), schedule.getPeriod()));
-                            }
-                        });
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }).start();
+        void setView(final Schedule _schedule, final int _position) {
+            schedule = _schedule;
+            new ScheduleViewThread().start();
         }
     }
 }

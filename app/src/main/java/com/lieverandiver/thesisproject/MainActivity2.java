@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -26,11 +26,12 @@ import com.remswork.project.alice.model.Teacher;
 import java.util.ArrayList;
 import java.util.List;
 
-@Deprecated
-public class Home_Activity extends AppCompatActivity implements ClassAdapter.ClassAdapterListener,
-        SliderSettingFragment.OnProfileClickListener{
 
-    private Toolbar toolbar;
+public class MainActivity2 extends AppCompatActivity implements ClassAdapter.ClassAdapterListener,
+        SliderSettingFragment.OnProfileClickListener, CompoundButton.OnCheckedChangeListener {
+
+    private static final String TAG = MainActivity2.class.getSimpleName();
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Button btnBack;
@@ -42,38 +43,41 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnSearch = (ToggleButton) findViewById(R.id.btn_search_class);
+        btnSearchOk = (Button) findViewById(R.id._btn_search_ok_class);
+        btnBack = (Button) findViewById(R.id.btn_back_student);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-
+        editTextSearch = (EditText) findViewById(R.id.etxt_search_class);
+        frameLayoutSearch = (FrameLayout) findViewById(R.id.frame_search_class);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
-
-        btnSearch = (ToggleButton)findViewById(R.id.btn_search_class);
-        btnSearchOk = (Button)findViewById(R.id._btn_search_ok_class);
-        btnBack = (Button) findViewById(R.id.btn_back_student);
-        editTextSearch =(EditText)findViewById(R.id.etxt_search_class);
-        frameLayoutSearch = (FrameLayout)findViewById(R.id.frame_search_class);
-
         frameLayoutSearch.setVisibility(View.GONE);
-
-        btnSearch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    frameLayoutSearch.setVisibility(View.VISIBLE);
-                    tabLayout.setVisibility(View.GONE);
-                } else {
-                    frameLayoutSearch.setVisibility(View.GONE);
-                    tabLayout.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+        btnSearch.setOnCheckedChangeListener(this);
     }
 
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy");
+        super.onDestroy();
+
+        btnSearch = null;
+        btnSearchOk = null;
+        btnBack = null;
+
+        editTextSearch = null;
+        frameLayoutSearch = null;
+        tabLayout = null;
+        viewPager = null;
+
+    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -86,23 +90,34 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
 
     @Override
     public void showClassView(final long classId) {
-        Intent intent = new Intent(this, ClassViewActivity.class);
+        final Intent intent = new Intent(this, ClassViewActivity.class);
         intent.putExtra("classId", classId);
         startActivity(intent);
     }
 
     @Override
-    public void viewProfile(Teacher teacher) {
-        Intent intent = new Intent(this, TeacherViewActivity.class);
+    public void viewProfile(final Teacher teacher) {
+        final Intent intent = new Intent(this, TeacherViewActivity.class);
         intent.putExtra("teacherId", teacher.getId());
         startActivity(intent);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            frameLayoutSearch.setVisibility(View.VISIBLE);
+            tabLayout.setVisibility(View.GONE);
+        } else {
+            frameLayoutSearch.setVisibility(View.GONE);
+            tabLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -116,7 +131,7 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }

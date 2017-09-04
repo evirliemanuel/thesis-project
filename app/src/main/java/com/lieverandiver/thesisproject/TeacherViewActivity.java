@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,8 +23,10 @@ import com.remswork.project.alice.service.impl.TeacherServiceImpl;
 public class TeacherViewActivity extends AppCompatActivity implements
         SubjectAdapter.OnViewClickListener{
 
-    private final TeacherService teacherService = new TeacherServiceImpl();
-    private final SubjectService subjectService = new SubjectServiceImpl();
+    private static final String TAG = TeacherViewActivity.class.getSimpleName();
+
+    private TeacherService teacherService = new TeacherServiceImpl();
+    private SubjectService subjectService = new SubjectServiceImpl();
     private Teacher teacher;;
     private TextView txtName;
     private TextView txtDept;
@@ -62,6 +65,7 @@ public class TeacherViewActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         try {
             teacher = teacherService.getTeacherById(getIntent().getExtras().getLong("teacherId"));
@@ -71,6 +75,19 @@ public class TeacherViewActivity extends AppCompatActivity implements
         }
         setContentView(R.layout.teacher_activity_view_teacher_profile);
         init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy");
+        super.onDestroy();
+        teacherService = null;
+        subjectService = null;
+
+        txtName = null;
+        txtDept = null;
+        btnBack = null;
+        rView = null;
     }
 
     @Override

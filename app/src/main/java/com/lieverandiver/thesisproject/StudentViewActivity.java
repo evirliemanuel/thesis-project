@@ -1,18 +1,18 @@
 package com.lieverandiver.thesisproject;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.StudentAdapter;
@@ -24,8 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static android.R.id.toggle;
-
 public class StudentViewActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -35,61 +33,75 @@ public class StudentViewActivity extends AppCompatActivity {
     private Button btnSearchCancel;
     private EditText editTextSearch;
     private FrameLayout frameLayoutSearch;
+    private TextView txtMsgContent;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity_view_student);
-        recyclerView = (RecyclerView) findViewById(R.id.student_recyclerview);
-        init(getIntent().getExtras().getLong("classId"));
 
+        init();
+        initRView(getIntent().getExtras().getLong("classId"));
+    }
+
+    public void init() {
+        recyclerView = (RecyclerView) findViewById(R.id.student_recyclerview);
         btnSearch = (ToggleButton)findViewById(R.id.btn_search_student);
         btnSearchOk = (Button)findViewById(R.id.btn_search_ok_student);
         btnBack = (Button) findViewById(R.id.btn_back_student);
         editTextSearch =(EditText)findViewById(R.id.etxt_search_student);
         frameLayoutSearch = (FrameLayout)findViewById(R.id.frame_search_student);
+        txtMsgContent = (TextView) findViewById(R.id.message_label_stud);
 
         frameLayoutSearch.setVisibility(View.GONE);
-
+        txtMsgContent.setVisibility(View.INVISIBLE);
 
         btnSearch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+                if (isChecked)
                     frameLayoutSearch.setVisibility(View.VISIBLE);
-                } else {
+                else
                     frameLayoutSearch.setVisibility(View.GONE);
-                }
             }
         });
-
-
-
-
-
-
-
-
     }
 
-    public void init(long classId) {
+    public void initRView(final long classId) {
+        final Handler handler = new Handler(getMainLooper());
+        new Thread(new Runnable() {
 
-        try {
-            ClassServiceImpl classService =  new ClassServiceImpl();
-            List<Student> studenList = new ArrayList<>();
-            Set<Student> studentSet = classService.getStudentList(classId);
+            @Override
+            public void run() {
+                try {
+                    final ClassServiceImpl classService =  new ClassServiceImpl();
+                    final List<Student> studenList = new ArrayList<>();
+                    final Set<Student> studentSet = classService.getStudentList(classId);
 
-            for(Student student : studentSet)
-                studenList.add(student);
+                    for(Student student : studentSet)
+                        studenList.add(student);
 
-            StudentAdapter studentAdapter = new StudentAdapter(this, studenList);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            recyclerView.setAdapter(studentAdapter);
-            recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-        } catch (ClassException e) {
-            e.printStackTrace();
-        }
+                    final StudentAdapter studentAdapter = new StudentAdapter(
+                            StudentViewActivity.this, studenList);
+                    final LinearLayoutManager layoutManager = new LinearLayoutManager(
+                            StudentViewActivity.this);
+                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            recyclerView.setAdapter(studentAdapter);
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+                            if(studenList.size() < 1)
+                                txtMsgContent.setVisibility(View.VISIBLE);
+                        }
+                    });
+                } catch (ClassException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

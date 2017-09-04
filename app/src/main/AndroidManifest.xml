@@ -58,6 +58,7 @@
         <activity android:name=".CriteriaMidtermInputActivity" />
         <activity android:name=".CriteriaFinaltermInputActivity" />
         <activity android:name=".TeacherViewActivity" />
+        <activity android:name=".MainActivity2" />
 
     </application>
 

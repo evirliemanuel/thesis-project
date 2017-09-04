@@ -14,17 +14,9 @@ import android.widget.EditText;
 
 import com.lieverandiver.thesisproject.R;
 
-import org.w3c.dom.Text;
-
-import static android.R.attr.button;
-import static com.lieverandiver.thesisproject.R.id.fragment_login_button_login;
-
-
-/**
- * Created by Verlie on 8/24/2017.
- */
-
 public class LoginFragment extends Fragment implements  View.OnClickListener {
+
+    private static final String TAG = LoginFragment.class.getSimpleName();
 
     private LoginFragmentListener loginFragmentListener;
     private EditText textUsername;
@@ -33,12 +25,12 @@ public class LoginFragment extends Fragment implements  View.OnClickListener {
     private TextInputLayout textInputLayoutPassword;
     private Button buttonLogin;
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.login_fragment, container, false);
+        Log.i(TAG, "onCreateView");
+        final View view = inflater.inflate(R.layout.login_fragment, container, false);
         textUsername = (EditText) view.findViewById(R.id.fragment_login_text_email);
         textPassword = (EditText) view.findViewById(R.id.fragment_login_text_password);
         textInputLayoutUsername = (TextInputLayout)
@@ -52,10 +44,24 @@ public class LoginFragment extends Fragment implements  View.OnClickListener {
 
     @Override
     public void onAttach(Context context) {
+        Log.i(TAG, "onAttach");
         super.onAttach(context);
-
         if(context instanceof LoginFragmentListener)
             loginFragmentListener = (LoginFragmentListener) context;
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.i(TAG, "onDestroy");
+        super.onDestroy();
+        textUsername = null;
+        textPassword = null;
+
+        textInputLayoutUsername = null;
+        textInputLayoutPassword = null;
+
+        buttonLogin = null;
+        loginFragmentListener = null;
     }
 
     public boolean isWidgetInputIsValid(){
