@@ -14,11 +14,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.ClassAdapter;
-import com.lieverandiver.thesisproject.fragment.Home_Logs_Slidebar_Fragment;
 import com.lieverandiver.thesisproject.fragment.Home_Student_Slidebar_Fragment;
 import com.lieverandiver.thesisproject.fragment.SliderClassFragment;
 import com.lieverandiver.thesisproject.fragment.SliderScheduleFragment;
@@ -27,8 +25,6 @@ import com.remswork.project.alice.model.Teacher;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.webkit.WebSettings.PluginState.ON;
 
 
 public class Home_Activity extends AppCompatActivity implements ClassAdapter.ClassAdapterListener,
@@ -65,7 +61,6 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
 
         frameLayoutSearch.setVisibility(View.GONE);
 
-
         btnSearch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -74,15 +69,9 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
                 } else {
                     frameLayoutSearch.setVisibility(View.GONE);
                     tabLayout.setVisibility(View.VISIBLE);
-
                 }
             }
         });
-
-
-
-
-
     }
 
 
@@ -104,7 +93,7 @@ public class Home_Activity extends AppCompatActivity implements ClassAdapter.Cla
 
     @Override
     public void viewProfile(Teacher teacher) {
-        Intent intent = new Intent(this, Teacher_Activity_Teacher_Profile.class);
+        Intent intent = new Intent(this, TeacherViewActivity.class);
         intent.putExtra("teacherId", teacher.getId());
         startActivity(intent);
     }

@@ -23,19 +23,28 @@ import com.remswork.project.alice.service.SubjectService;
 import com.remswork.project.alice.service.impl.FormulaServiceImpl;
 import com.remswork.project.alice.service.impl.SubjectServiceImpl;
 
+import static com.lieverandiver.thesisproject.R.id.activity_seekbarf;
 import static com.lieverandiver.thesisproject.R.id.activity_seekbarm;
+import static com.lieverandiver.thesisproject.R.id.activity_switch_redf;
 import static com.lieverandiver.thesisproject.R.id.activity_switch_redm;
+import static com.lieverandiver.thesisproject.R.id.assignment_seekbarf;
 import static com.lieverandiver.thesisproject.R.id.assignment_seekbarm;
+import static com.lieverandiver.thesisproject.R.id.assignment_switch_redf;
 import static com.lieverandiver.thesisproject.R.id.assignment_switch_redm;
+import static com.lieverandiver.thesisproject.R.id.attendance_seekbarf;
 import static com.lieverandiver.thesisproject.R.id.attendance_seekbarm;
+import static com.lieverandiver.thesisproject.R.id.attendance_switch_redf;
 import static com.lieverandiver.thesisproject.R.id.attendance_switch_redm;
+import static com.lieverandiver.thesisproject.R.id.exam_seekbarf;
 import static com.lieverandiver.thesisproject.R.id.exam_seekbarm;
+import static com.lieverandiver.thesisproject.R.id.exam_switch_redf;
 import static com.lieverandiver.thesisproject.R.id.exam_switch_redm;
+import static com.lieverandiver.thesisproject.R.id.project_seekbarf;
 import static com.lieverandiver.thesisproject.R.id.project_seekbarm;
 import static com.lieverandiver.thesisproject.R.id.quiz_seekbarf;
 import static com.lieverandiver.thesisproject.R.id.quiz_seekbarm;
 
-public class CriteriaMidtermInputActivity extends AppCompatActivity implements
+public class CriteriaFinaltermInputActivity extends AppCompatActivity implements
         View.OnClickListener, SeekBar.OnSeekBarChangeListener, CompoundButton
         .OnCheckedChangeListener {
 
@@ -86,31 +95,31 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
 
     private void init() {
 
-        laSave = (LinearLayout) findViewById(R.id.midterm_save);
-        txtSubjectName = (TextView) findViewById(R.id.midterm_subjectname);
-        txtTotalPercent = (TextView) findViewById(R.id.total_percentm);
-        spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
+        laSave = (LinearLayout) findViewById(R.id.finals_save);
+        txtSubjectName = (TextView) findViewById(R.id.finals_subjectname);
+        txtTotalPercent = (TextView) findViewById(R.id.total_percentf);
+        spinnerm = (Spinner) findViewById(R.id.finals_spinner_percent);
 
-        sbActivity = (SeekBar) findViewById(activity_seekbarm);
-        sbAssignment = (SeekBar) findViewById(R.id.assignment_seekbarm);
-        sbAttendance = (SeekBar) findViewById(R.id.attendance_seekbarm);
-        sbExam = (SeekBar) findViewById(exam_seekbarm);
-        sbProject = (SeekBar) findViewById(project_seekbarm);
-        sbQuiz = (SeekBar) findViewById(quiz_seekbarm);
+        sbActivity = (SeekBar) findViewById(activity_seekbarf);
+        sbAssignment = (SeekBar) findViewById(assignment_seekbarf);
+        sbAttendance = (SeekBar) findViewById(attendance_seekbarf);
+        sbExam = (SeekBar) findViewById(exam_seekbarf);
+        sbProject = (SeekBar) findViewById(project_seekbarf);
+        sbQuiz = (SeekBar) findViewById(quiz_seekbarf);
 
-        txtActivityPercent = (TextView) findViewById(R.id.activity_percent_textm);
-        txtAssignmentPercent = (TextView) findViewById(R.id.assignment_percent_textm);
-        txtAttendancePercent = (TextView) findViewById(R.id.attendance_percent_textm);
-        txtExamPercent = (TextView) findViewById(R.id.exam_percent_textm);
-        txtProjectPercent = (TextView) findViewById(R.id.project_percent_textm);
-        txtQuizPercent = (TextView) findViewById(R.id.quiz_percent_textm);
+        txtActivityPercent = (TextView) findViewById(R.id.activity_percent_textf);
+        txtAssignmentPercent = (TextView) findViewById(R.id.assignment_percent_textf);
+        txtAttendancePercent = (TextView) findViewById(R.id.attendance_percent_textf);
+        txtExamPercent = (TextView) findViewById(R.id.exam_percent_textf);
+        txtProjectPercent = (TextView) findViewById(R.id.project_percent_textf);
+        txtQuizPercent = (TextView) findViewById(R.id.quiz_percent_textf);
 
-        swActivity = (Switch) findViewById(activity_switch_redm);
-        swAssignment = (Switch) findViewById(R.id.assignment_switch_redm);
-        swAttendance = (Switch) findViewById(R.id.attendance_switch_redm);
-        swExam = (Switch) findViewById(R.id.exam_switch_redm);
-        swProject = (Switch) findViewById(R.id.project_switch_redm);
-        swQuiz = (Switch) findViewById(R.id.quiz_switch_redm);
+        swActivity = (Switch) findViewById(activity_switch_redf);
+        swAssignment = (Switch) findViewById(assignment_switch_redf);
+        swAttendance = (Switch) findViewById(attendance_switch_redf);
+        swExam = (Switch) findViewById(exam_switch_redf);
+        swProject = (Switch) findViewById(R.id.project_switch_redf);
+        swQuiz = (Switch) findViewById(R.id.quiz_switch_redf);
 
         sbActivity.setMax(100);
         sbAssignment.setMax(100);
@@ -119,12 +128,12 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
         sbProject.setMax(100);
         sbQuiz.setMax(100);
 
-        laActivity = (LinearLayout)findViewById(R.id.activty_linearm);
-        laAssignment = (LinearLayout)findViewById(R.id.assignment_linearm);
-        laAttendance = (LinearLayout)findViewById(R.id.attendance_linearm);
-        laExam = (LinearLayout)findViewById(R.id.exam_linearm);
-        laProject = (LinearLayout)findViewById(R.id.project_linearm);
-        laQuiz = (LinearLayout)findViewById(R.id.quiz_linearm);
+        laActivity = (LinearLayout)findViewById(R.id.activty_linearf);
+        laAssignment = (LinearLayout)findViewById(R.id.assignment_linearf);
+        laAttendance = (LinearLayout)findViewById(R.id.attendance_linearf);
+        laExam = (LinearLayout)findViewById(R.id.exam_linearf);
+        laProject = (LinearLayout)findViewById(R.id.project_linearf);
+        laQuiz = (LinearLayout)findViewById(R.id.quiz_linearf);
 
         laActivity.setVisibility(View.GONE);
         laAssignment.setVisibility(View.GONE);
@@ -184,7 +193,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teacher_gradingfactor_activity_midterm);
+        setContentView(R.layout.teacher_gradingfactor_activity_finals);
 
         try {
             subject = subjectService.getSubjectById(getIntent().getExtras().getLong("subjectId"));
@@ -218,7 +227,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
         try {
             if(!isExist)
                 _formula = new FormulaServiceImpl().addFormula(_formula, subject.getId(),
-                        teacher.getId(), 1);
+                        teacher.getId(), 2);
             else
                 _formula = new FormulaServiceImpl().updateFormulaById(formula.getId(), _formula,
                         0, 0, 0);
@@ -230,7 +239,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
             startActivity(getIntent());
             finish();
         } else
-            Toast.makeText(CriteriaMidtermInputActivity.this, "Please try again",
+            Toast.makeText(CriteriaFinaltermInputActivity.this, "Please try again",
                     Toast.LENGTH_SHORT).show();
 
     }
@@ -238,7 +247,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         switch (seekBar.getId()) {
-            case activity_seekbarm :
+            case activity_seekbarf :
 
                 int x = 0;
                 for(int count=0; count < percent.length; count++) {
@@ -259,7 +268,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                     percent[0] = 0;
 
                 break;
-            case assignment_seekbarm :
+            case assignment_seekbarf :
 
                 x = 0;
                 for(int count=0; count < percent.length; count++) {
@@ -280,7 +289,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                     percent[1] = 0;
 
                 break;
-            case attendance_seekbarm :
+            case attendance_seekbarf :
 
                 x = 0;
                 for(int count=0; count < percent.length; count++) {
@@ -301,7 +310,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                     percent[2] = 0;
 
                 break;
-            case exam_seekbarm :
+            case exam_seekbarf :
 
                 x = 0;
                 for(int count=0; count < percent.length; count++) {
@@ -322,7 +331,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                     percent[3] = 0;
 
                 break;
-            case project_seekbarm :
+            case project_seekbarf :
 
                 x = 0;
                 for(int count=0; count < percent.length; count++) {
@@ -343,7 +352,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                     percent[4] = 0;
 
                 break;
-            case quiz_seekbarm :
+            case quiz_seekbarf :
 
                 x = 0;
                 for(int count=0; count < percent.length; count++) {
@@ -381,7 +390,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
         switch (buttonView.getId()) {
-            case activity_switch_redm :
+            case activity_switch_redf :
                 if (isChecked)
                     laActivity.setVisibility(View.VISIBLE);
                 else
@@ -394,7 +403,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                 txtTotalPercent.setText(x + "%");
                 sbActivity.setProgress(0);
                 break;
-            case assignment_switch_redm :
+            case assignment_switch_redf :
                 if (isChecked)
                     laAssignment.setVisibility(View.VISIBLE);
                 else
@@ -407,7 +416,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                 txtTotalPercent.setText(x + "%");
                 sbAssignment.setProgress(0);
                 break;
-            case attendance_switch_redm :
+            case attendance_switch_redf :
                 if (isChecked)
                     laAttendance.setVisibility(View.VISIBLE);
                 else
@@ -420,7 +429,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                 txtTotalPercent.setText(x + "%");
                 sbAttendance.setProgress(0);
                 break;
-            case exam_switch_redm :
+            case exam_switch_redf :
                 if (isChecked)
                     laExam.setVisibility(View.VISIBLE);
                 else
@@ -433,7 +442,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements
                 txtTotalPercent.setText(x + "%");
                 sbExam.setProgress(0);
                 break;
-            case project_seekbarm :
+            case project_seekbarf :
                 if (isChecked)
                     laProject.setVisibility(View.VISIBLE);
                 else

@@ -25,6 +25,7 @@ import com.remswork.project.alice.service.impl.SubjectServiceImpl;
  * Created by Verlie on 9/1/2017.
  */
 
+@Deprecated
 public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
 
     private TextView textView1 ;

@@ -84,8 +84,8 @@ public class SliderSettingFragment extends Fragment {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        textName.setText(teacher.getLastName() + " " + teacher.getFirstName() + " " +
-                                teacher.getMiddleName().toCharArray()[0] + ".");
+                        textName.setText(teacher.getLastName() + " " + teacher.getFirstName() + " "
+                                + teacher.getMiddleName().toCharArray()[0] + ".");
                         textNameLabel.setText("Tap here to view");
                         layout.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.INVISIBLE);

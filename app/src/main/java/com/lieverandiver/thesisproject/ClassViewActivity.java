@@ -35,9 +35,7 @@ public class ClassViewActivity extends AppCompatActivity {
         txtViewDepName = (TextView) findViewById(R.id.txtv_dept);
         txtViewSemName = (TextView) findViewById(R.id.txtv_sem);
 
-        Bundle bundle = getIntent().getExtras();
-        init(bundle.getLong("classId"));
-
+        init(getIntent().getExtras().getLong("classId"));
     }
 
     public void init(final long classId) {
@@ -52,9 +50,11 @@ public class ClassViewActivity extends AppCompatActivity {
                             ClassServiceImpl classService = new  ClassServiceImpl();
                             Class _class = classService.getClassById(classId);
                             txtViewSubjectName
-                                    .setText((_class.getSubject() != null ? _class.getSubject().getName() : "None"));
+                                    .setText((_class.getSubject() != null ? _class.getSubject()
+                                            .getName() : "None"));
                             txtViewSectionName
-                                    .setText((_class.getSection() != null ? _class.getSection().getName() : "None"));
+                                    .setText((_class.getSection() != null ? _class.getSection()
+                                            .getName() : "None"));
                             txtViewDepName
                                     .setText((_class.getSection() != null ? _class.getSection()
                                             .getDepartment().getName() : "None"));
@@ -71,7 +71,8 @@ public class ClassViewActivity extends AppCompatActivity {
                                 @Override
                                 public synchronized void onClick(View v) {
                                     Intent intent =
-                                            getIntent().setClass(ClassViewActivity.this, StudentViewActivity.class);
+                                            getIntent().setClass(ClassViewActivity.this,
+                                                    StudentViewActivity.class);
                                     startActivity(intent);
                                 }
                             });

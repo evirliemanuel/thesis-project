@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,10 +17,7 @@ import com.remswork.project.alice.model.Teacher;
 import com.remswork.project.alice.service.impl.SubjectServiceImpl;
 import com.remswork.project.alice.service.impl.TeacherServiceImpl;
 
-import java.io.Serializable;
-
-import static android.R.attr.id;
-
+@Deprecated
 public class Teacher_Activity_Teacher_Profile extends AppCompatActivity implements
         SubjectAdapter.OnViewClickListener{
 
@@ -38,7 +34,6 @@ public class Teacher_Activity_Teacher_Profile extends AppCompatActivity implemen
         Teacher teacher;
         try {
             teacher = teacherService.getTeacherById(getIntent().getExtras().getLong("teacherId"));
-            Log.i("myTAG", "id : " + id);
         } catch (Exception e) {
             e.printStackTrace();
             teacher = new Teacher();
@@ -78,7 +73,7 @@ public class Teacher_Activity_Teacher_Profile extends AppCompatActivity implemen
 
     @Override
     public void viewSubject(Subject subject) {
-        Intent intent = new Intent(this, Teacher_Activity_View_Subject_Datails.class);
+        Intent intent = new Intent(this, SubjectViewActivity.class);
         intent.putExtra("subjectId", subject.getId());
         startActivity(intent);
     }

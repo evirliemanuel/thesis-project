@@ -28,6 +28,7 @@ import com.remswork.project.alice.service.impl.SubjectServiceImpl;
  * Created by Verlie on 9/1/2017.
  */
 
+@Deprecated
 public class Teacher_GradingFactor_Activity_Midterm extends AppCompatActivity{
 
     private TextView textView1 ;
@@ -181,7 +182,7 @@ public class Teacher_GradingFactor_Activity_Midterm extends AppCompatActivity{
                         new FormulaHelper(Teacher_GradingFactor_Activity_Midterm.this).saveUser(
                                 teacher.getId() + "-midterm", formula.getId());
                         Intent intent = new Intent(Teacher_GradingFactor_Activity_Midterm.this,
-                                Teacher_Activity_View_Subject_Datails.class);
+                                SubjectViewActivity.class);
                         intent.putExtra("subjectId", subject.getId());
                         startActivity(intent);
                         finish();

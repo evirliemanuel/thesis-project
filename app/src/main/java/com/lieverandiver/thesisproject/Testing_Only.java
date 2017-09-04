@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by Verlie on 8/28/2017.
  */
 
-
+@Deprecated
 public class Testing_Only extends AppCompatActivity {
 
     @Override

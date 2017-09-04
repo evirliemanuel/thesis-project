@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -11,11 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import android.widget.Toast;
-
-import android.widget.ToggleButton;
-
-
+import com.lieverandiver.thesisproject.adapter.CriteriaAdapter;
 import com.lieverandiver.thesisproject.helper.FormulaHelper;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.exception.SubjectException;
@@ -23,10 +21,14 @@ import com.remswork.project.alice.model.Formula;
 import com.remswork.project.alice.model.Subject;
 import com.remswork.project.alice.service.impl.SubjectServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Verlie on 9/1/2017.
  */
 
+@Deprecated
 public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
 
     private LinearLayout linearLayoutm;
@@ -46,8 +48,6 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
     private ToggleButton toggleButtonM;
     private ToggleButton toggleButtonF;
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +60,10 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        textViewMidtermPercent= (TextView) findViewById(R.id.midterm_percent_sub_view);
-        textViewMidtermPercent= (TextView) findViewById(R.id.finals_percent_sub_view);
-        recyclerViewMidterm= (RecyclerView) findViewById(R.id.midterm_recycleview);
-        recyclerViewFinals= (RecyclerView) findViewById(R.id.finals_recycleview);
+        textViewMidtermPercent = (TextView) findViewById(R.id.midterm_percent_sub_view);
+        textViewMidtermPercent = (TextView) findViewById(R.id.finals_percent_sub_view);
+        recyclerViewMidterm = (RecyclerView) findViewById(R.id.midterm_recycleview);
+        recyclerViewFinals = (RecyclerView) findViewById(R.id.finals_recycleview);
 
         linearLayoutm = (LinearLayout)findViewById(R.id.midterm_setting);
         linearLayoutf = (LinearLayout)findViewById(R.id.finals_setting);
@@ -75,18 +75,16 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
         toggleButtonM =(ToggleButton)findViewById(R.id.toggle_midview);
         toggleButtonF =(ToggleButton)findViewById(R.id.toggle_finview);
 
-
         recyclerViewMidterm.setVisibility(View.GONE);
         recyclerViewFinals.setVisibility(View.GONE);
 
-
         toggleButtonM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    recyclerViewMidterm.setVisibility(View.VISIBLE);
-                } else {
-                    recyclerViewMidterm.setVisibility(View.GONE);
-                }
+            if(isChecked) {
+                recyclerViewMidterm.setVisibility(View.VISIBLE);
+            } else {
+                recyclerViewMidterm.setVisibility(View.GONE);
+            }
             }
         });
 
@@ -107,8 +105,28 @@ public class Teacher_Activity_View_Subject_Datails  extends AppCompatActivity {
 
         try {
             Formula formula = new FormulaHelper(this).getFormula("1-midterm");
-            if(formula != null) {
-                Toast.makeText(this, formula.getId() + "", Toast.LENGTH_LONG).show();
+            if(formula != null && formula.getSubject() != null) {
+                if(formula.getSubject().getId() == subject.getId()) {
+                    recyclerViewMidterm.setVisibility(View.VISIBLE);
+                    String key[] = new String[6];
+                    key[0] = formula.getActivityPercentage() + "%";
+                    key[1] = formula.getAssignmentPercentage() + "%";
+                    key[2] = formula.getAttendancePercentage() + "%";
+                    key[3] = formula.getExamPercentage() + "%";
+                    key[4] = formula.getProjectPercentage() + "%";
+                    key[5] = formula.getQuizPercentage() + "%";
+
+                    List<String> datas = new ArrayList<>();
+                    for (String s : key)
+                        datas.add(s);
+
+                    CriteriaAdapter criteriaAdapter = new CriteriaAdapter(this, datas);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerViewMidterm.setAdapter(criteriaAdapter);
+                    recyclerViewMidterm.setLayoutManager(layoutManager);
+                    recyclerViewMidterm.setItemAnimator(new DefaultItemAnimator());
+                }
             }
         } catch (GradingFactorException e) {
             e.printStackTrace();

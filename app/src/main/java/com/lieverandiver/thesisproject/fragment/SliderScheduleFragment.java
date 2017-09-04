@@ -11,12 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.lieverandiver.thesisproject.R;
 import com.lieverandiver.thesisproject.adapter.ScheduleAdapter;
@@ -42,6 +39,7 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
     private RadioButton radioButtonTomorrow;
     private RadioButton radioButtonAll;
     private RadioGroup radioGroup;
+    private int isChecked;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +50,7 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         customView = inflater.inflate(R.layout.home_fragment_slidebar_schedule, container, false);
         progressBar = (RelativeLayout) customView.findViewById(R.id.progressbar_schedule);
         scheduleRecyclerView = (RecyclerView)
@@ -61,27 +60,22 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
         radioButtonAll = (RadioButton) customView.findViewById(R.id.schedule_all_rb);
         radioGroup = (RadioGroup) customView.findViewById(R.id.radio_group_schedule);
         radioGroup.setOnCheckedChangeListener(this);
+        
         handler = new Handler(getActivity().getMainLooper());
         progressBar.setVisibility(View.VISIBLE);
         radioButtonAll.setSelected(true);
+
         init();
         return customView;
     }
 
     public void init() {
-
         new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    final TeacherHelper teacherHelper = new TeacherHelper(getContext());
-                    if (teacherHelper.loadUser().get() != null) {
-                        for (Schedule schedule : new ScheduleServiceImpl()
-                                .getScheduleListByTeacherId(teacherHelper.loadUser().get().getId()))
-                            scheduleList.add(schedule);
-                    }
-
+                    setSchedule(radioGroup.getCheckedRadioButtonId());
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -98,7 +92,7 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
                             progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
-                } catch (ScheduleException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -106,8 +100,24 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        int size = scheduleList.size();
+        for (int i = 0; i < size; i++) {
+            if (scheduleList.size() > 0) {
+                scheduleList.remove(0);
+                scheduleAdapter.notifyItemRemoved(0);
+            }
+        }
+    }
+
+    @Override
     public synchronized void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId) {
+        setSchedule(checkedId);
+    }
+
+    public void setSchedule(final int id) {
+        switch (id) {
             case R.id.schedule_today_rb:
                 progressBar.setVisibility(View.VISIBLE);
                 new Thread(new Runnable() {
@@ -125,13 +135,11 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
                                     e.printStackTrace();
                                 }
                             }
-
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
                                     int size = scheduleList.size();
                                     for (int i = 0; i < size; i++) {
-                                        Log.i("myTAG", "List size :" + scheduleList.size());
                                         if (scheduleList.size() > 0) {
                                             scheduleList.remove(0);
                                             scheduleAdapter.notifyItemRemoved(0);
@@ -139,7 +147,7 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
                                     }
 
                                     ScheduleHelper scheduleHelper = new ScheduleHelper();
-                                    int day = 2;
+                                    int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
                                     for (Schedule schedule : newSchedules) {
                                         if (scheduleHelper.dayInNumber(schedule.getDay()) == day) {
                                             scheduleList.add(schedule);
@@ -185,9 +193,8 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
                                             scheduleAdapter.notifyItemRemoved(0);
                                         }
                                     }
-
                                     ScheduleHelper scheduleHelper = new ScheduleHelper();
-                                    int day = 4;
+                                    int day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) + 1;
                                     for (Schedule schedule : newSchedules) {
                                         if (scheduleHelper.dayInNumber(schedule.getDay()) == day) {
                                             scheduleList.add(schedule);
@@ -232,12 +239,9 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
                                             scheduleAdapter.notifyItemRemoved(0);
                                         }
                                     }
-
-                                    ScheduleHelper scheduleHelper = new ScheduleHelper();
-                                    int day = 2;
                                     for (Schedule schedule : newSchedules) {
-                                            scheduleList.add(schedule);
-                                            scheduleAdapter.notifyItemRangeInserted(0, scheduleList.size());
+                                        scheduleList.add(schedule);
+                                        scheduleAdapter.notifyItemRangeInserted(0, scheduleList.size());
                                     }
                                     progressBar.setVisibility(View.INVISIBLE);
                                 }

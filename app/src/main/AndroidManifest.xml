@@ -43,7 +43,6 @@
 
 
         <activity android:name=".StudentViewActivity" />
-
         <activity android:name=".ScheduleViewActivity" />
 
         <activity android:name=".Home_Activity" />
@@ -56,6 +55,9 @@
         <activity android:name=".StudentActivity_Profile_Grade" />
         <activity android:name=".QuizActivity_View_Record" />
         <activity android:name=".Teacher_Activity_Teacher_Profile"/>
+        <activity android:name=".CriteriaMidtermInputActivity" />
+        <activity android:name=".CriteriaFinaltermInputActivity" />
+        <activity android:name=".TeacherViewActivity" />
 
     </application>
 
