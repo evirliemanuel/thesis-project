@@ -87,7 +87,9 @@
                         android:id="@+id/_btn_search_ok_class"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="12dp"
+
                         android:background="@drawable/ic_search_black_24dp"
+
                         android:layout_width="30dp"
                         android:layout_height="30dp" />
 
@@ -96,6 +98,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="20dp"
                         android:layout_width="280dp"
+
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:hint="Search"

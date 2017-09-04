@@ -30,8 +30,10 @@
 
             <Button
                 android:id="@+id/btn_back_student"
+
                 android:layout_marginRight="10dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/ic_arrow_back_white_24dp"/>
@@ -56,7 +58,7 @@
                 android:layout_marginRight="16dp"
                 android:textOn=""
                 android:textOff=""
-                android:background="@drawable/btn_search"/>
+                android:background="@drawable/ic_search_white_24dp"/>
         </FrameLayout>
 
 
