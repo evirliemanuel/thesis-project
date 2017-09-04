@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-<<<<<<< Updated upstream
+
 import android.widget.Toast;
-=======
+
 import android.widget.ToggleButton;
->>>>>>> Stashed changes
+
 
 import com.lieverandiver.thesisproject.helper.FormulaHelper;
 import com.remswork.project.alice.exception.GradingFactorException;

@@ -284,7 +284,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Red"
+                                    android:background="@color/Blue"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -430,7 +430,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Orange"
+                                    android:background="@color/Blue"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -576,7 +576,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Green"
+                                    android:background="@color/Blue"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -725,7 +725,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Pink"
+                                    android:background="@color/Blue"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -1027,7 +1027,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/DarkBlue"
+                                    android:background="@color/Blue"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
