@@ -26,6 +26,8 @@ import com.remswork.project.alice.service.impl.ScheduleServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.lieverandiver.thesisproject.R.id.schedule_all_rb;
@@ -90,6 +92,13 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
     }
 
     public void init() {
+        Collections.sort(scheduleList, new Comparator<Schedule>() {
+            @Override
+            public int compare(Schedule o1, Schedule o2) {
+                return (o1.getTime().compareTo(o2.getTime()));
+            }
+        });
+        
         scheduleRecyclerView = (RecyclerView)
                 customView.findViewById(R.id.shedule_recyclerview);
         scheduleAdapter = new ScheduleAdapter(getContext(), scheduleList);
