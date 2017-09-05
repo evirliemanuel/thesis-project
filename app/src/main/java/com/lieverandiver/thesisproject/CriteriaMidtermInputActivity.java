@@ -235,6 +235,12 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
         }
 
         pbActivity.setVisibility(View.GONE);
+        pbAssignment.setVisibility(View.GONE);
+        pbAttendance.setVisibility(View.GONE);
+        pbExam.setVisibility(View.GONE);
+        pbProject.setVisibility(View.GONE);
+        pbQuiz.setVisibility(View.GONE);
+
         speech = SpeechRecognizer.createSpeechRecognizer(this);
         speech.setRecognitionListener(this);
         recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);

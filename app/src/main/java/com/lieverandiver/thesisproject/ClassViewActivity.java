@@ -14,7 +14,9 @@ import android.widget.ToggleButton;
 
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.model.Class;
+import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 
 import static android.R.attr.button;
 import static com.lieverandiver.thesisproject.R.id.view_schedule;

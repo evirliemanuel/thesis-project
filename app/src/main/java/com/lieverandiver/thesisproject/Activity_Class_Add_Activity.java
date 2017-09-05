@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.remswork.project.alice.service.ActivityService;
+import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+
 import static android.R.id.button1;
 
 /**
@@ -30,7 +33,6 @@ public class Activity_Class_Add_Activity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_add_activity);
 
-
         imageView = (ImageView)findViewById(R.id.img_back);
         linearLayoutActivity = (LinearLayout) findViewById(R.id.relative_clicked1) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
@@ -44,9 +46,6 @@ public class Activity_Class_Add_Activity extends AppCompatActivity{
             }
         });
     }
-
-//    Intent i = new Intent(this, ActivityTwo.class);
-//    startActivity(i);
 
 
 }
