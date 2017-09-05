@@ -18,8 +18,9 @@
         android:id="@+id/f_data_cardview_subject_name_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
         android:orientation="horizontal"
-        android:background="@color/colorTweeterBlue">
+        android:background="@drawable/nice_ripple">
 
         <ImageView
             android:layout_width="30dp"
@@ -42,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Subject Name"
+                android:textColor="@color/colorWhite"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 

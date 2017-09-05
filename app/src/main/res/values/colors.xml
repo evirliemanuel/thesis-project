@@ -34,10 +34,10 @@
     <color name="Yellow">#FFF000</color>
 
     <color name="Activity">#b00e0e</color>
-    <color name="Assignment">#b00e0e</color>
-    <color name="Attendance">#FFF000</color>
-    <color name="Exam">#FFF000</color>
-    <color name="Project">#b00e0e</color>
-    <color name="Quiz">#b00e0e</color>
+    <color name="Assignment">#f3d405</color>
+    <color name="Attendance">#46984f</color>
+    <color name="Exam">#f0a8a8</color>
+    <color name="Project">#7a587c</color>
+    <color name="Quiz">#be0eee</color>
 
 </resources>

@@ -9,8 +9,9 @@
     tools:context=".SubjectViewActivity">
 
 
-
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -144,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/colorDarkGray">
+                android:background="@color/colorMoca3">
 
 
 
@@ -237,7 +238,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:background="@drawable/basic_ripple_blue"
+                            android:background="@drawable/nice_ripple"
                             android:orientation="vertical">
 
                             <FrameLayout
@@ -271,7 +272,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Midterm"
-                                            android:textColor="@color/colorMidNightBlue"
+                                            android:textColor="@color/colorWhite"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
 
@@ -295,7 +296,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="50%"
                                     android:textStyle="bold"
-                                    android:textColor="@color/colorAccent"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="18sp"
                                     android:id="@+id/midterm_percent_sub_view" />
 
@@ -336,7 +337,7 @@
 
                         <LinearLayout
                             android:id="@+id/finals_setting"
-                            android:background="@drawable/basic_ripple_blue"
+                            android:background="@drawable/nice_ripple"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
@@ -373,7 +374,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Finals"
-                                            android:textColor="@color/colorMidNightBlue"
+                                            android:textColor="@color/colorWhite"
                                             android:textSize="22sp"
                                             android:textStyle="bold"
                                             android:id="@+id/textView2" />
@@ -398,7 +399,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="50%"
                                     android:textStyle="bold"
-                                    android:textColor="@color/colorAccent"
+                                    android:textColor="@color/colorWhite"
                                     android:textSize="18sp"
                                     android:id="@+id/finals_percent_sub_view" />
 
@@ -430,5 +431,6 @@
 
 
     </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -286,7 +286,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Blue"
+                                    android:background="@color/Activity"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -435,7 +435,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Blue"
+                                    android:background="@color/Assignment"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -584,7 +584,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Blue"
+                                    android:background="@color/Attendance"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -734,7 +734,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Blue"
+                                    android:background="@color/Exam"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -888,7 +888,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Blue"
+                                    android:background="@color/Project"
                                     android:orientation="horizontal">
 
                                     <LinearLayout
@@ -1042,7 +1042,7 @@
                                 <FrameLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@color/Blue"
+                                    android:background="@color/Quiz"
                                     android:orientation="horizontal">
 
                                     <LinearLayout

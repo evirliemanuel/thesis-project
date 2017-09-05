@@ -21,7 +21,7 @@
 
             <LinearLayout
 
-                android:background="@drawable/ripple_nocolor"
+                android:background="@drawable/basic_ripple_nocolor"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="left"

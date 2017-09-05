@@ -439,7 +439,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal"
-                                android:background="@drawable/basic_ripple_blue">
+                                android:background="@drawable/ripple_activity">
                                 <ImageView
                                     android:background="@drawable/icon_activity"
                                     android:layout_width="50dp"
@@ -504,7 +504,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/basic_ripple_blue"
+                                android:background="@drawable/ripple_assignment"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:background="@drawable/icon_assignment"
@@ -568,9 +568,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/basic_ripple">
                             <LinearLayout
+                                android:background="@drawable/ripple_attendance"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/Green"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:background="@drawable/icon_attendance"
@@ -637,7 +637,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/Pink"
+                                android:background="@drawable/ripple_exam"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:background="@drawable/icon_exam"
@@ -704,7 +704,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@color/Blue"
+                                android:background="@drawable/ripple_project"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:background="@drawable/icon_project"
@@ -774,7 +774,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#FF0DDD"
+                                android:background="@drawable/ripple_quiz"
                                 android:orientation="horizontal">
                                 <ImageView
                                     android:background="@drawable/icon_quiz"

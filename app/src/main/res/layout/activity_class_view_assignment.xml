@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
         <include
             android:id="@+id/activity_main_custom_toolbar"
-            layout="@layout/custom_toolbar_orange"
+            layout="@layout/toolbar_assignment"
             />
         <FrameLayout
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
             <LinearLayout
 
-                android:background="@drawable/ripple_nocolor"
+                android:background="@drawable/basic_ripple_nocolor"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="left"

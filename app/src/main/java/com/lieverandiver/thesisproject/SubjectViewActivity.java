@@ -55,6 +55,7 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
     private RecyclerView recyclerViewMidterm;
     private RecyclerView recyclerViewFinals;
 
+
     private ToggleButton toggleButtonM;
     private ToggleButton toggleButtonF;
 
@@ -71,8 +72,9 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
         toggleButtonF = (ToggleButton)findViewById(toggle_finview);
 
         textViewMidtermPercent = (TextView) findViewById(R.id.midterm_percent_sub_view);
-        textViewMidtermPercent = (TextView) findViewById(R.id.finals_percent_sub_view);
+        textViewFinalsPercent = (TextView) findViewById(R.id.finals_percent_sub_view);
         recyclerViewMidterm = (RecyclerView) findViewById(R.id.midterm_recycleview);
+
         recyclerViewFinals = (RecyclerView) findViewById(R.id.finals_recycleview);
 
         recyclerViewFinals.setVisibility(View.GONE);
