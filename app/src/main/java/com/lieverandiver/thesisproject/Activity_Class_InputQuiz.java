@@ -33,20 +33,18 @@ public class Activity_Class_InputQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_grade_quiz);
 
-        editTextName = (EditText)findViewById(R.id.etxt_name);
-        textViewDate = (TextView)findViewById(R.id.txtv_date);
-        spinner = (Spinner)findViewById(R.id.spiner_input);
+        editTextName = (EditText)findViewById(R.id.etxt_name6);
+        textViewDate = (TextView)findViewById(R.id.txtv_date6);
+        spinner = (Spinner)findViewById(R.id.spiner_input6);
         textViewTotal = (TextView)findViewById(R.id.txtv_total);
-        buttonSubmit = (Button)findViewById(R.id.btn_submit);
+        buttonSubmit = (Button)findViewById(R.id.btn_submit6);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
         imageView =(ImageView)findViewById(R.id.btn_cancel) ;
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_InputQuiz.this,
-                        Activity_Class_Add_Quiz.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

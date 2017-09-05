@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -59,9 +60,20 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
     private ToggleButton toggleButtonM;
     private ToggleButton toggleButtonF;
 
+    private ImageView imageViewBackButton;
+
     private void init() {
-        linearLayoutm = (LinearLayout)findViewById(midterm_setting);
-        linearLayoutf = (LinearLayout)findViewById(finals_setting);
+        imageViewBackButton = (ImageView)findViewById(R.id.btn_backsubjectdetails);
+        imageViewBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                finish();
+
+            }
+        });
+
+        linearLayoutm = (LinearLayout)findViewById(R.id.midterm_setting);
+        linearLayoutf = (LinearLayout)findViewById(R.id.finals_setting);
 
         name = (TextView) findViewById(R.id.a_class_f_view_subject_name);
         code = (TextView) findViewById(R.id.a_class_f_view_subject_code);

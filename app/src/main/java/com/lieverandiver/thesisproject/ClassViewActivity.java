@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,11 +15,8 @@ import android.widget.ToggleButton;
 
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.model.Class;
-import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
-import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 
-import static android.R.attr.button;
 import static com.lieverandiver.thesisproject.R.id.view_schedule;
 import static com.lieverandiver.thesisproject.R.id.view_student;
 import static com.lieverandiver.thesisproject.R.id.viewactivityf;
@@ -65,6 +63,8 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout linearLayoutExamF;
     private LinearLayout linearLayoutProjectF;
     private LinearLayout linearLayoutQuizF;
+
+    private Button buttonBack;
 
     public class ClassViewThread extends Thread {
         @Override
@@ -174,7 +174,6 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 intent = getIntent().setClass(this, Activity_Class_Add_Quiz.class);
                 startActivity(intent);
                 break;
-
         }
 
 
@@ -193,6 +192,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
 
         viewSchedule.setOnClickListener(this);
         viewStudent.setOnClickListener(this);
+        buttonBack.setOnClickListener(this);
 
 
 

@@ -22,7 +22,7 @@ public class Activity_Class_InputAttendance extends AppCompatActivity {
 
     private EditText editTextName;
     private TextView textViewDate;
-    private Spinner spinner ;
+    private Button buttonSelectAll ;
     private TextView textViewTotal;
     private Button buttonSubmit;
     private RecyclerView recyclerView;
@@ -35,20 +35,17 @@ public class Activity_Class_InputAttendance extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_grade_attendance);
 
-        editTextName = (EditText)findViewById(R.id.etxt_name);
-        textViewDate = (TextView)findViewById(R.id.txtv_date);
-        spinner = (Spinner)findViewById(R.id.spiner_input);
-        textViewTotal = (TextView)findViewById(R.id.txtv_total);
-        buttonSubmit = (Button)findViewById(R.id.btn_submit);
+        editTextName = (EditText)findViewById(R.id.etxt_name3);
+        textViewDate = (TextView)findViewById(R.id.txtv_date3);
+        buttonSelectAll = (Button) findViewById(R.id.btn_selectall3);
+        buttonSubmit = (Button)findViewById(R.id.btn_submit3);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
         imageView =(ImageView)findViewById(R.id.btn_cancel) ;
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_InputAttendance.this,
-                        Activity_Class_Add_Attendance.class);
-                startActivity(intent);
+              finish();
             }
         });
     }

@@ -23,16 +23,17 @@
             <LinearLayout
 
                 android:background="@drawable/basic_ripple_nocolor"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="22dp"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:layout_width="30dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/new_icon_back_button"/>
+                    android:id="@+id/btn_backaddexam"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_arrow_back_white_24dp"/>
             </LinearLayout>
 
             <TextView
@@ -44,15 +45,6 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"/>
-            <ImageView
-                android:layout_marginRight="20dp"
-                android:layout_gravity="right"
-                android:id="@+id/btn_cancel"
-                android:layout_marginTop="25dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/cancel_icon"
-                android:clickable="true"/>
         </FrameLayout>
     </RelativeLayout>
     <android.support.v7.widget.CardView

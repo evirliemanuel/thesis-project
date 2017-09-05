@@ -32,20 +32,18 @@ public class Activity_Class_InputAssignment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_grade_assignment);
 
-        editTextName = (EditText)findViewById(R.id.etxt_name);
-        textViewDate = (TextView)findViewById(R.id.txtv_date);
-        spinner = (Spinner)findViewById(R.id.spiner_input);
+        editTextName = (EditText)findViewById(R.id.etxt_name2);
+        textViewDate = (TextView)findViewById(R.id.txtv_date2);
+        spinner = (Spinner)findViewById(R.id.spiner_input2);
         textViewTotal = (TextView)findViewById(R.id.txtv_total);
-        buttonSubmit = (Button)findViewById(R.id.btn_submit);
+        buttonSubmit = (Button)findViewById(R.id.btn_submit2);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
         imageView =(ImageView)findViewById(R.id.btn_cancel) ;
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_InputAssignment.this,
-                        Activity_Class_Add_Assignment.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

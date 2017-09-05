@@ -26,16 +26,17 @@
 
                 android:background="@drawable/basic_ripple_nocolor"
                 android:clickable="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:layout_width="30dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/new_icon_back_button"/>
+                    android:id="@+id/btn_backaddactivity"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_arrow_back_white_24dp"/>
             </LinearLayout>
 
             <TextView
@@ -48,16 +49,6 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"/>
 
-
-            <ImageView
-                android:layout_marginRight="20dp"
-                android:layout_gravity="right"
-                android:id="@+id/img_back"
-               android:layout_marginTop="25dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/cancel_icon"
-                android:clickable="true"/>
         </FrameLayout>
     </RelativeLayout>
 
@@ -118,5 +109,16 @@
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_view1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        >
+
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

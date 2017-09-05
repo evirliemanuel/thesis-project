@@ -23,7 +23,7 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
     private Spinner spinner ;
     private TextView textViewTotal;
     private Button buttonSubmit;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewStudentInput;
     private ImageView imageView;
 
     @Override
@@ -31,20 +31,23 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_grade_activity);
 
-        editTextName = (EditText)findViewById(R.id.etxt_name);
-        textViewDate = (TextView)findViewById(R.id.txtv_date);
-        spinner = (Spinner)findViewById(R.id.spiner_input);
-        textViewTotal = (TextView)findViewById(R.id.txtv_total);
-        buttonSubmit = (Button)findViewById(R.id.btn_submit);
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
-        imageView =(ImageView)findViewById(R.id.btn_cancel) ;
+      init();
+    }
+
+    public void init(){
+
+        editTextName = (EditText)findViewById(R.id.etxt_name1);
+        textViewDate = (TextView)findViewById(R.id.txtv_date1);
+        spinner = (Spinner)findViewById(R.id.spiner_input1);
+        textViewTotal = (TextView)findViewById(R.id.txtv_total1);
+        buttonSubmit = (Button)findViewById(R.id.btn_submit1);
+        recyclerViewStudentInput = (RecyclerView)findViewById(R.id.recyclerview_view1);
+        imageView =(ImageView)findViewById(R.id.btn_cancel1) ;
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_InputActivity.this,
-                        Activity_Class_Add_Activity.class);
-                startActivity(intent);
+               finish();
             }
         });
     }

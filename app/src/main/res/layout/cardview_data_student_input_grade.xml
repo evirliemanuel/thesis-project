@@ -35,17 +35,17 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="23dp"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp">
 
             <TextView
-                android:id="@+id/f_data_studentname_text"
+                android:id="@+id/input_studentname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manuel, Virlie E."
-                android:textSize="22sp"
+                android:text="Loading ..."
+                android:textSize="18sp"
                android:textColor="#000000"/>
 
         </RelativeLayout>
@@ -61,7 +61,7 @@
                 android:background="@color/colorClouds">
 
                 <TextView
-                    android:id="@+id/f_data_student_inputgrade"
+                    android:id="@+id/input_score"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -72,7 +72,7 @@
             </RelativeLayout>
 
             <Spinner
-                android:id="@+id/f_data_student_inputgrade_spinner"
+                android:id="@+id/input_spinner"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
