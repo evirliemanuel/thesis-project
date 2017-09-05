@@ -98,7 +98,7 @@ public class SliderScheduleFragment extends Fragment implements RadioGroup.OnChe
                 return (o1.getTime().compareTo(o2.getTime()));
             }
         });
-        
+
         scheduleRecyclerView = (RecyclerView)
                 customView.findViewById(R.id.shedule_recyclerview);
         scheduleAdapter = new ScheduleAdapter(getContext(), scheduleList);

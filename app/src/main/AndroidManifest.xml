@@ -3,6 +3,8 @@
     package="com.lieverandiver.thesisproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -60,7 +62,7 @@
         <activity android:name=".CriteriaFinaltermInputActivity" />
         <activity android:name=".TeacherViewActivity" />
         <activity android:name=".MainActivity2" />
-
+        <service android:name=".android.service.SpeechRecognizerService"/>
     </application>
 
 </manifest>
