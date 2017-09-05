@@ -20,7 +20,7 @@ public class Activity_Class_Add_Exam extends AppCompatActivity {
 
     private ImageView imageView;
     private RecyclerView recyclerView;
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayoutExam;
 
 
     @Override
@@ -29,15 +29,18 @@ public class Activity_Class_Add_Exam extends AppCompatActivity {
         setContentView(R.layout.activity_class_add_exam);
 
         imageView = (ImageView)findViewById(R.id.img_back);
-        linearLayout = (LinearLayout) findViewById(R.id.relative_clicked) ;
+        linearLayoutExam = (LinearLayout) findViewById(R.id.relative_clicked4) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        linearLayoutExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Exam.this, Activity_Class_InputExam.class);
+                Intent intent = new Intent(Activity_Class_Add_Exam.this,
+                        Activity_Class_InputExam.class);
                 startActivity(intent);
             }
         });
+
+
     }
 }

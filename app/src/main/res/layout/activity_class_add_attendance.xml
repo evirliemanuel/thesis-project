@@ -66,6 +66,7 @@
         card_view:cardElevation="5dp">
 
         <LinearLayout
+            android:id="@+id/relative_clicked3"
             android:background="@drawable/basic_ripple"
             android:clickable="true"
             android:orientation="horizontal"

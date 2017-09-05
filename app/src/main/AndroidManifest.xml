@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SubjectViewActivity" />
+        <activity android:name=".Activity_Class_Add_Activity" />
         <activity android:name=".Activity_Class_Add_Assignment" />
         <activity android:name=".Activity_Class_Add_Attendance" />
         <activity android:name=".Activity_Class_Add_Exam" />

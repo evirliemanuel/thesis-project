@@ -23,7 +23,7 @@ public class Activity_Class_Add_Activity extends AppCompatActivity{
 
    private ImageView imageView;
     private RecyclerView recyclerView;
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayoutActivity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,10 +32,10 @@ public class Activity_Class_Add_Activity extends AppCompatActivity{
 
 
         imageView = (ImageView)findViewById(R.id.img_back);
-        linearLayout = (LinearLayout) findViewById(R.id.relative_clicked) ;
+        linearLayoutActivity = (LinearLayout) findViewById(R.id.relative_clicked1) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
 
-        linearLayout.setOnClickListener(new OnClickListener() {
+        linearLayoutActivity.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(Activity_Class_Add_Activity.this,

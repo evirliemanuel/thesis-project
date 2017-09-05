@@ -20,7 +20,7 @@ public class Activity_Class_Add_Attendance extends AppCompatActivity{
 
     private ImageView imageView;
     private RecyclerView recyclerView;
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayoutAttendance;
 
 
     @Override
@@ -29,16 +29,18 @@ public class Activity_Class_Add_Attendance extends AppCompatActivity{
         setContentView(R.layout.activity_class_add_attendance);
 
         imageView = (ImageView)findViewById(R.id.img_back);
-        linearLayout = (LinearLayout) findViewById(R.id.relative_clicked) ;
+        linearLayoutAttendance = (LinearLayout) findViewById(R.id.relative_clicked3) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        linearLayoutAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Attendance.this, Activity_Class_InputAttendance.class);
+                Intent intent = new Intent(Activity_Class_Add_Attendance.this,
+                        Activity_Class_InputAttendance.class);
                 startActivity(intent);
             }
         });
+
     }
 
 }

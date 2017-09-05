@@ -75,6 +75,9 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
         recyclerViewMidterm = (RecyclerView) findViewById(R.id.midterm_recycleview);
         recyclerViewFinals = (RecyclerView) findViewById(R.id.finals_recycleview);
 
+        recyclerViewFinals.setVisibility(View.GONE);
+        recyclerViewMidterm.setVisibility(View.GONE);
+
         new Handler(getMainLooper()).post(new Runnable() {
             @Override
             public void run() {

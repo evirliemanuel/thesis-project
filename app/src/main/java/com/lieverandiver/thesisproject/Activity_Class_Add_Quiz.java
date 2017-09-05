@@ -20,7 +20,7 @@ public class Activity_Class_Add_Quiz extends AppCompatActivity{
 
     private ImageView imageView;
     private RecyclerView recyclerView;
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayoutQuiz;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,15 +28,17 @@ public class Activity_Class_Add_Quiz extends AppCompatActivity{
         setContentView(R.layout.activity_class_add_quiz);
 
         imageView = (ImageView)findViewById(R.id.img_back);
-        linearLayout = (LinearLayout) findViewById(R.id.relative_clicked) ;
+        linearLayoutQuiz = (LinearLayout) findViewById(R.id.relative_clicked6) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        linearLayoutQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Quiz.this, Activity_Class_InputQuiz.class);
+                Intent intent = new Intent(Activity_Class_Add_Quiz.this,
+                        Activity_Class_InputQuiz.class);
                 startActivity(intent);
             }
         });
+
     }
 }

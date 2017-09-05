@@ -21,7 +21,7 @@ public class Activity_Class_Add_Assignment extends AppCompatActivity{
 
     private ImageView imageView;
     private RecyclerView recyclerView;
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayoutAssignment;
 
 
     @Override
@@ -30,16 +30,19 @@ public class Activity_Class_Add_Assignment extends AppCompatActivity{
         setContentView(R.layout.activity_class_add_assignment);
 
         imageView = (ImageView)findViewById(R.id.img_back);
-        linearLayout = (LinearLayout) findViewById(R.id.relative_clicked) ;
+        linearLayoutAssignment = (LinearLayout) findViewById(R.id.relative_clicked2) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        linearLayoutAssignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Assignment.this, Activity_Class_InputAssignment.class);
+                Intent intent = new Intent(Activity_Class_Add_Assignment.this,
+                        Activity_Class_InputAssignment.class);
                 startActivity(intent);
             }
         });
+
+
 
     }
 }

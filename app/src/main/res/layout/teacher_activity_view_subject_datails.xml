@@ -6,25 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".Teacher_Activity_View_Subject_Datails">
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:id="@+id/cover_photos"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@drawable/cover_photos">
-
-        <Button
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/back_button"
-            android:background="@drawable/new_icon_back_button"/>
+    tools:context=".SubjectViewActivity">
 
 
-    </RelativeLayout>
 
 
     <LinearLayout
@@ -163,6 +147,7 @@
                 android:background="@color/colorDarkGray">
 
 
+
                 <android.support.v7.widget.CardView
                     android:id="@+id/midterm_view"
                     android:layout_width="match_parent"
@@ -268,12 +253,14 @@
                                     android:orientation="horizontal">
 
                                     <ToggleButton
+                                        android:textOff=""
+                                        android:textOn=""
                                         android:id="@+id/toggle_midview"
                                         android:layout_width="30dp"
                                         android:layout_height="30dp"
                                         android:layout_gravity="center"
                                         android:layout_marginRight="20dp"
-                                        android:background="@drawable/setting_icon" />
+                                        android:background="@drawable/btn_showandhide1" />
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
@@ -293,7 +280,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="Tap here to setting"
                                             android:textSize="12sp"
-                                            android:textColor="@color/colorAccent"
+                                            android:textColor="@color/colorWhite"
                                             />
 
                                     </LinearLayout>
@@ -368,12 +355,14 @@
                                     android:orientation="horizontal">
 
                                     <ToggleButton
+                                        android:textOff=""
+                                        android:textOn=""
                                         android:id="@+id/toggle_finview"
                                         android:layout_width="30dp"
                                         android:layout_height="30dp"
                                         android:layout_gravity="center"
                                         android:layout_marginRight="20dp"
-                                        android:background="@drawable/setting_icon" />
+                                        android:background="@drawable/btn_showandhide1" />
 
                                     <LinearLayout
                                         android:layout_width="wrap_content"
@@ -394,7 +383,7 @@
                                             android:layout_height="wrap_content"
                                             android:text="Tap here to setting"
                                             android:textSize="12sp"
-                                            android:textColor="@color/colorAccent"
+                                            android:textColor="@color/colorWhite"
                                             />T
 
                                     </LinearLayout>
@@ -430,6 +419,8 @@
                     android:layout_marginRight="10dp">
 
                 </android.support.v7.widget.RecyclerView>
+
+
 
             </LinearLayout>
 
