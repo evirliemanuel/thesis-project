@@ -32,6 +32,8 @@ import com.remswork.project.alice.service.impl.SubjectServiceImpl;
 
 import java.util.ArrayList;
 
+import static android.R.attr.action;
+import static com.lieverandiver.thesisproject.R.id.action_container;
 import static com.lieverandiver.thesisproject.R.id.activity_seekbarm;
 import static com.lieverandiver.thesisproject.R.id.activity_switch_redm;
 import static com.lieverandiver.thesisproject.R.id.assignment_seekbarm;
@@ -41,8 +43,15 @@ import static com.lieverandiver.thesisproject.R.id.attendance_switch_redm;
 import static com.lieverandiver.thesisproject.R.id.exam_seekbarm;
 import static com.lieverandiver.thesisproject.R.id.exam_switch_redm;
 import static com.lieverandiver.thesisproject.R.id.project_seekbarm;
-import static com.lieverandiver.thesisproject.R.id.quiz_seekbarf;
+import static com.lieverandiver.thesisproject.R.id.project_switch_redm;
 import static com.lieverandiver.thesisproject.R.id.quiz_seekbarm;
+import static com.lieverandiver.thesisproject.R.id.quiz_switch_redm;
+import static com.lieverandiver.thesisproject.R.id.toggleButton1m;
+import static com.lieverandiver.thesisproject.R.id.toggleButton2m;
+import static com.lieverandiver.thesisproject.R.id.toggleButton3m;
+import static com.lieverandiver.thesisproject.R.id.toggleButton4m;
+import static com.lieverandiver.thesisproject.R.id.toggleButton5m;
+import static com.lieverandiver.thesisproject.R.id.toggleButton6m;
 
 public class CriteriaMidtermInputActivity extends AppCompatActivity implements RecognitionListener,
         View.OnClickListener, SeekBar.OnSeekBarChangeListener, CompoundButton
@@ -77,10 +86,12 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
     private LinearLayout laQuiz;
 
     private TextView txtSubjectName;
+    private TextView txTermTitle;
     private TextView txtTotalPercent;
     private LinearLayout laSave;
     private boolean isExist;
     private Spinner spinnerm;
+    private int activeListener;
 
     private int percent[] = new int[6];
     private String[] values = new String[]{
@@ -93,9 +104,20 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
     private Teacher teacher;
     private Formula formula;
 
-    //private TextView returnedText;
-    private ToggleButton toggleButton;
-    private ProgressBar progressBar;
+    private ToggleButton tbActivity;
+    private ToggleButton tbAssignment;
+    private ToggleButton tbAttendance;
+    private ToggleButton tbExam;
+    private ToggleButton tbProject;
+    private ToggleButton tbQuiz;
+
+    private ProgressBar pbActivity;
+    private ProgressBar pbAssignment;
+    private ProgressBar pbAttendance;
+    private ProgressBar pbExam;
+    private ProgressBar pbProject;
+    private ProgressBar pbQuiz;
+
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
     private String LOG_TAG = "VoiceRecognition";
@@ -105,6 +127,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
         laSave = (LinearLayout) findViewById(R.id.midterm_save);
         txtSubjectName = (TextView) findViewById(R.id.midterm_subjectname);
         txtTotalPercent = (TextView) findViewById(R.id.total_percentm);
+        txTermTitle = (TextView) findViewById(R.id.term_type_cri);
         spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
 
         sbActivity = (SeekBar) findViewById(activity_seekbarm);
@@ -125,8 +148,8 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
         swAssignment = (Switch) findViewById(R.id.assignment_switch_redm);
         swAttendance = (Switch) findViewById(R.id.attendance_switch_redm);
         swExam = (Switch) findViewById(R.id.exam_switch_redm);
-        swProject = (Switch) findViewById(R.id.project_switch_redm);
-        swQuiz = (Switch) findViewById(R.id.quiz_switch_redm);
+        swProject = (Switch) findViewById(project_switch_redm);
+        swQuiz = (Switch) findViewById(quiz_switch_redm);
 
         sbActivity.setMax(100);
         sbAssignment.setMax(100);
@@ -141,6 +164,20 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
         laExam = (LinearLayout)findViewById(R.id.exam_linearm);
         laProject = (LinearLayout)findViewById(R.id.project_linearm);
         laQuiz = (LinearLayout)findViewById(R.id.quiz_linearm);
+
+        pbActivity = (ProgressBar) findViewById(R.id.progressBar1m);
+        pbAssignment = (ProgressBar) findViewById(R.id.progressBar2m);
+        pbAttendance = (ProgressBar) findViewById(R.id.progressBar3m);
+        pbExam = (ProgressBar) findViewById(R.id.progressBar4m);
+        pbProject = (ProgressBar) findViewById(R.id.progressBar5m);
+        pbQuiz = (ProgressBar) findViewById(R.id.progressBar6m);
+
+        tbActivity = (ToggleButton) findViewById(R.id.toggleButton1m);
+        tbAssignment = (ToggleButton) findViewById(toggleButton2m);
+        tbAttendance = (ToggleButton) findViewById(toggleButton3m);
+        tbExam = (ToggleButton) findViewById(toggleButton4m);
+        tbProject = (ToggleButton) findViewById(toggleButton5m);
+        tbQuiz = (ToggleButton) findViewById(toggleButton6m);
 
         laActivity.setVisibility(View.GONE);
         laAssignment.setVisibility(View.GONE);
@@ -166,6 +203,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
         swQuiz.setOnCheckedChangeListener(this);
 
         txtSubjectName.setText(subject.getName());
+        txTermTitle.setText("Midterm");
 
         if(isExist) {
             if(formula.getActivityPercentage() > 0)
@@ -196,11 +234,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
             sbQuiz.setProgress(0);
         }
 
-        //returnedText = (TextView) findViewById(R.id.textView1);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
-        toggleButton = (ToggleButton) findViewById(R.id.toggleButton1);
-
-        progressBar.setVisibility(View.INVISIBLE);
+        pbActivity.setVisibility(View.GONE);
         speech = SpeechRecognizer.createSpeechRecognizer(this);
         speech.setRecognitionListener(this);
         recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -209,29 +243,18 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3);
 
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
-                if (isChecked) {
-                    progressBar.setVisibility(View.VISIBLE);
-                    progressBar.setIndeterminate(true);
-                    speech.startListening(recognizerIntent);
-                } else {
-                    progressBar.setIndeterminate(false);
-                    progressBar.setVisibility(View.INVISIBLE);
-                    speech.stopListening();
-                }
-            }
-        });
+        tbActivity.setOnCheckedChangeListener(this);
+        tbAssignment.setOnCheckedChangeListener(this);
+        tbAttendance.setOnCheckedChangeListener(this);
+        tbExam.setOnCheckedChangeListener(this);
+        tbProject.setOnCheckedChangeListener(this);
+        tbQuiz.setOnCheckedChangeListener(this);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_gradingfactor_activity_midterm);
-
         try {
             subject = subjectService.getSubjectById(getIntent().getExtras().getLong("subjectId"));
             formula = formulaService.getFormulaById(getIntent().getExtras().getLong("formulaId"));
@@ -243,8 +266,6 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
             ArrayAdapter<String> spinnerAdapter =
                     new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, values);
             spinnerm.setAdapter(spinnerAdapter);
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -479,7 +500,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
                 txtTotalPercent.setText(x + "%");
                 sbExam.setProgress(0);
                 break;
-            case project_seekbarm :
+            case project_switch_redm :
                 if (isChecked)
                     laProject.setVisibility(View.VISIBLE);
                 else
@@ -492,7 +513,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
                 txtTotalPercent.setText(x + "%");
                 sbProject.setProgress(0);
                 break;
-            case quiz_seekbarf :
+            case quiz_switch_redm :
                 if (isChecked)
                     laQuiz.setVisibility(View.VISIBLE);
                 else
@@ -504,6 +525,90 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
                     x += percent[i];
                 txtTotalPercent.setText(x + "%");
                 sbQuiz.setProgress(0);
+                break;
+            case toggleButton1m :
+                if (isChecked && activeListener == 0) {
+                        pbActivity.setVisibility(View.VISIBLE);
+                        pbActivity.setIndeterminate(true);
+                        swActivity.setChecked(true);
+                        speech.startListening(recognizerIntent);
+                        activeListener = 1;
+                } else {
+                    tbActivity.setChecked(false);
+                    pbActivity.setIndeterminate(false);
+                    pbActivity.setVisibility(View.GONE);
+                    speech.stopListening();
+                }
+                break;
+            case toggleButton2m :
+                if (isChecked && activeListener == 0) {
+                        pbAssignment.setVisibility(View.VISIBLE);
+                        pbAssignment.setIndeterminate(true);
+                        swAssignment.setChecked(true);
+                        speech.startListening(recognizerIntent);
+                        activeListener = 2;
+                } else {
+                    tbAssignment.setChecked(false);
+                    pbAssignment.setIndeterminate(false);
+                    pbAssignment.setVisibility(View.GONE);
+                    speech.stopListening();
+                }
+                break;
+            case toggleButton3m :
+                if (isChecked && activeListener == 0) {
+                    pbAttendance.setVisibility(View.VISIBLE);
+                    pbAttendance.setIndeterminate(true);
+                    swAttendance.setChecked(true);
+                    speech.startListening(recognizerIntent);
+                    activeListener = 3;
+                } else {
+                    tbAttendance.setChecked(false);
+                    pbAttendance.setIndeterminate(false);
+                    pbAttendance.setVisibility(View.GONE);
+                    speech.stopListening();
+                }
+                break;
+            case toggleButton4m :
+                if (isChecked && activeListener == 0) {
+                    pbExam.setVisibility(View.VISIBLE);
+                    pbExam.setIndeterminate(true);
+                    swExam.setChecked(true);
+                    speech.startListening(recognizerIntent);
+                    activeListener = 4;
+                } else {
+                    tbExam.setChecked(false);
+                    pbExam.setIndeterminate(false);
+                    pbExam.setVisibility(View.GONE);
+                    speech.stopListening();
+                }
+                break;
+            case toggleButton5m :
+                if (isChecked && activeListener == 0) {
+                    pbProject.setVisibility(View.VISIBLE);
+                    pbProject.setIndeterminate(true);
+                    swProject.setChecked(true);
+                    speech.startListening(recognizerIntent);
+                    activeListener = 5;
+                } else {
+                    tbProject.setChecked(false);
+                    pbProject.setIndeterminate(false);
+                    pbProject.setVisibility(View.GONE);
+                    speech.stopListening();
+                }
+                break;
+            case toggleButton6m :
+                if (isChecked && activeListener == 0) {
+                    pbQuiz.setVisibility(View.VISIBLE);
+                    pbQuiz.setIndeterminate(true);
+                    swQuiz.setChecked(true);
+                    speech.startListening(recognizerIntent);
+                    activeListener = 6;
+                } else {
+                    tbQuiz.setChecked(false);
+                    pbQuiz.setIndeterminate(false);
+                    pbQuiz.setVisibility(View.GONE);
+                    speech.stopListening();
+                }
                 break;
         }
     }
@@ -521,8 +626,26 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
     @Override
     public void onBeginningOfSpeech() {
         Log.i(LOG_TAG, "onBeginningOfSpeech");
-        progressBar.setIndeterminate(false);
-        progressBar.setMax(10);
+
+        if(activeListener == 1) {
+            pbActivity.setIndeterminate(false);
+            pbActivity.setMax(10);
+        }else if(activeListener == 2) {
+            pbAssignment.setIndeterminate(false);
+            pbAssignment.setMax(10);
+        }else if(activeListener == 3) {
+            pbAttendance.setIndeterminate(false);
+            pbAttendance.setMax(10);
+        }else if(activeListener == 4) {
+            pbExam.setIndeterminate(false);
+            pbExam.setMax(10);
+        }else if(activeListener == 5) {
+            pbProject.setIndeterminate(false);
+            pbProject.setMax(10);
+        }else if(activeListener == 6) {
+            pbQuiz.setIndeterminate(false);
+            pbQuiz.setMax(10);
+        }
     }
 
     @Override
@@ -533,17 +656,52 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
     @Override
     public void onEndOfSpeech() {
         Log.i(LOG_TAG, "onEndOfSpeech");
-        progressBar.setIndeterminate(true);
-        toggleButton.setChecked(false);
+        if(activeListener == 1) {
+            pbActivity.setIndeterminate(true);
+            tbActivity.setChecked(false);
+        }else if(activeListener == 2) {
+            pbAssignment.setIndeterminate(true);
+            tbAssignment.setChecked(false);
+        }else if(activeListener == 3) {
+            pbAttendance.setIndeterminate(true);
+            tbAttendance.setChecked(false);
+        }else if(activeListener == 4) {
+            pbExam.setIndeterminate(true);
+            tbExam.setChecked(false);
+        }else if(activeListener == 5) {
+            pbProject.setIndeterminate(true);
+            tbProject.setChecked(false);
+        }else if(activeListener == 6) {
+            pbQuiz.setIndeterminate(true);
+            tbQuiz.setChecked(false);
+        }
     }
 
     @Override
     public void onError(int errorCode) {
         String errorMessage = getErrorText(errorCode);
         Log.d(LOG_TAG, "FAILED " + errorMessage);
-        //returnedText.setText(errorMessage);
-        txtActivityPercent.setText(errorMessage);
-        toggleButton.setChecked(false);
+
+        if(activeListener == 1) {
+            sbActivity.setProgress(0);
+            tbActivity.setChecked(false);
+        }else if(activeListener == 2) {
+            sbAssignment.setProgress(0);
+            tbAssignment.setChecked(false);
+        }else if(activeListener == 3) {
+            sbAttendance.setProgress(0);
+            tbAttendance.setChecked(false);
+        }else if(activeListener == 4) {
+            sbExam.setProgress(0);
+            tbExam.setChecked(false);
+        }else if(activeListener == 5) {
+            sbProject.setProgress(0);
+            tbProject.setChecked(false);
+        }else if(activeListener == 6) {
+            sbQuiz.setProgress(0);
+            tbQuiz.setChecked(false);
+        }
+        activeListener = 0;
     }
 
     @Override
@@ -565,26 +723,50 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
     public void onResults(Bundle results) {
         Log.i(LOG_TAG, "onResults");
         ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-        String text = "";
+        int number = 0;
         for (String result : matches) {
             try {
-                Integer.parseInt(result);
-                text = result;
+                number = Integer.parseInt(result);
                 break;
             }catch (NumberFormatException e) {
                 e.printStackTrace();
-                text = "0";
+                number = 0;
             }
         }
-        //returnedText.setText(text);
 
-        txtActivityPercent.setText(text);
+        if(activeListener == 1) {
+            sbActivity.setProgress(number);
+        }else if(activeListener == 2) {
+            sbAssignment.setProgress(number);
+        }else if(activeListener == 3) {
+            sbAttendance.setProgress(number);
+        }else if(activeListener == 4) {
+            sbExam.setProgress(number);
+        }else if(activeListener == 5) {
+            sbProject.setProgress(number);
+        }else if(activeListener == 6) {
+            sbQuiz.setProgress(number);
+        }
+        activeListener = 0;
     }
 
     @Override
     public void onRmsChanged(float rmsdB) {
         Log.i(LOG_TAG, "onRmsChanged: " + rmsdB);
-        progressBar.setProgress((int) rmsdB);
+
+        if(activeListener == 1) {
+            pbActivity.setProgress((int) rmsdB);
+        }else if(activeListener == 2) {
+            pbAssignment.setProgress((int) rmsdB);
+        }else if(activeListener == 3) {
+            pbAttendance.setProgress((int) rmsdB);
+        }else if(activeListener == 4) {
+            pbExam.setProgress((int) rmsdB);
+        }else if(activeListener == 5) {
+            pbProject.setProgress((int) rmsdB);
+        }else if(activeListener == 6) {
+            pbQuiz.setProgress((int) rmsdB);
+        }
     }
 
     public static String getErrorText(int errorCode) {
