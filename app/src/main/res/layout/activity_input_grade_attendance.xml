@@ -20,7 +20,7 @@
 
 
         <EditText
-            android:id="@+id/etxt_name"
+            android:id="@+id/etxt_name3"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="25dp"
             android:layout_width="250dp"
@@ -74,14 +74,11 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:textStyle="bold"
-                android:id="@+id/txtv_date"/>
-
-
-
+                android:id="@+id/txtv_date3"/>
 
 
             <Button
-                android:id="@+id/btn_selectall"
+                android:id="@+id/btn_selectall3"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -101,7 +98,7 @@
 
                     android:layout_marginTop="15dp"
                     android:layout_gravity="right"
-                    android:id="@+id/btn_submit"
+                    android:id="@+id/btn_submit3"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="Submit"
@@ -119,10 +116,10 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_view"
+        android:id="@+id/recyclerview_view3"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 

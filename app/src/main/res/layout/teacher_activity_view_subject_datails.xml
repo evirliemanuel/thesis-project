@@ -8,6 +8,52 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".SubjectViewActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/activity_main_custom_toolbar"
+            layout="@layout/custom_toolbar"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="left"
+                android:id="@+id/btn_backsubjectdetails"
+                android:layout_marginTop="28dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_arrow_back_white_24dp"
+                android:clickable="true"/>
+
+            <LinearLayout
+                android:layout_marginLeft="50dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/activity_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject Details"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </RelativeLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"

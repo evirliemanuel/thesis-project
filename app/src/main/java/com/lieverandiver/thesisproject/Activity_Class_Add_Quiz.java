@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -18,7 +19,7 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
 
 public class Activity_Class_Add_Quiz extends AppCompatActivity{
 
-    private ImageView imageView;
+    private Button buttonBack;
     private RecyclerView recyclerView;
     private LinearLayout linearLayoutQuiz;
 
@@ -27,7 +28,14 @@ public class Activity_Class_Add_Quiz extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_add_quiz);
 
-        imageView = (ImageView)findViewById(R.id.img_back);
+        buttonBack = (Button) findViewById(R.id.btn_backaddquiz);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                finish();
+
+            }
+        });
         linearLayoutQuiz = (LinearLayout) findViewById(R.id.relative_clicked6) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
 

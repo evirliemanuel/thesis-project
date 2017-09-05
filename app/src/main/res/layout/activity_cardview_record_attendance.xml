@@ -15,7 +15,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Green"
+        android:background="#27ae60"
         android:orientation="horizontal">
 
         <LinearLayout

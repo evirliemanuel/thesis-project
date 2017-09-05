@@ -9,6 +9,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -22,6 +23,7 @@ import static android.R.id.button1;
 public class Activity_Class_Add_Activity extends AppCompatActivity{
 
    private ImageView imageView;
+    private Button btnBackButton;
     private RecyclerView recyclerView;
     private LinearLayout linearLayoutActivity;
 
@@ -30,10 +32,9 @@ public class Activity_Class_Add_Activity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_add_activity);
 
-
-        imageView = (ImageView)findViewById(R.id.img_back);
         linearLayoutActivity = (LinearLayout) findViewById(R.id.relative_clicked1) ;
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view1);
+        btnBackButton = (Button)findViewById(R.id.btn_backaddactivity);
 
         linearLayoutActivity.setOnClickListener(new OnClickListener() {
             @Override
@@ -43,10 +44,15 @@ public class Activity_Class_Add_Activity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        btnBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                finish();
+            }
+        });
     }
 
-//    Intent i = new Intent(this, ActivityTwo.class);
-//    startActivity(i);
 
 
 }

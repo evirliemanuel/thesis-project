@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.remswork.project.alice.model.Class;
 import com.remswork.project.alice.service.ClassService;
 
 import static android.R.attr.button;
+import static com.lieverandiver.thesisproject.R.id.btnclass_back;
 import static com.lieverandiver.thesisproject.R.id.view_schedule;
 import static com.lieverandiver.thesisproject.R.id.view_student;
 import static com.lieverandiver.thesisproject.R.id.viewactivityf;
@@ -63,6 +65,8 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout linearLayoutExamF;
     private LinearLayout linearLayoutProjectF;
     private LinearLayout linearLayoutQuizF;
+
+    private Button buttonBack;
 
     public class ClassViewThread extends Thread {
         @Override
@@ -173,6 +177,9 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
 
+            case btnclass_back :
+                finish();
+                break;
         }
 
 
@@ -182,6 +189,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void init() {
+        buttonBack = (Button)findViewById(R.id.btnclass_back) ;
         viewSchedule = (CardView) findViewById(view_schedule);
         viewStudent = (CardView) findViewById(view_student);
         txtViewSubjectName = (TextView) findViewById(R.id.txtv_subjectname);
@@ -191,6 +199,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
 
         viewSchedule.setOnClickListener(this);
         viewStudent.setOnClickListener(this);
+        buttonBack.setOnClickListener(this);
 
 
 

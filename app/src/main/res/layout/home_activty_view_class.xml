@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    android:id="@+id/btnclass_back"
                     android:layout_marginRight="16dp"
                     android:layout_gravity="center"
                     android:layout_width="30dp"

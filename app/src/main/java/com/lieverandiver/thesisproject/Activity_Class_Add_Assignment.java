@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -19,9 +20,10 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
 
 public class Activity_Class_Add_Assignment extends AppCompatActivity{
 
-    private ImageView imageView;
     private RecyclerView recyclerView;
     private LinearLayout linearLayoutAssignment;
+    private Button buttonABack;
+
 
 
     @Override
@@ -29,7 +31,14 @@ public class Activity_Class_Add_Assignment extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_add_assignment);
 
-        imageView = (ImageView)findViewById(R.id.img_back);
+
+       buttonABack = (Button)findViewById(R.id.btn_backassignment) ;
+        buttonABack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+           finish();
+            }
+        });
         linearLayoutAssignment = (LinearLayout) findViewById(R.id.relative_clicked2) ;
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
 
