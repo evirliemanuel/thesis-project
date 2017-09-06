@@ -3,44 +3,34 @@ package com.lieverandiver.thesisproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TimePicker;
 
 import com.lieverandiver.thesisproject.adapter.ActivityAdapter;
-import com.remswork.project.alice.model.Schedule;
+import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.service.ActivityService;
-import com.remswork.project.alice.service.SubjectService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
-
-import java.util.List;
-
-import static android.R.interpolator.linear;
 
 /**
  * Created by Verlie on 9/1/2017.
  */
 
-public class Activity_Class_Add_Activity extends AppCompatActivity{
+@Deprecated
+public class Activity_Class_Add_Activity extends AppCompatActivity implements ActivityAdapter.OnClickListener {
 
     final ActivityService activityService = new ActivityServiceImpl();
     private ImageView imageView;
     private Button btnBackButton;
     private RecyclerView recyclerView;
     private LinearLayout linearLayoutActivity;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,7 +73,13 @@ public class Activity_Class_Add_Activity extends AppCompatActivity{
         }catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
+    @Override
+    public void onClick(Activity activity, long activityId) {
+        Intent intent = getIntent();
+        intent.putExtra("activityId", activityId);
+        intent.setClass(this, ActivityResultViewActivity.class);
+        startActivity(intent);
+    }
 }

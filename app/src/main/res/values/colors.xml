@@ -23,6 +23,9 @@
     <color name="colorMoca3">#f1eff0</color>
     <color name="colorTweeterBlue">#3dc4f1</color>
     <color name="colorTweeterBlueDark">#0a91be</color>
+    <color name="colorLightSuccess">#8bf2b8</color>
+    <color name="colorLightDanger">#fd91b7</color>
+
 
     <color name="Green">#09f24b</color>
     <color name="Red">#f10f34</color>

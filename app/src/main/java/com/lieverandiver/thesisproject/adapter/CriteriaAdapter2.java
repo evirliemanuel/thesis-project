@@ -52,28 +52,34 @@ public class CriteriaAdapter2 extends RecyclerView.Adapter<CriteriaAdapter2.Crit
 
         public void setView(final String value, final int position) {
             if(position == 0) {
+                String text = "Activity";
                 logo.setImageResource(R.drawable.icon_activity);
-                title.setText("Activity");
+                title.setText(text);
                 percent.setText(value);
             }else if(position == 1) {
+                String text = "Assignment";
                 logo.setImageResource(R.drawable.icon_assignment);
-                title.setText("Assignment");
+                title.setText(text);
                 percent.setText(value);
             }else if(position == 2) {
+                String text = "Attendance";
                 logo.setImageResource(R.drawable.icon_attendance);
-                title.setText("Attendance");
+                title.setText(text);
                 percent.setText(value);
             }else if(position == 3) {
+                String text = "Exam";
                 logo.setImageResource(R.drawable.icon_exam);
-                title.setText("Exam");
+                title.setText(text);
                 percent.setText(value);
             }else if(position == 4) {
+                String text = "Project";
                 logo.setImageResource(R.drawable.icon_project);
-                title.setText("Project");
+                title.setText(text);
                 percent.setText(value);
             }else {
+                String text = "Quiz";
                 logo.setImageResource(R.drawable.icon_quiz);
-                title.setText("Quiz");
+                title.setText(text);
                 percent.setText(value);
             }
         }

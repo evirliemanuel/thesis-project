@@ -3,11 +3,9 @@ package com.lieverandiver.thesisproject.adapter;
 import android.content.Context;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,7 +21,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassAdapter
     private Context context;
     private LayoutInflater layoutInflater;
     private ClassAdapterListener classAdapterListener;
-    public static boolean isGo = true;
+    private boolean isGo = true;
 
     public ClassAdapter(Context context, List<Class> classList) {
         this.context = context;
@@ -49,28 +47,30 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassAdapter
         return classList.size();
     }
 
-     public class ClassAdapterViewHolder extends RecyclerView.ViewHolder{
+      class ClassAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-         private ImageView imageView;
-         private TextView textViewSubject;
-         private TextView textViewSimpleText;
-         private ImageView buttonClick;
-         private RelativeLayout imageScreen;
-         private Handler handler;
+            private ImageView imageView;
+            private TextView textViewSubject;
+            private TextView textViewSimpleText;
+            private ImageView buttonClick;
+            private RelativeLayout imageScreen;
+            private Handler handler;
+            private Class _class;
 
-        ClassAdapterViewHolder(View itemView) {
-            super(itemView);
-            textViewSubject = (TextView) itemView.findViewById(
-                    R.id.fragment_slidebar_cardview_clazz_text_subject);
-            textViewSimpleText = (TextView) itemView.findViewById(
-                    R.id.fragment_slidebar_cardview_clazz_text_section);
-            imageScreen = (RelativeLayout) itemView.findViewById(
-                    R.id.class_cardview_progressbar_layout);
-            buttonClick = (ImageView) itemView.findViewById(R.id.button_click);
-            handler = new Handler(context.getMainLooper());
-        }
+            ClassAdapterViewHolder(View itemView) {
+                super(itemView);
+                textViewSubject = (TextView) itemView.findViewById(
+                        R.id.fragment_slidebar_cardview_clazz_text_subject);
+                textViewSimpleText = (TextView) itemView.findViewById(
+                        R.id.fragment_slidebar_cardview_clazz_text_section);
+                imageScreen = (RelativeLayout) itemView.findViewById(
+                        R.id.class_cardview_progressbar_layout);
+                buttonClick = (ImageView) itemView.findViewById(R.id.button_click);
+                handler = new Handler(context.getMainLooper());
+            }
 
         void setView(final Class _class, final int position) {
+            this._class = _class;
             imageScreen.setVisibility(View.VISIBLE);
             new Thread(new Runnable() {
                 @Override
@@ -80,51 +80,48 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassAdapter
                         public void run() {
                             if(_class.getSubject() != null)
                                 textViewSubject.setText(_class.getSubject().getName());
-                            buttonClick.setOnClickListener(new Button.OnClickListener() {
-                                @Override
-                                public synchronized void onClick(View v) {
-                                    if (isGo) {
-                                        isGo = false;
-                                        Log.i("myTAG", classAdapterListener + "");
-                                        new Thread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                handler.post(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        imageScreen.setVisibility(View.VISIBLE);
-                                                    }
-                                                });
-                                                try {
-                                                    Thread.sleep(1200);
-                                                } catch (InterruptedException e) {
-                                                    e.printStackTrace();
-                                                }
-                                                classAdapterListener.showClassView(_class.getId());
-                                                isGo = true;
-                                                handler.post(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        imageScreen.setVisibility(View.GONE);
-                                                    }
-                                                });
-
-                                            }
-                                        }).start();
-                                    }
-                                }
-                            });
+                            buttonClick.setOnClickListener(ClassAdapterViewHolder.this);
                             imageScreen.setVisibility(View.GONE);
                         }
                     });
-
                 }
             }).start();
         }
-    }
+
+          @Override
+          public void onClick(View v) {
+              if (isGo) {
+                  isGo = false;
+                  new Thread(new Runnable() {
+                      @Override
+                      public void run() {
+                          handler.post(new Runnable() {
+                              @Override
+                              public void run() {
+                                  imageScreen.setVisibility(View.VISIBLE);
+                              }
+                          });
+                          try {
+                              Thread.sleep(1200);
+                          } catch (InterruptedException e) {
+                              e.printStackTrace();
+                          }
+                          classAdapterListener.showClassView(_class.getId());
+                          isGo = true;
+                          handler.post(new Runnable() {
+                              @Override
+                              public void run() {
+                                  imageScreen.setVisibility(View.GONE);
+                              }
+                          });
+
+                      }
+                  }).start();
+              }
+          }
+      }
 
     public interface ClassAdapterListener {
         void showClassView(long id);
     }
-
 }

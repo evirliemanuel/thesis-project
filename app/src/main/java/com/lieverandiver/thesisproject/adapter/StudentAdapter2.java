@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -54,12 +55,14 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
         private EditText editText;
         private Student student;
         private Spinner spinner;
+        private LinearLayout layout;
 
         StudentAdapterViewHolder(View itemView) {
             super(itemView);
             studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
             studentDetail = (TextView) itemView.findViewById(R.id.input_studentname);
             editText = (EditText) itemView.findViewById(R.id.input_score);
+            layout = (LinearLayout) itemView.findViewById(R.id.bg_la);
         }
 
         void setView(final Student student, final int position) {
@@ -79,6 +82,14 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
 
         public int getScore() {
             return Integer.parseInt(editText.getText().toString());
+        }
+
+        public void setStatus(boolean isSuccess) {
+            if(isSuccess)
+                layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightSuccess));
+            else
+                layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightDanger));
+            studentDetail.setTextColor(context.getResources().getColor(R.color.colorMoca2));
         }
     }
 }

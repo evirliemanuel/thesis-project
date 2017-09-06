@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,7 +18,10 @@ import com.remswork.project.alice.model.Class;
 import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.service.impl.ClassServiceImpl;
 
+import static com.lieverandiver.thesisproject.R.id.ftogglebutton;
+import static com.lieverandiver.thesisproject.R.id.mtogglebutton;
 import static com.lieverandiver.thesisproject.R.id.view_schedule;
 import static com.lieverandiver.thesisproject.R.id.view_student;
 import static com.lieverandiver.thesisproject.R.id.viewactivityf;
@@ -35,12 +37,13 @@ import static com.lieverandiver.thesisproject.R.id.viewprojectm;
 import static com.lieverandiver.thesisproject.R.id.viewquizf;
 import static com.lieverandiver.thesisproject.R.id.viewquizm;
 
-public class ClassViewActivity extends AppCompatActivity implements View.OnClickListener {
+public class ClassViewActivity extends AppCompatActivity implements View.OnClickListener ,
+        CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = ClassViewActivity.class.getSimpleName();
 
-    private ActivityService activityService = new ActivityServiceImpl();
-    private ClassService classService;
+    private final ActivityService activityService = new ActivityServiceImpl();
+    private final ClassService classService = new ClassServiceImpl();
     private TextView txtViewSubjectName;
     private TextView txtViewSectionName;
     private TextView txtViewDepName;
@@ -82,118 +85,6 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private TextView textViewProjectF;
     private TextView textViewQuizF;
 
-
-    public class ClassViewThread extends Thread {
-        @Override
-        public void run() {
-            try {
-                final Class _class = classService.getClassById(classId);
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        txtViewSubjectName.setText((_class.getSubject() != null ?
-                                _class.getSubject().getName() : "None"));
-                        txtViewSectionName.setText((_class.getSection() != null ?
-                                _class.getSection().getName() : "None"));
-                        txtViewDepName.setText((_class.getSection() != null ?
-                                _class.getSection().getDepartment().getName() : "None"));
-                    }
-                });
-
-            } catch (ClassException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i(TAG, "onCreate");
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activty_view_class);
-        classId = getIntent().getExtras().getLong("classId");
-
-        init();
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case view_schedule :
-                Intent intent = getIntent().setClass(this, ScheduleViewActivity.class);
-                startActivity(intent);
-                break;
-
-            case view_student :
-                intent = getIntent().setClass(this, StudentViewActivity.class);
-                startActivity(intent);
-                break;
-
-            case viewactivitym :
-                intent = getIntent().setClass(this, Activity_Class_Add_Activity.class);
-                startActivity(intent);
-                break;
-
-            case viewassignmentm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Assignment.class);
-                startActivity(intent);
-                break;
-
-            case viewattendancem :
-                intent = getIntent().setClass(this, Activity_Class_Add_Attendance.class);
-                startActivity(intent);
-                break;
-
-            case viewexamm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Exam.class);
-                startActivity(intent);
-                break;
-
-            case viewprojectm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Project.class);
-                startActivity(intent);
-                break;
-
-            case viewquizm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Quiz.class);
-                startActivity(intent);
-                break;
-
-            case viewactivityf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Activity.class);
-                startActivity(intent);
-                break;
-
-            case viewassignmentf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Assignment.class);
-                startActivity(intent);
-                break;
-
-            case viewattendancef :
-                intent = getIntent().setClass(this, Activity_Class_Add_Attendance.class);
-                startActivity(intent);
-                break;
-
-            case viewexamf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Exam.class);
-                startActivity(intent);
-                break;
-
-            case viewprojectf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Project.class);
-                startActivity(intent);
-                break;
-
-            case viewquizf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Quiz.class);
-                startActivity(intent);
-                break;
-        }
-
-    }
-
     public void init() {
 
         textViewActivityM = (TextView)findViewById(R.id.totalm1m);
@@ -210,8 +101,6 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         textViewProjectF = (TextView)findViewById(R.id.totalf5);
         textViewQuizF = (TextView)findViewById(R.id.totalf6);
 
-
-
         viewSchedule = (CardView) findViewById(view_schedule);
         viewStudent = (CardView) findViewById(view_student);
         txtViewSubjectName = (TextView) findViewById(R.id.txtv_subjectname);
@@ -222,8 +111,8 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         viewSchedule.setOnClickListener(this);
         viewStudent.setOnClickListener(this);
 
-        toggleButtonShowandHideM = (ToggleButton)findViewById(R.id.mtogglebutton);
-        toggleButtonShowandHideF = (ToggleButton)findViewById(R.id.ftogglebutton);
+        toggleButtonShowandHideM = (ToggleButton)findViewById(mtogglebutton);
+        toggleButtonShowandHideF = (ToggleButton)findViewById(ftogglebutton);
         linearLayoutShowandHideM = (LinearLayout)findViewById(R.id.mlinear_showandhide);
         linearLayoutShowandHideF = (LinearLayout)findViewById(R.id.flinear_showandhide);
 
@@ -272,33 +161,137 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         linearLayoutShowandHideF.setVisibility(View.GONE);
         linearLayoutShowandHideM.setVisibility(View.GONE);
 
-        toggleButtonShowandHideM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    linearLayoutShowandHideM.setVisibility(View.VISIBLE);
-                } else {
-                    linearLayoutShowandHideM.setVisibility(View.GONE);
-                }
-            }
-        });
+        toggleButtonShowandHideM.setOnCheckedChangeListener(this);
+        toggleButtonShowandHideF.setOnCheckedChangeListener(this);
+    }
 
-        toggleButtonShowandHideF.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch(buttonView.getId()) {
+            case mtogglebutton :
+            if(isChecked)
+                linearLayoutShowandHideM.setVisibility(View.VISIBLE);
+            else
+              linearLayoutShowandHideM.setVisibility(View.GONE);
+            break;
+            case ftogglebutton :
+                if(isChecked)
                     linearLayoutShowandHideF.setVisibility(View.VISIBLE);
-                } else {
+                else
                     linearLayoutShowandHideF.setVisibility(View.GONE);
-                }
-            }
-        });
+                break;
+        }
+    }
 
+    public class ClassViewThread extends Thread {
+        @Override
+        public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            final Class _class = classService.getClassById(classId);
+                            String subjectName = (_class.getSubject() != null ? _class.getSubject().getName() : "None");
+                            String sectionName = (_class.getSection() != null ? _class.getSection().getName() : "None");
+                            String departmentName = (_class.getSection() != null ? _class.getSection().getDepartment().getName() : "None");
+                            String totalActivitySize = String.valueOf(activityService.getActivityListByClassId(classId).size());
+
+                            txtViewSubjectName.setText(subjectName);
+                            txtViewSectionName.setText(sectionName);
+                            txtViewDepName.setText(departmentName);
+                            textViewActivityM.setText(totalActivitySize);
+
+                        } catch (GradingFactorException e) {
+
+                        } catch (ClassException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        }
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.home_activty_view_class);
         try {
-            textViewActivityM.setText(activityService.getActivityListByClassId(classId).size() + "");
-        } catch (GradingFactorException e) {
+            classId = getIntent().getExtras().getLong("classId");
+            init();
+            new ClassViewThread().start();
+        }catch (Exception e) {
             e.printStackTrace();
         }
 
-
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case view_schedule :
+                Intent intent = getIntent().setClass(this, ScheduleViewActivity.class);
+                startActivity(intent);
+                break;
+            case view_student :
+                intent = getIntent().setClass(this, StudentViewActivity.class);
+                startActivity(intent);
+                break;
+            case viewactivitym :
+                intent = getIntent().setClass(this, ActivityAddActivity.class);
+                intent.putExtra("termId", 1);
+                startActivity(intent);
+                break;
+            case viewassignmentm :
+                intent = getIntent().setClass(this, Activity_Class_Add_Assignment.class);
+                startActivity(intent);
+                break;
+            case viewattendancem :
+                intent = getIntent().setClass(this, Activity_Class_Add_Attendance.class);
+                startActivity(intent);
+                break;
+            case viewexamm :
+                intent = getIntent().setClass(this, Activity_Class_Add_Exam.class);
+                startActivity(intent);
+                break;
+            case viewprojectm :
+                intent = getIntent().setClass(this, Activity_Class_Add_Project.class);
+                startActivity(intent);
+                break;
+
+            case viewquizm :
+                intent = getIntent().setClass(this, Activity_Class_Add_Quiz.class);
+                startActivity(intent);
+                break;
+
+            case viewactivityf :
+                intent = getIntent().setClass(this, Activity_Class_Add_Activity.class);
+                startActivity(intent);
+                break;
+            case viewassignmentf :
+                intent = getIntent().setClass(this, Activity_Class_Add_Assignment.class);
+                startActivity(intent);
+                break;
+
+            case viewattendancef :
+                intent = getIntent().setClass(this, Activity_Class_Add_Attendance.class);
+                startActivity(intent);
+                break;
+
+            case viewexamf :
+                intent = getIntent().setClass(this, Activity_Class_Add_Exam.class);
+                startActivity(intent);
+                break;
+
+            case viewprojectf :
+                intent = getIntent().setClass(this, Activity_Class_Add_Project.class);
+                startActivity(intent);
+                break;
+
+            case viewquizf :
+                intent = getIntent().setClass(this, Activity_Class_Add_Quiz.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }

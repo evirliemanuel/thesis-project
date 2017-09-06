@@ -63,7 +63,8 @@
         <activity android:name=".CriteriaFinaltermInputActivity" />
         <activity android:name=".TeacherViewActivity" />
         <activity android:name=".MainActivity2" />
-        <service android:name=".android.service.SpeechRecognizerService"/>
+        <activity android:name=".ActivityResultViewActivity"/>
+        <activity android:name=".ActivityAddActivity"/>
     </application>
 
 </manifest>

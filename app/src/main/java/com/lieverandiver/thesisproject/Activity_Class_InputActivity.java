@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lieverandiver.thesisproject.adapter.StudentAdapter2;
 import com.remswork.project.alice.model.Activity;
@@ -27,7 +28,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import static android.R.attr.data;
+import static android.support.v7.widget.AppCompatDrawableManager.get;
 
 /**
  * Created by Verlie on 8/31/2017.
@@ -37,6 +38,7 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
 
     private final ClassService classService = new ClassServiceImpl();
     private final ActivityService activityService = new ActivityServiceImpl();
+    List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
     private Spinner spinner ;
@@ -64,17 +66,39 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 try {
+                    boolean isNoError=true;
                     Activity activity = new Activity();
                     activity.setTitle(editTextName.getText().toString());
                     activity.setDate(textViewDate.getText().toString());
                     activity.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
-                    activityService.addActivity(activity, getIntent().getExtras().getLong("classId"));
+                    activity = activityService.addActivity(activity, getIntent().getExtras().getLong("classId"));
+
+                    for(int i=0; i < studentList.size(); i++) {
+                        RecyclerView.ViewHolder viewHolder = recyclerViewStudentInput.findViewHolderForAdapterPosition(i);
+                        int score = ((StudentAdapter2.StudentAdapterViewHolder) viewHolder).getScore();
+                        if(score > Integer.parseInt(editTextTotal.getText().toString())) {
+                            ((StudentAdapter2.StudentAdapterViewHolder) viewHolder).setStatus(false);
+                            isNoError=false;
+                        }
+                        else {
+                            ((StudentAdapter2.StudentAdapterViewHolder) viewHolder).setStatus(true);
+                        }
+                    }
+
+                    if(isNoError) {
+                        for(int i=0; i < studentList.size(); i++) {
+                            RecyclerView.ViewHolder viewHolder = recyclerViewStudentInput.findViewHolderForAdapterPosition(i);
+                            int score = ((StudentAdapter2.StudentAdapterViewHolder) viewHolder).getScore();
+                            Student student = ((StudentAdapter2.StudentAdapterViewHolder) viewHolder).getStudent();
+                            activityService.addActivityResult(score, activity.getId(), student.getId());
+                        }
+                        Toast.makeText(Activity_Class_InputActivity.this, "Success", Toast.LENGTH_LONG).show();
+                    }else
+                        Toast.makeText(Activity_Class_InputActivity.this, "Failed", Toast.LENGTH_LONG).show();
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
-//
-// z     String string = ((StudentAdapter2.StudentAdapterViewHolder) recyclerViewStudentInput.findViewHolderForAdapterPosition(1)).getSomething();
-//                    Log.i("Class : ", string);
+
             }
         });
     }
@@ -83,7 +107,6 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
 
         try {
             Log.i("Success : ", getIntent().getExtras().getLong("classId") + "");
-            List<Student> studentList = new ArrayList<>();
 
             editTextName = (EditText) findViewById(R.id.etxt_name1);
             editTextTotal =(EditText) findViewById(R.id.etxt_totalm);

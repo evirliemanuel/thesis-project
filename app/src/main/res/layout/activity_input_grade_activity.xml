@@ -82,8 +82,6 @@
                 android:textStyle="bold"
                 android:id="@+id/txtv_date1"/>
 
-
-
             <EditText
                 android:id="@+id/etxt_totalm"
                 android:layout_marginLeft="5dp"
