@@ -8,6 +8,7 @@
     android:layout_marginRight="6dp"
     android:layout_marginTop="6dp"
     android:clickable="true"
+    android:id="@+id/assignment_cardview"
     android:contextClickable="true"
     card_view:cardCornerRadius="5dp">
 
@@ -42,7 +43,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/f_gradecriteria_view_activity"
+                    android:id="@+id/assignment_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Assignment"
@@ -51,7 +52,7 @@
                     android:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/f_grade_activity_date"
+                    android:id="@+id/assignment_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -68,14 +69,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right">
-            <TextView
-                android:id="@+id/txtv_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total"
-                android:textStyle="bold"
-                android:textSize="25sp"
-                />
 
         </LinearLayout>
     </FrameLayout>

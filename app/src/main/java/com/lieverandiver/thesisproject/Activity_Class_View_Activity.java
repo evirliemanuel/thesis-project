@@ -7,7 +7,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
-
 import com.lieverandiver.thesisproject.adapter.SimpleActivityAdapter;
 import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.model.ActivityResult;
@@ -15,18 +14,18 @@ import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Deprecated
 public class Activity_Class_View_Activity extends AppCompatActivity {
-
     final ActivityService activityService = new ActivityServiceImpl();
+
     private TextView textViewDate;
     private TextView textViewName;
     private TextView textViewTotal;
     private RecyclerView recyclerViewView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

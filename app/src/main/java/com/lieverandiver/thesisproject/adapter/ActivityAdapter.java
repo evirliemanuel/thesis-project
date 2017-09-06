@@ -57,7 +57,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
             super(itemView);
             textViewTitle = (TextView) itemView.findViewById(R.id.f_gradecriteria_view_activity);
             textViewDate = (TextView) itemView.findViewById(R.id.f_grade_activity_date);
-            textViewTotal = (TextView) itemView.findViewById(R.id.txtv_total);
+            textViewTotal = (TextView) itemView.findViewById(R.id.txtv_total1);
             cardView = (CardView) itemView.findViewById(R.id.fragment_slidebar_cardview_schedule);
         }
 

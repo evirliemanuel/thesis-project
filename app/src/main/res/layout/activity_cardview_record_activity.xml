@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right">
             <TextView
-                android:id="@+id/txtv_total"
+                android:id="@+id/txtv_total1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total"
