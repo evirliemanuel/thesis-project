@@ -2,83 +2,77 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ClassViewActivity">
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp">
+
             <include
                 android:id="@+id/activity_main_custom_toolbar"
-                layout="@layout/custom_toolbar"
-                />
+                layout="@layout/custom_toolbar" />
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal">
 
                     <Button
-                        android:layout_marginRight="16dp"
-                        android:layout_gravity="center"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/ic_arrow_back_white_24dp"/>
+                        android:layout_gravity="center"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/ic_arrow_back_white_24dp" />
 
                     <TextView
-                        android:layout_gravity="center"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:text="CCS "
+                        android:textColor="@color/colorWhite"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorWhite"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
 
                 <Button
-                    android:layout_marginRight="20dp"
-                    android:layout_gravity="right"
                     android:id="@+id/btn_menu"
-                    android:layout_marginTop="25dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="25dp"
                     android:background="@drawable/ic_more_vert_white_24dp"
-                    android:clickable="true"/>
+                    android:clickable="true" />
             </FrameLayout>
         </RelativeLayout>
 
 
-
-
-
-
-
-
         <android.support.v7.widget.CardView
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
             android:id="@+id/a_class_f_view_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardElevation="3dp"
-           >
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            card_view:cardElevation="3dp">
 
             <LinearLayout
 
@@ -91,52 +85,52 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_marginLeft="15dp"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
+                            android:layout_marginLeft="15dp"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/icon_star" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Section:"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorMidNightBlue" />
+                            android:textColor="@color/colorMidNightBlue"
+                            android:textSize="18sp" />
+
                         <TextView
-                            android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
                             android:text="Department:"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorMidNightBlue" />
+                            android:textColor="@color/colorMidNightBlue"
+                            android:textSize="18sp" />
+
                         <TextView
-                            android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
                             android:text="Format:"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorMidNightBlue" />
+                            android:textColor="@color/colorMidNightBlue"
+                            android:textSize="18sp" />
                     </LinearLayout>
 
 
-
                     <LinearLayout
-                        android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -150,31 +144,33 @@
 
                         <TextView
                             android:id="@+id/txtv_section"
-                            android:layout_marginTop="13dp"
-                            android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="13dp"
                             android:text="4-E"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorMidNightBlue" />
+                            android:textColor="@color/colorMidNightBlue"
+                            android:textSize="18sp" />
+
                         <TextView
                             android:id="@+id/txtv_dept"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
                             android:text="Department"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorMidNightBlue" />
+                            android:textColor="@color/colorMidNightBlue"
+                            android:textSize="18sp" />
+
                         <TextView
                             android:id="@+id/txtv_sem"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
                             android:text="Semester"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorMidNightBlue" />
+                            android:textColor="@color/colorMidNightBlue"
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -187,235 +183,741 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-        <android.support.v7.widget.CardView
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:background="@color/colorClouds"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/view_student"
-                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    card_view:cardElevation="3dp">
+                    android:layout_marginTop="10dp"
+                    android:clickable="true">
 
                     <LinearLayout
-                        android:background="@drawable/basic_ripple_blue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:background="@color/colorClouds"
                         android:orientation="vertical">
 
-                        <FrameLayout
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/view_student"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:layout_marginTop="12dp">
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:clickable="true"
+                            card_view:cardElevation="3dp">
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:orientation="horizontal">
+                                android:background="@drawable/basic_ripple_blue"
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginRight="20dp"
-                                    android:background="@drawable/ic_people_black_24dp" />
+                                android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
+                                <FrameLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical">
+                                    android:layout_marginBottom="12dp"
+                                    android:layout_marginTop="12dp">
 
-                                    <TextView
-
+                                    <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Student"
-                                        android:textColor="@color/colorMidNightBlue"
-                                        android:textSize="22sp"
-                                        android:textStyle="bold"
-                                        android:id="@+id/textView3" />
+                                        android:layout_marginLeft="10dp"
+                                        android:orientation="horizontal">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Tap here to view"
-                                        android:textSize="12sp"
-                                        android:textColor="@color/colorWhite"
-                                        />
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/ic_people_black_24dp" />
 
-                                </LinearLayout>
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <TextView
+
+                                                android:id="@+id/textView3"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Student"
+                                                android:textColor="@color/colorMidNightBlue"
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Tap here to view"
+                                                android:textColor="@color/colorWhite"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                </FrameLayout>
+
                             </LinearLayout>
 
+                        </android.support.v7.widget.CardView>
 
-                        </FrameLayout>
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/view_schedule"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:clickable="true"
+                            card_view:cardElevation="3dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/basic_ripple_blue"
+                                android:orientation="vertical">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="12dp"
+                                    android:layout_marginTop="12dp">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginRight="20dp"
+                                            android:background="@drawable/ic_schedule_black_24dp" />
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/textView4"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Schedule"
+                                                android:textColor="@color/colorMidNightBlue"
+                                                android:textSize="22sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Tap here to view"
+                                                android:textColor="@color/colorWhite"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                </FrameLayout>
+
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/view_schedule"
-                    android:clickable="true"
+                <!--MIDTERM-->
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    card_view:cardElevation="3dp">
+                    android:layout_height="match_parent"
+                    android:background="@color/colorMoca3"
+                    android:orientation="vertical">
+
 
                     <LinearLayout
-                        android:background="@drawable/basic_ripple_blue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <FrameLayout
+                        <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:layout_marginTop="12dp">
+                            android:layout_height="50dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            card_view:cardElevation="3dp">
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
                                 android:orientation="horizontal">
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginRight="20dp"
-                                    android:background="@drawable/ic_schedule_black_24dp" />
-
-                                <LinearLayout
+                                <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical">
+                                    android:layout_gravity="center"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="12dp"
+                                    android:text="MIDTERM"
+                                    android:textColor="@color/colorDarkGray"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Schedule"
-                                        android:textColor="@color/colorMidNightBlue"
-                                        android:textSize="22sp"
-                                        android:textStyle="bold"
-                                        android:id="@+id/textView4" />
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
 
-                                    <TextView
+                                    <ToggleButton
+                                        android:id="@+id/mtogglebutton"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_gravity="right"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:background="@drawable/btn_showandhide"
+                                        android:textOff=""
+                                        android:textOn="" />
 
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Tap here to view"
-                                        android:textSize="12sp"
-                                        android:textColor="@color/colorWhite"
-                                        />
+                                </FrameLayout>
 
-                                </LinearLayout>
+
                             </LinearLayout>
 
-                        </FrameLayout>
+                        </android.support.v7.widget.CardView>
 
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <!--MIDTERM-->
-
-        <LinearLayout
-            android:background="@color/colorMoca3"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.CardView
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    card_view:cardElevation="3dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_gravity="center"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MIDTERM"
-                        android:textColor="@color/colorDarkGray"
-                        android:textSize="18sp"
-                        android:textStyle="bold"/>
-
-                        <FrameLayout
+                        <ScrollView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent">
 
-                            <ToggleButton
-                                android:background="@drawable/btn_showandhide"
-                                android:id="@+id/mtogglebutton"
-                                android:textOff=""
-                                android:textOn=""
-                                android:layout_marginRight="10dp"
-                                android:layout_gravity="right"
-                                android:layout_marginTop="5dp"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp" />
+                            <LinearLayout
+                                android:id="@+id/mlinear_showandhide"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
-                        </FrameLayout>
+                                <!--ACTIVITY-->
+                                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginTop="16dp"
+                                    android:clickable="true"
+                                    card_view:cardCornerRadius="5dp">
 
+                                    <LinearLayout
+                                        android:id="@+id/viewactivitym"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/Red"
+                                        android:clickable="true">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/ripple_activity"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginLeft="16dp"
+                                                android:layout_marginRight="16dp"
+                                                android:layout_marginTop="16dp"
+                                                android:background="@drawable/icon_activity" />
+
+                                            <LinearLayout
+                                                android:layout_width="200dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:layout_marginTop="20dp"
+                                                    android:text="Activity"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="22sp"
+                                                    android:textStyle="bold" />
+                                            </LinearLayout>
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center"
+                                                android:layout_marginLeft="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/totalm1m"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="right"
+                                                    android:layout_marginRight="16dp"
+                                                    android:layout_marginTop="30dp"
+                                                    android:text="0"
+                                                    android:textSize="25sp"
+                                                    android:textStyle="bold" />
+                                            </FrameLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+
+                                <!--ASSIGNMENT-->
+
+                                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginTop="16dp"
+                                    android:clickable="true"
+                                    android:contextClickable="true"
+                                    card_view:cardCornerRadius="5dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/viewassignmentm"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/ripple_assignment"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginLeft="16dp"
+                                                android:layout_marginRight="16dp"
+                                                android:layout_marginTop="16dp"
+                                                android:background="@drawable/icon_assignment" />
+
+                                            <LinearLayout
+                                                android:layout_width="200dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:layout_marginTop="20dp"
+                                                    android:text="Asignment"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="22sp"
+                                                    android:textStyle="bold" />
+                                            </LinearLayout>
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center"
+                                                android:layout_marginLeft="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/totalm2"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="right"
+                                                    android:layout_marginRight="16dp"
+                                                    android:layout_marginTop="30dp"
+                                                    android:text="0"
+                                                    android:textSize="25sp"
+                                                    android:textStyle="bold" />
+                                            </FrameLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+
+                                <!--ATTENDANCE-->
+                                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginTop="16dp"
+                                    android:clickable="true"
+                                    android:contextClickable="true"
+                                    card_view:cardCornerRadius="5dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/viewattendancem"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/basic_ripple">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/ripple_attendance"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginLeft="16dp"
+                                                android:layout_marginRight="16dp"
+                                                android:layout_marginTop="16dp"
+                                                android:background="@drawable/icon_attendance" />
+
+                                            <LinearLayout
+                                                android:layout_width="200dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:layout_marginTop="20dp"
+                                                    android:text="Attendance"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="22sp"
+                                                    android:textStyle="bold" />
+                                            </LinearLayout>
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center"
+                                                android:layout_marginLeft="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/totalm3"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="right"
+                                                    android:layout_marginRight="16dp"
+                                                    android:layout_marginTop="30dp"
+                                                    android:text="0"
+                                                    android:textSize="25sp"
+                                                    android:textStyle="bold" />
+                                            </FrameLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+
+
+                                <!--EXAM-->
+                                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginTop="16dp"
+                                    android:clickable="true"
+                                    android:contextClickable="true"
+                                    card_view:cardCornerRadius="5dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/viewexamm"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/basic_ripple">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/ripple_exam"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginLeft="16dp"
+                                                android:layout_marginRight="16dp"
+                                                android:layout_marginTop="16dp"
+                                                android:background="@drawable/icon_exam" />
+
+                                            <LinearLayout
+                                                android:layout_width="200dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:layout_marginTop="20dp"
+                                                    android:text="Exam"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="22sp"
+                                                    android:textStyle="bold" />
+                                            </LinearLayout>
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center"
+                                                android:layout_marginLeft="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/totalm4"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="right"
+                                                    android:layout_marginRight="16dp"
+                                                    android:layout_marginTop="30dp"
+                                                    android:text="0"
+                                                    android:textSize="25sp"
+                                                    android:textStyle="bold" />
+                                            </FrameLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+
+
+                                <!--PROJECT-->
+                                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginTop="16dp"
+                                    android:clickable="true"
+                                    android:contextClickable="true"
+                                    card_view:cardCornerRadius="5dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/viewprojectm"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/basic_ripple">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/ripple_project"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginLeft="16dp"
+                                                android:layout_marginRight="16dp"
+                                                android:layout_marginTop="16dp"
+                                                android:background="@drawable/icon_project" />
+
+                                            <LinearLayout
+                                                android:layout_width="200dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:layout_marginTop="20dp"
+                                                    android:text="Project"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="22sp"
+                                                    android:textStyle="bold" />
+                                            </LinearLayout>
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center"
+                                                android:layout_marginLeft="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/totalm5"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="right"
+                                                    android:layout_marginRight="16dp"
+                                                    android:layout_marginTop="30dp"
+                                                    android:text="0"
+                                                    android:textSize="25sp"
+                                                    android:textStyle="bold" />
+                                            </FrameLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+
+
+                                <!--QUIZ-->
+                                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="16dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginTop="16dp"
+                                    android:clickable="true"
+                                    android:contextClickable="true"
+                                    card_view:cardCornerRadius="5dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/viewquizm"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/basic_ripple">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/ripple_quiz"
+                                            android:orientation="horizontal">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginLeft="16dp"
+                                                android:layout_marginRight="16dp"
+                                                android:layout_marginTop="16dp"
+                                                android:background="@drawable/icon_quiz" />
+
+                                            <LinearLayout
+                                                android:layout_width="200dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="10dp"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:layout_marginTop="20dp"
+                                                    android:text="Quiz"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="22sp"
+                                                    android:textStyle="bold" />
+                                            </LinearLayout>
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_gravity="center"
+                                                android:layout_marginLeft="10dp">
+
+                                                <TextView
+                                                    android:id="@+id/totalm6"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="right"
+                                                    android:layout_marginRight="16dp"
+                                                    android:layout_marginTop="30dp"
+                                                    android:text="0"
+                                                    android:textSize="25sp"
+                                                    android:textStyle="bold" />
+                                            </FrameLayout>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                </android.support.v7.widget.CardView>
+
+                            </LinearLayout>
+
+                        </ScrollView>
 
 
                     </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        card_view:cardElevation="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="12dp"
+                                android:text="Finals"
+                                android:textColor="@color/colorDarkGray"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ToggleButton
+                                    android:id="@+id/ftogglebutton"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:layout_gravity="right"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/btn_showandhide"
+                                    android:textOff=""
+                                    android:textOn="" />
+
+                            </FrameLayout>
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
 
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <LinearLayout
-                        android:id="@+id/mlinear_showandhide"
-                        android:orientation="vertical"
+                        android:id="@+id/flinear_showandhide"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                         <!--ACTIVITY-->
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -426,32 +928,37 @@
                             android:layout_marginRight="6dp"
                             android:layout_marginTop="16dp"
                             android:clickable="true"
+                            android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
+
                             <LinearLayout
-                                android:clickable="true"
-                                android:id="@+id/viewactivitym"
+                                android:id="@+id/viewactivityf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/Red">
+                                android:background="@drawable/basic_ripple">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:orientation="horizontal"
-                                    android:background="@drawable/ripple_activity">
+                                    android:background="@color/Red"
+                                    android:orientation="horizontal">
+
                                     <ImageView
-                                        android:background="@drawable/icon_activity"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
                                         android:layout_marginBottom="16dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp" />
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/icon_activity" />
+
                                     <LinearLayout
-                                        android:layout_marginTop="10dp"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -459,25 +966,26 @@
                                             android:layout_marginTop="20dp"
                                             android:text="Activity"
                                             android:textColor="#FFFFFF"
-                                            android:textStyle="bold"
-                                            android:textSize="22sp" />
+                                            android:textSize="22sp"
+                                            android:textStyle="bold" />
                                     </LinearLayout>
+
                                     <FrameLayout
-                                        android:layout_marginLeft="10dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp">
+
                                         <TextView
-                                            android:layout_marginTop="30dp"
-                                          android:layout_marginRight="16dp"
-                                            android:id="@+id/totalm1"
-                                           android:layout_gravity="right"
+                                            android:id="@+id/totalf1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="right"
+                                            android:layout_marginRight="16dp"
+                                            android:layout_marginTop="30dp"
                                             android:text="0"
-                                            android:textStyle="bold"
                                             android:textSize="25sp"
-                                            />
+                                            android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -495,29 +1003,35 @@
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
+
                             <LinearLayout
-                                android:id="@+id/viewassignmentm"
+                                android:id="@+id/viewassignmentf"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/basic_ripple">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@drawable/ripple_assignment"
+                                    android:background="@color/Orange"
                                     android:orientation="horizontal">
+
                                     <ImageView
-                                        android:background="@drawable/icon_assignment"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
                                         android:layout_marginBottom="16dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp" />
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/icon_assignment" />
+
                                     <LinearLayout
-                                        android:layout_marginTop="10dp"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -525,25 +1039,26 @@
                                             android:layout_marginTop="20dp"
                                             android:text="Asignment"
                                             android:textColor="#FFFFFF"
-                                            android:textStyle="bold"
-                                            android:textSize="22sp" />
+                                            android:textSize="22sp"
+                                            android:textStyle="bold" />
                                     </LinearLayout>
+
                                     <FrameLayout
-                                        android:layout_marginLeft="10dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp">
+
                                         <TextView
-                                            android:layout_marginTop="30dp"
-                                            android:layout_marginRight="16dp"
-                                            android:id="@+id/totalm2"
-                                            android:layout_gravity="right"
+                                            android:id="@+id/totalf2"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="right"
+                                            android:layout_marginRight="16dp"
+                                            android:layout_marginTop="30dp"
                                             android:text="0"
-                                            android:textStyle="bold"
                                             android:textSize="25sp"
-                                            />
+                                            android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -560,30 +1075,35 @@
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
+
                             <LinearLayout
-                                android:id="@+id/viewattendancem"
+                                android:id="@+id/viewattendancef"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/basic_ripple">
+
                                 <LinearLayout
-                                    android:background="@drawable/ripple_attendance"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:background="@color/Green"
                                     android:orientation="horizontal">
+
                                     <ImageView
-                                        android:background="@drawable/icon_attendance"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
                                         android:layout_marginBottom="16dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp" />
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/icon_attendance" />
+
                                     <LinearLayout
-                                        android:layout_marginTop="10dp"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -591,25 +1111,26 @@
                                             android:layout_marginTop="20dp"
                                             android:text="Attendance"
                                             android:textColor="#FFFFFF"
-                                            android:textStyle="bold"
-                                            android:textSize="22sp" />
+                                            android:textSize="22sp"
+                                            android:textStyle="bold" />
                                     </LinearLayout>
+
                                     <FrameLayout
-                                        android:layout_marginLeft="10dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp">
+
                                         <TextView
-                                            android:layout_marginTop="30dp"
-                                            android:layout_marginRight="16dp"
-                                            android:id="@+id/totalm3"
-                                            android:layout_gravity="right"
+                                            android:id="@+id/totalf3"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="right"
+                                            android:layout_marginRight="16dp"
+                                            android:layout_marginTop="30dp"
                                             android:text="0"
-                                            android:textStyle="bold"
                                             android:textSize="25sp"
-                                            />
+                                            android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -627,30 +1148,35 @@
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
+
                             <LinearLayout
-                                android:id="@+id/viewexamm"
+                                android:id="@+id/viewexamf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/basic_ripple">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@drawable/ripple_exam"
+                                    android:background="@color/Pink"
                                     android:orientation="horizontal">
+
                                     <ImageView
-                                        android:background="@drawable/icon_exam"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
                                         android:layout_marginBottom="16dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp" />
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/icon_exam" />
+
                                     <LinearLayout
-                                        android:layout_marginTop="10dp"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -658,25 +1184,26 @@
                                             android:layout_marginTop="20dp"
                                             android:text="Exam"
                                             android:textColor="#FFFFFF"
-                                            android:textStyle="bold"
-                                            android:textSize="22sp" />
+                                            android:textSize="22sp"
+                                            android:textStyle="bold" />
                                     </LinearLayout>
+
                                     <FrameLayout
-                                        android:layout_marginLeft="10dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp">
+
                                         <TextView
-                                            android:layout_marginTop="30dp"
-                                            android:layout_marginRight="16dp"
-                                            android:id="@+id/totalm4"
-                                            android:layout_gravity="right"
+                                            android:id="@+id/totalf4"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="right"
+                                            android:layout_marginRight="16dp"
+                                            android:layout_marginTop="30dp"
                                             android:text="0"
-                                            android:textStyle="bold"
                                             android:textSize="25sp"
-                                            />
+                                            android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -694,31 +1221,35 @@
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
+
                             <LinearLayout
-                                android:id="@+id/viewprojectm"
+                                android:id="@+id/viewprojectf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/basic_ripple">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@drawable/ripple_project"
+                                    android:background="@color/Blue"
                                     android:orientation="horizontal">
+
                                     <ImageView
-                                        android:background="@drawable/icon_project"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
                                         android:layout_marginBottom="16dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp" />
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/icon_project" />
 
                                     <LinearLayout
-                                        android:layout_marginTop="10dp"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -726,26 +1257,26 @@
                                             android:layout_marginTop="20dp"
                                             android:text="Project"
                                             android:textColor="#FFFFFF"
-                                            android:textStyle="bold"
-                                            android:textSize="22sp" />
+                                            android:textSize="22sp"
+                                            android:textStyle="bold" />
                                     </LinearLayout>
 
                                     <FrameLayout
-                                        android:layout_marginLeft="10dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp">
+
                                         <TextView
-                                            android:layout_marginTop="30dp"
-                                            android:layout_marginRight="16dp"
-                                            android:id="@+id/totalm5"
-                                            android:layout_gravity="right"
+                                            android:id="@+id/totalf5"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="right"
+                                            android:layout_marginRight="16dp"
+                                            android:layout_marginTop="30dp"
                                             android:text="0"
-                                            android:textStyle="bold"
                                             android:textSize="25sp"
-                                            />
+                                            android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -757,37 +1288,42 @@
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="25dp"
                             android:layout_marginLeft="6dp"
                             android:layout_marginRight="6dp"
                             android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
+
                             <LinearLayout
-                                android:id="@+id/viewquizm"
+                                android:id="@+id/viewquizf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/basic_ripple">
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@drawable/ripple_quiz"
+                                    android:background="#FF0DDD"
                                     android:orientation="horizontal">
+
                                     <ImageView
-                                        android:background="@drawable/icon_quiz"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
                                         android:layout_gravity="center"
                                         android:layout_marginBottom="16dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp" />
+                                        android:layout_marginTop="16dp"
+                                        android:background="@drawable/icon_quiz" />
+
                                     <LinearLayout
-                                        android:layout_marginTop="10dp"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -795,25 +1331,26 @@
                                             android:layout_marginTop="20dp"
                                             android:text="Quiz"
                                             android:textColor="#FFFFFF"
-                                            android:textStyle="bold"
-                                            android:textSize="22sp" />
+                                            android:textSize="22sp"
+                                            android:textStyle="bold" />
                                     </LinearLayout>
+
                                     <FrameLayout
-                                        android:layout_marginLeft="10dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:layout_gravity="center">
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp">
+
                                         <TextView
-                                            android:layout_marginTop="30dp"
-                                            android:layout_marginRight="16dp"
-                                            android:id="@+id/totalm6"
-                                            android:layout_gravity="right"
+                                            android:id="@+id/totalf6"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="right"
+                                            android:layout_marginRight="16dp"
+                                            android:layout_marginTop="30dp"
                                             android:text="0"
-                                            android:textStyle="bold"
                                             android:textSize="25sp"
-                                            />
+                                            android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
                             </LinearLayout>
@@ -824,482 +1361,7 @@
 
                 </ScrollView>
 
-
-
-
             </LinearLayout>
-
-
-
-            <android.support.v7.widget.CardView
-
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                card_view:cardElevation="16dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_gravity="center"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Finals"
-                        android:textColor="@color/colorDarkGray"
-                        android:textSize="18sp"
-                        android:textStyle="bold"/>
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ToggleButton
-                            android:id="@+id/ftogglebutton"
-                            android:layout_marginRight="10dp"
-                            android:layout_gravity="right"
-                            android:layout_marginTop="5dp"
-                            android:textOn=""
-                            android:textOff=""
-                            android:background="@drawable/btn_showandhide"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp" />
-
-                    </FrameLayout>
-
-
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/flinear_showandhide"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!--ACTIVITY-->
-                <android.support.v7.widget.CardView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginTop="16dp"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    card_view:cardCornerRadius="5dp">
-                    <LinearLayout
-                        android:id="@+id/viewactivityf"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/basic_ripple">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/Red"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:background="@drawable/icon_activity"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginTop="16dp" />
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="Activity"
-                                    android:textColor="#FFFFFF"
-                                    android:textStyle="bold"
-                                    android:textSize="22sp" />
-                            </LinearLayout>
-                            <FrameLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center">
-                                <TextView
-                                    android:layout_marginTop="30dp"
-                                    android:layout_marginRight="16dp"
-                                    android:id="@+id/totalf1"
-                                    android:layout_gravity="right"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textStyle="bold"
-                                    android:textSize="25sp"
-                                    />
-                            </FrameLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <!--ASSIGNMENT-->
-
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginTop="16dp"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    card_view:cardCornerRadius="5dp">
-                    <LinearLayout
-                        android:id="@+id/viewassignmentf"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/basic_ripple">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/Orange"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:background="@drawable/icon_assignment"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginTop="16dp" />
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="Asignment"
-                                    android:textColor="#FFFFFF"
-                                    android:textStyle="bold"
-                                    android:textSize="22sp" />
-                            </LinearLayout>
-                            <FrameLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center">
-                                <TextView
-                                    android:layout_marginTop="30dp"
-                                    android:layout_marginRight="16dp"
-                                    android:id="@+id/totalf2"
-                                    android:layout_gravity="right"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textStyle="bold"
-                                    android:textSize="25sp"
-                                    />
-                            </FrameLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <!--ATTENDANCE-->
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginTop="16dp"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    card_view:cardCornerRadius="5dp">
-                    <LinearLayout
-                        android:id="@+id/viewattendancef"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/basic_ripple">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/Green"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:background="@drawable/icon_attendance"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginTop="16dp" />
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="Attendance"
-                                    android:textColor="#FFFFFF"
-                                    android:textStyle="bold"
-                                    android:textSize="22sp" />
-                            </LinearLayout>
-                            <FrameLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center">
-                                <TextView
-                                    android:layout_marginTop="30dp"
-                                    android:layout_marginRight="16dp"
-                                    android:id="@+id/totalf3"
-                                    android:layout_gravity="right"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textStyle="bold"
-                                    android:textSize="25sp"
-                                    />
-                            </FrameLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-
-                <!--EXAM-->
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginTop="16dp"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    card_view:cardCornerRadius="5dp">
-                    <LinearLayout
-                        android:id="@+id/viewexamf"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/basic_ripple">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/Pink"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:background="@drawable/icon_exam"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginTop="16dp" />
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="Exam"
-                                    android:textColor="#FFFFFF"
-                                    android:textStyle="bold"
-                                    android:textSize="22sp" />
-                            </LinearLayout>
-                            <FrameLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center">
-                                <TextView
-                                    android:layout_marginTop="30dp"
-                                    android:layout_marginRight="16dp"
-                                    android:id="@+id/totalf4"
-                                    android:layout_gravity="right"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textStyle="bold"
-                                    android:textSize="25sp"
-                                    />
-                            </FrameLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-
-                <!--PROJECT-->
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginTop="16dp"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    card_view:cardCornerRadius="5dp">
-                    <LinearLayout
-                        android:id="@+id/viewprojectf"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/basic_ripple">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/Blue"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:background="@drawable/icon_project"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginTop="16dp" />
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="Project"
-                                    android:textColor="#FFFFFF"
-                                    android:textStyle="bold"
-                                    android:textSize="22sp" />
-                            </LinearLayout>
-                            <FrameLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center">
-                                <TextView
-                                    android:layout_marginTop="30dp"
-                                    android:layout_marginRight="16dp"
-                                    android:id="@+id/totalf5"
-                                    android:layout_gravity="right"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textStyle="bold"
-                                    android:textSize="25sp"
-                                    />
-                            </FrameLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-
-                <!--QUIZ-->
-                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="25dp"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    card_view:cardCornerRadius="5dp">
-                    <LinearLayout
-                        android:id="@+id/viewquizf"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/basic_ripple">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#FF0DDD"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:background="@drawable/icon_quiz"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="16dp"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginRight="16dp"
-                                android:layout_marginTop="16dp" />
-                            <LinearLayout
-                                android:layout_marginTop="10dp"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="Quiz"
-                                    android:textColor="#FFFFFF"
-                                    android:textStyle="bold"
-                                    android:textSize="22sp" />
-                            </LinearLayout>
-                            <FrameLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center">
-                                <TextView
-                                    android:layout_marginTop="30dp"
-                                    android:layout_marginRight="16dp"
-                                    android:id="@+id/totalf6"
-                                    android:layout_gravity="right"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    android:textStyle="bold"
-                                    android:textSize="25sp"
-                                    />
-                            </FrameLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-
-        </ScrollView>
-
-    </LinearLayout>
-
 
 
         </ScrollView>

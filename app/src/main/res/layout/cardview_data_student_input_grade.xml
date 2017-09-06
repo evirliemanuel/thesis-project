@@ -60,26 +60,24 @@
                 android:layout_height="50dp"
                 android:background="@color/colorClouds">
 
-                <TextView
+                <EditText
                     android:id="@+id/input_score"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:inputType="number"
                     android:text="00"
                     android:textSize="22dp"/>
-
-
             </RelativeLayout>
 
-            <Spinner
-                android:id="@+id/input_spinner"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp">
-
-            </Spinner>
+            <!--<Spinner-->
+                <!--android:id="@+id/input_spinner"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp">-->
+            <!--</Spinner>-->
 
         </LinearLayout>
 

@@ -79,31 +79,23 @@
                 android:text="July 1 1991"
                 android:textSize="18sp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
                 android:textStyle="bold"
                 android:id="@+id/txtv_date1"/>
 
 
-            <Spinner
-                android:layout_marginTop="10dp"
-                android:id="@+id/spiner_input1"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content">
 
-            </Spinner>
-
-            <TextView
-                android:id="@+id/txtv_total1"
-                android:layout_marginTop="12dp"
+            <EditText
+                android:id="@+id/etxt_totalm"
                 android:layout_marginLeft="5dp"
                 android:layout_below="@+id/ddd"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:hint="Total"
+                android:inputType="number"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="25sp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="8dp"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -114,13 +106,13 @@
                 android:layout_gravity="right"
                 android:id="@+id/btn_submit1"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:text="Submit"
                 android:textSize="12dp"
                 android:background="@color/colorClouds"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="10dp"/>
 
             </FrameLayout>

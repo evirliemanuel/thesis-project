@@ -14,8 +14,11 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.remswork.project.alice.exception.ClassException;
+import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Class;
+import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 
 import static com.lieverandiver.thesisproject.R.id.view_schedule;
 import static com.lieverandiver.thesisproject.R.id.view_student;
@@ -36,6 +39,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
 
     private static final String TAG = ClassViewActivity.class.getSimpleName();
 
+    private ActivityService activityService = new ActivityServiceImpl();
     private ClassService classService;
     private TextView txtViewSubjectName;
     private TextView txtViewSectionName;
@@ -64,7 +68,20 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout linearLayoutProjectF;
     private LinearLayout linearLayoutQuizF;
 
-    private Button buttonBack;
+    private TextView textViewActivityM;
+    private TextView textViewAssignmentM;
+    private TextView textViewAttendanceM;
+    private TextView textViewExamM;
+    private TextView textViewProjectM;
+    private TextView textViewQuizM;
+
+    private TextView textViewActivityF;
+    private TextView textViewAssignmentF;
+    private TextView textViewAttendanceF;
+    private TextView textViewExamF;
+    private TextView textViewProjectF;
+    private TextView textViewQuizF;
+
 
     public class ClassViewThread extends Thread {
         @Override
@@ -95,12 +112,11 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activty_view_class);
+        classId = getIntent().getExtras().getLong("classId");
 
         init();
-        classId = getIntent().getExtras().getLong("classId");
+
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -176,13 +192,26 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 break;
         }
 
-
-
-
-
     }
 
     public void init() {
+
+        textViewActivityM = (TextView)findViewById(R.id.totalm1m);
+        textViewAssignmentM = (TextView)findViewById(R.id.totalm2);
+        textViewAttendanceM = (TextView)findViewById(R.id.totalm3);
+        textViewExamM = (TextView)findViewById(R.id.totalm4);
+        textViewProjectM = (TextView)findViewById(R.id.totalm5);
+        textViewQuizM = (TextView)findViewById(R.id.totalm6);
+
+        textViewActivityF = (TextView)findViewById(R.id.totalf1);
+        textViewAssignmentF = (TextView)findViewById(R.id.totalf2);
+        textViewAttendanceF = (TextView)findViewById(R.id.totalf3);
+        textViewExamF = (TextView)findViewById(R.id.totalf4);
+        textViewProjectF = (TextView)findViewById(R.id.totalf5);
+        textViewQuizF = (TextView)findViewById(R.id.totalf6);
+
+
+
         viewSchedule = (CardView) findViewById(view_schedule);
         viewStudent = (CardView) findViewById(view_student);
         txtViewSubjectName = (TextView) findViewById(R.id.txtv_subjectname);
@@ -192,9 +221,6 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
 
         viewSchedule.setOnClickListener(this);
         viewStudent.setOnClickListener(this);
-        buttonBack.setOnClickListener(this);
-
-
 
         toggleButtonShowandHideM = (ToggleButton)findViewById(R.id.mtogglebutton);
         toggleButtonShowandHideF = (ToggleButton)findViewById(R.id.ftogglebutton);
@@ -265,6 +291,12 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 }
             }
         });
+
+        try {
+            textViewActivityM.setText(activityService.getActivityListByClassId(classId).size() + "");
+        } catch (GradingFactorException e) {
+            e.printStackTrace();
+        }
 
 
     }
