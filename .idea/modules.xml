@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Myapp-thesisproject.iml" filepath="$PROJECT_DIR$/Myapp-thesisproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/login-commons/login-commons.iml" filepath="$PROJECT_DIR$/login-commons/login-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/thesis-project.iml" filepath="$PROJECT_DIR$/thesis-project.iml" />
     </modules>
   </component>

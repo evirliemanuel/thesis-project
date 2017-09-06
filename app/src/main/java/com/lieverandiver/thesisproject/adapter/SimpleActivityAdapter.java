@@ -32,7 +32,7 @@ public class SimpleActivityAdapter extends RecyclerView
 
     @Override
     public SimpleActivityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.cardview_data_student_viewgrade, parent,false);
+        View view = layoutInflater.inflate(R.layout.activity_studentscore_cardview, parent,false);
         return new SimpleActivityViewHolder(view);
     }
 
@@ -46,33 +46,32 @@ public class SimpleActivityAdapter extends RecyclerView
         return resultList.size();
     }
 
-    public class SimpleActivityViewHolder extends RecyclerView.ViewHolder {
-        private ImageView studentImage;
-        private TextView studentDetail;
-        private TextView editText;
-        private Student student;
-        private Spinner spinner;
-        private LinearLayout layout;
+    class SimpleActivityViewHolder extends RecyclerView.ViewHolder {
+        private TextView txName;
+        private TextView txScore;
+        private TextView txInit;
+
 
         SimpleActivityViewHolder(View itemView) {
             super(itemView);
-            studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
-            studentDetail = (TextView) itemView.findViewById(R.id.f_data_studentname_text);
-            editText = (TextView) itemView.findViewById(R.id.f_data_student_viewgrade);
-            layout = (LinearLayout) itemView.findViewById(R.id.bg_la);
+            txName = (TextView) itemView.findViewById(R.id.newid_studentname);
+            txScore = (TextView) itemView.findViewById(R.id.newid_studentscore);
+            txInit = (TextView) itemView.findViewById(R.id.newid_initname);
         }
 
         void setView(final ActivityResult result, final int position) {
             if(result != null) {
                 Student student = result.getStudent();
-                String display = String.format(Locale.ENGLISH, "%s \t%s %s. %s - %d",
-                        "1-A",
+                String name = String.format("%s %s. %s",
                         student.getFirstName(),
                         student.getMiddleName().substring(0, 1),
-                        student.getLastName(),
-                        student.getStudentNumber());
-                studentDetail.setText(display);
-                editText.setText(result.getScore() + "");
+                        student.getLastName());
+                String score = String.valueOf(result.getScore());
+                String init = student.getFirstName().substring(0, 1);
+
+                txName.setText(name);
+                txScore.setText(score);
+                txInit.setText(init);
             }
         }
     }
