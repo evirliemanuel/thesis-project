@@ -11,38 +11,36 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lieverandiver.thesisproject.adapter.StudentAdapter2;
-import com.remswork.project.alice.model.Activity;
+import com.remswork.project.alice.model.Exam;
+import com.remswork.project.alice.model.Project;
 import com.remswork.project.alice.model.Student;
-import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
-import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.service.ExamService;
+import com.remswork.project.alice.service.ProjectService;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.ExamServiceImpl;
+import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import static android.support.v7.widget.AppCompatDrawableManager.get;
-
 /**
  * Created by Verlie on 8/31/2017.
  */
 
-public class Activity_Class_InputActivity extends AppCompatActivity{
+public class ProjectInputActivity extends AppCompatActivity{
 
     private final ClassService classService = new ClassServiceImpl();
-    private final ActivityService activityService = new ActivityServiceImpl();
+    private final ProjectService projectService = new ProjectServiceImpl();
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
-    private Spinner spinner ;
-    private TextView textViewTotal;
     private Button buttonSubmit;
     private RecyclerView recyclerViewStudentInput;
     private ImageView imageView;
@@ -51,27 +49,20 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_grade_activity);
+        setContentView(R.layout.activity_input_grade_project);
 
         init();
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                finish();
-            }
-        });
 
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     boolean isNoError=true;
-                    Activity activity = new Activity();
-                    activity.setTitle(editTextName.getText().toString());
-                    activity.setDate(textViewDate.getText().toString());
-                    activity.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
-                    activity = activityService.addActivity(activity, getIntent().getExtras().getLong("classId"));
+                    Project project = new Project();
+                    project.setTitle(editTextName.getText().toString());
+                    project.setDate(textViewDate.getText().toString());
+                    project.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
+                    project = projectService.addProject(project, getIntent().getExtras().getLong("classId"));
 
                     for(int i=0; i < studentList.size(); i++) {
                         RecyclerView.ViewHolder viewHolder = recyclerViewStudentInput.findViewHolderForAdapterPosition(i);
@@ -90,11 +81,11 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
                             RecyclerView.ViewHolder viewHolder = recyclerViewStudentInput.findViewHolderForAdapterPosition(i);
                             int score = ((StudentAdapter2.StudentAdapterViewHolder) viewHolder).getScore();
                             Student student = ((StudentAdapter2.StudentAdapterViewHolder) viewHolder).getStudent();
-                            activityService.addActivityResult(score, activity.getId(), student.getId());
+                            projectService.addProjectResult(score, project.getId(), student.getId());
                         }
-                        Toast.makeText(Activity_Class_InputActivity.this, "Success", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ProjectInputActivity.this, "Success", Toast.LENGTH_LONG).show();
                     }else
-                        Toast.makeText(Activity_Class_InputActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ProjectInputActivity.this, "Failed", Toast.LENGTH_LONG).show();
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -108,14 +99,11 @@ public class Activity_Class_InputActivity extends AppCompatActivity{
         try {
             Log.i("Success : ", getIntent().getExtras().getLong("classId") + "");
 
-            editTextName = (EditText) findViewById(R.id.etxt_name1);
-            editTextTotal =(EditText) findViewById(R.id.etxt_totalm);
-            textViewDate = (TextView) findViewById(R.id.txtv_date1);
-//            spinner = (Spinner) findViewById(R.id.spiner_input1);
-//            textViewTotal = (TextView) findViewById(R.id.txtv_total1);
-            buttonSubmit = (Button) findViewById(R.id.btn_submit1);
-            recyclerViewStudentInput = (RecyclerView) findViewById(R.id.recyclerview_view1);
-            imageView = (ImageView) findViewById(R.id.btn_cancel1);
+            editTextName = (EditText) findViewById(R.id.newid_name_project);
+            editTextTotal =(EditText) findViewById(R.id.newid_total_project);
+            textViewDate = (TextView) findViewById(R.id.newid_date_project);
+            buttonSubmit = (Button) findViewById(R.id.newid_submit_project);
+            recyclerViewStudentInput = (RecyclerView) findViewById(R.id.newid_recycle_project);
 
             for(Student s : classService.getStudentList(getIntent().getExtras().getLong("classId")))
                 studentList.add(s);

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".Activity_Class_View_Attendance">
+    tools:context=".AttendanceResultViewActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                     android:id="@+id/name_attendance_xf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Activity Name"
+                    android:text="Loading ..."
                     android:layout_marginTop="22dp"
                     android:layout_marginLeft="20dp"
                     android:textSize="22sp"
@@ -54,10 +54,10 @@
                     android:id="@+id/date_attendance_xf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date"
+                    android:text=""
                     android:textSize="22dp"
                     android:textColor="@color/colorWhite"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_marginLeft="20dp"/>
 
             </LinearLayout>
 

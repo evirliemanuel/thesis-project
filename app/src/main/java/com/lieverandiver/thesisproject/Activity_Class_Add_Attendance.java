@@ -20,35 +20,35 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
 @Deprecated
 public class Activity_Class_Add_Attendance extends AppCompatActivity{
 
-    private Button buttonBack;
-    private RecyclerView recyclerView;
-    private LinearLayout linearLayoutAttendance;
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_add_attendance);
-
-        buttonBack = (Button) findViewById(R.id.btn_backaddattendance);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-            finish();
-            }
-        });
-        linearLayoutAttendance = (LinearLayout) findViewById(R.id.relative_clicked3) ;
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
-
-        linearLayoutAttendance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Attendance.this,
-                        Activity_Class_InputAttendance.class);
-                startActivity(intent);
-            }
-        });
-
-    }
+//    private Button buttonBack;
+//    private RecyclerView recyclerView;
+//    private LinearLayout linearLayoutAttendance;
+//
+//
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_class_add_attendance);
+//
+//        buttonBack = (Button) findViewById(R.id.btn_backaddattendance);
+//        buttonBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//            finish();
+//            }
+//        });
+//        linearLayoutAttendance = (LinearLayout) findViewById(R.id.relative_clicked3) ;
+//        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
+//
+//        linearLayoutAttendance.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//                Intent intent = new Intent(Activity_Class_Add_Attendance.this,
+//                        Activity_Class_InputAttendance.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//    }
 
 }

@@ -16,10 +16,13 @@ import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Class;
 import com.remswork.project.alice.service.ActivityService;
+
 import com.remswork.project.alice.service.AttendanceService;
 import com.remswork.project.alice.service.ClassService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.AttendanceServiceImpl;
+import com.remswork.project.alice.service.AssignmentService;
+import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
 
 import static com.lieverandiver.thesisproject.R.id.ftogglebutton;
@@ -43,10 +46,13 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = ClassViewActivity.class.getSimpleName();
-
     private final ActivityService activityService = new ActivityServiceImpl();
     private final AttendanceService attendanceService = new AttendanceServiceImpl();
+    private final AssignmentService assignmentService = new AssignmentServiceImpl();
+
+
     private final ClassService classService = new ClassServiceImpl();
+
     private TextView txtViewSubjectName;
     private TextView txtViewSectionName;
     private TextView txtViewDepName;
@@ -252,7 +258,8 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case viewassignmentm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Assignment.class);
+                intent = getIntent().setClass(this, AssignmentAddActivity.class);
+                intent.putExtra("termId", 1);
                 startActivity(intent);
                 break;
             case viewattendancem :
@@ -261,16 +268,19 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case viewexamm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Exam.class);
+                intent = getIntent().setClass(this, ExamAddActivity.class);
+                intent.putExtra("termId", 1);
                 startActivity(intent);
                 break;
             case viewprojectm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Project.class);
+                intent = getIntent().setClass(this, ProjectAddActivity.class);
+                intent.putExtra("termId", 1);
                 startActivity(intent);
                 break;
 
             case viewquizm :
-                intent = getIntent().setClass(this, Activity_Class_Add_Quiz.class);
+                intent = getIntent().setClass(this, QuizAddActivity.class);
+                intent.putExtra("termId", 1);
                 startActivity(intent);
                 break;
 

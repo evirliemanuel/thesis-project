@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/newid_studentname_cardview_score"
+    android:id="@+id/newid_studentname_cardview_score6"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="2dp"
@@ -27,8 +27,8 @@
             android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_width="30dp"
-                android:layout_height="30dp">
+                android:layout_width="40dp"
+                android:layout_height="40dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                     android:background="@color/colorAccent" />
 
                 <TextView
-                    android:id="@+id/caia_init"
+                    android:id="@+id/newid_initname6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -48,7 +48,7 @@
 
 
             <TextView
-                android:id="@+id/caia_name"
+                android:id="@+id/newid_studentname6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center"
-                android:text="status"
+                android:text="score"
                 android:textColor="#000000"
                 android:textSize="14dp"/>
 
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom">
                 <TextView
-                    android:id="@+id/caia_status"
+                    android:id="@+id/newid_studentscore6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="--"

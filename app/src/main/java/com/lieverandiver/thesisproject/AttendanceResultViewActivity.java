@@ -45,8 +45,9 @@ public class AttendanceResultViewActivity extends AppCompatActivity {
         @Override
         public void run() {
             try {
+                attendance = attendanceService.getAttendanceById(attendanceId);
             for (Student s : classService.getStudentList(classId)) {
-                AttendanceResult result = attendanceService.getAttendanceResultByAttendanceAndStudentId(attendance.getId(), s.getId());
+                AttendanceResult result = attendanceService.getAttendanceResultByAttendanceAndStudentId(attendanceId, s.getId());
                 if(result != null)
                     resultList.add(result);
             }
@@ -91,16 +92,6 @@ public class AttendanceResultViewActivity extends AppCompatActivity {
         classId = getIntent().getExtras().getLong("classId");
         attendanceId = getIntent().getExtras().getLong("attendanceId");
         termId = getIntent().getExtras().getLong("termId");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    attendance = attendanceService.getAttendanceById(attendanceId);
-                } catch (GradingFactorException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
         init();
         new AttendanceViewThread().start();
     }

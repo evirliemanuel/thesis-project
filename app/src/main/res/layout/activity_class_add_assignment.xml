@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_clazz__assignment"
+    android:id="@+id/activityassignment"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".Activity_Class_InputAssignment">
+    tools:context=".AssignmentAddActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
         card_view:cardElevation="5dp">
 
         <LinearLayout
-            android:id="@+id/relative_clicked2"
+            android:id="@+id/assignmentl_clicked"
             android:background="@drawable/basic_ripple"
             android:clickable="true"
             android:orientation="horizontal"
@@ -106,7 +106,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_view2"
+        android:id="@+id/assignmentr_clicked"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"

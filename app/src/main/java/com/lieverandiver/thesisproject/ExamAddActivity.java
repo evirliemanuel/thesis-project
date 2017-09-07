@@ -12,24 +12,26 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.lieverandiver.thesisproject.adapter.ActivityAdapter;
+import com.lieverandiver.thesisproject.adapter.ExamAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
-import com.remswork.project.alice.model.Activity;
-import com.remswork.project.alice.service.ActivityService;
-import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.model.Exam;
+import com.remswork.project.alice.service.ExamService;
+import com.remswork.project.alice.service.impl.ExamServiceImpl;
 
 import java.util.List;
 
-import static com.lieverandiver.thesisproject.R.id.btn_backaddactivity;
-import static com.lieverandiver.thesisproject.R.id.recyclerview_view1;
-import static com.lieverandiver.thesisproject.R.id.relative_clicked1;
+import static com.lieverandiver.thesisproject.R.id.btn_backaddexam;
 
-public class ActivityAddActivity extends AppCompatActivity implements ActivityAdapter.OnClickListener,
+import static com.lieverandiver.thesisproject.R.id.newid_examl_clickednew;
+
+import static com.lieverandiver.thesisproject.R.id.newid_examr_clickednew;
+
+public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.OnClickListener,
         View.OnClickListener {
 
-    private static final String TAG = ActivityAddActivity.class.getSimpleName();
+    private static final String TAG = ExamAddActivity.class.getSimpleName();
 
-    final ActivityService activityService = new ActivityServiceImpl();
+    final ExamService examService = new ExamServiceImpl();
     private ImageView imageView;
     private Button btnBackButton;
     private RecyclerView recyclerView;
@@ -37,20 +39,20 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     private long classId;
     private long termId;
 
-    private class ActivityAddThread extends Thread {
+    private class ExamAddThread extends Thread {
         @Override
         public void run() {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        List<Activity> activityList = activityService.getActivityListByClassId(classId);
-                        ActivityAdapter activityAdapter = new ActivityAdapter(ActivityAddActivity.this, activityList);
+                        List<Exam> examList = examService.getExamListByClassId(classId);
+                        ExamAdapter examAdapter = new ExamAdapter(ExamAddActivity.this, examList);
 
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityAddActivity.this);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(ExamAddActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-                        recyclerView.setAdapter(activityAdapter);
+                        recyclerView.setAdapter(examAdapter);
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
                     }catch (GradingFactorException e) {
@@ -60,11 +62,10 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
             });
         }
     }
-
     private void init() {
-        linearLayoutActivity = (LinearLayout) findViewById(relative_clicked1);
-        recyclerView = (RecyclerView) findViewById(recyclerview_view1);
-        btnBackButton = (Button) findViewById(btn_backaddactivity);
+        linearLayoutActivity = (LinearLayout) findViewById(newid_examl_clickednew);
+        recyclerView = (RecyclerView) findViewById(newid_examr_clickednew);
+        btnBackButton = (Button) findViewById(btn_backaddexam);
 
         linearLayoutActivity.setOnClickListener(this);
         btnBackButton.setOnClickListener(this);
@@ -73,13 +74,13 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_add_activity);
+        setContentView(R.layout.activity_class_add_exam);
         try {
             classId = getIntent().getExtras().getLong("classId");
             termId = getIntent().getExtras().getLong("termId");
 
             init();
-            new ActivityAddThread().start();
+            new ExamAddThread().start();
 
         }catch (Exception e) {
             e.printStackTrace();
@@ -87,9 +88,9 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     }
 
     @Override
-    public void onClick(Activity activity, long activityId) {
+    public void onClick(Exam exam, long examId) {
         Intent intent = getIntent();
-        intent.putExtra("activityId", activityId);
+        intent.putExtra("examId", examId);
         intent.setClass(this, ActivityResultViewActivity.class);
         startActivity(intent);
     }
@@ -97,11 +98,11 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case relative_clicked1 :
-                Intent intent = getIntent().setClass(this, ActivityInputActivity.class);
+            case newid_examl_clickednew :
+                Intent intent = getIntent().setClass(this,ExamInputActivity.class);
                 startActivity(intent);
                 break;
-            case btn_backaddactivity :
+            case newid_examr_clickednew :
                 finish();
                 break;
         }

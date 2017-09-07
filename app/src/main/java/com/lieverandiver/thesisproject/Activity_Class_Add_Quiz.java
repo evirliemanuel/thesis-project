@@ -16,37 +16,37 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
 /**
  * Created by Verlie on 9/1/2017.
  */
-
+@Deprecated
 public class Activity_Class_Add_Quiz extends AppCompatActivity{
 
     private Button buttonBack;
     private RecyclerView recyclerView;
     private LinearLayout linearLayoutQuiz;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_add_quiz);
-
-        buttonBack = (Button) findViewById(R.id.btn_backaddquiz);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                finish();
-
-            }
-        });
-        linearLayoutQuiz = (LinearLayout) findViewById(R.id.relative_clicked6) ;
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
-
-        linearLayoutQuiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Quiz.this,
-                        Activity_Class_InputQuiz.class);
-                startActivity(intent);
-            }
-        });
-
-    }
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_class_add_quiz);
+//
+//        buttonBack = (Button) findViewById(R.id.btn_backaddquiz);
+//        buttonBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//                finish();
+//
+//            }
+//        });
+//        linearLayoutQuiz = (LinearLayout) findViewById(R.id.relative_clicked6) ;
+//        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
+//
+//        linearLayoutQuiz.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//                Intent intent = new Intent(Activity_Class_Add_Quiz.this,
+//                        Activity_Class_InputQuiz.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//    }
 }

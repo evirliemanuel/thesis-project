@@ -16,7 +16,7 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
 /**
  * Created by Verlie on 9/1/2017.
  */
-
+@Deprecated
 public class Activity_Class_Add_Project extends AppCompatActivity{
 
     private Button buttonBack;
@@ -24,30 +24,30 @@ public class Activity_Class_Add_Project extends AppCompatActivity{
     private LinearLayout linearLayoutProject;
 
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_add_project);
-
-        buttonBack = (Button) findViewById(R.id.btn_backaddproject);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-               finish();
-
-            }
-        });
-        linearLayoutProject = (LinearLayout) findViewById(R.id.relative_clicked5) ;
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
-
-        linearLayoutProject.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Project.this,
-                        Activity_Class_InputProject.class);
-                startActivity(intent);
-            }
-        });
-
-    }
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_class_add_project);
+//
+//        buttonBack = (Button) findViewById(R.id.btn_backaddproject);
+//        buttonBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//               finish();
+//
+//            }
+//        });
+//        linearLayoutProject = (LinearLayout) findViewById(R.id.relative_clicked5) ;
+//        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
+//
+//        linearLayoutProject.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//                Intent intent = new Intent(Activity_Class_Add_Project.this,
+//                        Activity_Class_InputProject.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//    }
 }

@@ -20,21 +20,20 @@
         </activity>
         <activity android:name=".InputAttendance_Cardview" />
         <activity android:name=".SubjectViewActivity" />
-        <activity android:name=".Activity_Class_Add_Activity" />
-        <activity android:name=".Activity_Class_Add_Assignment" />
-        <activity android:name=".Activity_Class_Add_Attendance" />
-        <activity android:name=".Activity_Class_Add_Exam" />
-        <activity android:name=".Activity_Class_Add_Project" />
-        <activity android:name=".Activity_Class_Add_Quiz" />
+        <activity android:name=".ActivityAddActivity" />
+        <activity android:name=".AssignmentAddActivity" />
+        <activity android:name=".ExamAddActivity" />
+        <activity android:name=".ProjectAddActivity" />
+        <activity android:name=".QuizAddActivity" />
 
-        <activity android:name=".Activity_Class_InputActivity" />
-        <activity android:name=".Activity_Class_InputAssignment" />
-        <activity android:name=".Activity_Class_InputAttendance" />
-        <activity android:name=".Activity_Class_InputExam" />
-        <activity android:name=".Activity_Class_InputProject" />
-        <activity android:name=".Activity_Class_InputQuiz" />
 
-        <activity android:name=".Activity_Class_View_Activity" />
+        <activity android:name=".ActivityInputActivity" />
+        <activity android:name=".AttendanceInputActivity" />
+        <activity android:name=".AssignmentInputActivity" />
+        <activity android:name=".ExamInputActivity" />
+        <activity android:name=".ProjectInputActivity" />
+        <activity android:name=".QuizInputActivity" />
+
         <activity android:name=".Activity_Class_View_Assignment" />
         <activity android:name=".Activity_Class_View_Attendance" />
         <activity android:name=".Activity_Class_View_Exam" />
@@ -64,10 +63,10 @@
         <activity android:name=".TeacherViewActivity" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".ActivityResultViewActivity"/>
-        <activity android:name=".ActivityAddActivity"/>
+
         <activity android:name=".AttendanceAddActivity" />
-        <activity android:name=".AttendanceInputActivity" />
         <activity android:name=".AttendanceResultViewActivity" />
+
     </application>
 
 </manifest>

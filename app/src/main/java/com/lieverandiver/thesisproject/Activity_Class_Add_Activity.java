@@ -58,7 +58,7 @@ public class Activity_Class_Add_Activity extends AppCompatActivity implements Ac
                 @Override
                 public void onClick(View arg0) {
                     Intent intent = getIntent().setClass(Activity_Class_Add_Activity.this,
-                            Activity_Class_InputActivity.class);
+                            ActivityInputActivity.class);
                     startActivity(intent);
 
                 }

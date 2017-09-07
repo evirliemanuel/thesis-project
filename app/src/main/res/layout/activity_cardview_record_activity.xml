@@ -5,18 +5,18 @@
     android:id="@+id/fragment_slidebar_cardview_schedule"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="6dp"
-    android:layout_marginRight="6dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
     android:background="@drawable/basic_ripple"
-    android:layout_marginTop="6dp"
+    android:layout_marginTop="5dp"
     android:clickable="true"
     android:contextClickable="true"
-    card_view:cardCornerRadius="5dp">
+    card_view:cardCornerRadius="2dp">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#e74c3c"
+        android:background="#FFFFFF"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Activity"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textStyle="bold"
                 android:textSize="22sp" />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="July 1, 1991"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="14sp" />
         </LinearLayout>
 

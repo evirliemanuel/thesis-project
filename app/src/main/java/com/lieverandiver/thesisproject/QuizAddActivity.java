@@ -12,24 +12,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.lieverandiver.thesisproject.adapter.ActivityAdapter;
+import com.lieverandiver.thesisproject.adapter.QuizAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
-import com.remswork.project.alice.model.Activity;
-import com.remswork.project.alice.service.ActivityService;
-import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.model.Quiz;
+import com.remswork.project.alice.service.QuizService;
+import com.remswork.project.alice.service.impl.QuizServiceImpl;
 
 import java.util.List;
+import static com.lieverandiver.thesisproject.R.id.btn_backaddexam;
+import static com.lieverandiver.thesisproject.R.id.newid_quizl_clickednew;
 
-import static com.lieverandiver.thesisproject.R.id.btn_backaddactivity;
-import static com.lieverandiver.thesisproject.R.id.recyclerview_view1;
-import static com.lieverandiver.thesisproject.R.id.relative_clicked1;
-
-public class ActivityAddActivity extends AppCompatActivity implements ActivityAdapter.OnClickListener,
+public class QuizAddActivity extends AppCompatActivity implements QuizAdapter.OnClickListener,
         View.OnClickListener {
 
-    private static final String TAG = ActivityAddActivity.class.getSimpleName();
+    private static final String TAG = QuizAddActivity.class.getSimpleName();
 
-    final ActivityService activityService = new ActivityServiceImpl();
+    final QuizService quizService = new QuizServiceImpl();
     private ImageView imageView;
     private Button btnBackButton;
     private RecyclerView recyclerView;
@@ -37,20 +35,20 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     private long classId;
     private long termId;
 
-    private class ActivityAddThread extends Thread {
+    private class QuizAddThread extends Thread {
         @Override
         public void run() {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        List<Activity> activityList = activityService.getActivityListByClassId(classId);
-                        ActivityAdapter activityAdapter = new ActivityAdapter(ActivityAddActivity.this, activityList);
+                        List<Quiz> quizList = quizService.getQuizListByClassId(classId);
+                        QuizAdapter quizAdapter = new QuizAdapter(QuizAddActivity.this, quizList);
 
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityAddActivity.this);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(QuizAddActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-                        recyclerView.setAdapter(activityAdapter);
+                        recyclerView.setAdapter(quizAdapter);
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
                     }catch (GradingFactorException e) {
@@ -60,11 +58,10 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
             });
         }
     }
-
     private void init() {
-        linearLayoutActivity = (LinearLayout) findViewById(relative_clicked1);
-        recyclerView = (RecyclerView) findViewById(recyclerview_view1);
-        btnBackButton = (Button) findViewById(btn_backaddactivity);
+        linearLayoutActivity = (LinearLayout) findViewById(newid_quizl_clickednew);
+        recyclerView = (RecyclerView) findViewById(R.id.newid_quizr_clickednew);
+        btnBackButton = (Button) findViewById(btn_backaddexam);
 
         linearLayoutActivity.setOnClickListener(this);
         btnBackButton.setOnClickListener(this);
@@ -73,13 +70,13 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_add_activity);
+        setContentView(R.layout.activity_class_add_quiz);
         try {
             classId = getIntent().getExtras().getLong("classId");
             termId = getIntent().getExtras().getLong("termId");
 
             init();
-            new ActivityAddThread().start();
+            new QuizAddThread().start();
 
         }catch (Exception e) {
             e.printStackTrace();
@@ -87,9 +84,9 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     }
 
     @Override
-    public void onClick(Activity activity, long activityId) {
+    public void onClick(Quiz quiz, long quizId) {
         Intent intent = getIntent();
-        intent.putExtra("activityId", activityId);
+        intent.putExtra("quizId", quizId);
         intent.setClass(this, ActivityResultViewActivity.class);
         startActivity(intent);
     }
@@ -97,11 +94,11 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case relative_clicked1 :
-                Intent intent = getIntent().setClass(this, ActivityInputActivity.class);
+            case newid_quizl_clickednew :
+                Intent intent = getIntent().setClass(this, QuizInputActivity.class);
                 startActivity(intent);
                 break;
-            case btn_backaddactivity :
+            case btn_backaddexam :
                 finish();
                 break;
         }

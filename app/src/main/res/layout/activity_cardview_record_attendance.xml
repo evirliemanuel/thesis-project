@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="6dp"
-    android:background="@drawable/basic_ripple"
     android:layout_marginRight="6dp"
     android:layout_marginTop="6dp"
     android:clickable="true"
@@ -15,7 +14,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#27ae60"
+        android:background="@drawable/basic_ripple"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -46,19 +45,19 @@
                     android:id="@+id/f_gradecriteria_view_activity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Attendance"
-                    android:textColor="#FFFFFF"
+                    android:text="Loading"
+                    android:textColor="#000000"
                     android:textStyle="bold"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/f_grade_activity_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="July 1, 1991"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
+                    android:text="Loading"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>

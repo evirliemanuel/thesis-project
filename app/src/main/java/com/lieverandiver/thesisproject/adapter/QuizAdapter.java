@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
@@ -15,28 +16,32 @@ import com.remswork.project.alice.model.Quiz;
 import java.util.List;
 
 /**
- * Created by Verlie on 9/3/2017.
+ * Created by Verlie on 9/6/2017.
  */
 
-public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizHolder> {
+public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
 
+    private Context context;
+    private QuizAdapter.OnClickListener onClickListener;
     private LayoutInflater layoutInflater;
     private List<Quiz> quizList;
 
     public QuizAdapter(Context context, List<Quiz> quizList) {
         layoutInflater = LayoutInflater.from(context);
         this.quizList = quizList;
+        if(context instanceof QuizAdapter.OnClickListener)
+            onClickListener = (QuizAdapter.OnClickListener) context;
     }
 
     @Override
-    public QuizHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public QuizAdapter.QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.activity_cardview_record_quiz, parent, false);
-        QuizHolder holder = new QuizHolder(view);
+        QuizViewHolder holder = new QuizViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(QuizHolder holder, int position) {
+    public void onBindViewHolder(QuizViewHolder holder, int position) {
         Quiz quiz = quizList.get(position);
         holder.setView(quiz, position);
     }
@@ -46,27 +51,41 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizHolder> {
         return quizList.size();
     }
 
-    public class QuizHolder extends RecyclerView.ViewHolder {
+    public class QuizViewHolder extends RecyclerView.ViewHolder {
 
-        private Quiz quiz;
         private TextView textViewTitle;
         private TextView textViewDate;
         private TextView textViewTotal;
         private CardView cardView;
 
-        public QuizHolder(View itemView) {
+        QuizViewHolder(View itemView) {
             super(itemView);
             textViewTitle = (TextView) itemView.findViewById(R.id.txtv_namequiz);
             textViewDate = (TextView) itemView.findViewById(R.id.txtv_datequiz);
+            textViewTotal = (TextView) itemView.findViewById(R.id.txtv_totalquiz);
             cardView = (CardView) itemView.findViewById(R.id.cardview_quiz);
-
         }
 
-        public void setView(Quiz quiz, int position) {
-            this.quiz = quiz;
-            textViewTitle.setText(quiz.getTitle());
-            textViewDate.setText(quiz.getDate());
+        public void setView(final Quiz quiz, int position) {
 
+            String title = quiz.getTitle();
+            String date = quiz.getDate();
+            String total = String.valueOf(quiz.getItemTotal());
+
+            textViewTitle.setText(title);
+            textViewDate.setText(date);
+            textViewTotal.setText(total);
+            cardView.setOnClickListener(new Button.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    onClickListener.onClick(quiz, quiz.getId());
+                }
+            });
         }
+    }
+
+    public interface OnClickListener {
+        void onClick(Quiz quiz, long quizId);
     }
 }

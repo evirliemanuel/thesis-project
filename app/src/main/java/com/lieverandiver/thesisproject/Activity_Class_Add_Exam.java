@@ -16,39 +16,39 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
 /**
  * Created by Verlie on 9/1/2017.
  */
-
+@Deprecated
 public class Activity_Class_Add_Exam extends AppCompatActivity {
-
-    private Button buttonBack;
-    private RecyclerView recyclerView;
-    private LinearLayout linearLayoutExam;
-
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_add_exam);
-
-        buttonBack = (Button) findViewById(R.id.btn_backaddexam);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-               finish();
-
-            }
-        });
-        linearLayoutExam = (LinearLayout) findViewById(R.id.relative_clicked4) ;
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
-
-        linearLayoutExam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Exam.this,
-                        Activity_Class_InputExam.class);
-                startActivity(intent);
-            }
-        });
-
-
-    }
+//
+//    private Button buttonBack;
+//    private RecyclerView recyclerView;
+//    private LinearLayout linearLayoutExam;
+//
+//
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_class_add_exam);
+//
+//        buttonBack = (Button) findViewById(R.id.btn_backaddexam);
+//        buttonBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//               finish();
+//
+//            }
+//        });
+//        linearLayoutExam = (LinearLayout) findViewById(R.id.newid_examl_clicked) ;
+//        recyclerView = (RecyclerView)findViewById(R.id.newid_examr_clicked);
+//
+//        linearLayoutExam.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//                Intent intent = new Intent(Activity_Class_Add_Exam.this,
+//                        Activity_Class_InputExam.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//    }
 }

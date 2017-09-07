@@ -22,7 +22,7 @@ public class Activity_Class_View_Exam extends AppCompatActivity {
         setContentView(R.layout.activity_class_view_exam);
 
 
-        textViewName = (TextView)findViewById(R.id.name_exam);
+        textViewName = (TextView)findViewById(R.id.btn_backaddexam);
         textViewDate = (TextView)findViewById(R.id.date_exam);
         textViewTotal = (TextView)findViewById(R.id.totalscore_exam);
         recyclerViewExam = (RecyclerView)findViewById(R.id.recyclerview_exam);

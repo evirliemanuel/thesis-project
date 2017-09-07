@@ -17,7 +17,7 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
  * Created by Verlie on 9/1/2017.
  *
  */
-
+@Deprecated
 public class Activity_Class_Add_Assignment extends AppCompatActivity{
 
     private RecyclerView recyclerView;
@@ -30,26 +30,6 @@ public class Activity_Class_Add_Assignment extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_add_assignment);
-
-
-       buttonABack = (Button)findViewById(R.id.btn_backassignment) ;
-        buttonABack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-           finish();
-            }
-        });
-        linearLayoutAssignment = (LinearLayout) findViewById(R.id.relative_clicked2) ;
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
-
-        linearLayoutAssignment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(Activity_Class_Add_Assignment.this,
-                        Activity_Class_InputAssignment.class);
-                startActivity(intent);
-            }
-        });
 
 
 

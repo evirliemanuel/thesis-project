@@ -13,23 +13,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lieverandiver.thesisproject.adapter.ActivityAdapter;
+import com.lieverandiver.thesisproject.adapter.ProjectAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
-import com.remswork.project.alice.service.ActivityService;
-import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.model.Project;
+import com.remswork.project.alice.service.ProjectService;
+import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 
 import java.util.List;
-
 import static com.lieverandiver.thesisproject.R.id.btn_backaddactivity;
-import static com.lieverandiver.thesisproject.R.id.recyclerview_view1;
+import static com.lieverandiver.thesisproject.R.id.newid_projectl_clickednew;
+import static com.lieverandiver.thesisproject.R.id.newid_projectr_clickednew;
 import static com.lieverandiver.thesisproject.R.id.relative_clicked1;
-
-public class ActivityAddActivity extends AppCompatActivity implements ActivityAdapter.OnClickListener,
+public class ProjectAddActivity extends AppCompatActivity implements ActivityAdapter.OnClickListener,
         View.OnClickListener {
 
-    private static final String TAG = ActivityAddActivity.class.getSimpleName();
+    private static final String TAG = ProjectAddActivity.class.getSimpleName();
 
-    final ActivityService activityService = new ActivityServiceImpl();
+    final ProjectService projectService = new ProjectServiceImpl();
     private ImageView imageView;
     private Button btnBackButton;
     private RecyclerView recyclerView;
@@ -44,13 +45,13 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
                 @Override
                 public void run() {
                     try {
-                        List<Activity> activityList = activityService.getActivityListByClassId(classId);
-                        ActivityAdapter activityAdapter = new ActivityAdapter(ActivityAddActivity.this, activityList);
+                        List<Project> projectList = projectService.getProjectListByClassId(classId);
+                        ProjectAdapter projectAdapter = new ProjectAdapter(ProjectAddActivity.this, projectList);
 
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityAddActivity.this);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(ProjectAddActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-                        recyclerView.setAdapter(activityAdapter);
+                        recyclerView.setAdapter(projectAdapter);
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
                     }catch (GradingFactorException e) {
@@ -62,8 +63,8 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     }
 
     private void init() {
-        linearLayoutActivity = (LinearLayout) findViewById(relative_clicked1);
-        recyclerView = (RecyclerView) findViewById(recyclerview_view1);
+        linearLayoutActivity = (LinearLayout) findViewById(newid_projectl_clickednew);
+        recyclerView = (RecyclerView) findViewById(newid_projectr_clickednew);
         btnBackButton = (Button) findViewById(btn_backaddactivity);
 
         linearLayoutActivity.setOnClickListener(this);
@@ -73,7 +74,7 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_add_activity);
+        setContentView(R.layout.activity_class_add_project);
         try {
             classId = getIntent().getExtras().getLong("classId");
             termId = getIntent().getExtras().getLong("termId");
@@ -97,7 +98,7 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case relative_clicked1 :
+            case newid_projectl_clickednew :
                 Intent intent = getIntent().setClass(this, ActivityInputActivity.class);
                 startActivity(intent);
                 break;
