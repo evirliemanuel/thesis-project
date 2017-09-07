@@ -5,9 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
@@ -15,17 +12,16 @@ import com.remswork.project.alice.model.ActivityResult;
 import com.remswork.project.alice.model.Student;
 
 import java.util.List;
-import java.util.Locale;
 
-public class SimpleActivityAdapter extends RecyclerView
-        .Adapter<SimpleActivityAdapter.SimpleActivityViewHolder> {
+public class ActivityResultAdapter extends RecyclerView
+        .Adapter<ActivityResultAdapter.SimpleActivityViewHolder> {
 
     private LayoutInflater layoutInflater;
     private List<ActivityResult> resultList;
     private Context context;
     private ActivityAdapter.OnClickListener onClickListener;
 
-    public SimpleActivityAdapter(Context context, List<ActivityResult> resultList) {
+    public ActivityResultAdapter(Context context, List<ActivityResult> resultList) {
         layoutInflater = LayoutInflater.from(context);
         this.resultList = resultList;
     }

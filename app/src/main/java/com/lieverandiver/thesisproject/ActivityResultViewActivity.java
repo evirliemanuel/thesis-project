@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.lieverandiver.thesisproject.adapter.SimpleActivityAdapter;
+import com.lieverandiver.thesisproject.adapter.ActivityResultAdapter;
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
@@ -62,7 +62,7 @@ public class ActivityResultViewActivity extends AppCompatActivity {
                                 resultList.add(result);
                         }
 
-                        SimpleActivityAdapter simpleActivityAdapter = new SimpleActivityAdapter(ActivityResultViewActivity.this, resultList);
+                        ActivityResultAdapter simpleActivityAdapter = new ActivityResultAdapter(ActivityResultViewActivity.this, resultList);
                         LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityResultViewActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

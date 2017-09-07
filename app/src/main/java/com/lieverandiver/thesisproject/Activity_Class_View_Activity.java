@@ -7,7 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
-import com.lieverandiver.thesisproject.adapter.SimpleActivityAdapter;
+import com.lieverandiver.thesisproject.adapter.ActivityResultAdapter;
 import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.model.ActivityResult;
 import com.remswork.project.alice.model.Student;
@@ -49,7 +49,7 @@ public class Activity_Class_View_Activity extends AppCompatActivity {
                 resultList.add(activityService.getActivityResultByActivityAndStudentId(activity.getId(), s.getId()));
             }
 
-            SimpleActivityAdapter simpleActivityAdapter = new SimpleActivityAdapter(this, resultList);
+            ActivityResultAdapter simpleActivityAdapter = new ActivityResultAdapter(this, resultList);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

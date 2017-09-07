@@ -16,8 +16,10 @@ import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Class;
 import com.remswork.project.alice.service.ActivityService;
+import com.remswork.project.alice.service.AttendanceService;
 import com.remswork.project.alice.service.ClassService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.service.impl.AttendanceServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
 
 import static com.lieverandiver.thesisproject.R.id.ftogglebutton;
@@ -43,6 +45,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private static final String TAG = ClassViewActivity.class.getSimpleName();
 
     private final ActivityService activityService = new ActivityServiceImpl();
+    private final AttendanceService attendanceService = new AttendanceServiceImpl();
     private final ClassService classService = new ClassServiceImpl();
     private TextView txtViewSubjectName;
     private TextView txtViewSectionName;
@@ -184,31 +187,37 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     }
 
     public class ClassViewThread extends Thread {
+
         @Override
         public void run() {
+            try {
+                final int sizeAc = activityService.getActivityListByClassId(classId, 1L).size();
+                final int sizeAtt = attendanceService.getAttendanceListByClassId(classId, 1L).size();
+                final Class _class = classService.getClassById(classId);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            final Class _class = classService.getClassById(classId);
                             String subjectName = (_class.getSubject() != null ? _class.getSubject().getName() : "None");
                             String sectionName = (_class.getSection() != null ? _class.getSection().getName() : "None");
                             String departmentName = (_class.getSection() != null ? _class.getSection().getDepartment().getName() : "None");
-                            String totalActivitySize = String.valueOf(activityService.getActivityListByClassId(classId).size());
-
+                            String totalActivitySize = String.valueOf(sizeAc);
+                            String totalAttendanceSize = String.valueOf(sizeAtt);
                             txtViewSubjectName.setText(subjectName);
                             txtViewSectionName.setText(sectionName);
                             txtViewDepName.setText(departmentName);
                             textViewActivityM.setText(totalActivitySize);
+                            textViewAttendanceM.setText(totalAttendanceSize);
 
-                        } catch (GradingFactorException e) {
-
-                        } catch (ClassException e) {
-                            e.printStackTrace();
-                        }
                     }
                 });
+            } catch (GradingFactorException e) {
+
+            } catch (ClassException e) {
+                e.printStackTrace();
+            }
+
         }
+
     }
 
     @Override
@@ -247,7 +256,8 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case viewattendancem :
-                intent = getIntent().setClass(this, Activity_Class_Add_Attendance.class);
+                intent = getIntent().setClass(this, AttendanceAddActivity.class);
+                intent.putExtra("termId", 1L);
                 startActivity(intent);
                 break;
             case viewexamm :

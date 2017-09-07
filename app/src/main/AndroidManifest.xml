@@ -65,6 +65,9 @@
         <activity android:name=".MainActivity2" />
         <activity android:name=".ActivityResultViewActivity"/>
         <activity android:name=".ActivityAddActivity"/>
+        <activity android:name=".AttendanceAddActivity" />
+        <activity android:name=".AttendanceInputActivity" />
+        <activity android:name=".AttendanceResultViewActivity" />
     </application>
 
 </manifest>

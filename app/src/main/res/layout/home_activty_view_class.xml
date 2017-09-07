@@ -476,7 +476,7 @@
                                                     android:layout_gravity="right"
                                                     android:layout_marginRight="16dp"
                                                     android:layout_marginTop="30dp"
-                                                    android:text="0"
+                                                    android:text="--"
                                                     android:textSize="25sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
@@ -548,7 +548,7 @@
                                                     android:layout_gravity="right"
                                                     android:layout_marginRight="16dp"
                                                     android:layout_marginTop="30dp"
-                                                    android:text="0"
+                                                    android:text="--"
                                                     android:textSize="25sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
@@ -620,7 +620,7 @@
                                                     android:layout_gravity="right"
                                                     android:layout_marginRight="16dp"
                                                     android:layout_marginTop="30dp"
-                                                    android:text="0"
+                                                    android:text="--"
                                                     android:textSize="25sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
@@ -693,7 +693,7 @@
                                                     android:layout_gravity="right"
                                                     android:layout_marginRight="16dp"
                                                     android:layout_marginTop="30dp"
-                                                    android:text="0"
+                                                    android:text="--"
                                                     android:textSize="25sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
@@ -766,7 +766,7 @@
                                                     android:layout_gravity="right"
                                                     android:layout_marginRight="16dp"
                                                     android:layout_marginTop="30dp"
-                                                    android:text="0"
+                                                    android:text="--"
                                                     android:textSize="25sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
@@ -840,7 +840,7 @@
                                                     android:layout_gravity="right"
                                                     android:layout_marginRight="16dp"
                                                     android:layout_marginTop="30dp"
-                                                    android:text="0"
+                                                    android:text="--"
                                                     android:textSize="25sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>

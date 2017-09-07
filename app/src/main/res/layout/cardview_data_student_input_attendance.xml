@@ -3,14 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/f_data_student_input_grade"
+    android:id="@+id/f_data_student_input_grade_att"
     android:layout_width="match_parent"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginTop="5dp"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    card_view:cardElevation="5dp"
+    android:layout_marginBottom="5dp"
+    card_view:cardElevation="2dp"
     android:clickable="true"
     card_view:cardCornerRadius="5dp"
     tools:context=".InputAttendance_Cardview">
@@ -20,82 +17,83 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite">
-        <RelativeLayout
-            android:layout_marginBottom="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp">
-            <ImageView
-                android:id="@+id/f_data_student_profile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/student_profile_male"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginTop="23dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_attendance_la"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp">
+            android:background="@color/colorWhite">
+            <RelativeLayout
+                android:layout_marginBottom="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:id="@+id/f_data_student_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/student_profile_male"/>
 
-            <TextView
-                android:id="@+id/attendance_input_studentname"
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="23dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Manuel, Virlie E."
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:layout_marginRight="5dp">
 
-        </RelativeLayout>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-         >
+                <TextView
+                    android:id="@+id/attendance_input_studentname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manuel, Virlie E."
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+            </RelativeLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+             >
 
 
 
-        <LinearLayout
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="right"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <ToggleButton
-                android:textOff=""
-                android:textOn=""
-                android:id="@+id/btn_present"
-                android:layout_marginTop="3dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:background="@drawable/toggle_present"/>
-
-            <ToggleButton
-                android:textOff=""
-                android:textOn=""
-                android:id="@+id/btn_absent"
-                android:layout_marginTop="3dp"
+            <LinearLayout
                 android:layout_marginRight="5dp"
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:background="@drawable/toggle_absent"/>
-        </LinearLayout>
-        </FrameLayout>
+                android:layout_marginTop="10dp"
+                android:layout_gravity="right"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ToggleButton
+                    android:textOff=""
+                    android:textOn=""
+                    android:id="@+id/btn_present"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="41dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/toggle_present"/>
+
+                <ToggleButton
+                    android:textOff=""
+                    android:textOn=""
+                    android:id="@+id/btn_absent"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:background="@drawable/toggle_absent"/>
+            </LinearLayout>
+            </FrameLayout>
 
 
-        </LinearLayout>
+            </LinearLayout>
 
         <FrameLayout
             android:id="@+id/absent_option"

@@ -39,7 +39,7 @@
 
 
                 <TextView
-                    android:id="@+id/name_attendance"
+                    android:id="@+id/name_attendance_xf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Activity Name"
@@ -51,7 +51,7 @@
 
                 <TextView
                     android:layout_marginBottom="16dp"
-                    android:id="@+id/date_attendance"
+                    android:id="@+id/date_attendance_xf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date"
@@ -60,32 +60,6 @@
                     android:layout_marginLeft="30dp"/>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_marginRight="25dp"
-                android:orientation="vertical"
-                android:layout_gravity="right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="@color/colorWhite"
-                    android:layout_marginTop="22dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Total"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
-
-                <TextView
-                    android:id="@+id/totalscore_attendance"
-                    android:layout_gravity="right"
-                    android:textSize="22dp"
-                    android:textColor="@color/colorWhite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="00"/>
-
-            </LinearLayout>
-
 
 
         </FrameLayout>
@@ -93,8 +67,8 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_attendance"
-        android:layout_marginTop="10dp"
+        android:id="@+id/recyclerview_attendance_fx"
+        android:layout_marginTop="6dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"

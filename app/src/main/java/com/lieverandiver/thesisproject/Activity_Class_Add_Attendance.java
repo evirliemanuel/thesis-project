@@ -17,6 +17,7 @@ import static com.lieverandiver.thesisproject.R.id.imageView;
  * Created by Verlie on 9/1/2017.
  */
 
+@Deprecated
 public class Activity_Class_Add_Attendance extends AppCompatActivity{
 
     private Button buttonBack;

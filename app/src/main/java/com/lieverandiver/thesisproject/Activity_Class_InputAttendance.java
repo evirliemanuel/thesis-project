@@ -28,8 +28,6 @@ public class Activity_Class_InputAttendance extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView imageView;
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +36,7 @@ public class Activity_Class_InputAttendance extends AppCompatActivity {
         editTextName = (EditText)findViewById(R.id.etxt_name3);
         textViewDate = (TextView)findViewById(R.id.txtv_date3);
         buttonSelectAll = (Button) findViewById(R.id.btn_selectall3);
-        buttonSubmit = (Button)findViewById(R.id.btn_submit3);
+        buttonSubmit = (Button)findViewById(R.id.btn_submit3_attendance);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview_view);
         imageView =(ImageView)findViewById(R.id.btn_cancel) ;
 
