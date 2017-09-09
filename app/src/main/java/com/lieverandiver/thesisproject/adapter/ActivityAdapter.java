@@ -30,7 +30,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
 
     @Override
     public ActivityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_cardview_record_activity, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_z_add_activity_cardview, parent, false);
         ActivityViewHolder holder = new ActivityViewHolder(view);
         return holder;
     }
@@ -55,10 +55,10 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
 
         ActivityViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.f_gradecriteria_view_activity);
-            textViewDate = (TextView) itemView.findViewById(R.id.f_grade_activity_date);
-            textViewTotal = (TextView) itemView.findViewById(R.id.txtv_total1);
-            cardView = (CardView) itemView.findViewById(R.id.fragment_slidebar_cardview_schedule);
+            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title1);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date1);
+            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total1);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview1);
         }
 
         public void setView(final Activity activity, int position) {

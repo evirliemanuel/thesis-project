@@ -35,7 +35,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
 
     @Override
     public AssignmentAdapter.AssignmentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_cardview_record_assignment, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_z_add_assignment_cardview, parent, false);
       AssignmentHolder holder = new AssignmentHolder(view);
         return holder;
     }
@@ -60,10 +60,10 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.As
 
         AssignmentHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.assignment_nameview);
-            textViewDate = (TextView) itemView.findViewById(R.id.assignment_dateview);
-            textViewTotal = (TextView) itemView.findViewById(R.id.assignment_totalview);
-            cardView = (CardView) itemView.findViewById(R.id.assignment_cardview);
+            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title2);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date2);
+            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total2);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview2);
         }
 
         public void setView(final Assignment assignment, int position) {

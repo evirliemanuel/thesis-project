@@ -19,11 +19,17 @@ import com.remswork.project.alice.service.ActivityService;
 
 import com.remswork.project.alice.service.AttendanceService;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.ExamService;
+import com.remswork.project.alice.service.ProjectService;
+import com.remswork.project.alice.service.QuizService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.AttendanceServiceImpl;
 import com.remswork.project.alice.service.AssignmentService;
 import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.ExamServiceImpl;
+import com.remswork.project.alice.service.impl.ProjectServiceImpl;
+import com.remswork.project.alice.service.impl.QuizServiceImpl;
 
 import static com.lieverandiver.thesisproject.R.id.ftogglebutton;
 import static com.lieverandiver.thesisproject.R.id.mtogglebutton;
@@ -49,6 +55,9 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private final ActivityService activityService = new ActivityServiceImpl();
     private final AttendanceService attendanceService = new AttendanceServiceImpl();
     private final AssignmentService assignmentService = new AssignmentServiceImpl();
+    private final ExamService examService = new ExamServiceImpl();
+    private final ProjectService projectService = new ProjectServiceImpl();
+    private final QuizService quizService = new QuizServiceImpl();
 
 
     private final ClassService classService = new ClassServiceImpl();
@@ -96,7 +105,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
 
     public void init() {
 
-        textViewActivityM = (TextView)findViewById(R.id.totalm1m);
+        textViewActivityM = (TextView)findViewById(R.id.totalm1);
         textViewAssignmentM = (TextView)findViewById(R.id.totalm2);
         textViewAttendanceM = (TextView)findViewById(R.id.totalm3);
         textViewExamM = (TextView)findViewById(R.id.totalm4);
@@ -199,6 +208,12 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
             try {
                 final int sizeAc = activityService.getActivityListByClassId(classId, 1L).size();
                 final int sizeAtt = attendanceService.getAttendanceListByClassId(classId, 1L).size();
+                final int sizeAss = assignmentService.getAssignmentListByClassId(classId, 1L).size();
+                final int sizeExam = examService.getExamListByClassId(classId, 1L).size();
+                final int sizePro = projectService.getProjectListByClassId(classId, 1L).size();
+                final int sizeQuiz = quizService.getQuizListByClassId(classId, 1L).size();
+
+
                 final Class _class = classService.getClassById(classId);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -208,11 +223,19 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                             String departmentName = (_class.getSection() != null ? _class.getSection().getDepartment().getName() : "None");
                             String totalActivitySize = String.valueOf(sizeAc);
                             String totalAttendanceSize = String.valueOf(sizeAtt);
+                            String totalAssignmentSize = String.valueOf(sizeAss);
+                            String totalExamSize = String.valueOf(sizeExam);
+                            String totalProjectSize = String.valueOf(sizePro);
+                            String totalQuizSize = String.valueOf(sizeQuiz);
                             txtViewSubjectName.setText(subjectName);
                             txtViewSectionName.setText(sectionName);
                             txtViewDepName.setText(departmentName);
                             textViewActivityM.setText(totalActivitySize);
                             textViewAttendanceM.setText(totalAttendanceSize);
+                            textViewAssignmentM.setText(totalAssignmentSize);
+                            textViewExamM.setText(totalExamSize);
+                            textViewProjectM.setText(totalProjectSize);
+                            textViewQuizM.setText(totalQuizSize);
 
                     }
                 });
@@ -253,13 +276,13 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case viewactivitym :
-                intent = getIntent().setClass(this, ActivityAddActivity.class);
-                intent.putExtra("termId", 1);
+                intent = getIntent().setClass(this, Activity_A_Add_Activity.class);
+                intent.putExtra("termId", 1L);
                 startActivity(intent);
                 break;
             case viewassignmentm :
-                intent = getIntent().setClass(this, AssignmentAddActivity.class);
-                intent.putExtra("termId", 1);
+                intent = getIntent().setClass(this, Activity_B_Add_Assignment.class);
+                intent.putExtra("termId", 1L);
                 startActivity(intent);
                 break;
             case viewattendancem :
@@ -268,50 +291,55 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case viewexamm :
-                intent = getIntent().setClass(this, ExamAddActivity.class);
+                intent = getIntent().setClass(this, Activity_D_Add_Exam.class);
                 intent.putExtra("termId", 1);
                 startActivity(intent);
                 break;
             case viewprojectm :
-                intent = getIntent().setClass(this, ProjectAddActivity.class);
-                intent.putExtra("termId", 1);
+                intent = getIntent().setClass(this, Activity_E_Add_Project.class);
+                intent.putExtra("termId", 1L);
                 startActivity(intent);
                 break;
 
             case viewquizm :
-                intent = getIntent().setClass(this, QuizAddActivity.class);
-                intent.putExtra("termId", 1);
+                intent = getIntent().setClass(this, Activity_F_Add_Quiz.class);
+                intent.putExtra("termId", 1L);
                 startActivity(intent);
                 break;
 
             case viewactivityf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Activity.class);
+                intent = getIntent().setClass(this, Activity_A_Add_Activity.class);
+                intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
             case viewassignmentf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Assignment.class);
+                intent = getIntent().setClass(this, Activity_B_Add_Assignment.class);
+                intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
-
             case viewattendancef :
-                intent = getIntent().setClass(this, Activity_Class_Add_Attendance.class);
+                intent = getIntent().setClass(this, AttendanceAddActivity.class);
+                intent.putExtra("termId",2L);
                 startActivity(intent);
                 break;
-
             case viewexamf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Exam.class);
+                intent = getIntent().setClass(this, Activity_D_Add_Exam.class);
+                intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
-
             case viewprojectf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Project.class);
+                intent = getIntent().setClass(this, Activity_E_Add_Project.class);
+                intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
 
             case viewquizf :
-                intent = getIntent().setClass(this, Activity_Class_Add_Quiz.class);
+                intent = getIntent().setClass(this, Activity_F_Add_Quiz.class);
+                intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
+
+
         }
     }
 }

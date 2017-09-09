@@ -8,16 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.lieverandiver.thesisproject.R;
-import com.remswork.project.alice.model.Assignment;
 import com.remswork.project.alice.model.Project;
-
 import java.util.List;
-
-/**
- * Created by Verlie on 9/6/2017.
- */
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectViewHolder> {
 
@@ -35,7 +28,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
     @Override
     public ProjectAdapter.ProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_cardview_record_project, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_z_add_project_cardview, parent, false);
         ProjectViewHolder holder = new ProjectViewHolder(view);
         return holder;
     }
@@ -60,10 +53,10 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
         ProjectViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.txtv_nameproject);
-            textViewDate = (TextView) itemView.findViewById(R.id.txtv_dateproject);
-            textViewTotal = (TextView) itemView.findViewById(R.id.txtv_totalproject);
-            cardView = (CardView) itemView.findViewById(R.id.project_cardview);
+            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title5);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date5);
+            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total5);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview5);
         }
 
         public void setView(final Project project, int position) {

@@ -28,7 +28,7 @@ public class ActivityResultAdapter extends RecyclerView
 
     @Override
     public SimpleActivityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_studentscore_cardview, parent,false);
+        View view = layoutInflater.inflate(R.layout.activity_z_result_activity_cardview, parent,false);
         return new SimpleActivityViewHolder(view);
     }
 
@@ -50,9 +50,9 @@ public class ActivityResultAdapter extends RecyclerView
 
         SimpleActivityViewHolder(View itemView) {
             super(itemView);
-            txName = (TextView) itemView.findViewById(R.id.newid_studentname);
-            txScore = (TextView) itemView.findViewById(R.id.newid_studentscore);
-            txInit = (TextView) itemView.findViewById(R.id.newid_initname);
+            txName = (TextView) itemView.findViewById(R.id.result_cardview_name1);
+            txScore = (TextView) itemView.findViewById(R.id.result_cardview_score1);
+            txInit = (TextView) itemView.findViewById(R.id.result_cardview_init1);
         }
 
         void setView(final ActivityResult result, final int position) {

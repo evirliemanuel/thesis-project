@@ -10,15 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
-import com.remswork.project.alice.model.Activity;
-import com.remswork.project.alice.model.Assignment;
 import com.remswork.project.alice.model.Exam;
-
 import java.util.List;
 
-/**
- * Created by Verlie on 9/7/2017.
- */
 public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamViewHolder> {
 
     private LayoutInflater layoutInflater;
@@ -35,7 +29,7 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamViewHolder
 
     @Override
     public ExamViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_cardview_record_exam, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_z_add_exam_cardview, parent, false);
         ExamViewHolder holder = new ExamViewHolder(view);
         return holder;
     }
@@ -60,10 +54,10 @@ public class ExamAdapter extends RecyclerView.Adapter<ExamAdapter.ExamViewHolder
 
         ExamViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.newid_examname);
-            textViewDate = (TextView) itemView.findViewById(R.id.newid_examdate);
-            textViewTotal = (TextView) itemView.findViewById(R.id.newid_examtotal);
-            cardView = (CardView) itemView.findViewById(R.id.newid_cardviewexam);
+            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title4);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date4);
+            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total4);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview4);
         }
 
         public void setView(final Exam exam, int position) {

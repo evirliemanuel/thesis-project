@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
-import com.remswork.project.alice.model.Assignment;
 import com.remswork.project.alice.model.Quiz;
 
 import java.util.List;
@@ -35,7 +34,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
     @Override
     public QuizAdapter.QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_cardview_record_quiz, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_z_add_quiz_cardview, parent, false);
         QuizViewHolder holder = new QuizViewHolder(view);
         return holder;
     }
@@ -60,10 +59,10 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         QuizViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.txtv_namequiz);
-            textViewDate = (TextView) itemView.findViewById(R.id.txtv_datequiz);
-            textViewTotal = (TextView) itemView.findViewById(R.id.txtv_totalquiz);
-            cardView = (CardView) itemView.findViewById(R.id.cardview_quiz);
+            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title6);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date6);
+            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total6);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview6);
         }
 
         public void setView(final Quiz quiz, int position) {

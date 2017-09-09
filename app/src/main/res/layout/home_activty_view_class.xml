@@ -4,66 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".ClassViewActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp">
+            android:layout_height="wrap_content">
 
             <include
-                android:id="@+id/activity_main_custom_toolbar"
-                layout="@layout/custom_toolbar" />
-
-            <FrameLayout
+                layout="@layout/main_header_toolbar"/>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <Button
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="16dp"
-                        android:background="@drawable/ic_arrow_back_white_24dp" />
 
                     <TextView
-                        android:layout_width="250dp"
+                        android:layout_gravity="left|center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="CCS "
-                        android:textColor="@color/colorWhite"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:text="CLASS"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorWhite"/>
 
-                </LinearLayout>
+                    <ToggleButton
+                        android:layout_gravity="right|center"
+                        android:id="@+id/btn_search_class"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:textOn=""
+                        android:textOff=""
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/btn_search"/>
 
 
-                <Button
-                    android:id="@+id/btn_menu"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="25dp"
-                    android:background="@drawable/ic_more_vert_white_24dp"
-                    android:clickable="true" />
-            </FrameLayout>
-        </RelativeLayout>
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
 
         <android.support.v7.widget.CardView
@@ -71,11 +63,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             card_view:cardElevation="3dp">
 
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite"
@@ -83,6 +76,8 @@
 
 
                 <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -94,8 +89,8 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="5dp"
                             android:background="@drawable/icon_star" />
@@ -106,7 +101,7 @@
                             android:layout_marginTop="10dp"
                             android:text="Section:"
                             android:textColor="@color/colorMidNightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -114,7 +109,7 @@
                             android:layout_marginTop="5dp"
                             android:text="Department:"
                             android:textColor="@color/colorMidNightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -122,7 +117,7 @@
                             android:layout_marginTop="5dp"
                             android:text="Format:"
                             android:textColor="@color/colorMidNightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
 
@@ -137,9 +132,9 @@
                             android:id="@+id/txtv_subjectname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Java Programming"
+                            android:text="Loading ..."
                             android:textColor="@color/colorMidNightBlue"
-                            android:textSize="22sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -148,9 +143,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="13dp"
-                            android:text="4-E"
+                            android:text="Loading ..."
                             android:textColor="@color/colorMidNightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txtv_dept"
@@ -158,9 +153,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
-                            android:text="Department"
+                            android:text="Loading ..."
                             android:textColor="@color/colorMidNightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/txtv_sem"
@@ -168,9 +163,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
-                            android:text="Semester"
+                            android:text="Loading ..."
                             android:textColor="@color/colorMidNightBlue"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -188,10 +183,12 @@
                 android:orientation="vertical">
 
                 <android.support.v7.widget.CardView
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="2dp"
                     android:clickable="true">
 
                     <LinearLayout
@@ -204,7 +201,7 @@
                             android:id="@+id/view_student"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="5dp"
@@ -214,7 +211,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple_blue"
+                                android:background="@drawable/new_ripple_blue"
 
                                 android:orientation="vertical">
 
@@ -283,7 +280,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple_blue"
+                                android:background="@drawable/new_ripple_blue"
                                 android:orientation="vertical">
 
                                 <FrameLayout
@@ -342,7 +339,12 @@
 
                 <!--MIDTERM-->
 
+
+
                 <LinearLayout
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorMoca3"
@@ -354,16 +356,47 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
+                        <FrameLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_gravity="left|center"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="INPUT/IMPORT GRADES"
+                                android:textStyle="bold"
+                                android:textSize="14dp"/>
+
+                            <ImageView
+                                android:clickable="true"
+                                android:layout_marginRight="20dp"
+                                android:layout_gravity="right|center"
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:background="@drawable/help"/>
+
+
+                        </FrameLayout>
+
+
+
                         <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginBottom="5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5dp"
                             card_view:cardElevation="3dp">
 
                             <LinearLayout
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
@@ -375,7 +408,7 @@
                                     android:layout_marginBottom="10dp"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="12dp"
-                                    android:text="MIDTERM"
+                                    android:text="MID TERM"
                                     android:textColor="@color/colorDarkGray"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
@@ -417,9 +450,9 @@
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="6dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     card_view:cardCornerRadius="5dp">
 
@@ -427,57 +460,59 @@
                                         android:id="@+id/viewactivitym"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:background="@color/Red"
                                         android:clickable="true">
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/ripple_activity"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/new_ripple_blue"
                                             android:orientation="horizontal">
 
                                             <ImageView
-                                                android:layout_width="50dp"
-                                                android:layout_height="50dp"
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
                                                 android:layout_gravity="center"
-                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginBottom="10dp"
                                                 android:layout_marginLeft="16dp"
                                                 android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
+                                                android:layout_marginTop="10dp"
                                                 android:background="@drawable/icon_activity" />
 
                                             <LinearLayout
+                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginTop="10dp"
                                                 android:orientation="vertical">
 
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_marginLeft="10dp"
-                                                    android:layout_marginTop="20dp"
                                                     android:text="Activity"
-                                                    android:textColor="#FFFFFF"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Tap here to view"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="10dp" />
                                             </LinearLayout>
 
                                             <FrameLayout
+                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginLeft="10dp">
+                                                android:layout_marginRight="10dp">
 
                                                 <TextView
-                                                    android:id="@+id/totalm1m"
+                                                    android:id="@+id/totalm1"
+                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_gravity="right"
-                                                    android:layout_marginRight="16dp"
-                                                    android:layout_marginTop="30dp"
+                                                    android:layout_gravity="right|center"
                                                     android:text="--"
-                                                    android:textSize="25sp"
+                                                    android:textSize="22sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
                                         </LinearLayout>
@@ -490,9 +525,9 @@
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="6dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
                                     card_view:cardCornerRadius="5dp">
@@ -504,52 +539,55 @@
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/ripple_assignment"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/new_ripple_blue"
                                             android:orientation="horizontal">
 
                                             <ImageView
-                                                android:layout_width="50dp"
-                                                android:layout_height="50dp"
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
                                                 android:layout_gravity="center"
-                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginBottom="10dp"
                                                 android:layout_marginLeft="16dp"
                                                 android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
+                                                android:layout_marginTop="10dp"
                                                 android:background="@drawable/icon_assignment" />
 
                                             <LinearLayout
+                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginTop="10dp"
                                                 android:orientation="vertical">
 
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_marginLeft="10dp"
-                                                    android:layout_marginTop="20dp"
-                                                    android:text="Asignment"
-                                                    android:textColor="#FFFFFF"
+                                                    android:text="Assignment"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Tap here to view"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="10dp" />
                                             </LinearLayout>
 
                                             <FrameLayout
+                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginLeft="10dp">
+                                                android:layout_marginRight="10dp">
 
                                                 <TextView
                                                     android:id="@+id/totalm2"
+                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_gravity="right"
-                                                    android:layout_marginRight="16dp"
-                                                    android:layout_marginTop="30dp"
+                                                    android:layout_gravity="right|center"
                                                     android:text="--"
-                                                    android:textSize="25sp"
+                                                    android:textSize="22sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
                                         </LinearLayout>
@@ -561,9 +599,9 @@
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="6dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
                                     card_view:cardCornerRadius="5dp">
@@ -576,52 +614,55 @@
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/ripple_attendance"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/new_ripple_blue"
                                             android:orientation="horizontal">
 
                                             <ImageView
-                                                android:layout_width="50dp"
-                                                android:layout_height="50dp"
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
                                                 android:layout_gravity="center"
-                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginBottom="10dp"
                                                 android:layout_marginLeft="16dp"
                                                 android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
+                                                android:layout_marginTop="10dp"
                                                 android:background="@drawable/icon_attendance" />
 
                                             <LinearLayout
+                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginTop="10dp"
                                                 android:orientation="vertical">
 
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_marginLeft="10dp"
-                                                    android:layout_marginTop="20dp"
                                                     android:text="Attendance"
-                                                    android:textColor="#FFFFFF"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Tap here to view"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="10dp" />
                                             </LinearLayout>
 
                                             <FrameLayout
+                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginLeft="10dp">
+                                                android:layout_marginRight="10dp">
 
                                                 <TextView
                                                     android:id="@+id/totalm3"
+                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_gravity="right"
-                                                    android:layout_marginRight="16dp"
-                                                    android:layout_marginTop="30dp"
+                                                    android:layout_gravity="right|center"
                                                     android:text="--"
-                                                    android:textSize="25sp"
+                                                    android:textSize="22sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
                                         </LinearLayout>
@@ -634,9 +675,9 @@
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="6dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
                                     card_view:cardCornerRadius="5dp">
@@ -649,52 +690,55 @@
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/ripple_exam"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/new_ripple_blue"
                                             android:orientation="horizontal">
 
                                             <ImageView
-                                                android:layout_width="50dp"
-                                                android:layout_height="50dp"
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
                                                 android:layout_gravity="center"
-                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginBottom="10dp"
                                                 android:layout_marginLeft="16dp"
                                                 android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
+                                                android:layout_marginTop="10dp"
                                                 android:background="@drawable/icon_exam" />
 
                                             <LinearLayout
+                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginTop="10dp"
                                                 android:orientation="vertical">
 
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_marginLeft="10dp"
-                                                    android:layout_marginTop="20dp"
                                                     android:text="Exam"
-                                                    android:textColor="#FFFFFF"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Tap here to view"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="10dp" />
                                             </LinearLayout>
 
                                             <FrameLayout
+                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginLeft="10dp">
+                                                android:layout_marginRight="10dp">
 
                                                 <TextView
                                                     android:id="@+id/totalm4"
+                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_gravity="right"
-                                                    android:layout_marginRight="16dp"
-                                                    android:layout_marginTop="30dp"
+                                                    android:layout_gravity="right|center"
                                                     android:text="--"
-                                                    android:textSize="25sp"
+                                                    android:textSize="22sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
                                         </LinearLayout>
@@ -707,9 +751,9 @@
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="6dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
                                     card_view:cardCornerRadius="5dp">
@@ -717,57 +761,59 @@
                                     <LinearLayout
                                         android:id="@+id/viewprojectm"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:background="@drawable/basic_ripple">
+                                        android:layout_height="wrap_content">
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/ripple_project"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/new_ripple_blue"
                                             android:orientation="horizontal">
 
                                             <ImageView
-                                                android:layout_width="50dp"
-                                                android:layout_height="50dp"
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
                                                 android:layout_gravity="center"
-                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginBottom="10dp"
                                                 android:layout_marginLeft="16dp"
                                                 android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
+                                                android:layout_marginTop="10dp"
                                                 android:background="@drawable/icon_project" />
 
                                             <LinearLayout
+                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginTop="10dp"
                                                 android:orientation="vertical">
 
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_marginLeft="10dp"
-                                                    android:layout_marginTop="20dp"
                                                     android:text="Project"
-                                                    android:textColor="#FFFFFF"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Tap here to view"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="10dp" />
                                             </LinearLayout>
 
                                             <FrameLayout
+                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginLeft="10dp">
+                                                android:layout_marginRight="10dp">
 
                                                 <TextView
                                                     android:id="@+id/totalm5"
+                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_gravity="right"
-                                                    android:layout_marginRight="16dp"
-                                                    android:layout_marginTop="30dp"
+                                                    android:layout_gravity="right|center"
                                                     android:text="--"
-                                                    android:textSize="25sp"
+                                                    android:textSize="22sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
                                         </LinearLayout>
@@ -781,9 +827,9 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="16dp"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="6dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
                                     card_view:cardCornerRadius="5dp">
@@ -792,56 +838,59 @@
                                         android:id="@+id/viewquizm"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/basic_ripple">
+                                        android:background="@drawable/new_ripple_blue">
 
                                         <LinearLayout
                                             android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/ripple_quiz"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/new_ripple_blue"
                                             android:orientation="horizontal">
 
                                             <ImageView
-                                                android:layout_width="50dp"
-                                                android:layout_height="50dp"
+                                                android:layout_width="40dp"
+                                                android:layout_height="40dp"
                                                 android:layout_gravity="center"
-                                                android:layout_marginBottom="16dp"
+                                                android:layout_marginBottom="10dp"
                                                 android:layout_marginLeft="16dp"
                                                 android:layout_marginRight="16dp"
-                                                android:layout_marginTop="16dp"
+                                                android:layout_marginTop="10dp"
                                                 android:background="@drawable/icon_quiz" />
 
                                             <LinearLayout
+                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginTop="10dp"
                                                 android:orientation="vertical">
 
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_marginLeft="10dp"
-                                                    android:layout_marginTop="20dp"
                                                     android:text="Quiz"
-                                                    android:textColor="#FFFFFF"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Tap here to view"
+                                                    android:textColor="#FFFFFF"
+                                                    android:textSize="10dp" />
                                             </LinearLayout>
 
                                             <FrameLayout
+                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginLeft="10dp">
+                                                android:layout_marginRight="10dp">
 
                                                 <TextView
                                                     android:id="@+id/totalm6"
+                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
-                                                    android:layout_gravity="right"
-                                                    android:layout_marginRight="16dp"
-                                                    android:layout_marginTop="30dp"
+                                                    android:layout_gravity="right|center"
                                                     android:text="--"
-                                                    android:textSize="25sp"
+                                                    android:textSize="22sp"
                                                     android:textStyle="bold" />
                                             </FrameLayout>
                                         </LinearLayout>
@@ -856,18 +905,20 @@
 
                     </LinearLayout>
 
-
+            <!--FINAL TERM-->
                     <android.support.v7.widget.CardView
 
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
                         card_view:cardElevation="16dp">
 
                         <LinearLayout
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
@@ -879,7 +930,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="12dp"
-                                android:text="Finals"
+                                android:text="FINAL TERM"
                                 android:textColor="@color/colorDarkGray"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -924,9 +975,9 @@
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
@@ -934,57 +985,59 @@
                             <LinearLayout
                                 android:id="@+id/viewactivityf"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple">
+                                android:layout_height="wrap_content">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@color/Red"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/new_ripple_blue"
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp"
+                                        android:layout_marginTop="10dp"
                                         android:background="@drawable/icon_activity" />
 
                                     <LinearLayout
+                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginTop="20dp"
                                             android:text="Activity"
-                                            android:textColor="#FFFFFF"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tap here to view"
+                                            android:textColor="#FFFFFF"
+                                            android:textSize="10dp" />
                                     </LinearLayout>
 
                                     <FrameLayout
+                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginLeft="10dp">
+                                        android:layout_marginRight="10dp">
 
                                         <TextView
                                             android:id="@+id/totalf1"
+                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="right"
-                                            android:layout_marginRight="16dp"
-                                            android:layout_marginTop="30dp"
-                                            android:text="0"
-                                            android:textSize="25sp"
+                                            android:layout_gravity="right|center"
+                                            android:text="--"
+                                            android:textSize="22sp"
                                             android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
@@ -997,9 +1050,9 @@
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
@@ -1008,56 +1061,59 @@
                                 android:id="@+id/viewassignmentf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple">
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@color/Orange"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/new_ripple_blue"
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp"
+                                        android:layout_marginTop="10dp"
                                         android:background="@drawable/icon_assignment" />
 
                                     <LinearLayout
+                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginTop="20dp"
-                                            android:text="Asignment"
-                                            android:textColor="#FFFFFF"
+                                            android:text="Assignment"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tap here to view"
+                                            android:textColor="#FFFFFF"
+                                            android:textSize="10dp" />
                                     </LinearLayout>
 
                                     <FrameLayout
+                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginLeft="10dp">
+                                        android:layout_marginRight="10dp">
 
                                         <TextView
                                             android:id="@+id/totalf2"
+                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="right"
-                                            android:layout_marginRight="16dp"
-                                            android:layout_marginTop="30dp"
-                                            android:text="0"
-                                            android:textSize="25sp"
+                                            android:layout_gravity="right|center"
+                                            android:text="--"
+                                            android:textSize="22sp"
                                             android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
@@ -1069,9 +1125,9 @@
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
@@ -1080,56 +1136,59 @@
                                 android:id="@+id/viewattendancef"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple">
+                         >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@color/Green"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/new_ripple_blue"
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp"
+                                        android:layout_marginTop="10dp"
                                         android:background="@drawable/icon_attendance" />
 
                                     <LinearLayout
+                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginTop="20dp"
                                             android:text="Attendance"
-                                            android:textColor="#FFFFFF"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tap here to view"
+                                            android:textColor="#FFFFFF"
+                                            android:textSize="10dp" />
                                     </LinearLayout>
 
                                     <FrameLayout
+                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginLeft="10dp">
+                                        android:layout_marginRight="10dp">
 
                                         <TextView
                                             android:id="@+id/totalf3"
+                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="right"
-                                            android:layout_marginRight="16dp"
-                                            android:layout_marginTop="30dp"
-                                            android:text="0"
-                                            android:textSize="25sp"
+                                            android:layout_gravity="right|center"
+                                            android:text="--"
+                                            android:textSize="22sp"
                                             android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
@@ -1142,9 +1201,9 @@
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
@@ -1153,56 +1212,59 @@
                                 android:id="@+id/viewexamf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple">
+                              >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@color/Pink"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/new_ripple_blue"
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp"
+                                        android:layout_marginTop="10dp"
                                         android:background="@drawable/icon_exam" />
 
                                     <LinearLayout
+                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginTop="20dp"
                                             android:text="Exam"
-                                            android:textColor="#FFFFFF"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tap here to view"
+                                            android:textColor="#FFFFFF"
+                                            android:textSize="10dp" />
                                     </LinearLayout>
 
                                     <FrameLayout
+                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginLeft="10dp">
+                                        android:layout_marginRight="10dp">
 
                                         <TextView
                                             android:id="@+id/totalf4"
+                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="right"
-                                            android:layout_marginRight="16dp"
-                                            android:layout_marginTop="30dp"
-                                            android:text="0"
-                                            android:textSize="25sp"
+                                            android:layout_gravity="right|center"
+                                            android:text="--"
+                                            android:textSize="22sp"
                                             android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
@@ -1215,9 +1277,9 @@
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
@@ -1226,56 +1288,59 @@
                                 android:id="@+id/viewprojectf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple">
+                            >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@color/Blue"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/new_ripple_blue"
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp"
+                                        android:layout_marginTop="10dp"
                                         android:background="@drawable/icon_project" />
 
                                     <LinearLayout
+                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginTop="20dp"
                                             android:text="Project"
-                                            android:textColor="#FFFFFF"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tap here to view"
+                                            android:textColor="#FFFFFF"
+                                            android:textSize="10dp" />
                                     </LinearLayout>
 
                                     <FrameLayout
+                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginLeft="10dp">
+                                        android:layout_marginRight="10dp">
 
                                         <TextView
                                             android:id="@+id/totalf5"
+                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="right"
-                                            android:layout_marginRight="16dp"
-                                            android:layout_marginTop="30dp"
-                                            android:text="0"
-                                            android:textSize="25sp"
+                                            android:layout_gravity="right|center"
+                                            android:text="--"
+                                            android:textSize="22sp"
                                             android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
@@ -1289,9 +1354,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="25dp"
-                            android:layout_marginLeft="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
                             card_view:cardCornerRadius="5dp">
@@ -1300,56 +1365,59 @@
                                 android:id="@+id/viewquizf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/basic_ripple">
+                               >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="#FF0DDD"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/new_ripple_blue"
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
                                         android:layout_gravity="center"
-                                        android:layout_marginBottom="16dp"
+                                        android:layout_marginBottom="10dp"
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
-                                        android:layout_marginTop="16dp"
+                                        android:layout_marginTop="10dp"
                                         android:background="@drawable/icon_quiz" />
 
                                     <LinearLayout
+                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:orientation="vertical">
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_marginTop="20dp"
                                             android:text="Quiz"
-                                            android:textColor="#FFFFFF"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tap here to view"
+                                            android:textColor="#FFFFFF"
+                                            android:textSize="10dp" />
                                     </LinearLayout>
 
                                     <FrameLayout
+                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginLeft="10dp">
+                                        android:layout_marginRight="10dp">
 
                                         <TextView
                                             android:id="@+id/totalf6"
+                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="right"
-                                            android:layout_marginRight="16dp"
-                                            android:layout_marginTop="30dp"
-                                            android:text="0"
-                                            android:textSize="25sp"
+                                            android:layout_gravity="right|center"
+                                            android:text="--"
+                                            android:textSize="22sp"
                                             android:textStyle="bold" />
                                     </FrameLayout>
                                 </LinearLayout>
@@ -1357,14 +1425,21 @@
 
                         </android.support.v7.widget.CardView>
 
+
                     </LinearLayout>
+
 
                 </ScrollView>
 
             </LinearLayout>
 
 
+
+
         </ScrollView>
+
     </LinearLayout>
+
+
 
 </LinearLayout>

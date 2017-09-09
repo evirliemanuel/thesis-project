@@ -8,12 +8,11 @@ import android.support.v7.app.AppCompatActivity;
  * Created by Verlie on 8/28/2017.
  */
 
-@Deprecated
 public class Testing_Only extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.testingdesign);
+        setContentView(R.layout.sdfsdf);
     }
 }

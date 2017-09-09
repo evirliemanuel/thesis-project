@@ -1,0 +1,110 @@
+package com.lieverandiver.thesisproject;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.lieverandiver.thesisproject.adapter.ActivityAdapter;
+import com.lieverandiver.thesisproject.adapter.QuizAdapter;
+import com.remswork.project.alice.exception.GradingFactorException;
+import com.remswork.project.alice.model.Activity;
+import com.remswork.project.alice.model.Quiz;
+import com.remswork.project.alice.service.QuizService;
+import com.remswork.project.alice.service.impl.QuizServiceImpl;
+
+import java.util.List;
+
+import static com.lieverandiver.thesisproject.R.id.add_add6;
+import static com.lieverandiver.thesisproject.R.id.btn_backaddactivity;
+
+public class Activity_F_Add_Quiz extends AppCompatActivity implements ActivityAdapter.OnClickListener,
+        View.OnClickListener {
+
+    private static final String TAG = Activity_F_Add_Quiz.class.getSimpleName();
+
+    final QuizService quizService = new QuizServiceImpl();
+    private ImageView imageView;
+    private Button btnBackButton;
+    private RecyclerView recyclerView;
+    private LinearLayout linearLayoutActivity;
+    private long classId;
+    private long termId;
+
+    private class ActivityAddThread extends Thread {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        List<Quiz> quizList = quizService.getQuizListByClassId(classId);
+                        QuizAdapter quizAdapter = new QuizAdapter(Activity_F_Add_Quiz.this, quizList);
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_F_Add_Quiz.this);
+                        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+                        recyclerView.setAdapter(quizAdapter);
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    }catch (GradingFactorException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
+
+    private void init() {
+        linearLayoutActivity = (LinearLayout) findViewById(R.id.add_add6);
+        recyclerView = (RecyclerView) findViewById(R.id.add_recycler6);
+        btnBackButton = (Button) findViewById(R.id.add_back6);
+
+        linearLayoutActivity.setOnClickListener(this);
+        btnBackButton.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_z_add_quiz);
+        try {
+            classId = getIntent().getExtras().getLong("classId");
+            termId = getIntent().getExtras().getLong("termId");
+
+            init();
+            new ActivityAddThread().start();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onClick(Activity activity, long activityId) {
+        Intent intent = getIntent();
+        intent.putExtra("activityId", activityId);
+        intent.setClass(this, Activity_A_Result_Activity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case add_add6 :
+                Intent intent = getIntent().setClass(this,Activity_F_Input_Quiz.class);
+                startActivity(intent);
+                break;
+            case btn_backaddactivity :
+                finish();
+                break;
+        }
+    }
+}
