@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.Activity_A_Input_Activity;
+import com.lieverandiver.thesisproject.ExamInputActivity;
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Student;
 
@@ -20,7 +21,7 @@ import java.util.Locale;
 
 
 public class ExamInputAdapter extends RecyclerView.Adapter<ExamInputAdapter.StudentAdapterViewHolder>
-    implements Activity_A_Input_Activity.InputListener{
+    implements ExamInputActivity.InputListener{
 
     private List<Student> studentList;
     private Context context;
@@ -39,7 +40,7 @@ public class ExamInputAdapter extends RecyclerView.Adapter<ExamInputAdapter.Stud
 
     @Override
     public StudentAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_z_input_activity_cardview, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_z_input_exam_cardview, parent, false);
         return new StudentAdapterViewHolder(view);
     }
 
@@ -97,9 +98,9 @@ public class ExamInputAdapter extends RecyclerView.Adapter<ExamInputAdapter.Stud
         StudentAdapterViewHolder(View itemView) {
             super(itemView);
             studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
-            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name1);
-            editText = (EditText) itemView.findViewById(R.id.input_cardview_score1);
-            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout1);
+            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name4);
+            editText = (EditText) itemView.findViewById(R.id.input_cardview_score4);
+            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout4);
         }
 
         void setView(final Student student, final int position) {

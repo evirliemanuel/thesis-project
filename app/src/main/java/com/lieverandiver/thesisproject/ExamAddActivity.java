@@ -95,7 +95,7 @@ public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.On
     public void onClick(View v) {
         switch (v.getId()) {
             case add_add4 :
-                Intent intent = getIntent().setClass(this,Activity_D_Input_Exam.class);
+                Intent intent = getIntent().setClass(this,ExamInputActivity.class);
                 startActivity(intent);
                 break;
             case add_back4 :

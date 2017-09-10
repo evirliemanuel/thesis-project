@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.lieverandiver.thesisproject.adapter.ProjectAdapter;
+import com.lieverandiver.thesisproject.adapter.ProjectInputAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Project;
 import com.remswork.project.alice.service.ProjectService;
@@ -95,7 +96,7 @@ public class Activity_E_Add_Project extends AppCompatActivity implements Project
     public void onClick(View v) {
         switch (v.getId()) {
             case add_add5 :
-                Intent intent = getIntent().setClass(this, Activity_E_Input_Project.class);
+                Intent intent = getIntent().setClass(this, ProjectInputActivity.class);
                 startActivity(intent);
                 break;
             case add_back5 :

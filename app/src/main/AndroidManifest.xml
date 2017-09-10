@@ -26,13 +26,12 @@
         <activity android:name=".Activity_A_Input_Activity" />
         <activity android:name=".Activity_A_Result_Activity" />
         <activity android:name=".Activity_B_Add_Assignment" />
-        <activity android:name=".Activity_B_Input_Assignment" />
         <activity android:name=".Activity_B_Result_Assignment" />
         <activity android:name=".Activity_D_Add_Exam" />
-        <activity android:name=".Activity_D_Input_Exam" />
+        <activity android:name=".ExamInputActivity" />
         <activity android:name=".Activity_D_Result_Exam" />
         <activity android:name=".Activity_E_Add_Project"/>
-        <activity android:name=".Activity_E_Input_Project" />
+        <activity android:name=".ProjectInputActivity" />
         <activity android:name=".Activity_E_Result_Project" />
         <activity android:name=".Activity_F_Add_Quiz" />
         <activity android:name=".Activity_F_Input_Quiz" />
