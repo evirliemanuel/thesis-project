@@ -40,6 +40,23 @@
         <activity android:name=".QuizInputActivity" />
         <activity android:name=".QuizResultActivity" />
 
+        <activity android:name=".ActivityAddActivityF" />
+        <activity android:name=".ActivityInputActivityF" />
+        <activity android:name=".ActivityResultActivityF" />
+        <activity android:name=".AssignmentAddActivityF" />
+        <activity android:name=".AssignmentInputActivityF" />
+        <activity android:name=".AssignmentResultActivityF" />
+
+        <activity android:name=".ExamAddActivityF" />
+        <activity android:name=".ExamInputActivityF" />
+        <activity android:name=".ExamResultActivityF" />
+        <activity android:name=".ProjectAddActivityF" />
+        <activity android:name=".ProjectInputActivityF" />
+        <activity android:name=".ProjectResultActivityF" />
+        <activity android:name=".QuizAddActivityF" />
+        <activity android:name=".QuizInputActivityF" />
+        <activity android:name=".QuizResultActivityF" />
+
 
         <activity android:name=".Activity_Class_View_Assignment" />
         <activity android:name=".Activity_Class_View_Exam" />

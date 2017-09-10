@@ -46,23 +46,27 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentA
 
     class StudentAdapterViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView studentImage;
         private TextView studentDetail;
+        private  TextView txInit;
 
         StudentAdapterViewHolder(View itemView) {
             super(itemView);
-            studentImage = (ImageView) itemView.findViewById(R.id.student_image);
             studentDetail = (TextView) itemView.findViewById(R.id.f_data_studentname_text);
+            txInit = (TextView) itemView.findViewById(R.id.result_cardview_init);
         }
 
         void setView(final Student student, final int position) {
-            String display = String.format(Locale.ENGLISH, "%s \t%s %s. %s - %d",
-                    "1-A",
-                    student.getFirstName(),
-                    student.getMiddleName().substring(0, 1),
+            String display = String.format(Locale.ENGLISH, "%s, %s %s",
                     student.getLastName(),
-                    student.getStudentNumber());
+                    student.getFirstName(),
+                    student.getMiddleName().substring(0, 1));
             studentDetail.setText(display);
+
+            String init = student.getLastName().substring(0, 1);
+            txInit.setText(init);
         }
+
+
+
     }
 }

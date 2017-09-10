@@ -316,12 +316,12 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case viewactivityf :
-                intent = getIntent().setClass(this, ActivityAddActivity.class);
+                intent = getIntent().setClass(this, ActivityAddActivityF.class);
                 intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
             case viewassignmentf :
-                intent = getIntent().setClass(this, AssignmentAddActivity.class);
+                intent = getIntent().setClass(this, AssignmentAddActivityF.class);
                 intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
@@ -331,18 +331,18 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case viewexamf :
-                intent = getIntent().setClass(this, ExamAddActivity.class);
+                intent = getIntent().setClass(this, ExamAddActivityF.class);
                 intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
             case viewprojectf :
-                intent = getIntent().setClass(this, ProjectAddActivity.class);
+                intent = getIntent().setClass(this, ProjectAddActivityF.class);
                 intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;
 
             case viewquizf :
-                intent = getIntent().setClass(this, QuizAddActivity.class);
+                intent = getIntent().setClass(this, QuizAddActivityF.class);
                 intent.putExtra("termId", 2L);
                 startActivity(intent);
                 break;

@@ -24,8 +24,9 @@
             android:layout_marginTop="10dp">
 
             <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp">
+                android:foregroundGravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -46,13 +47,15 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginRight="20dp">
 
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/f_data_studentname_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +63,8 @@
                 android:textSize="18sp"
                 android:textColor="#000000"/>
 
-        </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
