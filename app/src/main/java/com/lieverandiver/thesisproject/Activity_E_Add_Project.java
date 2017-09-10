@@ -87,7 +87,7 @@ public class Activity_E_Add_Project extends AppCompatActivity implements Project
     public void onClick(Project project, long projectId) {
         Intent intent = getIntent();
         intent.putExtra("projectId", projectId);
-        intent.setClass(this, Activity_F_Result_Quiz.class);
+        intent.setClass(this, Activity_E_Result_Project.class);
         startActivity(intent);
     }
 

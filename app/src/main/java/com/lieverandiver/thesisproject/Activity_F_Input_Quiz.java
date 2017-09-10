@@ -3,6 +3,7 @@ package com.lieverandiver.thesisproject;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
 import com.lieverandiver.thesisproject.adapter.StudentAdapter2;
 import com.remswork.project.alice.model.Quiz;
 import com.remswork.project.alice.model.Student;
@@ -37,6 +40,12 @@ public class Activity_F_Input_Quiz extends AppCompatActivity{
     private Button buttonSubmit;
     private RecyclerView recyclerViewStudentInput;
     private EditText editTextTotal;
+
+    private Button btnBack;
+    private CardView dialogSucces;
+    private CardView dialogFailed;
+    private ToggleButton btnTryAgain;
+    private Button btnOk;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

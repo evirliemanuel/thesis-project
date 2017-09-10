@@ -28,10 +28,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <Button
+                        android:id="@+id/class_backbutton"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="left|center"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_arrow_back_white_24dp"/>
+
 
                     <TextView
                         android:layout_gravity="left|center"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="50dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CLASS"

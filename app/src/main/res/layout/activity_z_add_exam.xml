@@ -37,7 +37,7 @@
                     android:layout_marginLeft="50dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Assignment"
+                    android:text="Exam"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="@color/colorWhite"/>

@@ -46,7 +46,7 @@
                 <Button
                     android:clickable="true"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/add_back1"
+                    android:id="@+id/result_back6"
                     android:layout_gravity="left|center"
                     android:layout_width="25dp"
                     android:layout_height="25dp"

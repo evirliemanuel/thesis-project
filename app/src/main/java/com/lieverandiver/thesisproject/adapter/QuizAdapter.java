@@ -59,10 +59,10 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         QuizViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title6);
-            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date6);
-            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total6);
-            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview6);
+            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title6new6);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date6new6);
+            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total6new6);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardviewnew6);
         }
 
         public void setView(final Quiz quiz, int position) {

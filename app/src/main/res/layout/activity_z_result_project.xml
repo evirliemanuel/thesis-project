@@ -25,7 +25,7 @@
                 <Button
                     android:clickable="true"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/add_back5"
+                    android:id="@+id/result_back5"
                     android:layout_gravity="left|center"
                     android:layout_width="25dp"
                     android:layout_height="25dp"

@@ -2,6 +2,7 @@ package com.lieverandiver.thesisproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -35,28 +36,30 @@ public class Activity_A_Add_Activity extends AppCompatActivity implements Activi
     private LinearLayout linearLayoutActivity;
     private long classId;
     private long termId;
+    private int size;
 
     private class ActivityAddThread extends Thread {
         @Override
         public void run() {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        List<Activity> activityList = activityService.getActivityListByClassId(classId);
-                        ActivityAdapter activityAdapter = new ActivityAdapter(Activity_A_Add_Activity.this, activityList);
+            try {
+                final List<Activity> activityList = activityService.getActivityListByClassId(classId);
+                size = activityList.size();
+                new Handler(getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                    ActivityAdapter activityAdapter = new ActivityAdapter(Activity_A_Add_Activity.this, activityList);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_A_Add_Activity.this);
+                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_A_Add_Activity.this);
-                        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerView.setAdapter(activityAdapter);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                        recyclerView.setAdapter(activityAdapter);
-                        recyclerView.setLayoutManager(layoutManager);
-                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-                    }catch (GradingFactorException e) {
-                        e.printStackTrace();
                     }
-                }
-            });
+                });
+            }catch (GradingFactorException e) {
+                e.printStackTrace();
+            }
         }
     }
 

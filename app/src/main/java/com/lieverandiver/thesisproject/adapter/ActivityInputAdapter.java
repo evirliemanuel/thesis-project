@@ -67,12 +67,10 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
 
         void setView(final Student student, final int position) {
             this.student = student;
-            String display = String.format(Locale.ENGLISH, "%s \t%s %s. %s - %d",
-                    "1-A",
-                    student.getFirstName(),
-                    student.getMiddleName().substring(0, 1),
+            String display = String.format(Locale.ENGLISH, "%s, %s %s.",
                     student.getLastName(),
-                    student.getStudentNumber());
+                    student.getFirstName(),
+                    student.getMiddleName().substring(0, 1));
             studentDetail.setText(display);
         }
 
@@ -92,4 +90,6 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
             studentDetail.setTextColor(context.getResources().getColor(R.color.colorMoca2));
         }
     }
+
+
 }

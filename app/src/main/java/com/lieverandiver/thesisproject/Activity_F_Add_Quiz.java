@@ -25,7 +25,7 @@ import java.util.List;
 import static com.lieverandiver.thesisproject.R.id.add_add6;
 import static com.lieverandiver.thesisproject.R.id.btn_backaddactivity;
 
-public class Activity_F_Add_Quiz extends AppCompatActivity implements ActivityAdapter.OnClickListener,
+public class Activity_F_Add_Quiz extends AppCompatActivity implements QuizAdapter.OnClickListener,
         View.OnClickListener {
 
     private static final String TAG = Activity_F_Add_Quiz.class.getSimpleName();
@@ -37,6 +37,14 @@ public class Activity_F_Add_Quiz extends AppCompatActivity implements ActivityAd
     private LinearLayout linearLayoutActivity;
     private long classId;
     private long termId;
+
+    @Override
+    public void onClick(Quiz quiz, long quizId) {
+        Intent intent = getIntent();
+        intent.putExtra("quizId", quizId);
+        intent.setClass(this, Activity_F_Result_Quiz.class);
+        startActivity(intent);
+    }
 
     private class ActivityAddThread extends Thread {
         @Override
@@ -85,14 +93,6 @@ public class Activity_F_Add_Quiz extends AppCompatActivity implements ActivityAd
         }catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onClick(Activity activity, long activityId) {
-        Intent intent = getIntent();
-        intent.putExtra("activityId", activityId);
-        intent.setClass(this, Activity_A_Result_Activity.class);
-        startActivity(intent);
     }
 
     @Override

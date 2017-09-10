@@ -7,15 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
 import com.lieverandiver.thesisproject.adapter.AssignmentAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Assignment;
 import com.remswork.project.alice.service.AssignmentService;
 import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
+
 import java.util.List;
 
 import static com.lieverandiver.thesisproject.R.id.add_add2;
@@ -25,7 +26,6 @@ public class Activity_B_Add_Assignment extends AppCompatActivity implements Assi
         View.OnClickListener {
 
     private static final String TAG = Activity_B_Add_Assignment.class.getSimpleName();
-
     final AssignmentService aassignmentService = new AssignmentServiceImpl();
     private Button btnBackButton;
     private RecyclerView recyclerView;
@@ -92,7 +92,7 @@ public class Activity_B_Add_Assignment extends AppCompatActivity implements Assi
     public void onClick(View v) {
         switch (v.getId()) {
             case add_add2 :
-                Intent intent = getIntent().setClass(this, Activity_B_Input_Assignment.class);
+                Intent intent = getIntent().setClass(this, AssignmentInputActivity.class);
                 startActivity(intent);
                 break;
             case add_back2 :

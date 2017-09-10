@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/add_cardview_cardview6"
+    android:id="@+id/add_cardview_cardviewnew6"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="2dp"
@@ -40,7 +40,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/add_cardview_title6"
+                android:id="@+id/add_cardview_title6new6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Loading ..."
@@ -49,7 +49,7 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:id="@+id/add_cardview_date6"
+                android:id="@+id/add_cardview_date6new6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -74,7 +74,7 @@
                 android:layout_gravity="center"/>
             <TextView
                 android:layout_gravity="center"
-                android:id="@+id/add_cardview_total6"
+                android:id="@+id/add_cardview_total6new6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="_ _"

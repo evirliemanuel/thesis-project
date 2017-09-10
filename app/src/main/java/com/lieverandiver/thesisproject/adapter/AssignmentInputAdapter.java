@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.lieverandiver.thesisproject.Activity_A_Input_Activity;
+import com.lieverandiver.thesisproject.AssignmentInputActivity;
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Student;
 
@@ -18,29 +20,48 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class AssignmentInputAdapter extends RecyclerView.Adapter<AssignmentInputAdapter.AssignmentViewHolder> {
+public class AssignmentInputAdapter extends RecyclerView.Adapter<AssignmentInputAdapter.AssignmentAdapterViewHolder>
+    implements AssignmentInputActivity.InputListener{
 
     private List<Student> studentList;
     private Context context;
     private LayoutInflater layoutInflater;
-    private int total;
+    private int score[];
+    private boolean isNoError = true;
+    private int totalScore;
+    private boolean doValidate;
 
     public AssignmentInputAdapter(Context context, List<Student> studentList) {
         this.context = context;
         this.studentList = studentList;
+        score = new int[studentList.size()];
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
-    public AssignmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AssignmentAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.activity_z_input_assignment_cardview, parent, false);
-        return new AssignmentViewHolder(view);
+        return new AssignmentAdapterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(AssignmentViewHolder holder, int position) {
+    public void onBindViewHolder(AssignmentAdapterViewHolder holder, int position) {
+
         Student student = studentList.get(position);
         holder.setView(student, position);
+
+        if(doValidate) {
+               if(holder.getScore() > totalScore || holder.getScore() < 0) {
+                   holder.setStatus(false);
+                   isNoError = false;
+               }else {
+
+                   holder.setStatus(true);
+               }
+                score[position] = holder.getScore();
+        }if(position >= studentList.size()) {
+            doValidate = false;
+        }
     }
 
     @Override
@@ -48,30 +69,46 @@ public class AssignmentInputAdapter extends RecyclerView.Adapter<AssignmentInput
         return studentList.size();
     }
 
-    public class AssignmentViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onValidate(int totalScore, boolean doValidate) {
+        this.totalScore = totalScore;
+        this.doValidate = doValidate;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean isNoError() {
+        return isNoError;
+    }
+
+    @Override
+    public int getScore(int index) {
+        return score[index];
+    }
+
+    public class AssignmentAdapterViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView studentImage;
         private TextView studentDetail;
         private EditText editText;
         private Student student;
+        private Spinner spinner;
         private LinearLayout layout;
 
-        AssignmentViewHolder(View itemView) {
+        AssignmentAdapterViewHolder(View itemView) {
             super(itemView);
             studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
-            studentDetail = (TextView) itemView.findViewById(R.id.input_name2);
+            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name2);
             editText = (EditText) itemView.findViewById(R.id.input_cardview_score2);
             layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout2);
         }
 
         void setView(final Student student, final int position) {
             this.student = student;
-            String display = String.format(Locale.ENGLISH, "%s \t%s %s. %s - %d",
-                    "1-A",
-                    student.getFirstName(),
-                    student.getMiddleName().substring(0, 1),
+            String display = String.format(Locale.ENGLISH, "%s, %s %s",
                     student.getLastName(),
-                    student.getStudentNumber());
+                    student.getFirstName(),
+                    student.getMiddleName().substring(0, 1));
             studentDetail.setText(display);
         }
 
@@ -80,7 +117,7 @@ public class AssignmentInputAdapter extends RecyclerView.Adapter<AssignmentInput
         }
 
         public int getScore() {
-            return Integer.parseInt(editText.getText().toString());
+            return Integer.parseInt(!editText.getText().toString().equals("") ? editText.getText().toString() : "0");
         }
 
         public void setStatus(boolean isSuccess) {

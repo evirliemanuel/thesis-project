@@ -17,35 +17,10 @@
         android:id="@+id/input_cardview_layout6"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/colorWhite">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:background="@drawable/student_profile_male"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="16dp"
-                />
-
-            <TextView
-                android:id="@+id/input_cardview_name6"
-                android:layout_marginLeft="16dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Loading"
-                android:textSize="20dp"
-                android:textColor="#000000"/>
-
-        </LinearLayout>
 
         <FrameLayout
             android:layout_marginRight="10dp"
@@ -53,6 +28,32 @@
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginLeft="16dp"
+                android:layout_gravity="left|center"
+                android:orientation="horizontal"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:background="@drawable/student_profile_male"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    />
+
+                <TextView
+                    android:id="@+id/input_cardview_name6"
+                    android:layout_marginLeft="16dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loading"
+                    android:textSize="20dp"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_marginRight="10dp"

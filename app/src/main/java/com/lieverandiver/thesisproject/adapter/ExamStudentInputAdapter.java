@@ -11,15 +11,18 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.lieverandiver.thesisproject.Activity_A_Input_Activity;
+
+import com.lieverandiver.thesisproject.ActivityInputExam;
+
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Student;
+
 import java.util.List;
 import java.util.Locale;
 
 
-public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.StudentAdapterViewHolder>
-    implements Activity_A_Input_Activity.InputListener{
+public class ExamStudentInputAdapter extends RecyclerView.Adapter<ExamStudentInputAdapter.ExamStudentInputAdapterViewHolder>
+    implements ActivityInputExam.InputListener {
 
     private List<Student> studentList;
     private Context context;
@@ -29,7 +32,7 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
     private int totalScore;
     private boolean doValidate;
 
-    public StudentAdapter2(Context context, List<Student> studentList) {
+    public ExamStudentInputAdapter(Context context, List<Student> studentList) {
         this.context = context;
         this.studentList = studentList;
         score = new int[studentList.size()];
@@ -37,13 +40,13 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
     }
 
     @Override
-    public StudentAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_z_input_activity_cardview, parent, false);
-        return new StudentAdapterViewHolder(view);
+    public ExamStudentInputAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = layoutInflater.inflate(R.layout.activity_z_input_exam_cardview, parent, false);
+        return new ExamStudentInputAdapterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(StudentAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(ExamStudentInputAdapterViewHolder holder, int position) {
 
         Student student = studentList.get(position);
         holder.setView(student, position);
@@ -76,7 +79,7 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
 
     @Override
     public boolean isNoError() {
-        return isNoError;
+        return false;
     }
 
     @Override
@@ -84,7 +87,7 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
         return score[index];
     }
 
-    public class StudentAdapterViewHolder extends RecyclerView.ViewHolder {
+    public class ExamStudentInputAdapterViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView studentImage;
         private TextView studentDetail;
@@ -93,20 +96,22 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
         private Spinner spinner;
         private LinearLayout layout;
 
-        StudentAdapterViewHolder(View itemView) {
+        ExamStudentInputAdapterViewHolder(View itemView) {
             super(itemView);
             studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
-            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name1);
-            editText = (EditText) itemView.findViewById(R.id.input_cardview_score1);
-            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout1);
+            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name4);
+            editText = (EditText) itemView.findViewById(R.id.input_cardview_score4);
+            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout4);
         }
 
         void setView(final Student student, final int position) {
             this.student = student;
-            String display = String.format(Locale.ENGLISH, "%s, %s %s",
-                    student.getLastName(),
+            String display = String.format(Locale.ENGLISH, "%s \t%s %s. %s - %d",
+                    "1-A",
                     student.getFirstName(),
-                    student.getMiddleName().substring(0, 1));
+                    student.getMiddleName().substring(0, 1),
+                    student.getLastName(),
+                    student.getStudentNumber());
             studentDetail.setText(display);
         }
 

@@ -8,7 +8,6 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,38 +16,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.lieverandiver.thesisproject.adapter.ExamStudentInputAdapter;
 import com.lieverandiver.thesisproject.adapter.StudentAdapter2;
 import com.remswork.project.alice.model.Activity;
+import com.remswork.project.alice.model.Exam;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.ExamService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
-
+import com.remswork.project.alice.service.impl.ExamServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import static com.lieverandiver.thesisproject.R.id.btn_backaddattendance;
 import static com.lieverandiver.thesisproject.R.id.input_back1;
 import static com.lieverandiver.thesisproject.R.id.input_ok1;
-import static com.lieverandiver.thesisproject.R.id.relative_clicked3;
-import static com.lieverandiver.thesisproject.R.id.view_schedule;
-import static com.lieverandiver.thesisproject.R.id.view_student;
-import static com.lieverandiver.thesisproject.R.id.viewactivitym;
-import static com.lieverandiver.thesisproject.R.id.viewassignmentm;
-import static com.lieverandiver.thesisproject.R.id.viewattendancem;
 
-/**
- * Created by Verlie on 8/31/2017.
- */
-
-public class Activity_A_Input_Activity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityInputExam extends AppCompatActivity implements View.OnClickListener {
 
     private final ClassService classService = new ClassServiceImpl();
-    private final ActivityService activityService = new ActivityServiceImpl();
+    private final ExamService examService = new ExamServiceImpl();
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
@@ -60,13 +51,13 @@ public class Activity_A_Input_Activity extends AppCompatActivity implements View
     private CardView dialogFailed;
     private ToggleButton btnTryAgain;
     private Button btnOk;
-    private StudentAdapter2 studentAdapter;
+    private ExamStudentInputAdapter studentAdapter;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_z_input_activity);
+        setContentView(R.layout.activity_z_input_exam);
         init();
 
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
@@ -75,25 +66,25 @@ public class Activity_A_Input_Activity extends AppCompatActivity implements View
                 try {
                     boolean isNoError=true;
 
-                    Activity activity = new Activity();
-                    activity.setTitle(editTextName.getText().toString());
-                    activity.setDate(textViewDate.getText().toString());
-                    activity.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
+                    Exam exam = new Exam();
+                    exam.setTitle(editTextName.getText().toString());
+                    exam.setDate(textViewDate.getText().toString());
+                    exam.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
 
-                    studentAdapter.onValidate(activity.getItemTotal(), true);
+                    studentAdapter.onValidate(exam.getItemTotal(), true);
 
 
                     if(studentAdapter.isNoError()) {
-                        activity = activityService.addActivity(activity, getIntent().getExtras().getLong("classId"), 1L);
+                        exam = examService.addExam(exam, getIntent().getExtras().getLong("classId"), 1L);
                         for(int i=0; i < studentList.size(); i++) {
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
-                            activityService.addActivityResult(score, activity.getId(), student.getId());
+                            examService.addExamResult(score, exam.getId(), student.getId());
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
-                        Toast.makeText(Activity_A_Input_Activity.this, "Success", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityInputExam.this, "Success", Toast.LENGTH_LONG).show();
                     }else{
-                        Toast.makeText(Activity_A_Input_Activity.this, "Failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityInputExam.this, "Failed", Toast.LENGTH_LONG).show();
                      dialogFailed.setVisibility(View.VISIBLE);
                     }
                 }catch (Exception e) {
@@ -122,15 +113,15 @@ public class Activity_A_Input_Activity extends AppCompatActivity implements View
     public void init(){
 
         try {
-            editTextName = (EditText) findViewById(R.id.input_name1);
-            editTextTotal =(EditText) findViewById(R.id.input_total1);
-            textViewDate = (TextView) findViewById(R.id.input_date1);
-            buttonSubmit = (ToggleButton) findViewById(R.id.input_submit1);
-            btnBack = (Button) findViewById(R.id.input_back1);
-            dialogFailed = (CardView)findViewById(R.id.input_failed1);
-            dialogSucces = (CardView)findViewById(R.id.input_succes1);
-            btnOk = (Button) findViewById(R.id.input_ok1);
-            btnTryAgain = (ToggleButton) findViewById(R.id.input_tryagain1);
+            editTextName = (EditText) findViewById(R.id.input_name4);
+            editTextTotal =(EditText) findViewById(R.id.input_total4);
+            textViewDate = (TextView) findViewById(R.id.input_date4);
+            buttonSubmit = (ToggleButton) findViewById(R.id.input_submit4);
+            btnBack = (Button) findViewById(R.id.input_back4);
+            dialogFailed = (CardView)findViewById(R.id.input_failed4);
+            dialogSucces = (CardView)findViewById(R.id.input_succes4);
+            btnOk = (Button) findViewById(R.id.input_ok4);
+            btnTryAgain = (ToggleButton) findViewById(R.id.input_tryagain4);
 
             dialogSucces.setVisibility(View.GONE);
             dialogFailed.setVisibility(View.GONE);
@@ -158,12 +149,14 @@ public class Activity_A_Input_Activity extends AppCompatActivity implements View
                 }
             });
 
+
+
             recyclerViewStudentInput = (RecyclerView) findViewById(R.id.input_recyclerview1);
 
             for(Student s : classService.getStudentList(getIntent().getExtras().getLong("classId")))
                 studentList.add(s);
 
-            studentAdapter = new StudentAdapter2(this, studentList);
+            studentAdapter = new ExamStudentInputAdapter(this, studentList);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

@@ -62,12 +62,10 @@ public class ProjectInputAdapter extends RecyclerView.Adapter<ProjectInputAdapte
 
         void setView(final Student student, final int position) {
             this.student = student;
-            String display = String.format(Locale.ENGLISH, "%s \t%s %s. %s - %d",
-                    "1-A",
-                    student.getFirstName(),
-                    student.getMiddleName().substring(0, 1),
+            String display = String.format(Locale.ENGLISH, "%s, %s %s.",
                     student.getLastName(),
-                    student.getStudentNumber());
+                    student.getFirstName(),
+                    student.getMiddleName().substring(0, 1));
             studentDetail.setText(display);
         }
 

@@ -29,6 +29,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.github.erafaelmanuel:alice-android-library:beed0b6b81'
+    compile 'com.github.erafaelmanuel:alice-android-library:3752eed54f'
     testCompile 'junit:junit:4.12'
 }
