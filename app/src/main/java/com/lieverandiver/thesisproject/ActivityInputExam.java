@@ -17,14 +17,10 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.ExamStudentInputAdapter;
-import com.lieverandiver.thesisproject.adapter.StudentAdapter2;
-import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.model.Exam;
 import com.remswork.project.alice.model.Student;
-import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
 import com.remswork.project.alice.service.ExamService;
-import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
 import com.remswork.project.alice.service.impl.ExamServiceImpl;
 
@@ -35,7 +31,7 @@ import java.util.Locale;
 
 import static com.lieverandiver.thesisproject.R.id.input_back1;
 import static com.lieverandiver.thesisproject.R.id.input_ok1;
-
+@Deprecated
 public class ActivityInputExam extends AppCompatActivity implements View.OnClickListener {
 
     private final ClassService classService = new ClassServiceImpl();
@@ -99,11 +95,11 @@ public class ActivityInputExam extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case input_back1:
-                Intent intent = getIntent().setClass(this, Activity_A_Add_Activity.class);
+                Intent intent = getIntent().setClass(this, ActivityAddActivity.class);
                 startActivity(intent);
                 break;
             case input_ok1:
-               intent = getIntent().setClass(this, Activity_A_Add_Activity.class);
+               intent = getIntent().setClass(this, ActivityAddActivity.class);
                 startActivity(intent);
                 break;
 

@@ -9,32 +9,28 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.lieverandiver.thesisproject.adapter.ProjectResultAdapter;
-import com.lieverandiver.thesisproject.adapter.QuizResultAdapter;
+import com.lieverandiver.thesisproject.adapter.ExamResultAdapter;
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
-import com.remswork.project.alice.model.Project;
-import com.remswork.project.alice.model.ProjectResult;
-import com.remswork.project.alice.model.Quiz;
-import com.remswork.project.alice.model.QuizResult;
+import com.remswork.project.alice.model.Exam;
+import com.remswork.project.alice.model.ExamResult;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ClassService;
-import com.remswork.project.alice.service.ProjectService;
-import com.remswork.project.alice.service.QuizService;
+import com.remswork.project.alice.service.ExamService;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
-import com.remswork.project.alice.service.impl.ProjectServiceImpl;
-import com.remswork.project.alice.service.impl.QuizServiceImpl;
+import com.remswork.project.alice.service.impl.ExamServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Activity_F_Result_Quiz extends AppCompatActivity {
+public class ExamResultActivity extends AppCompatActivity {
 
-    private static final String TAG = Activity_F_Result_Quiz.class.getSimpleName();
-    private final QuizService quizService = new QuizServiceImpl();
+    private static final String TAG = ExamResultActivity.class.getSimpleName();
+
+    private final ExamService examService = new ExamServiceImpl();
     private final ClassService classService = new ClassServiceImpl();
-    private final List<QuizResult> resultList = new ArrayList<>();
-    private Quiz quiz;
+    private final List<ExamResult> resultList = new ArrayList<>();
+    private Exam exam;
 
     private TextView textViewDate;
     private TextView textViewName;
@@ -43,7 +39,7 @@ public class Activity_F_Result_Quiz extends AppCompatActivity {
 
     private long classId;
     private long termId;
-    private long quizId;
+    private long examId;
 
     private class ExamViewThread extends Thread {
         @Override
@@ -52,28 +48,25 @@ public class Activity_F_Result_Quiz extends AppCompatActivity {
                 @Override
                 public void run() {
                     try {
-                        String date = quiz.getDate();
-                        String title = quiz.getTitle();
-                        String itemTotal = String.valueOf(quiz.getItemTotal());
+                        String date = exam.getDate();
+                        String title = exam.getTitle();
+                        String itemTotal = String.valueOf(exam.getItemTotal());
 
                         textViewDate.setText(date);
                         textViewName.setText(title);
                         textViewTotal.setText(itemTotal);
 
                         for (Student s : classService.getStudentList(classId)) {
-                            QuizResult result = quizService.getQuizResultByQuizAndStudentId
-                                    (quiz.getId(), s.getId());
+                            ExamResult result = examService.getExamResultByExamAndStudentId(exam.getId(), s.getId());
                             if(result != null)
                                 resultList.add(result);
                         }
 
-                       QuizResultAdapter simpleQuizAdapter = new QuizResultAdapter
-                               (Activity_F_Result_Quiz.this, resultList);
-                        LinearLayoutManager layoutManager = new LinearLayoutManager
-                                (Activity_F_Result_Quiz.this);
+                        ExamResultAdapter simpleExamAdapter = new ExamResultAdapter(ExamResultActivity.this, resultList);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(ExamResultActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-                        recyclerViewView.setAdapter(simpleQuizAdapter);
+                        recyclerViewView.setAdapter(simpleExamAdapter);
                         recyclerViewView.setLayoutManager(layoutManager);
                         recyclerViewView.setItemAnimator(new DefaultItemAnimator());
                     } catch (ClassException| GradingFactorException e) {
@@ -85,10 +78,10 @@ public class Activity_F_Result_Quiz extends AppCompatActivity {
     }
 
     public void init() {
-        textViewDate = (TextView) findViewById(R.id.result_date6);
-        textViewName = (TextView) findViewById(R.id.result_name6);
-        textViewTotal = (TextView) findViewById(R.id.result_total6);
-        recyclerViewView = (RecyclerView) findViewById(R.id.result_recycler6);
+        textViewDate = (TextView) findViewById(R.id.result_date4);
+        textViewName = (TextView) findViewById(R.id.result_name4);
+        textViewTotal = (TextView) findViewById(R.id.result_total4);
+        recyclerViewView = (RecyclerView) findViewById(R.id.result_recycler4);
     }
 
     @Override
@@ -96,12 +89,12 @@ public class Activity_F_Result_Quiz extends AppCompatActivity {
         try {
             Log.i(TAG, "onCreate");
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_z_result_quiz);
+            setContentView(R.layout.activity_z_result_exam);
 
             classId = getIntent().getExtras().getLong("classId");
-            quizId = getIntent().getExtras().getLong("quizId");
+            examId = getIntent().getExtras().getLong("examId");
             termId = getIntent().getExtras().getLong("termId");
-           quiz = quizService.getQuizById(quizId);
+            exam = examService.getExamById(examId);
 
             init();
             new ExamViewThread().start();

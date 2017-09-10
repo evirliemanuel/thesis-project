@@ -23,9 +23,9 @@ import com.remswork.project.alice.service.impl.ClassServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Activity_B_Result_Assignment extends AppCompatActivity {
+public class AssignmentResultActivity extends AppCompatActivity {
 
-    private static final String TAG = Activity_B_Result_Assignment.class.getSimpleName();
+    private static final String TAG = AssignmentResultActivity.class.getSimpleName();
 
     private final AssignmentService assignmentService = new AssignmentServiceImpl();
     private final ClassService classService = new ClassServiceImpl();
@@ -61,8 +61,8 @@ public class Activity_B_Result_Assignment extends AppCompatActivity {
                             if(result != null)
                                 resultList.add(result);
                         }
-                        AssignmentResultAdapter simpleAssignmentAdapter = new AssignmentResultAdapter(Activity_B_Result_Assignment.this, resultList);
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_B_Result_Assignment.this);
+                        AssignmentResultAdapter simpleAssignmentAdapter = new AssignmentResultAdapter(AssignmentResultActivity.this, resultList);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(AssignmentResultActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
                         recyclerViewView.setAdapter(simpleAssignmentAdapter);

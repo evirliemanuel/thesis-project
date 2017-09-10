@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/basic_ripple_moca"
+        android:background="@color/colorWhite"
         android:clickable="true">
 
         <RelativeLayout
@@ -23,11 +23,26 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp">
 
-            <ImageView
-                android:id="@+id/student_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/student_profile_male" />
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/result_cardview_init"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="S"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+            </FrameLayout>
+
 
         </RelativeLayout>
 
@@ -43,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="Loading ..."
                 android:textSize="18sp"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="#000000"/>
 
         </RelativeLayout>
 

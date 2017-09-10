@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_A_Input_Activity">
+    tools:context=".ActivityInputActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -54,7 +54,67 @@
 
             </FrameLayout>
 
+        </LinearLayout>
 
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_marginBottom="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/icon_calendar" />
+
+        <TextView
+            android:id="@+id/input_date1"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:text="--/--/--"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+</LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ToggleButton
+                android:layout_gravity="right|center"
+                android:id="@+id/input_submit1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="12dp"
+                android:textOff="Submit"
+                android:textOn=""
+                android:background="@drawable/basic_ripple_blue"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="10dp"/>
+
+        </FrameLayout>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
@@ -90,35 +150,32 @@
                   android:layout_marginTop="10dp"
                   android:textSize="16dp"
                   android:layout_gravity="center"
-                  android:text="Total :"
+                  android:text="Title :"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content" />
 
               <TextView
                   android:layout_marginTop="20dp"
                   android:layout_gravity="center"
-                  android:text="Title :"
+                  android:text="Total :"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:textSize="16sp"/>
 
-              <TextView
-                    android:layout_marginTop="12dp"
-                  android:layout_gravity="center"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Date :"
-                  android:textSize="16sp"
-                  />
-
           </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginBottom="10dp"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/input_name1"
+                        android:hint="Activity"
+                        android:textSize="16dp"
+                        android:textColorHint="#000000"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content" />
 
                     <EditText
                         android:id="@+id/input_total1"
@@ -130,23 +187,6 @@
                         android:textSize="16dp"
                         />
 
-                    <EditText
-                        android:id="@+id/input_name1"
-                        android:hint="Title"
-                        android:textSize="16dp"
-                        android:textColorHint="#000000"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="Loading ..."
-                        android:textSize="16sp"
-                        android:textColor="#000000"
-                        android:id="@+id/input_date1"/>
-
-
 
 
                 </LinearLayout>
@@ -155,19 +195,7 @@
             </LinearLayout>
 
 
-                <ToggleButton
-                    android:layout_gravity="right|center"
-                    android:id="@+id/input_submit1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:textSize="12dp"
-                    android:textOff="Submit"
-                    android:textOn=""
-                    android:background="@drawable/basic_ripple_blue"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="10dp"/>
+
 
 
             </FrameLayout>
@@ -179,13 +207,13 @@
 
 
     <FrameLayout
-        android:background="@color/colorTweeterBlue"
+        android:background="@color/colorClouds"
         android:layout_width="match_parent"
         android:layout_height="30dp">
 
         <TextView
             android:textStyle="bold"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="20dp"
             android:layout_gravity="left|center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -196,7 +224,7 @@
         <TextView
             android:textStyle="bold"
             android:textColor="#000000"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="20dp"
             android:layout_gravity="right|center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -204,6 +232,81 @@
             android:textSize="16sp"/>
 
     </FrameLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="10dp"
+        android:id="@+id/input_failedemp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="@color/Pink"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Empty Total !"
+                        android:textSize="14dp"
+                        android:textColor="#000000"/>
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <Button
+                    android:id="@+id/input_tryagainemp1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="TRY AGAIN"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/tryagain_button"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+
+                    />
+
+
+
+            </FrameLayout>
+
+
+
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:layout_marginTop="10dp"
@@ -255,9 +358,7 @@
                android:layout_height="wrap_content">
 
 
-               <ToggleButton
-                   android:textOff="Try Again"
-                   android:textOn=""
+               <Button
                    android:id="@+id/input_tryagain1"
                    android:layout_marginTop="5dp"
                    android:layout_marginBottom="10dp"

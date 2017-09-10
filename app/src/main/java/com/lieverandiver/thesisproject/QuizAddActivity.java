@@ -12,10 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.lieverandiver.thesisproject.adapter.ActivityAdapter;
 import com.lieverandiver.thesisproject.adapter.QuizAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
-import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.model.Quiz;
 import com.remswork.project.alice.service.QuizService;
 import com.remswork.project.alice.service.impl.QuizServiceImpl;
@@ -25,10 +23,10 @@ import java.util.List;
 import static com.lieverandiver.thesisproject.R.id.add_add6;
 import static com.lieverandiver.thesisproject.R.id.btn_backaddactivity;
 
-public class Activity_F_Add_Quiz extends AppCompatActivity implements QuizAdapter.OnClickListener,
+public class QuizAddActivity extends AppCompatActivity implements QuizAdapter.OnClickListener,
         View.OnClickListener {
 
-    private static final String TAG = Activity_F_Add_Quiz.class.getSimpleName();
+    private static final String TAG = QuizAddActivity.class.getSimpleName();
 
     final QuizService quizService = new QuizServiceImpl();
     private ImageView imageView;
@@ -42,7 +40,7 @@ public class Activity_F_Add_Quiz extends AppCompatActivity implements QuizAdapte
     public void onClick(Quiz quiz, long quizId) {
         Intent intent = getIntent();
         intent.putExtra("quizId", quizId);
-        intent.setClass(this, Activity_F_Result_Quiz.class);
+        intent.setClass(this, QuizResultActivity.class);
         startActivity(intent);
     }
 
@@ -54,9 +52,9 @@ public class Activity_F_Add_Quiz extends AppCompatActivity implements QuizAdapte
                 public void run() {
                     try {
                         List<Quiz> quizList = quizService.getQuizListByClassId(classId);
-                        QuizAdapter quizAdapter = new QuizAdapter(Activity_F_Add_Quiz.this, quizList);
+                        QuizAdapter quizAdapter = new QuizAdapter(QuizAddActivity.this, quizList);
 
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_F_Add_Quiz.this);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(QuizAddActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
                         recyclerView.setAdapter(quizAdapter);
@@ -99,11 +97,12 @@ public class Activity_F_Add_Quiz extends AppCompatActivity implements QuizAdapte
     public void onClick(View v) {
         switch (v.getId()) {
             case add_add6 :
-                Intent intent = getIntent().setClass(this,Activity_F_Input_Quiz.class);
+                Intent intent = getIntent().setClass(this,QuizInputActivity.class);
                 startActivity(intent);
                 break;
             case btn_backaddactivity :
-                finish();
+                intent = getIntent().setClass(this,ClassViewActivity.class);
+                startActivity(intent);
                 break;
         }
     }

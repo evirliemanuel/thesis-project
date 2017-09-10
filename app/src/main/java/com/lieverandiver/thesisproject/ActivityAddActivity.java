@@ -24,10 +24,10 @@ import java.util.List;
 import static com.lieverandiver.thesisproject.R.id.add_add1;
 import static com.lieverandiver.thesisproject.R.id.add_back1;
 
-public class Activity_A_Add_Activity extends AppCompatActivity implements ActivityAdapter.OnClickListener,
+public class ActivityAddActivity extends AppCompatActivity implements ActivityAdapter.OnClickListener,
         View.OnClickListener {
 
-    private static final String TAG = Activity_A_Add_Activity.class.getSimpleName();
+    private static final String TAG = ActivityAddActivity.class.getSimpleName();
 
     final ActivityService activityService = new ActivityServiceImpl();
     private ImageView imageView;
@@ -47,8 +47,8 @@ public class Activity_A_Add_Activity extends AppCompatActivity implements Activi
                 new Handler(getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                    ActivityAdapter activityAdapter = new ActivityAdapter(Activity_A_Add_Activity.this, activityList);
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_A_Add_Activity.this);
+                    ActivityAdapter activityAdapter = new ActivityAdapter(ActivityAddActivity.this, activityList);
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityAddActivity.this);
                     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
                     recyclerView.setAdapter(activityAdapter);
@@ -92,7 +92,7 @@ public class Activity_A_Add_Activity extends AppCompatActivity implements Activi
     public void onClick(Activity activity, long activityId) {
         Intent intent = getIntent();
         intent.putExtra("activityId", activityId);
-        intent.setClass(this, Activity_A_Result_Activity.class);
+        intent.setClass(this, ActivityResultActivity.class);
         startActivity(intent);
     }
 
@@ -100,7 +100,7 @@ public class Activity_A_Add_Activity extends AppCompatActivity implements Activi
     public void onClick(View v) {
         switch (v.getId()) {
             case add_add1 :
-                Intent intent = getIntent().setClass(this, Activity_A_Input_Activity.class);
+                Intent intent = getIntent().setClass(this, ActivityInputActivity.class);
                 startActivity(intent);
                 break;
             case add_back1 :

@@ -2,37 +2,42 @@ package com.lieverandiver.thesisproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.lieverandiver.thesisproject.Activity_A_Input_Activity;
+import com.lieverandiver.thesisproject.ActivityInputActivity;
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Student;
+
 import java.util.List;
 import java.util.Locale;
 
 
 public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.StudentAdapterViewHolder>
-    implements Activity_A_Input_Activity.InputListener{
+    implements ActivityInputActivity.InputListener{
 
     private List<Student> studentList;
     private Context context;
     private LayoutInflater layoutInflater;
     private int score[];
-    private boolean isNoError = true;
     private int totalScore;
     private boolean doValidate;
+    private int count;
+    private int error[];
 
     public StudentAdapter2(Context context, List<Student> studentList) {
         this.context = context;
         this.studentList = studentList;
         score = new int[studentList.size()];
+        error = new int[studentList.size()];
         layoutInflater = LayoutInflater.from(context);
     }
 
@@ -44,21 +49,19 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
 
     @Override
     public void onBindViewHolder(StudentAdapterViewHolder holder, int position) {
-
+        count += 1;
         Student student = studentList.get(position);
         holder.setView(student, position);
 
         if(doValidate) {
                if(holder.getScore() > totalScore || holder.getScore() < 0) {
                    holder.setStatus(false);
-                   isNoError = false;
                }else {
-
                    holder.setStatus(true);
                }
-                score[position] = holder.getScore();
-        }if(position >= studentList.size()) {
+        }if(count == studentList.size()) {
             doValidate = false;
+            count = 0;
         }
     }
 
@@ -68,7 +71,7 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
     }
 
     @Override
-    public void onValidate(int totalScore, boolean doValidate) {
+    public void onValidate(boolean doValidate) {
         this.totalScore = totalScore;
         this.doValidate = doValidate;
         notifyDataSetChanged();
@@ -76,12 +79,28 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
 
     @Override
     public boolean isNoError() {
-        return isNoError;
+        int errorNumber = 0;
+        for(int i : error) {
+            errorNumber += i;
+            Log.i("ERROR" , i + "");
+        }
+        return errorNumber < 1;
     }
 
     @Override
     public int getScore(int index) {
         return score[index];
+    }
+
+    @Override
+    public void setTotalItem(int totalScore) {
+        this.totalScore = totalScore;
+        for(int i=0; i<studentList.size();i++){
+            if(score[i] > totalScore)
+                error[i] = 1;
+            else
+                error[i] = 0;
+        }
     }
 
     public class StudentAdapterViewHolder extends RecyclerView.ViewHolder {
@@ -90,7 +109,7 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
         private TextView studentDetail;
         private EditText editText;
         private Student student;
-        private Spinner spinner;
+        private int position;
         private LinearLayout layout;
 
         StudentAdapterViewHolder(View itemView) {
@@ -103,11 +122,14 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
 
         void setView(final Student student, final int position) {
             this.student = student;
+            this.position = position;
             String display = String.format(Locale.ENGLISH, "%s, %s %s",
                     student.getLastName(),
                     student.getFirstName(),
                     student.getMiddleName().substring(0, 1));
             studentDetail.setText(display);
+            editText.setText(score[position] + "");
+            editText.addTextChangedListener(textWatcher);
         }
 
         public Student getStudent() {
@@ -125,5 +147,26 @@ public class StudentAdapter2 extends RecyclerView.Adapter<StudentAdapter2.Studen
                 layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightDanger));
             studentDetail.setTextColor(context.getResources().getColor(R.color.colorMoca2));
         }
+
+        private TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                score[position] = getScore();
+                if(score[position] > totalScore)
+                    error[position] = 1;
+                else
+                    error[position] = 0;
+            }
+        };
     }
 }

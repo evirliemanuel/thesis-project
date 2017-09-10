@@ -57,10 +57,11 @@ public class AttendanceResultAdapter extends RecyclerView
         void setView(final AttendanceResult result, final int position) {
             if (result != null) {
                 Student student = result.getStudent();
-                String name = String.format("%s %s. %s",
+                String name = String.format("%s, %s %s.",
+                        student.getLastName(),
                         student.getFirstName(),
-                        student.getMiddleName().substring(0, 1),
-                        student.getLastName());
+                        student.getMiddleName().substring(0, 1)
+                );
                 String status = "";
                 String init = student.getFirstName().substring(0, 1);
 

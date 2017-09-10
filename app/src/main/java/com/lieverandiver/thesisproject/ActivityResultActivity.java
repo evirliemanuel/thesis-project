@@ -29,9 +29,9 @@ import java.util.List;
 import static com.lieverandiver.thesisproject.R.id.btn_back;
 
 
-public class Activity_A_Result_Activity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityResultActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = Activity_A_Result_Activity.class.getSimpleName();
+    private static final String TAG = ActivityResultActivity.class.getSimpleName();
 
     private final ActivityService activityService = new ActivityServiceImpl();
     private final ClassService classService = new ClassServiceImpl();
@@ -70,8 +70,8 @@ public class Activity_A_Result_Activity extends AppCompatActivity implements Vie
                                 resultList.add(result);
                         }
 
-                        ActivityResultAdapter simpleActivityAdapter = new ActivityResultAdapter(Activity_A_Result_Activity.this, resultList);
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_A_Result_Activity.this);
+                        ActivityResultAdapter simpleActivityAdapter = new ActivityResultAdapter(ActivityResultActivity.this, resultList);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityResultActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
                         recyclerViewView.setAdapter(simpleActivityAdapter);
@@ -88,7 +88,7 @@ public class Activity_A_Result_Activity extends AppCompatActivity implements Vie
     public void onClick(View v) {
         switch (v.getId()) {
             case btn_back:
-                Intent intent = getIntent().setClass(this, Activity_A_Add_Activity.class);
+                Intent intent = getIntent().setClass(this, ActivityAddActivity.class);
                 startActivity(intent);
                 break;
 

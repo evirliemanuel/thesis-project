@@ -2,16 +2,17 @@ package com.lieverandiver.thesisproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.lieverandiver.thesisproject.Activity_A_Input_Activity;
 import com.lieverandiver.thesisproject.ProjectInputActivity;
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Student;
@@ -27,40 +28,40 @@ public class ProjectInputAdapter extends RecyclerView.Adapter<ProjectInputAdapte
     private Context context;
     private LayoutInflater layoutInflater;
     private int score[];
-    private boolean isNoError = true;
     private int totalScore;
     private boolean doValidate;
+    private int count;
+    private int error[];
 
     public ProjectInputAdapter(Context context, List<Student> studentList) {
         this.context = context;
         this.studentList = studentList;
         score = new int[studentList.size()];
+        error = new int[studentList.size()];
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public StudentAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_z_input_project_cardview, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_all_input_cardview, parent, false);
         return new StudentAdapterViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(StudentAdapterViewHolder holder, int position) {
-
+        count += 1;
         Student student = studentList.get(position);
         holder.setView(student, position);
 
         if(doValidate) {
                if(holder.getScore() > totalScore || holder.getScore() < 0) {
                    holder.setStatus(false);
-                   isNoError = false;
                }else {
-
                    holder.setStatus(true);
                }
-                score[position] = holder.getScore();
-        }if(position >= studentList.size()) {
+        }if(count == studentList.size()) {
             doValidate = false;
+            count = 0;
         }
     }
 
@@ -70,7 +71,7 @@ public class ProjectInputAdapter extends RecyclerView.Adapter<ProjectInputAdapte
     }
 
     @Override
-    public void onValidate(int totalScore, boolean doValidate) {
+    public void onValidate(boolean doValidate) {
         this.totalScore = totalScore;
         this.doValidate = doValidate;
         notifyDataSetChanged();
@@ -78,12 +79,28 @@ public class ProjectInputAdapter extends RecyclerView.Adapter<ProjectInputAdapte
 
     @Override
     public boolean isNoError() {
-        return isNoError;
+        int errorNumber = 0;
+        for(int i : error) {
+            errorNumber += i;
+            Log.i("ERROR" , i + "");
+        }
+        return errorNumber < 1;
     }
 
     @Override
     public int getScore(int index) {
         return score[index];
+    }
+
+    @Override
+    public void setTotalItem(int totalScore) {
+        this.totalScore = totalScore;
+        for(int i=0; i<studentList.size();i++){
+            if(score[i] > totalScore)
+                error[i] = 1;
+            else
+                error[i] = 0;
+        }
     }
 
     public class StudentAdapterViewHolder extends RecyclerView.ViewHolder {
@@ -92,24 +109,31 @@ public class ProjectInputAdapter extends RecyclerView.Adapter<ProjectInputAdapte
         private TextView studentDetail;
         private EditText editText;
         private Student student;
-        private Spinner spinner;
+        private int position;
         private LinearLayout layout;
+        private TextView txInit;
 
         StudentAdapterViewHolder(View itemView) {
             super(itemView);
             studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
-            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name5);
-            editText = (EditText) itemView.findViewById(R.id.input_cardview_score5);
-            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout5);
+            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name);
+            editText = (EditText) itemView.findViewById(R.id.input_cardview_score);
+            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout);
+            txInit = (TextView) itemView.findViewById(R.id.input_cardview_init);
         }
 
         void setView(final Student student, final int position) {
             this.student = student;
+            this.position = position;
             String display = String.format(Locale.ENGLISH, "%s, %s %s",
                     student.getLastName(),
                     student.getFirstName(),
                     student.getMiddleName().substring(0, 1));
             studentDetail.setText(display);
+            editText.setText(score[position] + "");
+            editText.addTextChangedListener(textWatcher);
+            String init = student.getLastName().substring(0, 1);
+            txInit.setText(init);
         }
 
         public Student getStudent() {
@@ -125,7 +149,28 @@ public class ProjectInputAdapter extends RecyclerView.Adapter<ProjectInputAdapte
                 layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightSuccess));
             else
                 layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightDanger));
-            studentDetail.setTextColor(context.getResources().getColor(R.color.colorMoca2));
+            studentDetail.setTextColor(context.getResources().getColor(R.color.colorWhite));
         }
+
+        private TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                score[position] = getScore();
+                if(score[position] > totalScore)
+                    error[position] = 1;
+                else
+                    error[position] = 0;
+            }
+        };
     }
 }

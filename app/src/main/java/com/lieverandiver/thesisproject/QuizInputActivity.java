@@ -16,36 +16,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.lieverandiver.thesisproject.adapter.ProjectInputAdapter;
-import com.remswork.project.alice.model.Project;
+import com.lieverandiver.thesisproject.adapter.QuizInputAdapter;
+import com.remswork.project.alice.model.Quiz;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ClassService;
-import com.remswork.project.alice.service.ProjectService;
+import com.remswork.project.alice.service.QuizService;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
-import com.remswork.project.alice.service.impl.ProjectServiceImpl;
+import com.remswork.project.alice.service.impl.QuizServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import static com.lieverandiver.thesisproject.R.id.input_back1;
-import static com.lieverandiver.thesisproject.R.id.input_back5;
-import static com.lieverandiver.thesisproject.R.id.input_ok1;
-import static com.lieverandiver.thesisproject.R.id.input_ok5;
+import static com.lieverandiver.thesisproject.R.id.input_back6;
+import static com.lieverandiver.thesisproject.R.id.input_ok6;
 import static com.lieverandiver.thesisproject.R.id.input_tryagain1;
-import static com.lieverandiver.thesisproject.R.id.input_tryagain5;
+import static com.lieverandiver.thesisproject.R.id.input_tryagain6;
 import static com.lieverandiver.thesisproject.R.id.input_tryagainemp1;
-import static com.lieverandiver.thesisproject.R.id.input_tryagainemp5;
+import static com.lieverandiver.thesisproject.R.id.input_tryagainemp6;
 
 /**
  * Created by Verlie on 8/31/2017.
  */
 
-public class ProjectInputActivity extends AppCompatActivity implements View.OnClickListener {
+public class QuizInputActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final ClassService classService = new ClassServiceImpl();
-    private final ProjectService projectService = new ProjectServiceImpl();
+    private final QuizService quizService = new QuizServiceImpl();
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
@@ -57,7 +55,7 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
     private CardView dialogFailed;
     private Button btnTryAgain;
     private Button btnOk;
-    private ProjectInputAdapter studentAdapter;
+    private QuizInputAdapter studentAdapter;
     private CardView getDialogEmptyTotal;
     private Button getBtnTryAgainEmptyTotal;
 
@@ -65,7 +63,7 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_z_input_project);
+        setContentView(R.layout.activity_z_input_quiz);
         init();
 
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
@@ -73,33 +71,33 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
             public void onClick(View v) {
                 try {
 
-                    Project project = new Project();
-                    project.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
-                            editTextName.getText().toString().trim() : "Project");
-                    project.setDate(textViewDate.getText().toString());
+                    Quiz quiz = new Quiz();
+                    quiz.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
+                            editTextName.getText().toString().trim() : "Quiz");
+                    quiz.setDate(textViewDate.getText().toString());
 
                     if (editTextTotal.getText().toString().matches("")) {
                         getDialogEmptyTotal.setVisibility(View.VISIBLE);
                         recyclerViewStudentInput.setVisibility(View.GONE);
                         return;
                     }else{
-                        project.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
+                        quiz.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
                     }
 
-                    studentAdapter.setTotalItem(project.getItemTotal());
+                    studentAdapter.setTotalItem(quiz.getItemTotal());
                     studentAdapter.onValidate(true);
 
                     if(studentAdapter.isNoError()) {
-                        project = projectService.addProject(project, getIntent().getExtras().getLong("classId"), 1L);
+                        quiz = quizService.addQuiz(quiz, getIntent().getExtras().getLong("classId"), 1L);
                         for(int i=0; i < studentList.size(); i++) {
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
-                            projectService.addProjectResult(score, project.getId(), student.getId());
+                            quizService.addQuizResult(score, quiz.getId(), student.getId());
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
-                        Toast.makeText(ProjectInputActivity.this, "Success", Toast.LENGTH_LONG).show();
+                        Toast.makeText(QuizInputActivity.this, "Success", Toast.LENGTH_LONG).show();
                     }else{
-                        Toast.makeText(ProjectInputActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(QuizInputActivity.this, "Failed", Toast.LENGTH_LONG).show();
                      dialogFailed.setVisibility(View.VISIBLE);
                     }
                 }catch (Exception e) {
@@ -113,16 +111,15 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case input_back5:
-                Intent intent = getIntent().setClass(this, ProjectAddActivity.class);
+            case input_back6:
+                Intent intent = getIntent().setClass(this, QuizAddActivity.class);
                 startActivity(intent);
                 break;
-            case input_ok5:
-               intent = getIntent().setClass(this, ProjectAddActivity.class);
+            case input_ok6:
+               intent = getIntent().setClass(this, QuizAddActivity.class);
                 startActivity(intent);
                 break;
-
-            case input_tryagainemp5:
+            case input_tryagainemp6:
 
                 buttonSubmit.setChecked(false);
                 buttonSubmit.setVisibility(View.VISIBLE);
@@ -130,7 +127,7 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
                 recyclerViewStudentInput.setVisibility(View.VISIBLE);
                 break;
 
-            case input_tryagain5:
+            case input_tryagain6:
                 buttonSubmit.setChecked(false);
                 buttonSubmit.setVisibility(View.VISIBLE);
                 dialogFailed.setVisibility(View.GONE);
@@ -142,17 +139,17 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
     public void init(){
 
         try {
-            editTextName = (EditText) findViewById(R.id.input_name5);
-            editTextTotal =(EditText) findViewById(R.id.input_total5);
-            textViewDate = (TextView) findViewById(R.id.input_date5);
-            buttonSubmit = (ToggleButton) findViewById(R.id.input_submit5);
-            btnBack = (Button) findViewById(input_back5);
-            dialogFailed = (CardView)findViewById(R.id.input_failed5);
-            dialogSucces = (CardView)findViewById(R.id.input_succes5);
-            btnOk = (Button) findViewById(input_ok5);
-            btnTryAgain = (Button) findViewById(input_tryagain5);
-            getDialogEmptyTotal = (CardView) findViewById(R.id.input_failedemp5);
-            getBtnTryAgainEmptyTotal =(Button) findViewById(input_tryagainemp5);
+            editTextName = (EditText) findViewById(R.id.input_name6);
+            editTextTotal =(EditText) findViewById(R.id.input_total6);
+            textViewDate = (TextView) findViewById(R.id.input_date6);
+            buttonSubmit = (ToggleButton) findViewById(R.id.input_submit6);
+            btnBack = (Button) findViewById(input_back6);
+            dialogFailed = (CardView)findViewById(R.id.input_failed6);
+            dialogSucces = (CardView)findViewById(R.id.input_succes6);
+            btnOk = (Button) findViewById(R.id.input_ok6);
+            btnTryAgain = (Button) findViewById(input_tryagain6);
+            getDialogEmptyTotal = (CardView) findViewById(R.id.input_failedemp6);
+            getBtnTryAgainEmptyTotal =(Button) findViewById(input_tryagainemp6);
 
             getDialogEmptyTotal.setVisibility(View.GONE);
             dialogSucces.setVisibility(View.GONE);
@@ -173,12 +170,13 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
             getBtnTryAgainEmptyTotal.setOnClickListener(this);
             btnTryAgain.setOnClickListener(this);
 
-            recyclerViewStudentInput = (RecyclerView) findViewById(R.id.input_recyclerview5);
+            recyclerViewStudentInput = (RecyclerView) findViewById(R.id.input_recyclerview6);
             recyclerViewStudentInput.setVisibility(View.VISIBLE);
+
             for(Student s : classService.getStudentList(getIntent().getExtras().getLong("classId")))
                 studentList.add(s);
 
-            studentAdapter = new ProjectInputAdapter(this, studentList);
+            studentAdapter = new QuizInputAdapter(this, studentList);
             recyclerViewStudentInput.setAdapter(studentAdapter);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

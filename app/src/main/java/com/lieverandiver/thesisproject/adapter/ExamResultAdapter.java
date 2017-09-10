@@ -28,7 +28,7 @@ public class ExamResultAdapter extends RecyclerView
 
     @Override
     public ExamViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_z_result_exam_cardview, parent,false);
+        View view = layoutInflater.inflate(R.layout.activity_all_result_cardview, parent,false);
         return new ExamViewHolder(view);
     }
 
@@ -50,18 +50,19 @@ public class ExamResultAdapter extends RecyclerView
 
         ExamViewHolder(View itemView) {
             super(itemView);
-            txName = (TextView) itemView.findViewById(R.id.result_cardview_name4);
-            txScore = (TextView) itemView.findViewById(R.id.result_cardview_score4);
-            txInit = (TextView) itemView.findViewById(R.id.result_cardview_init4);
+            txName = (TextView) itemView.findViewById(R.id.result_cardview_name);
+            txScore = (TextView) itemView.findViewById(R.id.result_cardview_score);
+            txInit = (TextView) itemView.findViewById(R.id.result_cardview_init);
         }
 
         void setView(final ExamResult result, final int position) {
             if(result != null) {
                 Student student = result.getStudent();
-                String name = String.format("%s %s. %s",
+                String name = String.format("%s, %s %s.",
+                        student.getLastName(),
                         student.getFirstName(),
-                        student.getMiddleName().substring(0, 1),
-                        student.getLastName());
+                        student.getMiddleName().substring(0, 1)
+                );
                 String score = String.valueOf(result.getScore());
                 String init = student.getFirstName().substring(0, 1);
 

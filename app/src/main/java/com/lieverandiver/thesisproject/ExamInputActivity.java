@@ -34,7 +34,18 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.lieverandiver.thesisproject.R.id.input_back1;
+import static com.lieverandiver.thesisproject.R.id.input_back4;
+import static com.lieverandiver.thesisproject.R.id.input_back5;
 import static com.lieverandiver.thesisproject.R.id.input_ok1;
+import static com.lieverandiver.thesisproject.R.id.input_ok4;
+import static com.lieverandiver.thesisproject.R.id.input_ok5;
+import static com.lieverandiver.thesisproject.R.id.input_tryagain1;
+import static com.lieverandiver.thesisproject.R.id.input_tryagain4;
+import static com.lieverandiver.thesisproject.R.id.input_tryagain5;
+import static com.lieverandiver.thesisproject.R.id.input_tryagainemp1;
+import static com.lieverandiver.thesisproject.R.id.input_tryagainemp2;
+import static com.lieverandiver.thesisproject.R.id.input_tryagainemp4;
+import static com.lieverandiver.thesisproject.R.id.input_tryagainemp5;
 
 /**
  * Created by Verlie on 8/31/2017.
@@ -53,30 +64,39 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
     private Button btnBack;
     private CardView dialogSucces;
     private CardView dialogFailed;
-    private ToggleButton btnTryAgain;
+    private Button btnTryAgain;
     private Button btnOk;
     private ExamInputAdapter studentAdapter;
+    private CardView getDialogEmptyTotal;
+    private Button getBtnTryAgainEmptyTotal;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_z_input_activity);
+        setContentView(R.layout.activity_z_input_exam);
         init();
 
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    boolean isNoError=true;
 
                     Exam exam = new Exam();
-                    exam.setTitle(editTextName.getText().toString());
+                    exam.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
+                            editTextName.getText().toString().trim() : "Exam");
                     exam.setDate(textViewDate.getText().toString());
-                    exam.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
 
-                    studentAdapter.onValidate(exam.getItemTotal(), true);
+                    if (editTextTotal.getText().toString().matches("")) {
+                        getDialogEmptyTotal.setVisibility(View.VISIBLE);
+                        recyclerViewStudentInput.setVisibility(View.GONE);
+                        return;
+                    }else{
+                        exam.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
+                    }
 
+                    studentAdapter.setTotalItem(exam.getItemTotal());
+                    studentAdapter.onValidate(true);
 
                     if(studentAdapter.isNoError()) {
                         exam = examService.addExam(exam, getIntent().getExtras().getLong("classId"), 1L);
@@ -102,13 +122,27 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case input_back1:
-                Intent intent = getIntent().setClass(this, Activity_A_Add_Activity.class);
+            case input_back4:
+                Intent intent = getIntent().setClass(this, ExamAddActivity.class);
                 startActivity(intent);
                 break;
-            case input_ok1:
-               intent = getIntent().setClass(this, Activity_A_Add_Activity.class);
+            case input_ok4:
+               intent = getIntent().setClass(this, ExamAddActivity.class);
                 startActivity(intent);
+                break;
+
+            case input_tryagainemp4:
+
+                buttonSubmit.setChecked(false);
+                buttonSubmit.setVisibility(View.VISIBLE);
+                getDialogEmptyTotal.setVisibility(View.GONE);
+                recyclerViewStudentInput.setVisibility(View.VISIBLE);
+                break;
+
+            case input_tryagain4:
+                buttonSubmit.setChecked(false);
+                buttonSubmit.setVisibility(View.VISIBLE);
+                dialogFailed.setVisibility(View.GONE);
                 break;
 
         }
@@ -121,12 +155,15 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
             editTextTotal =(EditText) findViewById(R.id.input_total4);
             textViewDate = (TextView) findViewById(R.id.input_date4);
             buttonSubmit = (ToggleButton) findViewById(R.id.input_submit4);
-            btnBack = (Button) findViewById(R.id.input_back4);
+            btnBack = (Button) findViewById(input_back4);
             dialogFailed = (CardView)findViewById(R.id.input_failed4);
             dialogSucces = (CardView)findViewById(R.id.input_succes4);
-            btnOk = (Button) findViewById(R.id.input_ok4);
-            btnTryAgain = (ToggleButton) findViewById(R.id.input_tryagain4);
+            btnOk = (Button) findViewById(input_ok4);
+            btnTryAgain = (Button) findViewById(input_tryagain4);
+            getDialogEmptyTotal = (CardView) findViewById(R.id.input_failedemp4);
+            getBtnTryAgainEmptyTotal =(Button) findViewById(input_tryagainemp4);
 
+            getDialogEmptyTotal.setVisibility(View.GONE);
             dialogSucces.setVisibility(View.GONE);
             dialogFailed.setVisibility(View.GONE);
 
@@ -142,27 +179,20 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
                 }
             });
 
-            btnTryAgain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        buttonSubmit.setChecked(false);
-                        buttonSubmit.setVisibility(View.VISIBLE);
-                        dialogFailed.setVisibility(View.GONE);
-
-                    }
-                }
-            });
+            getBtnTryAgainEmptyTotal.setOnClickListener(this);
+            btnTryAgain.setOnClickListener(this);
 
             recyclerViewStudentInput = (RecyclerView) findViewById(R.id.input_recyclerview4);
+            recyclerViewStudentInput.setVisibility(View.VISIBLE);
 
             for(Student s : classService.getStudentList(getIntent().getExtras().getLong("classId")))
                 studentList.add(s);
 
             studentAdapter = new ExamInputAdapter(this, studentList);
+            recyclerViewStudentInput.setAdapter(studentAdapter);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-            recyclerViewStudentInput.setAdapter(studentAdapter);
             recyclerViewStudentInput.setLayoutManager(layoutManager);
             recyclerViewStudentInput.setItemAnimator(new DefaultItemAnimator());
 
@@ -179,9 +209,10 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
     }
 
     public interface InputListener {
-        void onValidate(int totalScore, boolean doValidate);
+        void onValidate(boolean doValidate);
         boolean isNoError();
         int getScore(int index);
+        void setTotalItem(int score);
     }
 
 }

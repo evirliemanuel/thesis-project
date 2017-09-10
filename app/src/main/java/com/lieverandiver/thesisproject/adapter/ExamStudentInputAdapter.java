@@ -20,7 +20,7 @@ import com.remswork.project.alice.model.Student;
 import java.util.List;
 import java.util.Locale;
 
-
+@Deprecated
 public class ExamStudentInputAdapter extends RecyclerView.Adapter<ExamStudentInputAdapter.ExamStudentInputAdapterViewHolder>
     implements ActivityInputExam.InputListener {
 
@@ -41,7 +41,7 @@ public class ExamStudentInputAdapter extends RecyclerView.Adapter<ExamStudentInp
 
     @Override
     public ExamStudentInputAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_z_input_exam_cardview, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_all_input_cardview, parent, false);
         return new ExamStudentInputAdapterViewHolder(view);
     }
 
@@ -95,13 +95,16 @@ public class ExamStudentInputAdapter extends RecyclerView.Adapter<ExamStudentInp
         private Student student;
         private Spinner spinner;
         private LinearLayout layout;
+        private TextView txInit;
 
         ExamStudentInputAdapterViewHolder(View itemView) {
             super(itemView);
             studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
-            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name4);
-            editText = (EditText) itemView.findViewById(R.id.input_cardview_score4);
-            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout4);
+            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name);
+            editText = (EditText) itemView.findViewById(R.id.input_cardview_score);
+            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout);
+            txInit = (TextView) itemView.findViewById(R.id.input_cardview_init);
+
         }
 
         void setView(final Student student, final int position) {
@@ -113,6 +116,8 @@ public class ExamStudentInputAdapter extends RecyclerView.Adapter<ExamStudentInp
                     student.getLastName(),
                     student.getStudentNumber());
             studentDetail.setText(display);
+            String init = student.getLastName().substring(0, 1);
+            txInit.setText(init);
         }
 
         public Student getStudent() {

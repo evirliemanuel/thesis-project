@@ -12,14 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.lieverandiver.thesisproject.adapter.ActivityAdapter;
 import com.lieverandiver.thesisproject.adapter.ExamAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
-import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.model.Exam;
-import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ExamService;
-import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.ExamServiceImpl;
 
 import java.util.List;
@@ -93,7 +89,7 @@ public class Activity_D_Add_Exam extends AppCompatActivity implements ExamAdapte
     public void onClick(Exam exam, long examId) {
         Intent intent = getIntent();
         intent.putExtra("examId", examId);
-        intent.setClass(this, Activity_D_Result_Exam.class);
+        intent.setClass(this, ExamResultActivity.class);
         startActivity(intent);
     }
 
@@ -101,7 +97,7 @@ public class Activity_D_Add_Exam extends AppCompatActivity implements ExamAdapte
     public void onClick(View v) {
         switch (v.getId()) {
             case add_add4 :
-                Intent intent = getIntent().setClass(this, ActivityInputExam.class);
+                Intent intent = getIntent().setClass(this, ExamInputActivity.class);
                 startActivity(intent);
                 break;
             case btn_backaddactivity :

@@ -9,28 +9,28 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.lieverandiver.thesisproject.adapter.ExamResultAdapter;
+import com.lieverandiver.thesisproject.adapter.ProjectResultAdapter;
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
-import com.remswork.project.alice.model.Exam;
-import com.remswork.project.alice.model.ExamResult;
+import com.remswork.project.alice.model.Project;
+import com.remswork.project.alice.model.ProjectResult;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ClassService;
-import com.remswork.project.alice.service.ExamService;
+import com.remswork.project.alice.service.ProjectService;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
-import com.remswork.project.alice.service.impl.ExamServiceImpl;
+import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Activity_D_Result_Exam extends AppCompatActivity {
+public class ProjectResultActivity extends AppCompatActivity {
 
-    private static final String TAG = Activity_D_Result_Exam.class.getSimpleName();
+    private static final String TAG = ProjectResultActivity.class.getSimpleName();
 
-    private final ExamService examService = new ExamServiceImpl();
+    private final ProjectService projectService = new ProjectServiceImpl();
     private final ClassService classService = new ClassServiceImpl();
-    private final List<ExamResult> resultList = new ArrayList<>();
-    private Exam exam;
+    private final List<ProjectResult> resultList = new ArrayList<>();
+    private Project project;
 
     private TextView textViewDate;
     private TextView textViewName;
@@ -48,25 +48,25 @@ public class Activity_D_Result_Exam extends AppCompatActivity {
                 @Override
                 public void run() {
                     try {
-                        String date = exam.getDate();
-                        String title = exam.getTitle();
-                        String itemTotal = String.valueOf(exam.getItemTotal());
+                        String date = project.getDate();
+                        String title = project.getTitle();
+                        String itemTotal = String.valueOf(project.getItemTotal());
 
                         textViewDate.setText(date);
                         textViewName.setText(title);
                         textViewTotal.setText(itemTotal);
 
                         for (Student s : classService.getStudentList(classId)) {
-                            ExamResult result = examService.getExamResultByExamAndStudentId(exam.getId(), s.getId());
+                            ProjectResult result = projectService.getProjectResultByProjectAndStudentId(project.getId(), s.getId());
                             if(result != null)
                                 resultList.add(result);
                         }
 
-                        ExamResultAdapter simpleExamAdapter = new ExamResultAdapter(Activity_D_Result_Exam.this, resultList);
-                        LinearLayoutManager layoutManager = new LinearLayoutManager(Activity_D_Result_Exam.this);
+                        ProjectResultAdapter simpleProjectAdapter = new ProjectResultAdapter(ProjectResultActivity.this, resultList);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(ProjectResultActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-                        recyclerViewView.setAdapter(simpleExamAdapter);
+                        recyclerViewView.setAdapter(simpleProjectAdapter);
                         recyclerViewView.setLayoutManager(layoutManager);
                         recyclerViewView.setItemAnimator(new DefaultItemAnimator());
                     } catch (ClassException| GradingFactorException e) {
@@ -78,10 +78,10 @@ public class Activity_D_Result_Exam extends AppCompatActivity {
     }
 
     public void init() {
-        textViewDate = (TextView) findViewById(R.id.result_date4);
-        textViewName = (TextView) findViewById(R.id.result_name4);
-        textViewTotal = (TextView) findViewById(R.id.result_total4);
-        recyclerViewView = (RecyclerView) findViewById(R.id.result_recycler4);
+        textViewDate = (TextView) findViewById(R.id.result_date5);
+        textViewName = (TextView) findViewById(R.id.result_name5);
+        textViewTotal = (TextView) findViewById(R.id.result_total5);
+        recyclerViewView = (RecyclerView) findViewById(R.id.result_recycler5);
     }
 
     @Override
@@ -89,12 +89,12 @@ public class Activity_D_Result_Exam extends AppCompatActivity {
         try {
             Log.i(TAG, "onCreate");
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_z_result_exam);
+            setContentView(R.layout.activity_z_result_project);
 
             classId = getIntent().getExtras().getLong("classId");
-            examId = getIntent().getExtras().getLong("examId");
+            examId = getIntent().getExtras().getLong("projectId");
             termId = getIntent().getExtras().getLong("termId");
-            exam = examService.getExamById(examId);
+            project = projectService.getProjectById(examId);
 
             init();
             new ExamViewThread().start();

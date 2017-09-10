@@ -87,7 +87,7 @@ public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.On
     public void onClick(Exam exam, long examId) {
         Intent intent = getIntent();
         intent.putExtra("examId", examId);
-        intent.setClass(this, Activity_A_Result_Activity.class);
+        intent.setClass(this, ExamResultActivity.class);
         startActivity(intent);
     }
 

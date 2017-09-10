@@ -2,13 +2,18 @@ package com.lieverandiver.thesisproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.lieverandiver.thesisproject.QuizInputActivity;
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Student;
 
@@ -16,29 +21,48 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class QuizInputAdapter extends RecyclerView.Adapter<QuizInputAdapter.QuizViewHolder> {
+public class QuizInputAdapter extends RecyclerView.Adapter<QuizInputAdapter.StudentAdapterViewHolder>
+    implements QuizInputActivity.InputListener{
 
     private List<Student> studentList;
     private Context context;
     private LayoutInflater layoutInflater;
-    private int total;
+    private int score[];
+    private int totalScore;
+    private boolean doValidate;
+    private int count;
+    private int error[];
 
     public QuizInputAdapter(Context context, List<Student> studentList) {
         this.context = context;
         this.studentList = studentList;
+        score = new int[studentList.size()];
+        error = new int[studentList.size()];
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
-    public QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_z_input_quiz_cardview, parent, false);
-        return new QuizViewHolder(view);
+    public StudentAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = layoutInflater.inflate(R.layout.activity_all_input_cardview, parent, false);
+        return new StudentAdapterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(QuizViewHolder holder, int position) {
+    public void onBindViewHolder(StudentAdapterViewHolder holder, int position) {
+        count += 1;
         Student student = studentList.get(position);
         holder.setView(student, position);
+
+        if(doValidate) {
+               if(holder.getScore() > totalScore || holder.getScore() < 0) {
+                   holder.setStatus(false);
+               }else {
+                   holder.setStatus(true);
+               }
+        }if(count == studentList.size()) {
+            doValidate = false;
+            count = 0;
+        }
     }
 
     @Override
@@ -46,27 +70,71 @@ public class QuizInputAdapter extends RecyclerView.Adapter<QuizInputAdapter.Quiz
         return studentList.size();
     }
 
-    public class QuizViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onValidate(boolean doValidate) {
+        this.totalScore = totalScore;
+        this.doValidate = doValidate;
+        notifyDataSetChanged();
+    }
 
+    @Override
+    public boolean isNoError() {
+        int errorNumber = 0;
+        for(int i : error) {
+            errorNumber += i;
+            Log.i("ERROR" , i + "");
+        }
+        return errorNumber < 1;
+    }
+
+    @Override
+    public int getScore(int index) {
+        return score[index];
+    }
+
+    @Override
+    public void setTotalItem(int totalScore) {
+        this.totalScore = totalScore;
+        for(int i=0; i<studentList.size();i++){
+            if(score[i] > totalScore)
+                error[i] = 1;
+            else
+                error[i] = 0;
+        }
+    }
+
+    public class StudentAdapterViewHolder extends RecyclerView.ViewHolder {
+
+        private ImageView studentImage;
         private TextView studentDetail;
         private EditText editText;
         private Student student;
+        private int position;
         private LinearLayout layout;
+        private TextView txInit;
 
-        QuizViewHolder(View itemView) {
+        StudentAdapterViewHolder(View itemView) {
             super(itemView);
-            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name6);
-            editText = (EditText) itemView.findViewById(R.id.input_cardview_score6);
-            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout6);
+            studentImage = (ImageView) itemView.findViewById(R.id.f_data_student_profile);
+            studentDetail = (TextView) itemView.findViewById(R.id.input_cardview_name);
+            editText = (EditText) itemView.findViewById(R.id.input_cardview_score);
+            layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout);
+            txInit = (TextView) itemView.findViewById(R.id.input_cardview_init);
+
         }
 
         void setView(final Student student, final int position) {
             this.student = student;
-            String display = String.format(Locale.ENGLISH, "%s, %s %s.",
+            this.position = position;
+            String display = String.format(Locale.ENGLISH, "%s, %s %s",
                     student.getLastName(),
                     student.getFirstName(),
                     student.getMiddleName().substring(0, 1));
             studentDetail.setText(display);
+            editText.setText(score[position] + "");
+            editText.addTextChangedListener(textWatcher);
+            String init = student.getLastName().substring(0, 1);
+            txInit.setText(init);
         }
 
         public Student getStudent() {
@@ -74,7 +142,7 @@ public class QuizInputAdapter extends RecyclerView.Adapter<QuizInputAdapter.Quiz
         }
 
         public int getScore() {
-            return Integer.parseInt(editText.getText().toString());
+            return Integer.parseInt(!editText.getText().toString().equals("") ? editText.getText().toString() : "0");
         }
 
         public void setStatus(boolean isSuccess) {
@@ -82,7 +150,28 @@ public class QuizInputAdapter extends RecyclerView.Adapter<QuizInputAdapter.Quiz
                 layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightSuccess));
             else
                 layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightDanger));
-            studentDetail.setTextColor(context.getResources().getColor(R.color.colorMoca2));
+            studentDetail.setTextColor(context.getResources().getColor(R.color.colorWhite));
         }
+
+        private TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                score[position] = getScore();
+                if(score[position] > totalScore)
+                    error[position] = 1;
+                else
+                    error[position] = 0;
+            }
+        };
     }
 }
