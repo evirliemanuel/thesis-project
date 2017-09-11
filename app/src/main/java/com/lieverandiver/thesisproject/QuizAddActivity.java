@@ -51,7 +51,7 @@ public class QuizAddActivity extends AppCompatActivity implements QuizAdapter.On
                 @Override
                 public void run() {
                     try {
-                        List<Quiz> quizList = quizService.getQuizListByClassId(classId);
+                        List<Quiz> quizList = quizService.getQuizListByClassId(classId, termId);
                         QuizAdapter quizAdapter = new QuizAdapter(QuizAddActivity.this, quizList);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(QuizAddActivity.this);

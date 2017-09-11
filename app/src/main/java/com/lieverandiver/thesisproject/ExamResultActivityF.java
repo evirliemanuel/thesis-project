@@ -63,7 +63,7 @@ public class ExamResultActivityF extends AppCompatActivity {
                                 resultList.add(result);
                         }
 
-                        ExamResultAdapterF simpleExamAdapterF = new ExamResultAdapterF(ExamResultActivityF.this, resultList);
+                        ExamResultAdapterF simpleExamAdapterF = new ExamResultAdapterF(ExamResultActivityF.this, resultList, exam.getItemTotal());
                         LinearLayoutManager layoutManager = new LinearLayoutManager(ExamResultActivityF.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

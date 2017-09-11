@@ -71,7 +71,7 @@ public class ActivityResultActivityF extends AppCompatActivity implements View.O
                                 resultList.add(result);
                         }
 
-                        ActivityResultAdapterF simpleActivityAdapter = new ActivityResultAdapterF(ActivityResultActivityF.this, resultList);
+                        ActivityResultAdapterF simpleActivityAdapter = new ActivityResultAdapterF(ActivityResultActivityF.this, resultList, activity.getItemTotal());
                         LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityResultActivityF.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

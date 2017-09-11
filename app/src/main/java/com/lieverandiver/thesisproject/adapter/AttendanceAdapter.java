@@ -32,7 +32,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
 
     @Override
     public AttendanceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_cardview_record_attendance, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_z_add_attendance_cardview, parent, false);
         AttendanceViewHolder holder = new AttendanceViewHolder(view);
         return holder;
     }
@@ -56,9 +56,9 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
 
         AttendanceViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (TextView) itemView.findViewById(R.id.f_gradecriteria_view_activity);
-            textViewDate = (TextView) itemView.findViewById(R.id.f_grade_activity_date);
-            cardView = (CardView) itemView.findViewById(R.id.fragment_slidebar_cardview_attendance);
+            textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title3);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date3);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview3);
         }
 
         public void setView(final Attendance attendance, int position) {

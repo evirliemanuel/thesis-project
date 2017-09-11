@@ -35,6 +35,7 @@ import com.remswork.project.alice.service.impl.QuizServiceImpl;
 import static com.lieverandiver.thesisproject.R.id.class_backbutton;
 import static com.lieverandiver.thesisproject.R.id.ftogglebutton;
 import static com.lieverandiver.thesisproject.R.id.mtogglebutton;
+import static com.lieverandiver.thesisproject.R.id.view_grade;
 import static com.lieverandiver.thesisproject.R.id.view_schedule;
 import static com.lieverandiver.thesisproject.R.id.view_student;
 import static com.lieverandiver.thesisproject.R.id.viewactivityf;
@@ -70,6 +71,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private TextView txtFormat;
     private CardView viewStudent;
     private CardView viewSchedule;
+    private CardView viewGrade;
     private long classId;
 
     private ToggleButton toggleButtonShowandHideM;
@@ -123,8 +125,9 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         textViewProjectF = (TextView)findViewById(R.id.totalf5);
         textViewQuizF = (TextView)findViewById(R.id.totalf6);
 
-        viewSchedule = (CardView) findViewById(view_schedule);
-        viewStudent = (CardView) findViewById(view_student);
+        viewSchedule = (CardView) findViewById(R.id.view_schedule);
+        viewStudent = (CardView) findViewById(R.id.view_student);
+        viewGrade = (CardView) findViewById(R.id.view_grade);
         txtViewSubjectName = (TextView) findViewById(R.id.txtv_subjectname);
         txtViewSectionName = (TextView) findViewById(R.id.txtv_section);
         txtViewDepName = (TextView) findViewById(R.id.txtv_dept);
@@ -133,6 +136,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
 
         viewSchedule.setOnClickListener(this);
         viewStudent.setOnClickListener(this);
+        viewGrade.setOnClickListener(this);
 
         toggleButtonShowandHideM = (ToggleButton)findViewById(mtogglebutton);
         toggleButtonShowandHideF = (ToggleButton)findViewById(ftogglebutton);
@@ -219,6 +223,12 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 final int sizeExam = examService.getExamListByClassId(classId, 1L).size();
                 final int sizePro = projectService.getProjectListByClassId(classId, 1L).size();
                 final int sizeQuiz = quizService.getQuizListByClassId(classId, 1L).size();
+                final int sizeAcF = activityService.getActivityListByClassId(classId, 2L).size();
+                final int sizeAttF = attendanceService.getAttendanceListByClassId(classId, 2L).size();
+                final int sizeAssF = assignmentService.getAssignmentListByClassId(classId, 2L).size();
+                final int sizeExamF = examService.getExamListByClassId(classId, 2L).size();
+                final int sizeProF = projectService.getProjectListByClassId(classId, 2L).size();
+                final int sizeQuizF = quizService.getQuizListByClassId(classId, 2L).size();
 
 
                 final Class _class = classService.getClassById(classId);
@@ -235,6 +245,13 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                             String totalProjectSize = String.valueOf(sizePro);
                             String totalQuizSize = String.valueOf(sizeQuiz);
 
+                        String totalActivitySizeF = String.valueOf(sizeAcF);
+                        String totalAttendanceSizeF = String.valueOf(sizeAttF);
+                        String totalAssignmentSizeF = String.valueOf(sizeAssF);
+                        String totalExamSizeF = String.valueOf(sizeExamF);
+                        String totalProjectSizeF = String.valueOf(sizeProF);
+                        String totalQuizSizeF = String.valueOf(sizeQuizF);
+
                             txtViewSubjectName.setText(subjectName);
                             txtViewSectionName.setText(sectionName);
                             txtViewDepName.setText(departmentName);
@@ -244,6 +261,13 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                             textViewExamM.setText(totalExamSize);
                             textViewProjectM.setText(totalProjectSize);
                             textViewQuizM.setText(totalQuizSize);
+
+                            textViewActivityF.setText(totalActivitySizeF);
+                            textViewAttendanceF.setText(totalAttendanceSizeF);
+                            textViewAssignmentF.setText(totalAssignmentSizeF);
+                            textViewExamF.setText(totalExamSizeF);
+                            textViewProjectF.setText(totalProjectSizeF);
+                            textViewQuizF.setText(totalQuizSizeF);
 
                     }
                 });
@@ -281,6 +305,10 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 break;
             case view_student :
                 intent = getIntent().setClass(this, StudentViewActivity.class);
+                startActivity(intent);
+                break;
+            case view_grade :
+                intent = getIntent().setClass(this, GradeViewActivity.class);
                 startActivity(intent);
                 break;
             case viewactivitym :

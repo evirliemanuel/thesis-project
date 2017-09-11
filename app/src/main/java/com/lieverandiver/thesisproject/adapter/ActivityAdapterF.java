@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
@@ -50,14 +51,14 @@ public class ActivityAdapterF extends RecyclerView.Adapter<ActivityAdapterF.Acti
 
         private TextView textViewTitle;
         private TextView textViewDate;
-        private TextView textViewTotal;
+        private EditText textViewTotal;
         private CardView cardView;
 
         ActivityViewHolder(View itemView) {
             super(itemView);
             textViewTitle = (TextView) itemView.findViewById(R.id.add_cardview_title1);
             textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date1);
-            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total1);
+            textViewTotal = (EditText) itemView.findViewById(R.id.add_cardview_total1);
             cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview1);
         }
 

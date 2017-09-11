@@ -87,7 +87,7 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
                     studentAdapter.onValidate(true);
 
                     if(studentAdapter.isNoError()) {
-                        assignment = assignmentService.addAssignment(assignment, getIntent().getExtras().getLong("classId"), 1L);
+                        assignment = assignmentService.addAssignment(assignment, getIntent().getExtras().getLong("classId"), 2L);
                         for(int i=0; i < studentList.size(); i++) {
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);

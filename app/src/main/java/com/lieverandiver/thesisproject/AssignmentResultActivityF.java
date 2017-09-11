@@ -62,7 +62,7 @@ public class AssignmentResultActivityF extends AppCompatActivity {
                             if(result != null)
                                 resultList.add(result);
                         }
-                        AssignmentResultAdapterF simpleAssignmentAdapterF = new AssignmentResultAdapterF(AssignmentResultActivityF.this, resultList);
+                        AssignmentResultAdapterF simpleAssignmentAdapterF = new AssignmentResultAdapterF(AssignmentResultActivityF.this, resultList, assignment.getItemTotal());
                         LinearLayoutManager layoutManager = new LinearLayoutManager(AssignmentResultActivityF.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

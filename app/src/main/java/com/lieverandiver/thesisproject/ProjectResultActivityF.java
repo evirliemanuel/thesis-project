@@ -64,7 +64,7 @@ public class ProjectResultActivityF extends AppCompatActivity {
                         }
 
                         ProjectResultAdapterF simpleProjectAdapterF = new ProjectResultAdapterF
-                                (ProjectResultActivityF.this, resultList);
+                                (ProjectResultActivityF.this, resultList, project.getItemTotal());
                         LinearLayoutManager layoutManager = new LinearLayoutManager(ProjectResultActivityF.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

@@ -45,7 +45,7 @@ public class ProjectAddActivityF extends AppCompatActivity implements ProjectAda
                 @Override
                 public void run() {
                     try {
-                        List<Project> projectList = projectService.getProjectListByClassId(classId);
+                        List<Project> projectList = projectService.getProjectListByClassId(classId, termId);
                         ProjectAdapterF projectAdapter = new ProjectAdapterF(ProjectAddActivityF.this, projectList);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(ProjectAddActivityF.this);

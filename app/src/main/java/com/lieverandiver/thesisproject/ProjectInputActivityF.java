@@ -30,6 +30,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.lieverandiver.thesisproject.R.id.input_back5;
 import static com.lieverandiver.thesisproject.R.id.input_ok5;
 import static com.lieverandiver.thesisproject.R.id.input_tryagain5;
@@ -87,7 +88,7 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
                     studentAdapter.onValidate(true);
 
                     if(studentAdapter.isNoError()) {
-                        project = projectService.addProject(project, getIntent().getExtras().getLong("classId"), 1L);
+                        project = projectService.addProject(project, getIntent().getExtras().getLong("classId"), 2L);
                         for(int i=0; i < studentList.size(); i++) {
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);

@@ -87,7 +87,7 @@ public class ExamInputActivityF extends AppCompatActivity implements View.OnClic
                     studentAdapter.onValidate(true);
 
                     if(studentAdapter.isNoError()) {
-                        exam = examService.addExam(exam, getIntent().getExtras().getLong("classId"), 1L);
+                        exam = examService.addExam(exam, getIntent().getExtras().getLong("classId"), 2L);
                         for(int i=0; i < studentList.size(); i++) {
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);

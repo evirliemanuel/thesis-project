@@ -7,11 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Activity;
 
+import java.nio.InvalidMarkException;
 import java.util.List;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder> {
@@ -52,6 +55,11 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
         private TextView textViewDate;
         private TextView textViewTotal;
         private CardView cardView;
+        private Button btnSave;
+        private Button btnCancel;
+        private Button btnDelete;
+        private LinearLayout linearLayoutOption;
+        private ImageView btnOption;
 
         ActivityViewHolder(View itemView) {
             super(itemView);
@@ -59,6 +67,11 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
             textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date1);
             textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total1);
             cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview1);
+            btnSave = (Button) itemView.findViewById(R.id.add_cardview_save1);
+            btnCancel = (Button) itemView.findViewById(R.id.add_cardview_cancel1);
+            btnDelete = (Button) itemView.findViewById(R.id.add_cardview_save1);
+            linearLayoutOption = (LinearLayout) itemView.findViewById(R.id.add_linearoption1);
+            btnOption = (ImageView) itemView.findViewById(R.id.add_option1);
         }
 
         public void setView(final Activity activity, int position) {
@@ -77,6 +90,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
                     onClickListener.onClick(activity, activity.getId());
                 }
             });
+
+
         }
     }
 

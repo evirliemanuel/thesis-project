@@ -72,7 +72,7 @@
         <activity android:name=".GradingCriteriaActivity" />
         <activity android:name=".Activity_All_Result_Cardview" />
         <activity android:name=".QuizActivity_View" />
-        <activity android:name=".QuizActivity_Add" />
+        <activity android:name=".GradeViewActivity" />
         <activity android:name=".QuizActivity_View_Record" />
         <activity android:name=".CriteriaMidtermInputActivity" />
         <activity android:name=".CriteriaFinaltermInputActivity" />

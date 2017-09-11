@@ -42,7 +42,7 @@ public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.On
                 @Override
                 public void run() {
                     try {
-                        List<Exam> examList = examService.getExamListByClassId(classId);
+                        List<Exam> examList = examService.getExamListByClassId(classId, termId);
                         ExamAdapter examAdapter = new ExamAdapter(ExamAddActivity.this, examList);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(ExamAddActivity.this);

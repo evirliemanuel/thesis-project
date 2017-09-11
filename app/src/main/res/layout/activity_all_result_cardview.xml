@@ -23,14 +23,14 @@
 
 
     <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite">
 
         <LinearLayout
+            android:layout_marginTop="5dp"
+           android:layout_marginBottom="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center"
@@ -77,7 +77,6 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-               android:layout_marginRight="8dp"
                 android:layout_gravity="right|center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -88,31 +87,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Score"
-                        />
 
-                    <TextView
+                    <EditText
                         android:layout_marginTop="5dp"
                         android:layout_gravity="center"
                         android:id="@+id/result_cardview_score"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="00"
-                        android:textSize="18dp"
-                        android:textAlignment="center"/>
+                        android:textSize="16dp"
+                        android:textAlignment="center"
+                        android:enabled="false"
+                        android:inputType="number"/>
 
                 </LinearLayout>
 
 
-                <ToggleButton
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     android:id="@+id/result_option"
                     android:layout_marginLeft="10dp"
-                    android:layout_width="20dp"
-                    android:layout_height="50dp" />
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/optioneditdelete"/>
 
             </LinearLayout>
 
@@ -125,11 +123,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:background="@color/colorWhite"
         android:id="@+id/result_linearoption"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
         <FrameLayout
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="7dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
@@ -140,36 +141,38 @@
             android:id="@+id/result_cardview_delete"
             android:text="Delete"
             android:background="#e74c3c"
-            android:layout_gravity="left|center"
             android:layout_width="wrap_content"
-            android:layout_height="35dp" />
+            android:layout_height="35dp"
+            android:visibility="gone"/>
+
+            <Button
+                android:layout_gravity="left|center"
+                android:id="@+id/result_cardview_cancel"
+                android:text="Cancel"
+                android:background="#ecf0f1"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_gravity="right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/result_cardview_cancel"
-            android:text="Cancel"
-            android:background="#ecf0f1"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp" />
+
         <Button
             android:id="@+id/result_cardview_save"
             android:text="Save"
             android:background="#2980b9"
             android:layout_width="wrap_content"
-            android:layout_height="35dp" />
+            android:layout_height="35dp"
+            android:enabled="false"/>
 
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
     </LinearLayout>
-
-
-
 
 
 </android.support.v7.widget.CardView>

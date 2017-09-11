@@ -40,7 +40,7 @@ public class AssignmentAddActivity extends AppCompatActivity implements Assignme
                 @Override
                 public void run() {
                     try {
-                        List<Assignment> assignmentList = aassignmentService.getAssignmentListByClassId(classId);
+                        List<Assignment> assignmentList = aassignmentService.getAssignmentListByClassId(classId, termId);
                         AssignmentAdapter assignmentAdapter = new AssignmentAdapter(AssignmentAddActivity.this, assignmentList);
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(AssignmentAddActivity.this);

@@ -88,7 +88,7 @@ public class ActivityInputActivityF extends AppCompatActivity implements View.On
                     studentAdapter.onValidate(true);
 
                     if(studentAdapter.isNoError()) {
-                        activity = activityService.addActivity(activity, getIntent().getExtras().getLong("classId"), 1L);
+                        activity = activityService.addActivity(activity, getIntent().getExtras().getLong("classId"), 2L);
                         for(int i=0; i < studentList.size(); i++) {
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);

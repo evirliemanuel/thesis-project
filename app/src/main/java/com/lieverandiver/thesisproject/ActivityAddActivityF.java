@@ -43,7 +43,7 @@ public class ActivityAddActivityF extends AppCompatActivity implements ActivityA
         @Override
         public void run() {
             try {
-                final List<Activity> activityList = activityService.getActivityListByClassId(classId);
+                final List<Activity> activityList = activityService.getActivityListByClassId(classId, termId);
                 size = activityList.size();
                 new Handler(getMainLooper()).post(new Runnable() {
                     @Override

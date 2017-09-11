@@ -63,7 +63,7 @@ public class QuizResultActivity extends AppCompatActivity {
                         }
 
                        QuizResultAdapter simpleQuizAdapter = new QuizResultAdapter
-                               (QuizResultActivity.this, resultList);
+                               (QuizResultActivity.this, resultList, quiz.getItemTotal());
                         LinearLayoutManager layoutManager = new LinearLayoutManager
                                 (QuizResultActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

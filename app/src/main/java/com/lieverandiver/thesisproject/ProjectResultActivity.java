@@ -62,7 +62,7 @@ public class ProjectResultActivity extends AppCompatActivity {
                                 resultList.add(result);
                         }
 
-                        ProjectResultAdapter simpleProjectAdapter = new ProjectResultAdapter(ProjectResultActivity.this, resultList);
+                        ProjectResultAdapter simpleProjectAdapter = new ProjectResultAdapter(ProjectResultActivity.this, resultList, project.getItemTotal());
                         LinearLayoutManager layoutManager = new LinearLayoutManager(ProjectResultActivity.this);
                         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

@@ -30,6 +30,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.lieverandiver.thesisproject.R.id.input_back6;
 import static com.lieverandiver.thesisproject.R.id.input_ok6;
 import static com.lieverandiver.thesisproject.R.id.input_tryagain6;
@@ -87,7 +88,7 @@ public class QuizInputActivityF extends AppCompatActivity implements View.OnClic
                     studentAdapter.onValidate(true);
 
                     if(studentAdapter.isNoError()) {
-                        quiz = quizService.addQuiz(quiz, getIntent().getExtras().getLong("classId"), 1L);
+                        quiz = quizService.addQuiz(quiz, getIntent().getExtras().getLong("classId"), 2L);
                         for(int i=0; i < studentList.size(); i++) {
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
