@@ -146,7 +146,7 @@ public class ActivityInputAdapterF extends RecyclerView.Adapter<ActivityInputAda
 
         public void setStatus(boolean isSuccess) {
             if(isSuccess)
-                layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightSuccess));
+                layout.setBackgroundColor(context.getResources().getColor(R.color.colorTweeterBlue));
             else
                 layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightDanger));
             studentDetail.setTextColor(context.getResources().getColor(R.color.colorWhite));

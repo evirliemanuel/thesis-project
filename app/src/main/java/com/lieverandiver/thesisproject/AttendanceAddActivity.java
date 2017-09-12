@@ -21,8 +21,8 @@ import com.remswork.project.alice.service.impl.AttendanceServiceImpl;
 
 import java.util.List;
 
-import static com.lieverandiver.thesisproject.R.id.btn_backaddattendance;
-import static com.lieverandiver.thesisproject.R.id.relative_clicked3;
+import static com.lieverandiver.thesisproject.R.id.add_add3;
+import static com.lieverandiver.thesisproject.R.id.add_back3;
 
 public class AttendanceAddActivity extends AppCompatActivity implements AttendanceAdapter.OnClickListener,
         View.OnClickListener {
@@ -70,9 +70,9 @@ public class AttendanceAddActivity extends AppCompatActivity implements Attendan
     }
 
     private void init() {
-        linearLayoutAttendance = (LinearLayout) findViewById(relative_clicked3);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_viewxc);
-        btnBackButton = (Button) findViewById(R.id.btn_backaddattendance);
+        linearLayoutAttendance = (LinearLayout) findViewById(add_add3);
+        recyclerView = (RecyclerView) findViewById(R.id.add_recycler3);
+        btnBackButton = (Button) findViewById(R.id.add_back3);
 
         linearLayoutAttendance.setOnClickListener(this);
         btnBackButton.setOnClickListener(this);
@@ -108,12 +108,13 @@ public class AttendanceAddActivity extends AppCompatActivity implements Attendan
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case relative_clicked3:
+            case add_add3:
                 Intent intent = getIntent().setClass(this, AttendanceInputActivity.class);
                 startActivity(intent);
                 break;
-            case btn_backaddattendance:
-                finish();
+            case add_back3:
+                intent = getIntent().setClass(this, AttendanceInputActivity.class);
+                startActivity(intent);
                 break;
         }
     }

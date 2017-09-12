@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -59,6 +60,10 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
     private CardView getDialogEmptyTotal;
     private Button getBtnTryAgainEmptyTotal;
 
+    private ToggleButton toggleButtonhideandshow;
+    private FrameLayout frameLayouthideandshow;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +82,7 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
                     project.setDate(textViewDate.getText().toString());
 
                     if (editTextTotal.getText().toString().matches("")) {
+                        toggleButtonhideandshow.setChecked(false);
                         getDialogEmptyTotal.setVisibility(View.VISIBLE);
                         recyclerViewStudentInput.setVisibility(View.GONE);
                         return;
@@ -151,6 +157,19 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
             btnTryAgain = (Button) findViewById(input_tryagain5);
             getDialogEmptyTotal = (CardView) findViewById(R.id.input_failedemp5);
             getBtnTryAgainEmptyTotal =(Button) findViewById(input_tryagainemp5);
+
+            toggleButtonhideandshow = (ToggleButton) findViewById(R.id.input_hideandshow5);
+            frameLayouthideandshow = (FrameLayout)findViewById(R.id.input_detailts5);
+
+            toggleButtonhideandshow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        frameLayouthideandshow.setVisibility(View.GONE);
+                    }else{
+                        frameLayouthideandshow.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
 
             getDialogEmptyTotal.setVisibility(View.GONE);
             dialogSucces.setVisibility(View.GONE);

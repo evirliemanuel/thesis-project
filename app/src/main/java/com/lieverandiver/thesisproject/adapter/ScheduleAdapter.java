@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
@@ -54,6 +55,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         private TextView textViewSubject;
         private TextView textViewSchedule;
         private Schedule schedule;
+        private RecyclerView button_click_schedule;
 
         class ScheduleViewThread extends Thread {
             @Override
@@ -86,6 +88,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
                     R.id.fragment_slidebar_cardview_schedule_text_subject);
             textViewSchedule = (TextView) itemView.findViewById(
                     R.id.fragment_slidebar_cardview_schedule_text_schedule);
+
+
+
+
+
         }
 
         void setView(final Schedule _schedule, final int _position) {

@@ -52,9 +52,10 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
         count += 1;
         Student student = studentList.get(position);
         holder.setView(student, position);
-
+        Log.i("TESSSSSSSST", "COUNT :" + count + " VALIDATE : " + doValidate );
+        Log.i("TESSSSSSSST", "SCORE :" + score[position] + "POSITION :" + position + "STUDENT :" + student.getFirstName());
         if(doValidate) {
-               if(holder.getScore() > totalScore || holder.getScore() < 0) {
+               if(score[position] > totalScore || score[position] < 0) {
                    holder.setStatus(false);
                }else {
                    holder.setStatus(true);
@@ -146,10 +147,10 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
 
         public void setStatus(boolean isSuccess) {
             if(isSuccess)
-                layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightSuccess));
+                layout.setBackgroundColor(context.getResources().getColor(R.color.colorTweeterBlue));
             else
                 layout.setBackgroundColor(context.getResources().getColor(R.color.colorLightDanger));
-            studentDetail.setTextColor(context.getResources().getColor(R.color.colorWhite));
+            studentDetail.setTextColor(context.getResources().getColor(R.color.colorAccent));
         }
 
         private TextWatcher textWatcher = new TextWatcher() {

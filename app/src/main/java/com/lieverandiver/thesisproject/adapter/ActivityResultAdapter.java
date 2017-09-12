@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.exception.GradingFactorException;
@@ -103,86 +104,86 @@ public class ActivityResultAdapter extends RecyclerView
 
                 txScore.addTextChangedListener(textWatcher);
                 imgThree.setOnClickListener(new Button.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        laOptionPane.setVisibility(View.VISIBLE);
-                        txScore.setEnabled(true);
-                    }
-                });
+            @Override
+            public void onClick(View v) {
+                laOptionPane.setVisibility(View.VISIBLE);
+                txScore.setEnabled(true);
+            }
+        });
 
-                btnCancel.setOnClickListener(new Button.OnClickListener(){
+        btnCancel.setOnClickListener(new Button.OnClickListener(){
 
-                    @Override
-                    public void onClick(View v) {
-                        laOptionPane.setVisibility(View.GONE);
-                        txScore.setEnabled(false);
-                        txScore.setText(score);
-                    }
-                });
+            @Override
+            public void onClick(View v) {
+                laOptionPane.setVisibility(View.GONE);
+                txScore.setEnabled(false);
+                txScore.setText(score);
+            }
+        });
 
-                btnDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                       getDialog().show();
-                    }
-                });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDialog().show();
+            }
+        });
 
-                btnSave.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    ActivityService activityService = new ActivityServiceImpl();
+                    activityService.updateActivityResultByActivityAndStudentId(
+                            Integer.parseInt(txScore.getText().toString()),
+                            result.getActivity().getId(), result.getStudent().getId());
+                    resultList.get(position).setScore(Integer.parseInt(txScore.getText().toString()));
+                    laOptionPane.setVisibility(View.GONE);
+                    txScore.setEnabled(false);
+                    notifyDataSetChanged();
+                }catch (GradingFactorException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+}
+
+    private AlertDialog getDialog()
+    {
+        AlertDialog dialog = new AlertDialog.Builder(context)
+
+                .setTitle("Delete")
+                .setMessage("Do you want to Delete")
+                .setIcon(R.drawable.delete)
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
                         try{
                             ActivityService activityService = new ActivityServiceImpl();
-                            activityService.updateActivityResultByActivityAndStudentId(
-                                    Integer.parseInt(txScore.getText().toString()),
+                            activityService.deleteActivityResultByActivityAndStudentId(
                                     result.getActivity().getId(), result.getStudent().getId());
-                            resultList.get(position).setScore(Integer.parseInt(txScore.getText().toString()));
-                            laOptionPane.setVisibility(View.GONE);
-                            txScore.setEnabled(false);
+                            List<ActivityResult> cResultList = new ArrayList<>();
+                            resultList.remove(position);
                             notifyDataSetChanged();
+                            for(int i=0;i<resultList.size();i++) {
+                                cResultList.add(resultList.get(i));
+                            }
+                            resultList = cResultList;
                         }catch (GradingFactorException e){
                             e.printStackTrace();
                         }
+                        dialog.dismiss();
                     }
-                });
-            }
-        }
 
-        private AlertDialog getDialog()
-        {
-            AlertDialog dialog = new AlertDialog.Builder(context)
+                }).setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        return dialog;
 
-                    .setTitle("Delete")
-                    .setMessage("Do you want to Delete")
-                    .setIcon(R.drawable.delete)
-                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            try{
-                                ActivityService activityService = new ActivityServiceImpl();
-                                activityService.deleteActivityResultByActivityAndStudentId(
-                                        result.getActivity().getId(), result.getStudent().getId());
-                                List<ActivityResult> cResultList = new ArrayList<>();
-                                resultList.remove(position);
-                                notifyDataSetChanged();
-                                for(int i=0;i<resultList.size();i++) {
-                                    cResultList.add(resultList.get(i));
-                                }
-                                resultList = cResultList;
-                            }catch (GradingFactorException e){
-                                e.printStackTrace();
-                            }
-                            dialog.dismiss();
-                        }
-
-                    }).setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    })
-                    .create();
-            return dialog;
-
-        }
+    }
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override

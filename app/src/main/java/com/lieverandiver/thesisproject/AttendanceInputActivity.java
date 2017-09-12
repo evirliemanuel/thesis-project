@@ -1,5 +1,6 @@
 package com.lieverandiver.thesisproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -30,6 +31,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.lieverandiver.thesisproject.R.id.btn_submit3_attendance;
+import static com.lieverandiver.thesisproject.R.id.imageView;
 
 public class AttendanceInputActivity extends AppCompatActivity {
 
@@ -38,15 +40,20 @@ public class AttendanceInputActivity extends AppCompatActivity {
     private final List<Student> studentList = new ArrayList<>();
     private AttendanceInputAdapter attendanceInputAdapter;
 
-    private EditText editTextName;
+    private TextView editTextName;
     private TextView textViewDate;
     private Button btnSelectAll;
     private Button buttonSubmit;
     private RecyclerView recyclerViewStudentInput;
-    private ImageView imageView;
     private CardView cardmessage;
+    private Button btnBack;
     private TextView txMessageStatus;
     private RelativeLayout rlDisruptor;
+    private CardView cardViewSucces;
+    private CardView cardViewFailed;
+    private Button btnTryagain;
+    private Button btnOk;
+    private CardView hidesomthing;
 
 
     private boolean toggleMark = true;
@@ -57,16 +64,34 @@ public class AttendanceInputActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_grade_attendance);
+        setContentView(R.layout.activity_z_input_attendace);
 
         classId = getIntent().getExtras().getLong("classId");
         termId = getIntent().getExtras().getLong("termId");
 
         init();
-        imageView.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                finish();
+                Intent intent = getIntent().setClass(AttendanceInputActivity.this, AttendanceAddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = getIntent().setClass(AttendanceInputActivity.this, AttendanceAddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnTryagain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                cardmessage.setVisibility(View.GONE);
+                cardViewFailed.setVisibility(View.GONE);
+                hidesomthing.setVisibility(View.VISIBLE);
             }
         });
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
@@ -84,7 +109,7 @@ public class AttendanceInputActivity extends AppCompatActivity {
                                         try {
                                             Attendance attendance = new Attendance();
                                             attendance.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
-                                                    editTextName.getText().toString().trim() : "Untitled");
+                                                    editTextName.getText().toString().trim() : "Attendance");
                                             attendance.setDate(textViewDate.getText().toString());
                                             listener.onValidate();
                                             if (attendanceInputAdapter.getErrorCount() == 0) {
@@ -96,12 +121,14 @@ public class AttendanceInputActivity extends AppCompatActivity {
                                                     attendanceService.addAttendanceResult(status, attendance.getId(), student.getId());
                                                 }
                                                 cardmessage.setVisibility(View.VISIBLE);
-                                                txMessageStatus.setText("Success");
+//                                                txMessageStatus.setText("Success");
                                                 Toast.makeText(AttendanceInputActivity.this, "Success", Toast.LENGTH_LONG).show();
-                                                finish();
+                                                cardViewSucces.setVisibility(View.VISIBLE);
                                             } else {
                                                 cardmessage.setVisibility(View.VISIBLE);
                                                 txMessageStatus.setText("Found " + attendanceInputAdapter.getErrorCount() + " errors");
+                                                cardViewFailed.setVisibility(View.VISIBLE);
+                                                hidesomthing.setVisibility(View.GONE);
                                             }
 
                                             rlDisruptor.setVisibility(View.GONE);
@@ -121,17 +148,24 @@ public class AttendanceInputActivity extends AppCompatActivity {
 
     public void init() {
         try {
-            editTextName = (EditText) findViewById(R.id.etxt_name3);
+            hidesomthing = (CardView) findViewById(R.id.input_attendance_hide_save);
+            editTextName = (TextView) findViewById(R.id.input_attendance_name);
             textViewDate = (TextView) findViewById(R.id.txtv_date3);
-
+            btnBack = (Button) findViewById(R.id.input_back3);
             buttonSubmit = (Button) findViewById(btn_submit3_attendance);
             btnSelectAll = (Button) findViewById(R.id.btn_selectall3);
             recyclerViewStudentInput = (RecyclerView) findViewById(R.id.recyclerview_view3attendance);
-            imageView = (ImageView) findViewById(R.id.btn_cancel_attendance);
             cardmessage = (CardView) findViewById(R.id.card_message_status);
             txMessageStatus = (TextView) findViewById(R.id.card_message_status_text);
             rlDisruptor = (RelativeLayout) findViewById(R.id.disruptor_loading);
+            cardViewSucces = (CardView) findViewById(R.id.input_succes3);
+            cardViewFailed = (CardView)findViewById(R.id.input_failed3);
+            btnTryagain = (Button) findViewById(R.id.input_tryagain3);
+            btnOk = (Button) findViewById(R.id.input_ok3);
             rlDisruptor.setVisibility(View.GONE);
+
+            cardViewSucces.setVisibility(View.GONE);
+            cardViewFailed.setVisibility(View.GONE);
 
             for (Student s : classService.getStudentList(classId))
                 studentList.add(s);

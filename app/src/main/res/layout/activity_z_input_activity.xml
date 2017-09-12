@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:textSize="12dp"
-                android:textOff="Submit"
+                android:textOff="Save"
                 android:textOn=""
                 android:background="@drawable/basic_ripple_blue"
                 android:layout_marginLeft="10dp"
@@ -130,6 +130,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
+                android:id="@+id/input_detailts1"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -199,6 +200,21 @@
 
 
             </FrameLayout>
+            <FrameLayout
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <ToggleButton
+
+                    android:id="@+id/input_hideandshow1"
+                    android:background="@color/colorClouds"
+                    android:textOff="Hide"
+                    android:textOn="Show"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center|center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -240,7 +256,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:background="@color/Pink"
+            android:background="@color/colorLightDanger"
             android:layout_gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -251,29 +267,32 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
                         android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Empty Total !"
+                        android:text="Data saving failed"
+                        android:textSize="14dp"
+                        android:textColor="#000000"/>
+                    <TextView
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Empty total!"
                         android:textSize="14dp"
                         android:textColor="#000000"/>
 
-
-
                 </LinearLayout>
-
-
-
-
-
-
 
             </FrameLayout>
 
@@ -292,7 +311,7 @@
                     android:background="@drawable/tryagain_button"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="35dp"
 
                     />
 
@@ -314,72 +333,70 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-       <LinearLayout
-           android:background="@color/Pink"
-           android:layout_gravity="center"
-           android:orientation="vertical"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
+        <LinearLayout
+            android:background="@color/colorLightDanger"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-           <FrameLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-               <LinearLayout
-                   android:layout_gravity="center"
-                   android:orientation="vertical"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content">
-                   <TextView
-                       android:layout_marginTop="10dp"
-                       android:layout_marginBottom="5dp"
-                       android:layout_gravity="center"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="Invalid Score !"
-                       android:textSize="14dp"
-                       android:textColor="#000000"/>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data saving failed"
+                        android:textSize="14dp"
+                        android:textColor="#000000"/>
 
+                    <TextView
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Invalid score!"
+                        android:textSize="14dp"
+                        android:textColor="#000000"/>
 
-               </LinearLayout>
-
-
-
-
-
-
-
-           </FrameLayout>
-
-
-           <FrameLayout
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
+                </LinearLayout>
 
 
-               <Button
-                   android:id="@+id/input_tryagain1"
-                   android:layout_marginTop="5dp"
-                   android:layout_marginBottom="10dp"
-                   android:text="TRY AGAIN"
-                   android:textColor="#FFFFFF"
-                   android:background="@drawable/tryagain_button"
-                   android:layout_gravity="center"
-                   android:layout_width="wrap_content"
-                   android:layout_height="25dp"
+            </FrameLayout>
 
-                   />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
+                <Button
+                    android:id="@+id/input_tryagain1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="TRY AGAIN"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/tryagain_button"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
 
-           </FrameLayout>
+                    />
 
+            </FrameLayout>
 
-
-
-
-       </LinearLayout>
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
@@ -390,13 +407,14 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:background="#A5D6A7"
+            android:background="@color/colorTweeterBlue"
             android:layout_gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <FrameLayout
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -408,7 +426,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Saving Succes"
+                    android:text="Data has been successfully saved"
                     android:textSize="14dp"
                     android:textColor="#000000"/>
 
@@ -430,7 +448,7 @@
                     android:background="@drawable/ok_button"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="35dp"
 
                     />
 
@@ -445,7 +463,6 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/input_recyclerview1"
