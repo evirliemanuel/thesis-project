@@ -92,7 +92,7 @@ public class ExamResultActivity extends AppCompatActivity {
         try {
             Log.i(TAG, "onCreate");
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_z_result_exam);
+            setContentView(R.layout.activity_z_result_activity);
 
             classId = getIntent().getExtras().getLong("classId");
             examId = getIntent().getExtras().getLong("examId");

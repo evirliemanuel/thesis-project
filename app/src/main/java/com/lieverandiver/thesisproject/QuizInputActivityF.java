@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,11 +20,15 @@ import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.QuizInputAdapter;
 import com.lieverandiver.thesisproject.adapter.QuizInputAdapterF;
+import com.remswork.project.alice.exception.GradingFactorException;
+import com.remswork.project.alice.model.Grade;
 import com.remswork.project.alice.model.Quiz;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.GradeService;
 import com.remswork.project.alice.service.QuizService;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.GradeServiceImpl;
 import com.remswork.project.alice.service.impl.QuizServiceImpl;
 
 import java.util.ArrayList;
@@ -45,6 +50,9 @@ public class QuizInputActivityF extends AppCompatActivity implements View.OnClic
 
     private final ClassService classService = new ClassServiceImpl();
     private final QuizService quizService = new QuizServiceImpl();
+    private final GradeService gradeService = new GradeServiceImpl();
+
+
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
@@ -59,11 +67,10 @@ public class QuizInputActivityF extends AppCompatActivity implements View.OnClic
     private QuizInputAdapterF studentAdapter;
     private CardView getDialogEmptyTotal;
     private Button getBtnTryAgainEmptyTotal;
-
     private ToggleButton toggleButtonhideandshow;
     private FrameLayout frameLayouthideandshow;
-
-
+    private Grade grade;
+    ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,39 +81,94 @@ public class QuizInputActivityF extends AppCompatActivity implements View.OnClic
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
+                final long classId = getIntent().getExtras().getLong("classId");
 
+                try {
                     Quiz quiz = new Quiz();
                     quiz.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
                             editTextName.getText().toString().trim() : "Quiz");
                     quiz.setDate(textViewDate.getText().toString());
 
-                    if (editTextTotal.getText().toString().matches("")) {
+                    if (editTextTotal.getText().toString().equals("")) {
                         toggleButtonhideandshow.setChecked(false);
                         getDialogEmptyTotal.setVisibility(View.VISIBLE);
                         recyclerViewStudentInput.setVisibility(View.GONE);
                         return;
-                    }else{
+                    } else {
                         quiz.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
                     }
 
                     studentAdapter.setTotalItem(quiz.getItemTotal());
                     studentAdapter.onValidate(true);
 
-                    if(studentAdapter.isNoError()) {
-                        quiz = quizService.addQuiz(quiz, getIntent().getExtras().getLong("classId"), 2L);
-                        for(int i=0; i < studentList.size(); i++) {
+                    if (studentAdapter.isNoError()) {
+                        quiz = quizService.addQuiz(quiz, classId, 1L);
+                        for (int i = 0; i < studentList.size(); i++) {
+                            //Student id
+                            final long studentId = studentList.get(i).getId();
+                            //
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
                             quizService.addQuizResult(score, quiz.getId(), student.getId());
+
+                            //Adding Grade for quiz
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    try {
+                                        final List<Quiz> quizList = quizService.getQuizListByClassId(classId);
+                                        final double fQuiz[] = new double[quizList.size()];
+                                        final long sId = studentId;
+                                        double tempTotal = 0;
+
+                                        try {
+                                            List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                            grade = (tempList.size() > 0 ? tempList.get(0) : null);
+                                        } catch (GradingFactorException e) {
+                                            e.printStackTrace();
+                                            grade = null;
+                                        }
+                                        if (grade == null) {
+                                            Grade _grade = new Grade();
+                                            grade = gradeService.addGrade(_grade, classId, studentId, 1L);
+                                        }
+
+                                        final Grade lGrade = grade;
+                                        final long gradeId = grade.getId();
+
+                                        Log.i("STUDENT ID :", sId + "");
+                                        Log.i("Grade ID :", gradeId + "");
+
+                                        for (int i = 0; i < fQuiz.length; i++) {
+                                            final double total = quizList.get(i).getItemTotal();
+                                            final double score = quizService
+                                                    .getQuizResultByQuizAndStudentId(
+                                                            quizList.get(i).getId(), sId).getScore();
+                                            fQuiz[i] = (score / total) * 100;
+                                            Log.i("Quiz[" + i + "] :", fQuiz[i] + "");
+                                        }
+                                        for (int i = 0; i < fQuiz.length; i++)
+                                            tempTotal += fQuiz[i];
+
+                                        //after looping
+                                        tempTotal /= fQuiz.length;
+                                        Log.i("Total", tempTotal + "");
+                                        lGrade.setQuizScore(tempTotal);
+                                        gradeService.updateGradeById(gradeId, lGrade);
+                                    } catch (GradingFactorException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
                         Toast.makeText(QuizInputActivityF.this, "Success", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         Toast.makeText(QuizInputActivityF.this, "Failed", Toast.LENGTH_LONG).show();
-                     dialogFailed.setVisibility(View.VISIBLE);
+                        dialogFailed.setVisibility(View.VISIBLE);
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

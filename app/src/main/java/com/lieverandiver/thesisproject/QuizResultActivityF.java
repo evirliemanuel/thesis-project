@@ -95,7 +95,7 @@ public class QuizResultActivityF extends AppCompatActivity {
         try {
             Log.i(TAG, "onCreate");
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_z_result_quiz);
+            setContentView(R.layout.activity_z_result_activity);
 
             classId = getIntent().getExtras().getLong("classId");
             quizId = getIntent().getExtras().getLong("quizId");

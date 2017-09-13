@@ -92,7 +92,7 @@ public class AssignmentResultActivityF extends AppCompatActivity {
         try {
             Log.i(TAG, "onCreate");
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_z_result_assignment);
+            setContentView(R.layout.activity_z_result_activity);
 
             classId = getIntent().getExtras().getLong("classId");
             assignmentId = getIntent().getExtras().getLong("assignmentId");

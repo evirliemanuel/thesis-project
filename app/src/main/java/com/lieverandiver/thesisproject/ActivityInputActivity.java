@@ -19,12 +19,8 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.ActivityInputAdapter;
-import com.lieverandiver.thesisproject.adapter.StudentAdapter2;
-import com.lieverandiver.thesisproject.helper.TeacherHelper;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
-import com.remswork.project.alice.model.Assignment;
-import com.remswork.project.alice.model.Attendance;
 import com.remswork.project.alice.model.Grade;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ActivityService;

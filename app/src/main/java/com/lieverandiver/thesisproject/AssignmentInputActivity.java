@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,13 +18,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.lieverandiver.thesisproject.adapter.ActivityInputAdapterF;
 import com.lieverandiver.thesisproject.adapter.AssignmentInputAdapter;
+import com.lieverandiver.thesisproject.adapter.AssignmentInputAdapterF;
+import com.remswork.project.alice.exception.GradingFactorException;
+import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.model.Assignment;
+import com.remswork.project.alice.model.Grade;
 import com.remswork.project.alice.model.Student;
+import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.AssignmentService;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.GradeService;
+import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.GradeServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,6 +59,9 @@ public class AssignmentInputActivity extends AppCompatActivity implements View.O
 
     private final ClassService classService = new ClassServiceImpl();
     private final AssignmentService assignmentService = new AssignmentServiceImpl();
+    private final GradeService gradeService = new GradeServiceImpl();
+
+
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
@@ -63,11 +76,10 @@ public class AssignmentInputActivity extends AppCompatActivity implements View.O
     private AssignmentInputAdapter studentAdapter;
     private CardView getDialogEmptyTotal;
     private Button getBtnTryAgainEmptyTotal;
-
     private ToggleButton toggleButtonhideandshow;
     private FrameLayout frameLayouthideandshow;
-
-
+    private Grade grade;
+    ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,39 +90,94 @@ public class AssignmentInputActivity extends AppCompatActivity implements View.O
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
+                final long classId = getIntent().getExtras().getLong("classId");
 
+                try {
                     Assignment assignment = new Assignment();
                     assignment.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
                             editTextName.getText().toString().trim() : "Assignment");
                     assignment.setDate(textViewDate.getText().toString());
 
-                    if (editTextTotal.getText().toString().matches("")) {
+                    if (editTextTotal.getText().toString().equals("")) {
                         toggleButtonhideandshow.setChecked(false);
                         getDialogEmptyTotal.setVisibility(View.VISIBLE);
                         recyclerViewStudentInput.setVisibility(View.GONE);
                         return;
-                    }else{
+                    } else {
                         assignment.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
                     }
 
                     studentAdapter.setTotalItem(assignment.getItemTotal());
                     studentAdapter.onValidate(true);
 
-                    if(studentAdapter.isNoError()) {
-                        assignment = assignmentService.addAssignment(assignment, getIntent().getExtras().getLong("classId"), 1L);
-                        for(int i=0; i < studentList.size(); i++) {
+                    if (studentAdapter.isNoError()) {
+                        assignment = assignmentService.addAssignment(assignment, classId, 1L);
+                        for (int i = 0; i < studentList.size(); i++) {
+                            //Student id
+                            final long studentId = studentList.get(i).getId();
+                            //
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
                             assignmentService.addAssignmentResult(score, assignment.getId(), student.getId());
+
+                            //Adding Grade for assignment
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    try {
+                                        final List<Assignment> assignmentList = assignmentService.getAssignmentListByClassId(classId);
+                                        final double fAssignment[] = new double[assignmentList.size()];
+                                        final long sId = studentId;
+                                        double tempTotal = 0;
+
+                                        try {
+                                            List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                            grade = (tempList.size() > 0 ? tempList.get(0) : null);
+                                        } catch (GradingFactorException e) {
+                                            e.printStackTrace();
+                                            grade = null;
+                                        }
+                                        if (grade == null) {
+                                            Grade _grade = new Grade();
+                                            grade = gradeService.addGrade(_grade, classId, studentId, 1L);
+                                        }
+
+                                        final Grade lGrade = grade;
+                                        final long gradeId = grade.getId();
+
+                                        Log.i("STUDENT ID :", sId + "");
+                                        Log.i("Grade ID :", gradeId + "");
+
+                                        for (int i = 0; i < fAssignment.length; i++) {
+                                            final double total = assignmentList.get(i).getItemTotal();
+                                            final double score = assignmentService
+                                                    .getAssignmentResultByAssignmentAndStudentId(
+                                                            assignmentList.get(i).getId(), sId).getScore();
+                                            fAssignment[i] = (score / total) * 100;
+                                            Log.i("Assignment[" + i + "] :", fAssignment[i] + "");
+                                        }
+                                        for (int i = 0; i < fAssignment.length; i++)
+                                            tempTotal += fAssignment[i];
+
+                                        //after looping
+                                        tempTotal /= fAssignment.length;
+                                        Log.i("Total", tempTotal + "");
+                                        lGrade.setAssignmentScore(tempTotal);
+                                        gradeService.updateGradeById(gradeId, lGrade);
+                                    } catch (GradingFactorException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
                         Toast.makeText(AssignmentInputActivity.this, "Success", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         Toast.makeText(AssignmentInputActivity.this, "Failed", Toast.LENGTH_LONG).show();
-                     dialogFailed.setVisibility(View.VISIBLE);
+                        dialogFailed.setVisibility(View.VISIBLE);
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

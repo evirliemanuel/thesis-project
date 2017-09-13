@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,12 +20,16 @@ import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.ActivityInputAdapter;
 import com.lieverandiver.thesisproject.adapter.ActivityInputAdapterF;
+import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
+import com.remswork.project.alice.model.Grade;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ActivityService;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.GradeService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.GradeServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,6 +49,9 @@ public class ActivityInputActivityF extends AppCompatActivity implements View.On
 
     private final ClassService classService = new ClassServiceImpl();
     private final ActivityService activityService = new ActivityServiceImpl();
+    private final GradeService gradeService = new GradeServiceImpl();
+
+
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
@@ -58,11 +66,10 @@ public class ActivityInputActivityF extends AppCompatActivity implements View.On
     private ActivityInputAdapterF studentAdapter;
     private CardView getDialogEmptyTotal;
     private Button getBtnTryAgainEmptyTotal;
-
     private ToggleButton toggleButtonhideandshow;
     private FrameLayout frameLayouthideandshow;
-
-
+    private Grade grade;
+    ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,40 +80,94 @@ public class ActivityInputActivityF extends AppCompatActivity implements View.On
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
+                final long classId = getIntent().getExtras().getLong("classId");
 
+                try {
                     Activity activity = new Activity();
                     activity.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
                             editTextName.getText().toString().trim() : "Activity");
                     activity.setDate(textViewDate.getText().toString());
 
-                    if (editTextTotal.getText().toString().matches("")) {
+                    if (editTextTotal.getText().toString().equals("")) {
                         toggleButtonhideandshow.setChecked(false);
                         getDialogEmptyTotal.setVisibility(View.VISIBLE);
                         recyclerViewStudentInput.setVisibility(View.GONE);
                         return;
-                    }else{
+                    } else {
                         activity.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
                     }
-
 
                     studentAdapter.setTotalItem(activity.getItemTotal());
                     studentAdapter.onValidate(true);
 
-                    if(studentAdapter.isNoError()) {
-                        activity = activityService.addActivity(activity, getIntent().getExtras().getLong("classId"), 2L);
-                        for(int i=0; i < studentList.size(); i++) {
+                    if (studentAdapter.isNoError()) {
+                        activity = activityService.addActivity(activity, classId, 1L);
+                        for (int i = 0; i < studentList.size(); i++) {
+                            //Student id
+                            final long studentId = studentList.get(i).getId();
+                            //
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
                             activityService.addActivityResult(score, activity.getId(), student.getId());
+
+                            //Adding Grade for activity
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    try {
+                                        final List<Activity> activityList = activityService.getActivityListByClassId(classId);
+                                        final double fActivity[] = new double[activityList.size()];
+                                        final long sId = studentId;
+                                        double tempTotal = 0;
+
+                                        try {
+                                            List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                            grade = (tempList.size() > 0 ? tempList.get(0) : null);
+                                        } catch (GradingFactorException e) {
+                                            e.printStackTrace();
+                                            grade = null;
+                                        }
+                                        if (grade == null) {
+                                            Grade _grade = new Grade();
+                                            grade = gradeService.addGrade(_grade, classId, studentId, 1L);
+                                        }
+
+                                        final Grade lGrade = grade;
+                                        final long gradeId = grade.getId();
+
+                                        Log.i("STUDENT ID :", sId + "");
+                                        Log.i("Grade ID :", gradeId + "");
+
+                                        for (int i = 0; i < fActivity.length; i++) {
+                                            final double total = activityList.get(i).getItemTotal();
+                                            final double score = activityService
+                                                    .getActivityResultByActivityAndStudentId(
+                                                            activityList.get(i).getId(), sId).getScore();
+                                            fActivity[i] = (score / total) * 100;
+                                            Log.i("Activity[" + i + "] :", fActivity[i] + "");
+                                        }
+                                        for (int i = 0; i < fActivity.length; i++)
+                                            tempTotal += fActivity[i];
+
+                                        //after looping
+                                        tempTotal /= fActivity.length;
+                                        Log.i("Total", tempTotal + "");
+                                        lGrade.setActivityScore(tempTotal);
+                                        gradeService.updateGradeById(gradeId, lGrade);
+                                    } catch (GradingFactorException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
                         Toast.makeText(ActivityInputActivityF.this, "Success", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         Toast.makeText(ActivityInputActivityF.this, "Failed", Toast.LENGTH_LONG).show();
-                     dialogFailed.setVisibility(View.VISIBLE);
+                        dialogFailed.setVisibility(View.VISIBLE);
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

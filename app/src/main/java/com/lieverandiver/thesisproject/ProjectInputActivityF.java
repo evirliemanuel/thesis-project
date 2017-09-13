@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,11 +20,15 @@ import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.adapter.ProjectInputAdapter;
 import com.lieverandiver.thesisproject.adapter.ProjectInputAdapterF;
+import com.remswork.project.alice.exception.GradingFactorException;
+import com.remswork.project.alice.model.Grade;
 import com.remswork.project.alice.model.Project;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.GradeService;
 import com.remswork.project.alice.service.ProjectService;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.GradeServiceImpl;
 import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 
 import java.util.ArrayList;
@@ -45,6 +50,9 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
 
     private final ClassService classService = new ClassServiceImpl();
     private final ProjectService projectService = new ProjectServiceImpl();
+    private final GradeService gradeService = new GradeServiceImpl();
+
+
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
@@ -59,11 +67,10 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
     private ProjectInputAdapterF studentAdapter;
     private CardView getDialogEmptyTotal;
     private Button getBtnTryAgainEmptyTotal;
-
     private ToggleButton toggleButtonhideandshow;
     private FrameLayout frameLayouthideandshow;
-
-
+    private Grade grade;
+    ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,39 +81,94 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
+                final long classId = getIntent().getExtras().getLong("classId");
 
+                try {
                     Project project = new Project();
                     project.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
                             editTextName.getText().toString().trim() : "Project");
                     project.setDate(textViewDate.getText().toString());
 
-                    if (editTextTotal.getText().toString().matches("")) {
+                    if (editTextTotal.getText().toString().equals("")) {
                         toggleButtonhideandshow.setChecked(false);
                         getDialogEmptyTotal.setVisibility(View.VISIBLE);
                         recyclerViewStudentInput.setVisibility(View.GONE);
                         return;
-                    }else{
+                    } else {
                         project.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
                     }
 
                     studentAdapter.setTotalItem(project.getItemTotal());
                     studentAdapter.onValidate(true);
 
-                    if(studentAdapter.isNoError()) {
-                        project = projectService.addProject(project, getIntent().getExtras().getLong("classId"), 2L);
-                        for(int i=0; i < studentList.size(); i++) {
+                    if (studentAdapter.isNoError()) {
+                        project = projectService.addProject(project, classId, 1L);
+                        for (int i = 0; i < studentList.size(); i++) {
+                            //Student id
+                            final long studentId = studentList.get(i).getId();
+                            //
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
                             projectService.addProjectResult(score, project.getId(), student.getId());
+
+                            //Adding Grade for project
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    try {
+                                        final List<Project> projectList = projectService.getProjectListByClassId(classId);
+                                        final double fProject[] = new double[projectList.size()];
+                                        final long sId = studentId;
+                                        double tempTotal = 0;
+
+                                        try {
+                                            List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                            grade = (tempList.size() > 0 ? tempList.get(0) : null);
+                                        } catch (GradingFactorException e) {
+                                            e.printStackTrace();
+                                            grade = null;
+                                        }
+                                        if (grade == null) {
+                                            Grade _grade = new Grade();
+                                            grade = gradeService.addGrade(_grade, classId, studentId, 1L);
+                                        }
+
+                                        final Grade lGrade = grade;
+                                        final long gradeId = grade.getId();
+
+                                        Log.i("STUDENT ID :", sId + "");
+                                        Log.i("Grade ID :", gradeId + "");
+
+                                        for (int i = 0; i < fProject.length; i++) {
+                                            final double total = projectList.get(i).getItemTotal();
+                                            final double score = projectService
+                                                    .getProjectResultByProjectAndStudentId(
+                                                            projectList.get(i).getId(), sId).getScore();
+                                            fProject[i] = (score / total) * 100;
+                                            Log.i("Project[" + i + "] :", fProject[i] + "");
+                                        }
+                                        for (int i = 0; i < fProject.length; i++)
+                                            tempTotal += fProject[i];
+
+                                        //after looping
+                                        tempTotal /= fProject.length;
+                                        Log.i("Total", tempTotal + "");
+                                        lGrade.setProjectScore(tempTotal);
+                                        gradeService.updateGradeById(gradeId, lGrade);
+                                    } catch (GradingFactorException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
                         Toast.makeText(ProjectInputActivityF.this, "Success", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         Toast.makeText(ProjectInputActivityF.this, "Failed", Toast.LENGTH_LONG).show();
-                     dialogFailed.setVisibility(View.VISIBLE);
+                        dialogFailed.setVisibility(View.VISIBLE);
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

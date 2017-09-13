@@ -92,7 +92,7 @@ public class ProjectResultActivity extends AppCompatActivity {
         try {
             Log.i(TAG, "onCreate");
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_z_result_project);
+            setContentView(R.layout.activity_z_result_activity);
 
             classId = getIntent().getExtras().getLong("classId");
             examId = getIntent().getExtras().getLong("projectId");

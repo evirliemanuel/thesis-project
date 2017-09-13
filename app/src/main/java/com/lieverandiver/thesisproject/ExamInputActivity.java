@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,17 +18,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.lieverandiver.thesisproject.adapter.AssignmentInputAdapter;
 import com.lieverandiver.thesisproject.adapter.ExamInputAdapter;
 import com.lieverandiver.thesisproject.adapter.StudentAdapter2;
+import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
+import com.remswork.project.alice.model.Assignment;
 import com.remswork.project.alice.model.Exam;
+import com.remswork.project.alice.model.Grade;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ActivityService;
+import com.remswork.project.alice.service.AssignmentService;
 import com.remswork.project.alice.service.ClassService;
 import com.remswork.project.alice.service.ExamService;
+import com.remswork.project.alice.service.GradeService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
 import com.remswork.project.alice.service.impl.ExamServiceImpl;
+import com.remswork.project.alice.service.impl.GradeServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,6 +65,9 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
 
     private final ClassService classService = new ClassServiceImpl();
     private final ExamService examService = new ExamServiceImpl();
+    private final GradeService gradeService = new GradeServiceImpl();
+
+
     List<Student> studentList = new ArrayList<>();
     private EditText editTextName;
     private TextView textViewDate;
@@ -70,11 +82,10 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
     private ExamInputAdapter studentAdapter;
     private CardView getDialogEmptyTotal;
     private Button getBtnTryAgainEmptyTotal;
-
     private ToggleButton toggleButtonhideandshow;
     private FrameLayout frameLayouthideandshow;
-
-
+    private Grade grade;
+    ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,39 +96,94 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
         buttonSubmit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
+                final long classId = getIntent().getExtras().getLong("classId");
 
+                try {
                     Exam exam = new Exam();
                     exam.setTitle(!editTextName.getText().toString().trim().isEmpty() ?
                             editTextName.getText().toString().trim() : "Exam");
                     exam.setDate(textViewDate.getText().toString());
 
-                    if (editTextTotal.getText().toString().matches("")) {
+                    if (editTextTotal.getText().toString().equals("")) {
                         toggleButtonhideandshow.setChecked(false);
                         getDialogEmptyTotal.setVisibility(View.VISIBLE);
                         recyclerViewStudentInput.setVisibility(View.GONE);
                         return;
-                    }else{
+                    } else {
                         exam.setItemTotal(Integer.parseInt(editTextTotal.getText().toString()));
                     }
 
                     studentAdapter.setTotalItem(exam.getItemTotal());
                     studentAdapter.onValidate(true);
 
-                    if(studentAdapter.isNoError()) {
-                        exam = examService.addExam(exam, getIntent().getExtras().getLong("classId"), 1L);
-                        for(int i=0; i < studentList.size(); i++) {
+                    if (studentAdapter.isNoError()) {
+                        exam = examService.addExam(exam, classId, 1L);
+                        for (int i = 0; i < studentList.size(); i++) {
+                            //Student id
+                            final long studentId = studentList.get(i).getId();
+                            //
                             int score = studentAdapter.getScore(i);
                             Student student = studentList.get(i);
                             examService.addExamResult(score, exam.getId(), student.getId());
+
+                            //Adding Grade for exam
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    try {
+                                        final List<Exam> examList = examService.getExamListByClassId(classId);
+                                        final double fExam[] = new double[examList.size()];
+                                        final long sId = studentId;
+                                        double tempTotal = 0;
+
+                                        try {
+                                            List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                            grade = (tempList.size() > 0 ? tempList.get(0) : null);
+                                        } catch (GradingFactorException e) {
+                                            e.printStackTrace();
+                                            grade = null;
+                                        }
+                                        if (grade == null) {
+                                            Grade _grade = new Grade();
+                                            grade = gradeService.addGrade(_grade, classId, studentId, 1L);
+                                        }
+
+                                        final Grade lGrade = grade;
+                                        final long gradeId = grade.getId();
+
+                                        Log.i("STUDENT ID :", sId + "");
+                                        Log.i("Grade ID :", gradeId + "");
+
+                                        for (int i = 0; i < fExam.length; i++) {
+                                            final double total = examList.get(i).getItemTotal();
+                                            final double score = examService
+                                                    .getExamResultByExamAndStudentId(
+                                                            examList.get(i).getId(), sId).getScore();
+                                            fExam[i] = (score / total) * 100;
+                                            Log.i("Exam[" + i + "] :", fExam[i] + "");
+                                        }
+                                        for (int i = 0; i < fExam.length; i++)
+                                            tempTotal += fExam[i];
+
+                                        //after looping
+                                        tempTotal /= fExam.length;
+                                        Log.i("Total", tempTotal + "");
+                                        lGrade.setExamScore(tempTotal);
+                                        gradeService.updateGradeById(gradeId, lGrade);
+                                    } catch (GradingFactorException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
                         Toast.makeText(ExamInputActivity.this, "Success", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         Toast.makeText(ExamInputActivity.this, "Failed", Toast.LENGTH_LONG).show();
-                     dialogFailed.setVisibility(View.VISIBLE);
+                        dialogFailed.setVisibility(View.VISIBLE);
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
