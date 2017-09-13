@@ -21,9 +21,9 @@
         <activity android:name=".InputAttendance_Cardview" />
         <activity android:name=".SubjectViewActivity" />
 
-        <activity android:name=".ActivityAddActivity" />
-        <activity android:name=".ActivityInputActivity" />
-        <activity android:name=".ActivityResultActivity" />
+        <activity android:name=".ActivityAddActivity" android:launchMode="singleTask"/>
+        <activity android:name=".ActivityInputActivity" android:launchMode="singleTask"/>
+        <activity android:name=".ActivityResultActivity" android:launchMode="singleTask"/>
         <activity android:name=".AssignmentAddActivity" />
         <activity android:name=".AssignmentInputActivity" />
         <activity android:name=".AssignmentResultActivity" />
@@ -40,9 +40,9 @@
         <activity android:name=".QuizInputActivity" />
         <activity android:name=".QuizResultActivity" />
 
-        <activity android:name=".ActivityAddActivityF" />
-        <activity android:name=".ActivityInputActivityF" />
-        <activity android:name=".ActivityResultActivityF" />
+        <activity android:name=".ActivityAddActivityF" android:launchMode="singleTask" />
+        <activity android:name=".ActivityInputActivityF" android:launchMode="singleTask" />
+        <activity android:name=".ActivityResultActivityF" android:launchMode="singleTask"/>
         <activity android:name=".AssignmentAddActivityF" />
         <activity android:name=".AssignmentInputActivityF" />
         <activity android:name=".AssignmentResultActivityF" />

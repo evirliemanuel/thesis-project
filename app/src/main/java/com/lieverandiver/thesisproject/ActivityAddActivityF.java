@@ -93,7 +93,7 @@ public class ActivityAddActivityF extends AppCompatActivity implements ActivityA
     public void onClick(Activity activity, long activityId) {
         Intent intent = getIntent();
         intent.putExtra("activityId", activityId);
-        intent.setClass(this, ActivityResultActivity.class);
+        intent.setClass(this, ActivityResultActivityF.class);
         startActivity(intent);
     }
 

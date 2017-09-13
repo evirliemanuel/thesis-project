@@ -118,11 +118,11 @@ public class ActivityInputActivityF extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case input_back1:
-                Intent intent = getIntent().setClass(this, ActivityAddActivity.class);
+                Intent intent = getIntent().setClass(this, ActivityAddActivityF.class);
                 startActivity(intent);
                 break;
             case input_ok1:
-               intent = getIntent().setClass(this, ActivityAddActivity.class);
+               intent = getIntent().setClass(this, ActivityAddActivityF.class);
                 startActivity(intent);
                 break;
 

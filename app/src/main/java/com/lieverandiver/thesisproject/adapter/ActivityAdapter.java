@@ -46,7 +46,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
 
     @Override
     public ActivityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.activity_z_add_activity_cardview, parent, false);
+        View view = layoutInflater.inflate(R.layout.activity_all_add_cardview, parent, false);
         ActivityViewHolder holder = new ActivityViewHolder(view);
         return holder;
     }
@@ -78,16 +78,16 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
 
         ActivityViewHolder(View itemView) {
             super(itemView);
-            textViewTitle = (EditText) itemView.findViewById(R.id.add_cardview_title1);
-            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date1);
-            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total1);
-            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview1);
+            textViewTitle = (EditText) itemView.findViewById(R.id.add_cardview_title);
+            textViewDate = (TextView) itemView.findViewById(R.id.add_cardview_date);
+            textViewTotal = (TextView) itemView.findViewById(R.id.add_cardview_total);
+            cardView = (CardView) itemView.findViewById(R.id.add_cardview_cardview);
 
-            btnSave = (Button) itemView.findViewById(R.id.add_cardview_save1);
-            btnCancel = (Button) itemView.findViewById(R.id.add_cardview_cancel1);
-            btnDelete = (Button) itemView.findViewById(R.id.add_cardview_delete1);
-            linearLayoutOption = (LinearLayout) itemView.findViewById(R.id.add_linearoption1);
-            btnOption = (ImageView) itemView.findViewById(R.id.add_option1);
+            btnSave = (Button) itemView.findViewById(R.id.add_cardview_save);
+            btnCancel = (Button) itemView.findViewById(R.id.add_cardview_cancel);
+            btnDelete = (Button) itemView.findViewById(R.id.add_cardview_delete);
+            linearLayoutOption = (LinearLayout) itemView.findViewById(R.id.add_linearoption);
+            btnOption = (ImageView) itemView.findViewById(R.id.add_option);
         }
 
         public void setView(final Activity activity,final int position) {
@@ -177,6 +177,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
                                     cActivityList.add(activityList.get(i));
                                 }
                                 activityList = cActivityList;
+                                linearLayoutOption.setVisibility(View.GONE);
                             }catch (GradingFactorException e){
                                 e.printStackTrace();
                             }
