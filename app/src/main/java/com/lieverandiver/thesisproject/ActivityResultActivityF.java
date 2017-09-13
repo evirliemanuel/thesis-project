@@ -89,18 +89,19 @@ public class ActivityResultActivityF extends AppCompatActivity implements View.O
     public void onClick(View v) {
         switch (v.getId()) {
             case btn_back:
-                Intent intent = getIntent().setClass(this, ActivityAddActivity.class);
+                Intent intent = getIntent().setClass(this, ActivityAddActivityF.class);
                 startActivity(intent);
+                this.finish();
                 break;
 
         }
     }
     public void init() {
-        textViewDate = (TextView) findViewById(R.id.result_date1);
-        textViewName = (TextView) findViewById(R.id.result_name1);
-        textViewTotal = (TextView) findViewById(R.id.result_total1);
-        recyclerViewView = (RecyclerView) findViewById(R.id.result_recycler1);
-        btnBack = (Button) findViewById(R.id.result_back1);
+        textViewDate = (TextView) findViewById(R.id.result_dater);
+        textViewName = (TextView) findViewById(R.id.result_namer);
+        textViewTotal = (TextView) findViewById(R.id.result_totalr);
+        recyclerViewView = (RecyclerView) findViewById(R.id.result_recyclerr);
+        btnBack = (Button) findViewById(R.id.result_backr);
         btnBack.setOnClickListener(this);
 
     }

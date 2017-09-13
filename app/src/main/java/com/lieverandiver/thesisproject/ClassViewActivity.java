@@ -459,7 +459,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case viewattendancef :
-                intent = getIntent().setClass(this, AttendanceAddActivity.class);
+                intent = getIntent().setClass(this, AttendanceAddActivityF.class);
                 intent.putExtra("termId",2L);
                 startActivity(intent);
                 break;

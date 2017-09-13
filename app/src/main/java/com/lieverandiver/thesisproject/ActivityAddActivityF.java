@@ -24,6 +24,7 @@ import java.util.List;
 
 import static com.lieverandiver.thesisproject.R.id.add_add1;
 import static com.lieverandiver.thesisproject.R.id.add_back1;
+import static com.lieverandiver.thesisproject.R.id.add_grade1;
 
 public class ActivityAddActivityF extends AppCompatActivity implements ActivityAdapterF.OnClickListener,
         View.OnClickListener {
@@ -38,6 +39,7 @@ public class ActivityAddActivityF extends AppCompatActivity implements ActivityA
     private long classId;
     private long termId;
     private int size;
+    private LinearLayout linearLayoutGrades;
 
     private class ActivityAddThread extends Thread {
         @Override
@@ -68,6 +70,8 @@ public class ActivityAddActivityF extends AppCompatActivity implements ActivityA
         linearLayoutActivity = (LinearLayout) findViewById(R.id.add_add1);
         recyclerView = (RecyclerView) findViewById(R.id.add_recycler1);
         btnBackButton = (Button) findViewById(R.id.add_back1);
+        linearLayoutGrades = (LinearLayout)findViewById(R.id.add_grade1);
+        linearLayoutGrades.setOnClickListener(this);
 
         linearLayoutActivity.setOnClickListener(this);
         btnBackButton.setOnClickListener(this);
@@ -95,6 +99,7 @@ public class ActivityAddActivityF extends AppCompatActivity implements ActivityA
         intent.putExtra("activityId", activityId);
         intent.setClass(this, ActivityResultActivityF.class);
         startActivity(intent);
+        this.finish();
     }
 
     @Override
@@ -103,11 +108,21 @@ public class ActivityAddActivityF extends AppCompatActivity implements ActivityA
             case add_add1 :
                 Intent intent = getIntent().setClass(this, ActivityInputActivityF.class);
                 startActivity(intent);
+                this.finish();
                 break;
             case add_back1 :
                 intent = getIntent().setClass(this, ClassViewActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
+
+            case add_grade1 :
+                intent = getIntent().setClass(this, ActivityGradeActivity.class);
+                startActivity(intent);
+                this.finish();
+                break;
+
+        }
         }
     }
-}
+

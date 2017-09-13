@@ -21,6 +21,8 @@ import com.remswork.project.alice.service.impl.QuizServiceImpl;
 import java.util.List;
 
 import static com.lieverandiver.thesisproject.R.id.add_add6;
+import static com.lieverandiver.thesisproject.R.id.add_grade4;
+import static com.lieverandiver.thesisproject.R.id.add_grade6;
 import static com.lieverandiver.thesisproject.R.id.btn_backaddactivity;
 
 public class QuizAddActivity extends AppCompatActivity implements QuizAdapter.OnClickListener,
@@ -35,6 +37,7 @@ public class QuizAddActivity extends AppCompatActivity implements QuizAdapter.On
     private LinearLayout linearLayoutActivity;
     private long classId;
     private long termId;
+    private LinearLayout linearLayoutGrades;
 
     @Override
     public void onClick(Quiz quiz, long quizId) {
@@ -69,10 +72,11 @@ public class QuizAddActivity extends AppCompatActivity implements QuizAdapter.On
     }
 
     private void init() {
+        linearLayoutGrades =(LinearLayout)findViewById(add_grade6);
         linearLayoutActivity = (LinearLayout) findViewById(R.id.add_add6);
         recyclerView = (RecyclerView) findViewById(R.id.add_recycler6);
         btnBackButton = (Button) findViewById(R.id.add_back6);
-
+        linearLayoutGrades.setOnClickListener(this);
         linearLayoutActivity.setOnClickListener(this);
         btnBackButton.setOnClickListener(this);
     }
@@ -103,6 +107,13 @@ public class QuizAddActivity extends AppCompatActivity implements QuizAdapter.On
             case btn_backaddactivity :
                 intent = getIntent().setClass(this,ClassViewActivity.class);
                 startActivity(intent);
+                break;
+
+
+            case add_grade6 :
+                intent = getIntent().setClass(this, ActivityGradeQuiz.class);
+                startActivity(intent);
+                this.finish();
                 break;
         }
     }

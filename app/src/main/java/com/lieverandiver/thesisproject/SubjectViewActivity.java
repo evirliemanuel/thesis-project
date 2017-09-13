@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -60,10 +61,10 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
     private ToggleButton toggleButtonM;
     private ToggleButton toggleButtonF;
 
-    private ImageView imageViewBackButton;
+    private Button imageViewBackButton;
 
     private void init() {
-        imageViewBackButton = (ImageView)findViewById(R.id.btn_backsubjectdetails);
+        imageViewBackButton = (Button)findViewById(R.id.add_backsubject);
         imageViewBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -115,7 +116,6 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
                     if(formula != null && formula.getSubject() != null) {
                         if(formula.getSubject().getId() == subject.getId()) {
                             formulaMidterm = formula;
-                            recyclerViewMidterm.setVisibility(View.VISIBLE);
 
                             String percents[] = new String[6];
                             percents[0] = formula.getActivityPercentage() + "%";
@@ -141,7 +141,6 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
                     if(formula != null && formula.getSubject() != null) {
                         if(formula.getSubject().getId() == subject.getId()) {
                             formulaFinalterm = formula;
-                            recyclerViewFinals.setVisibility(View.VISIBLE);
 
                             String percents[] = new String[6];
                             percents[0] = formula.getActivityPercentage() + "%";
@@ -189,6 +188,9 @@ public class SubjectViewActivity  extends AppCompatActivity implements CompoundB
             e.printStackTrace();
         }
     }
+
+
+
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

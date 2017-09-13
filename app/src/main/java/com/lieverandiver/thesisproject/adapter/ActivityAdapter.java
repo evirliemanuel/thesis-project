@@ -27,8 +27,6 @@ import java.nio.InvalidMarkException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.lieverandiver.thesisproject.R.id.textView;
-
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder> {
 
     private LayoutInflater layoutInflater;
@@ -177,6 +175,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
                                     cActivityList.add(activityList.get(i));
                                 }
                                 activityList = cActivityList;
+                                textViewTitle.setEnabled(false);
                                 linearLayoutOption.setVisibility(View.GONE);
                             }catch (GradingFactorException e){
                                 e.printStackTrace();

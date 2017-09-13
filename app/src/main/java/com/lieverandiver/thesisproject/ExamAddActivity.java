@@ -21,6 +21,8 @@ import java.util.List;
 
 import static com.lieverandiver.thesisproject.R.id.add_add4;
 import static com.lieverandiver.thesisproject.R.id.add_back4;
+import static com.lieverandiver.thesisproject.R.id.add_grade1;
+import static com.lieverandiver.thesisproject.R.id.add_grade4;
 import static com.lieverandiver.thesisproject.R.id.add_recycler4;
 
 public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.OnClickListener,
@@ -34,6 +36,7 @@ public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.On
     private LinearLayout linearLayoutActivity;
     private long classId;
     private long termId;
+    private LinearLayout linearLayoutGrades;
 
     private class ExamAddThread extends Thread {
         @Override
@@ -62,6 +65,8 @@ public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.On
         linearLayoutActivity = (LinearLayout) findViewById(add_add4);
         recyclerView = (RecyclerView) findViewById(add_recycler4);
         btnBackButton = (Button) findViewById(add_back4);
+        linearLayoutGrades =(LinearLayout) findViewById(add_grade4);
+        linearLayoutGrades.setOnClickListener(this);
 
         linearLayoutActivity.setOnClickListener(this);
         btnBackButton.setOnClickListener(this);
@@ -100,6 +105,12 @@ public class ExamAddActivity extends AppCompatActivity implements ExamAdapter.On
                 break;
             case add_back4 :
                 finish();
+                break;
+
+            case add_grade4 :
+                intent = getIntent().setClass(this, ActivityGradeExam.class);
+                startActivity(intent);
+                this.finish();
                 break;
         }
     }

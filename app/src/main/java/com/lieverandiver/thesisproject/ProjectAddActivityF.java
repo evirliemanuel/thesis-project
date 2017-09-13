@@ -21,8 +21,11 @@ import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 
 import java.util.List;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.lieverandiver.thesisproject.R.id.add_add5;
 import static com.lieverandiver.thesisproject.R.id.add_back5;
+import static com.lieverandiver.thesisproject.R.id.add_grade4;
+import static com.lieverandiver.thesisproject.R.id.add_grade5;
 
 
 public class ProjectAddActivityF extends AppCompatActivity implements ProjectAdapterF.OnClickListener,
@@ -37,6 +40,7 @@ public class ProjectAddActivityF extends AppCompatActivity implements ProjectAda
     private LinearLayout linearLayoutActivity;
     private long classId;
     private long termId;
+    private LinearLayout linearLayoutGrades;
 
     private class ProjectAddThread extends Thread {
         @Override
@@ -63,9 +67,11 @@ public class ProjectAddActivityF extends AppCompatActivity implements ProjectAda
     }
 
     private void init() {
+        linearLayoutGrades = (LinearLayout)findViewById(add_grade5);
         linearLayoutActivity = (LinearLayout) findViewById(R.id.add_add5);
         recyclerView = (RecyclerView) findViewById(R.id.add_recycler5);
         btnBackButton = (Button) findViewById(R.id.add_back5);
+        linearLayoutGrades.setOnClickListener(this);
 
         linearLayoutActivity.setOnClickListener(this);
         btnBackButton.setOnClickListener(this);
@@ -104,6 +110,12 @@ public class ProjectAddActivityF extends AppCompatActivity implements ProjectAda
                 break;
             case add_back5 :
                 finish();
+                break;
+
+            case add_grade5 :
+                intent = getIntent().setClass(this, ActivityGradeProject.class);
+                startActivity(intent);
+                this.finish();
                 break;
         }
     }

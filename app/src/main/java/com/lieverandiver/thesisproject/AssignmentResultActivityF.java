@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.adapter.AssignmentResultAdapter;
@@ -78,10 +79,12 @@ public class AssignmentResultActivityF extends AppCompatActivity {
     }
 
     public void init() {
-        textViewDate = (TextView) findViewById(R.id.result_date2);
-        textViewName = (TextView) findViewById(R.id.result_name2);
-        textViewTotal = (TextView) findViewById(R.id.result_total2);
-        recyclerViewView = (RecyclerView) findViewById(R.id.result_recycler2);
+        textViewDate = (TextView) findViewById(R.id.result_dater);
+        textViewName = (TextView) findViewById(R.id.result_namer);
+        textViewTotal = (TextView) findViewById(R.id.result_totalr);
+        recyclerViewView = (RecyclerView) findViewById(R.id.result_recyclerr);
+//        btnBack = (Button) findViewById(R.id.result_backr);
+//        btnBack.setOnClickListener(this);
     }
 
     @Override

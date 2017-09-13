@@ -42,7 +42,7 @@ public class Teacher_Activity_Teacher_Profile extends AppCompatActivity implemen
 
         txtvName = (TextView)findViewById(R.id.txtv_fullname);
         txtvDept = (TextView)findViewById(R.id.txtv_dept);
-        buttonback = (Button)findViewById(R.id.back_button);
+        buttonback = (Button)findViewById(R.id.add_backsubject);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_view_subject);
 
         SubjectServiceImpl subjectService = new SubjectServiceImpl();

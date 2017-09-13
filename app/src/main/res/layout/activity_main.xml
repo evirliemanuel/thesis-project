@@ -39,7 +39,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="CLASS"
+                        android:text="Class"
                         android:textSize="18dp"
                         android:textStyle="bold"
                         android:textColor="@color/colorWhite"/>
@@ -119,7 +119,7 @@
             android:id="@+id/tabs"
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             app:tabMode="fixed"
             app:tabGravity="fill"/>
 

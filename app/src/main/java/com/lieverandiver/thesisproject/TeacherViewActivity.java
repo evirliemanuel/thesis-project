@@ -36,7 +36,7 @@ public class TeacherViewActivity extends AppCompatActivity implements
     private void init() {
         txtName = (TextView)findViewById(R.id.txtv_fullname);
         txtDept = (TextView)findViewById(R.id.txtv_dept);
-        btnBack = (Button)findViewById(R.id.back_button);
+        btnBack = (Button)findViewById(R.id.add_backsubject);
         rView = (RecyclerView) findViewById(R.id.recyclerview_view_subject);
 
         try {

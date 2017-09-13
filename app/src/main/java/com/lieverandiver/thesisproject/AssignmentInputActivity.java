@@ -124,10 +124,12 @@ public class AssignmentInputActivity extends AppCompatActivity implements View.O
             case input_back2:
                 Intent intent = getIntent().setClass(this, AssignmentAddActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
             case input_ok2:
                intent = getIntent().setClass(this, AssignmentAddActivity.class);
                 startActivity(intent);
+                this.finish();
                 break;
 
             case input_tryagainemp2:

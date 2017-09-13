@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.lieverandiver.thesisproject.ActivityInputActivity;
 import com.lieverandiver.thesisproject.R;
@@ -104,7 +106,8 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
         }
     }
 
-    public class StudentAdapterViewHolder extends RecyclerView.ViewHolder {
+
+    public class StudentAdapterViewHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener {
 
         private ImageView studentImage;
         private TextView studentDetail;
@@ -113,6 +116,7 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
         private int position;
         private LinearLayout layout;
         private  TextView txInit;
+        private ToggleButton btnMic;
 
         StudentAdapterViewHolder(View itemView) {
             super(itemView);
@@ -121,6 +125,8 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
             editText = (EditText) itemView.findViewById(R.id.input_cardview_score);
             layout = (LinearLayout) itemView.findViewById(R.id.input_cardview_layout);
             txInit = (TextView) itemView.findViewById(R.id.input_cardview_init);
+            btnMic = (ToggleButton) itemView.findViewById(R.id.input_cardview_mic);
+            btnMic.setOnCheckedChangeListener(this);
         }
 
         void setView(final Student student, final int position) {
@@ -173,5 +179,10 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
                     error[position] = 0;
             }
         };
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+        }
     }
 }
