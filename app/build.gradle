@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.github.erafaelmanuel:alice-android-library:f3f39c9ad5'
     testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }

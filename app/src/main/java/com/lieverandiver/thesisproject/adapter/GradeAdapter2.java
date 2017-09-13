@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
+import com.lieverandiver.thesisproject.helper.GradeHelper;
 import com.remswork.project.alice.model.Grade;
+import com.remswork.project.alice.model.Student;
 
 import java.util.List;
 
@@ -52,6 +54,10 @@ public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewH
 
         public void setView(final Grade grade, final int position) {
             txtGrdScore.setText(grade.getScore() + "");
+        }
+
+        public void setScore(double score) {
+            txtGrdScore.setText(score + "");
         }
 
     }

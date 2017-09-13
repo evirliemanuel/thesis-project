@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
                             teacher.getUserDetail().getPassword().equals(password.trim())) {
                         teacherHelper.saveUser(teacher.getId());
 
-                        Intent intent = new Intent(getApplicationContext(), Home_Activity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
                         intent.putExtra("teacherId", teacher.getId());
                         isVaild = true;
                         startActivity(intent);

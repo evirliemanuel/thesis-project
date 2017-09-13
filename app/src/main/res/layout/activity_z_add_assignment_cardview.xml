@@ -44,7 +44,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
+                android:enabled="false"
                 android:id="@+id/add_cardview_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,7 +106,7 @@
 
         <LinearLayout
             android:background="@color/colorLightGray"
-            android:id="@+id/input_linearoption2"
+            android:id="@+id/add_linearoption2"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

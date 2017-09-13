@@ -7,9 +7,11 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -91,6 +93,9 @@ public class CriteriaFinaltermInputActivity extends AppCompatActivity implements
     private Spinner spinnerm;
     private int activeListener;
 
+    private CardView cardViewFailed;
+    private Button buttonTryAgin;
+
     private int percent[] = new int[6];
     private String[] values = new String[]{
             "10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"
@@ -121,6 +126,11 @@ public class CriteriaFinaltermInputActivity extends AppCompatActivity implements
     private String LOG_TAG = "VoiceRecognition";
 
     private void init() {
+
+        buttonTryAgin = (Button) findViewById(R.id.criteria_tryagain);
+        cardViewFailed = (CardView) findViewById(R.id.criteria_failed);
+
+        buttonTryAgin.setOnClickListener(this);
 
         laSave = (LinearLayout) findViewById(R.id.midterm_save);
         txtSubjectName = (TextView) findViewById(R.id.midterm_subjectname);
@@ -281,9 +291,13 @@ public class CriteriaFinaltermInputActivity extends AppCompatActivity implements
         _formula.setQuizPercentage(percent[5]);
 
         try {
+            if (Integer.parseInt(txtTotalPercent.getText().toString().split("%")[0]) != 100) {
+                cardViewFailed.setVisibility(View.VISIBLE);
+                return;
+            }
             if(!isExist)
                 _formula = new FormulaServiceImpl().addFormula(_formula, subject.getId(),
-                        teacher.getId(), 1);
+                        teacher.getId(), 2);
             else
                 _formula = new FormulaServiceImpl().updateFormulaById(formula.getId(), _formula,
                         0, 0, 0);

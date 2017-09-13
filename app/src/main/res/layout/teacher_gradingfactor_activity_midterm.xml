@@ -164,7 +164,15 @@
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/colorAccent"></RelativeLayout>
+                android:background="@color/colorAccent">
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/midterm_save"
@@ -243,6 +251,159 @@
                     android:layout_width="match_parent"
                     android:layout_height="16dp">
                 </LinearLayout>
+
+                <android.support.v7.widget.CardView
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/criteria_failed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@color/colorLightDanger"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Data saving failed"
+                                    android:textSize="14dp"
+                                    android:textColor="#000000"/>
+
+                                <TextView
+
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Invalid total!"
+                                    android:textSize="14dp"
+                                    android:textColor="#000000"/>
+
+
+
+                            </LinearLayout>
+
+
+
+
+
+
+
+                        </FrameLayout>
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <Button
+                                android:id="@+id/criteria_tryagain"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="TRY AGAIN"
+                                android:textColor="#FFFFFF"
+                                android:background="@drawable/tryagain_button"
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+
+                                />
+
+
+                        </FrameLayout>
+
+
+
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/criteria_succes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:background="@color/colorTweeterBlue"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+
+                                android:gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Data has been successfully saved"
+                                android:textSize="14dp"
+                                android:textColor="#000000"/>
+
+
+                        </FrameLayout>
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <Button
+                                android:id="@+id/criteria_ok"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="OK"
+                                android:textColor="#FFFFFF"
+                                android:background="@drawable/ok_button"
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+
+                                />
+
+
+
+                        </FrameLayout>
+
+
+
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
 
                 <!--Activity-->
                 <android.support.v7.widget.CardView
