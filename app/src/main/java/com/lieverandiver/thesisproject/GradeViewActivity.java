@@ -79,7 +79,7 @@ public class GradeViewActivity extends AppCompatActivity {
                     linearLayoutMidterm.setVisibility(View.VISIBLE);
                     linearLayoutFinals.setVisibility(View.GONE);
                     toggleButtonFinals.setChecked(false);
-                    Intent intent = new Intent(GradeViewActivity.this, GradeResultActivity.class);
+                    Intent intent = new Intent(GradeViewActivity.this, GradeResultActivity2.class);
                     startActivity(intent);
                 } else {
 

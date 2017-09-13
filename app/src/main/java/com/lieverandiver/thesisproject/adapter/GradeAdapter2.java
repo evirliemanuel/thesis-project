@@ -14,6 +14,8 @@ import com.remswork.project.alice.model.Student;
 
 import java.util.List;
 
+import static com.lieverandiver.thesisproject.R.id.grade_studentname;
+
 public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewHolder> {
 
     private Context context;
@@ -25,7 +27,6 @@ public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewH
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
     }
-
 
     @Override
     public GradeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,13 +47,21 @@ public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewH
     class GradeViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtGrdScore;
+        private TextView txName;
+        private TextView txDate;
 
         public GradeViewHolder(View itemView) {
             super(itemView);
             txtGrdScore = (TextView) itemView.findViewById(R.id.grade_score_part);
+            txName = (TextView) itemView.findViewById(R.id.grade_studentname);
+            txDate = (TextView) itemView.findViewById(R.id.grade_update_date);
         }
 
         public void setView(final Grade grade, final int position) {
+            String name = String.format("%s, %s %s", grade.getStudent().getLastName(),
+                    grade.getStudent().getFirstName(),
+                    grade.getStudent().getMiddleName().substring(0, 1)) + ".";
+            txName.setText(name);
             txtGrdScore.setText(grade.getTotalScore() + "");
         }
 

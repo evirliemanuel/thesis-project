@@ -343,12 +343,7 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
         } else
             Toast.makeText(CriteriaMidtermInputActivity.this, "Please try again",
                     Toast.LENGTH_SHORT).show();
-
-
     }
-
-
-
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

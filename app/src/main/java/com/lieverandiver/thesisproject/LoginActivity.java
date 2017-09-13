@@ -102,9 +102,6 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.Lo
         teacherHelper = null;
         progressBar = null;
         screen = null;
-
-        doLoginThread.interrupt();
-        doLoginThread = null;
     }
 
     @Override

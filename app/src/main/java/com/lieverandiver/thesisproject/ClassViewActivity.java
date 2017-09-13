@@ -299,12 +299,12 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 }catch (GradingFactorException e) {
                     fFormula = null;
                 }
-                if(mFormula == null && _class.getSubject() != null)
-                    mFormula = formulaService.addFormula(new Formula(), _class.getSubject().getId(),
-                            _class.getTeacher().getId());
-                if(fFormula == null && _class.getSubject() != null)
-                    fFormula = formulaService.addFormula(new Formula(), _class.getSubject().getId(),
-                            _class.getTeacher().getId());
+//                if(mFormula == null && _class.getSubject() != null)
+//                    mFormula = formulaService.addFormula(new Formula(), _class.getSubject().getId(),
+//                            _class.getTeacher().getId());
+//                if(fFormula == null && _class.getSubject() != null)
+//                    fFormula = formulaService.addFormula(new Formula(), _class.getSubject().getId(),
+//                            _class.getTeacher().getId());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -312,33 +312,21 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                         String sectionName = (_class.getSection() != null ? _class.getSection().getName() : "None");
                         String departmentName = (_class.getSection() != null ? _class.getSection().getDepartment().getName() : "None");
 
-                        if(mFormula.getActivityPercentage() > 0)
-                            mcvActivity.setVisibility(View.VISIBLE);
-                        if(mFormula.getAssignmentPercentage() > 0)
-                            mcvAssignment.setVisibility(View.VISIBLE);
-                        if(mFormula.getAttendancePercentage() > 0)
-                            mcvAttendance .setVisibility(View.VISIBLE);
-                        if(mFormula.getExamPercentage() > 0)
-                            mcvExam.setVisibility(View.VISIBLE);
-                        if(mFormula.getProjectPercentage() > 0)
-                            mcvProject.setVisibility(View.VISIBLE);
-                        if(mFormula.getQuizPercentage() > 0)
-                            mcvQuiz.setVisibility(View.VISIBLE);
-
-                        if(fFormula.getActivityPercentage() > 0)
-                            fcvActivity.setVisibility(View.VISIBLE);
-                        if(fFormula.getAssignmentPercentage() > 0)
-                            fcvAssignment.setVisibility(View.VISIBLE);
-                        if(fFormula.getAttendancePercentage() > 0)
-                            fcvAttendance.setVisibility(View.VISIBLE);
-                        if(fFormula.getExamPercentage() > 0)
-                            fcvExam.setVisibility(View.VISIBLE);
-                        if(fFormula.getProjectPercentage() > 0)
-                            fcvProject.setVisibility(View.VISIBLE);
-                        if(fFormula.getQuizPercentage() > 0)
-                            fcvQuiz.setVisibility(View.VISIBLE);
-
                         if(mFormula != null) {
+
+                            if(mFormula.getActivityPercentage() > 0)
+                                mcvActivity.setVisibility(View.VISIBLE);
+                            if(mFormula.getAssignmentPercentage() > 0)
+                                mcvAssignment.setVisibility(View.VISIBLE);
+                            if(mFormula.getAttendancePercentage() > 0)
+                                mcvAttendance .setVisibility(View.VISIBLE);
+                            if(mFormula.getExamPercentage() > 0)
+                                mcvExam.setVisibility(View.VISIBLE);
+                            if(mFormula.getProjectPercentage() > 0)
+                                mcvProject.setVisibility(View.VISIBLE);
+                            if(mFormula.getQuizPercentage() > 0)
+                                mcvQuiz.setVisibility(View.VISIBLE);
+
                             String totalActivitySize = String.valueOf(sizeAc);
                             String totalAttendanceSize = String.valueOf(sizeAtt);
                             String totalAssignmentSize = String.valueOf(sizeAss);
@@ -354,6 +342,19 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                             textViewQuizM.setText(totalQuizSize);
                         }
                         if(fFormula != null) {
+
+                            if(fFormula.getActivityPercentage() > 0)
+                                fcvActivity.setVisibility(View.VISIBLE);
+                            if(fFormula.getAssignmentPercentage() > 0)
+                                fcvAssignment.setVisibility(View.VISIBLE);
+                            if(fFormula.getAttendancePercentage() > 0)
+                                fcvAttendance.setVisibility(View.VISIBLE);
+                            if(fFormula.getExamPercentage() > 0)
+                                fcvExam.setVisibility(View.VISIBLE);
+                            if(fFormula.getProjectPercentage() > 0)
+                                fcvProject.setVisibility(View.VISIBLE);
+                            if(fFormula.getQuizPercentage() > 0)
+                                fcvQuiz.setVisibility(View.VISIBLE);
 
                             String totalActivitySizeF = String.valueOf(sizeAcF);
                             String totalAttendanceSizeF = String.valueOf(sizeAttF);
@@ -413,7 +414,8 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case view_grade :
-                intent = getIntent().setClass(this, GradeViewActivity.class);
+                intent = getIntent().setClass(this, GradeResultActivity2.class);
+                intent.putExtra("termId", 1L);
                 startActivity(intent);
                 break;
             case viewactivitym :

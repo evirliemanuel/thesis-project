@@ -42,6 +42,7 @@ import com.remswork.project.alice.service.impl.StudentServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class GradeResultActivity extends AppCompatActivity{
 
     final ActivityService activityService = new ActivityServiceImpl();

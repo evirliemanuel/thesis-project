@@ -205,15 +205,20 @@ public class ActivityInputAdapter extends RecyclerView.Adapter<ActivityInputAdap
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked && !isActivated) {
-                progressBar.setVisibility(View.VISIBLE);
-                progressBar.setIndeterminate(true);
-                speech.startListening(recognizerIntent);
-                isActivated = true;
-            } else {
-                btnMic.setChecked(false);
-                progressBar.setIndeterminate(false);
-                progressBar.setVisibility(View.GONE);
+            try {
+                if (isChecked && !isActivated) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    progressBar.setIndeterminate(true);
+                    speech.startListening(recognizerIntent);
+                    isActivated = true;
+                } else {
+                    btnMic.setChecked(false);
+                    progressBar.setIndeterminate(false);
+                    progressBar.setVisibility(View.GONE);
+                    speech.stopListening();
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
                 speech.stopListening();
             }
         }
