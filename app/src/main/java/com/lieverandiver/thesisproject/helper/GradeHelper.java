@@ -37,6 +37,7 @@ import java.util.List;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
+@Deprecated
 public class GradeHelper {
 
     final ActivityService activityService = new ActivityServiceImpl();
@@ -319,7 +320,8 @@ public class GradeHelper {
                 notifyFinish();
             }
 
-            return new Grade(activityGrade);
+            //return new Grade(activityGrade);
+            return  null;
         }catch (Exception e) {
             e.printStackTrace();
             return null;

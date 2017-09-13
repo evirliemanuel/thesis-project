@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.lieverandiver.thesisproject.adapter.GradeAdapter2;
-import com.lieverandiver.thesisproject.helper.GradeHelper;
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
@@ -42,8 +41,6 @@ import com.remswork.project.alice.service.impl.StudentServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 public class GradeResultActivity extends AppCompatActivity{
 
@@ -326,8 +323,10 @@ public class GradeResultActivity extends AppCompatActivity{
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                gradeList.add(new Grade(activityGrade + assignmentGrade + attendanceGrade +
-                examGrade + projectGrade + quizGrade));
+                Grade grade = new Grade();
+                grade.setTotalScore(activityGrade + assignmentGrade + attendanceGrade +
+                        examGrade + projectGrade + quizGrade);
+                gradeList.add(grade);
                 gradeAdapter.notifyItemInserted(gradeList.size());
             }
         });

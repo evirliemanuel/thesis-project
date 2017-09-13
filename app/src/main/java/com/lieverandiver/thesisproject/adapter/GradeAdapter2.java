@@ -53,7 +53,7 @@ public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewH
         }
 
         public void setView(final Grade grade, final int position) {
-            txtGrdScore.setText(grade.getScore() + "");
+            txtGrdScore.setText(grade.getTotalScore() + "");
         }
 
         public void setScore(double score) {

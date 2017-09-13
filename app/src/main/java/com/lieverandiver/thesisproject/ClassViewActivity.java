@@ -16,19 +16,21 @@ import android.widget.ToggleButton;
 import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Class;
+import com.remswork.project.alice.model.Formula;
 import com.remswork.project.alice.service.ActivityService;
-
+import com.remswork.project.alice.service.AssignmentService;
 import com.remswork.project.alice.service.AttendanceService;
 import com.remswork.project.alice.service.ClassService;
 import com.remswork.project.alice.service.ExamService;
+import com.remswork.project.alice.service.FormulaService;
 import com.remswork.project.alice.service.ProjectService;
 import com.remswork.project.alice.service.QuizService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
-import com.remswork.project.alice.service.impl.AttendanceServiceImpl;
-import com.remswork.project.alice.service.AssignmentService;
 import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
+import com.remswork.project.alice.service.impl.AttendanceServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
 import com.remswork.project.alice.service.impl.ExamServiceImpl;
+import com.remswork.project.alice.service.impl.FormulaServiceImpl;
 import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 import com.remswork.project.alice.service.impl.QuizServiceImpl;
 
@@ -62,7 +64,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private final ProjectService projectService = new ProjectServiceImpl();
     private final QuizService quizService = new QuizServiceImpl();
 
-
+    private final FormulaService formulaService = new FormulaServiceImpl();
     private final ClassService classService = new ClassServiceImpl();
 
     private TextView txtViewSubjectName;
@@ -108,6 +110,26 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
     private TextView textViewQuizF;
 
     private Button btnBack;
+
+    private CardView cToggle;
+    private CardView cToggle2;
+
+    private CardView mcvActivity;
+    private CardView mcvAssignment;
+    private CardView mcvAttendance;
+    private CardView mcvExam;
+    private CardView mcvProject;
+    private CardView mcvQuiz;
+
+    private CardView fcvActivity;
+    private CardView fcvAssignment;
+    private CardView fcvAttendance;
+    private CardView fcvExam;
+    private CardView fcvProject;
+    private CardView fcvQuiz;
+
+    private Formula mFormula;
+    private Formula fFormula;
 
     public void init() {
 
@@ -157,7 +179,27 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         linearLayoutProjectF =(LinearLayout)findViewById(viewprojectf);
         linearLayoutQuizF =(LinearLayout)findViewById(viewquizf);
 
+        cToggle = (CardView) findViewById(R.id.card_toggle_part);
+        cToggle2 = (CardView) findViewById(R.id.card_toggle_part2);
+
+        mcvActivity = (CardView) findViewById(R.id.card_activity_formula_supportm);
+        mcvAssignment = (CardView) findViewById(R.id.card_assignment_formula_supportm);
+        mcvAttendance = (CardView) findViewById(R.id.card_attendance_formula_supportm);
+        mcvExam = (CardView) findViewById(R.id.card_exam_formula_supportm);
+        mcvProject = (CardView) findViewById(R.id.card_project_formula_supportm);
+        mcvQuiz = (CardView) findViewById(R.id.card_quiz_formula_supportm);
+
+        fcvActivity = (CardView) findViewById(R.id.card_activity_formula_supportf);
+        fcvAssignment = (CardView) findViewById(R.id.card_assignment_formula_supportf);
+        fcvAttendance = (CardView) findViewById(R.id.card_attendance_formula_supportf);
+        fcvExam = (CardView) findViewById(R.id.card_exam_formula_supportf);
+        fcvProject = (CardView) findViewById(R.id.card_project_formula_supportf);
+        fcvQuiz = (CardView) findViewById(R.id.card_quiz_formula_supportf);
+
+
         btnBack.setOnClickListener(this);
+        cToggle.setOnClickListener(this);
+        cToggle2.setOnClickListener(this);
 
         linearLayoutActivityM.setOnClickListener(this);
         linearLayoutAssignmentM.setOnClickListener(this);
@@ -186,6 +228,20 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         linearLayoutExamF.setVisibility(View.VISIBLE);
         linearLayoutProjectF.setVisibility(View.VISIBLE);
         linearLayoutQuizF.setVisibility(View.VISIBLE);
+
+        mcvActivity.setVisibility(View.GONE);
+        mcvAssignment.setVisibility(View.GONE);
+        mcvAttendance .setVisibility(View.GONE);
+        mcvExam.setVisibility(View.GONE);
+        mcvProject.setVisibility(View.GONE);
+        mcvQuiz.setVisibility(View.GONE);
+
+        fcvActivity.setVisibility(View.GONE);
+        fcvAssignment.setVisibility(View.GONE);
+        fcvAttendance.setVisibility(View.GONE);
+        fcvExam.setVisibility(View.GONE);
+        fcvProject.setVisibility(View.GONE);
+        fcvQuiz.setVisibility(View.GONE);
 
         linearLayoutShowandHideF.setVisibility(View.GONE);
         linearLayoutShowandHideM.setVisibility(View.GONE);
@@ -229,15 +285,60 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 final int sizeExamF = examService.getExamListByClassId(classId, 2L).size();
                 final int sizeProF = projectService.getProjectListByClassId(classId, 2L).size();
                 final int sizeQuizF = quizService.getQuizListByClassId(classId, 2L).size();
-
-
                 final Class _class = classService.getClassById(classId);
+
+                try {
+                    mFormula = formulaService.getFormulaBySubjectAndTeacherId(
+                            _class.getSubject().getId(), _class.getTeacher().getId(), 1);
+                }catch (GradingFactorException e) {
+                    mFormula = null;
+                }
+                try {
+                    fFormula = formulaService.getFormulaBySubjectAndTeacherId(
+                            _class.getSubject().getId(), _class.getTeacher().getId(), 2);
+                }catch (GradingFactorException e) {
+                    fFormula = null;
+                }
+                if(mFormula == null && _class.getSubject() != null)
+                    mFormula = formulaService.addFormula(new Formula(), _class.getSubject().getId(),
+                            _class.getTeacher().getId());
+                if(fFormula == null && _class.getSubject() != null)
+                    fFormula = formulaService.addFormula(new Formula(), _class.getSubject().getId(),
+                            _class.getTeacher().getId());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                            String subjectName = (_class.getSubject() != null ? _class.getSubject().getName() : "None");
-                            String sectionName = (_class.getSection() != null ? _class.getSection().getName() : "None");
-                            String departmentName = (_class.getSection() != null ? _class.getSection().getDepartment().getName() : "None");
+                        String subjectName = (_class.getSubject() != null ? _class.getSubject().getName() : "None");
+                        String sectionName = (_class.getSection() != null ? _class.getSection().getName() : "None");
+                        String departmentName = (_class.getSection() != null ? _class.getSection().getDepartment().getName() : "None");
+
+                        if(mFormula.getActivityPercentage() > 0)
+                            mcvActivity.setVisibility(View.VISIBLE);
+                        if(mFormula.getAssignmentPercentage() > 0)
+                            mcvAssignment.setVisibility(View.VISIBLE);
+                        if(mFormula.getAttendancePercentage() > 0)
+                            mcvAttendance .setVisibility(View.VISIBLE);
+                        if(mFormula.getExamPercentage() > 0)
+                            mcvExam.setVisibility(View.VISIBLE);
+                        if(mFormula.getProjectPercentage() > 0)
+                            mcvProject.setVisibility(View.VISIBLE);
+                        if(mFormula.getQuizPercentage() > 0)
+                            mcvQuiz.setVisibility(View.VISIBLE);
+
+                        if(fFormula.getActivityPercentage() > 0)
+                            fcvActivity.setVisibility(View.VISIBLE);
+                        if(fFormula.getAssignmentPercentage() > 0)
+                            fcvAssignment.setVisibility(View.VISIBLE);
+                        if(fFormula.getAttendancePercentage() > 0)
+                            fcvAttendance.setVisibility(View.VISIBLE);
+                        if(fFormula.getExamPercentage() > 0)
+                            fcvExam.setVisibility(View.VISIBLE);
+                        if(fFormula.getProjectPercentage() > 0)
+                            fcvProject.setVisibility(View.VISIBLE);
+                        if(fFormula.getQuizPercentage() > 0)
+                            fcvQuiz.setVisibility(View.VISIBLE);
+
+                        if(mFormula != null) {
                             String totalActivitySize = String.valueOf(sizeAc);
                             String totalAttendanceSize = String.valueOf(sizeAtt);
                             String totalAssignmentSize = String.valueOf(sizeAss);
@@ -245,22 +346,21 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                             String totalProjectSize = String.valueOf(sizePro);
                             String totalQuizSize = String.valueOf(sizeQuiz);
 
-                        String totalActivitySizeF = String.valueOf(sizeAcF);
-                        String totalAttendanceSizeF = String.valueOf(sizeAttF);
-                        String totalAssignmentSizeF = String.valueOf(sizeAssF);
-                        String totalExamSizeF = String.valueOf(sizeExamF);
-                        String totalProjectSizeF = String.valueOf(sizeProF);
-                        String totalQuizSizeF = String.valueOf(sizeQuizF);
-
-                            txtViewSubjectName.setText(subjectName);
-                            txtViewSectionName.setText(sectionName);
-                            txtViewDepName.setText(departmentName);
                             textViewActivityM.setText(totalActivitySize);
                             textViewAttendanceM.setText(totalAttendanceSize);
                             textViewAssignmentM.setText(totalAssignmentSize);
                             textViewExamM.setText(totalExamSize);
                             textViewProjectM.setText(totalProjectSize);
                             textViewQuizM.setText(totalQuizSize);
+                        }
+                        if(fFormula != null) {
+
+                            String totalActivitySizeF = String.valueOf(sizeAcF);
+                            String totalAttendanceSizeF = String.valueOf(sizeAttF);
+                            String totalAssignmentSizeF = String.valueOf(sizeAssF);
+                            String totalExamSizeF = String.valueOf(sizeExamF);
+                            String totalProjectSizeF = String.valueOf(sizeProF);
+                            String totalQuizSizeF = String.valueOf(sizeQuizF);
 
                             textViewActivityF.setText(totalActivitySizeF);
                             textViewAttendanceF.setText(totalAttendanceSizeF);
@@ -268,11 +368,16 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                             textViewExamF.setText(totalExamSizeF);
                             textViewProjectF.setText(totalProjectSizeF);
                             textViewQuizF.setText(totalQuizSizeF);
+                        }
+
+                        txtViewSubjectName.setText(subjectName);
+                        txtViewSectionName.setText(sectionName);
+                        txtViewDepName.setText(departmentName);
 
                     }
                 });
             } catch (GradingFactorException e) {
-
+                e.printStackTrace();
             } catch (ClassException e) {
                 e.printStackTrace();
             }
@@ -379,8 +484,12 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                 intent = getIntent().setClass(this, MainActivity2.class);
                 startActivity(intent);
                 break;
-
-
+            case R.id.card_toggle_part :
+                toggleButtonShowandHideM.setChecked(!toggleButtonShowandHideM.isChecked());
+                break;
+            case R.id.card_toggle_part2 :
+                toggleButtonShowandHideF.setChecked(!toggleButtonShowandHideF.isChecked());
+                break;
         }
     }
 }

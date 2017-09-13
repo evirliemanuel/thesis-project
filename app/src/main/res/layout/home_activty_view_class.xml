@@ -467,7 +467,8 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5dp"
-                            card_view:cardElevation="3dp">
+                            card_view:cardElevation="3dp"
+                            android:id="@+id/card_toggle_part">
 
                             <LinearLayout
                                 android:layout_marginBottom="10dp"
@@ -529,7 +530,8 @@
                                     android:layout_marginRight="10dp"
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
-                                    card_view:cardCornerRadius="5dp">
+                                    card_view:cardCornerRadius="5dp"
+                                    android:id="@+id/card_activity_formula_supportm">
 
                                     <LinearLayout
                                         android:id="@+id/viewactivitym"
@@ -605,7 +607,8 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp">
+                                    card_view:cardCornerRadius="5dp"
+                                    android:id="@+id/card_assignment_formula_supportm">
 
                                     <LinearLayout
                                         android:id="@+id/viewassignmentm"
@@ -679,7 +682,8 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp">
+                                    card_view:cardCornerRadius="5dp"
+                                    android:id="@+id/card_attendance_formula_supportm">
 
                                     <LinearLayout
                                         android:id="@+id/viewattendancem"
@@ -755,7 +759,8 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp">
+                                    card_view:cardCornerRadius="5dp"
+                                    android:id="@+id/card_exam_formula_supportm">
 
                                     <LinearLayout
                                         android:id="@+id/viewexamm"
@@ -831,7 +836,8 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp">
+                                    card_view:cardCornerRadius="5dp"
+                                    android:id="@+id/card_project_formula_supportm">
 
                                     <LinearLayout
                                         android:id="@+id/viewprojectm"
@@ -907,7 +913,8 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp">
+                                    card_view:cardCornerRadius="5dp"
+                                    android:id="@+id/card_quiz_formula_supportm">
 
                                     <LinearLayout
                                         android:id="@+id/viewquizm"
@@ -989,7 +996,8 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
-                        card_view:cardElevation="16dp">
+                        card_view:cardElevation="16dp"
+                        android:id="@+id/card_toggle_part2">
 
                         <LinearLayout
                             android:layout_marginBottom="10dp"
@@ -1055,7 +1063,8 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="5dp"
+                            android:id="@+id/card_activity_formula_supportf">
 
                             <LinearLayout
                                 android:id="@+id/viewactivityf"
@@ -1130,7 +1139,8 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="5dp"
+                            android:id="@+id/card_assignment_formula_supportf">
 
                             <LinearLayout
                                 android:id="@+id/viewassignmentf"
@@ -1205,7 +1215,8 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="5dp"
+                            android:id="@+id/card_attendance_formula_supportf">
 
                             <LinearLayout
                                 android:id="@+id/viewattendancef"
@@ -1281,7 +1292,8 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="5dp"
+                            android:id="@+id/card_exam_formula_supportf">
 
                             <LinearLayout
                                 android:id="@+id/viewexamf"
@@ -1357,7 +1369,8 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="5dp"
+                            android:id="@+id/card_project_formula_supportf">
 
                             <LinearLayout
                                 android:id="@+id/viewprojectf"
@@ -1434,7 +1447,8 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="5dp"
+                            android:id="@+id/card_quiz_formula_supportf">
 
                             <LinearLayout
                                 android:id="@+id/viewquizf"
