@@ -1,5 +1,6 @@
 package com.lieverandiver.thesisproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -72,14 +73,14 @@ public class GradeViewActivity extends AppCompatActivity {
         linearLayoutFinals.setVisibility(View.GONE);
         toggleButtonMidterm.setChecked(true);
 
-
-
         toggleButtonMidterm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     linearLayoutMidterm.setVisibility(View.VISIBLE);
                     linearLayoutFinals.setVisibility(View.GONE);
                     toggleButtonFinals.setChecked(false);
+                    Intent intent = new Intent(GradeViewActivity.this, GradeResultActivity.class);
+                    startActivity(intent);
                 } else {
 
                 }

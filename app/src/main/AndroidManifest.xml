@@ -70,7 +70,6 @@
 
         <activity android:name=".ClassViewActivity" />
         <activity android:name=".GradingCriteriaActivity" />
-        <activity android:name=".Activity_All_Result_Cardview" />
         <activity android:name=".QuizActivity_View" />
         <activity android:name=".GradeViewActivity" />
         <activity android:name=".QuizActivity_View_Record" />
@@ -78,6 +77,8 @@
         <activity android:name=".CriteriaFinaltermInputActivity" />
         <activity android:name=".TeacherViewActivity" />
         <activity android:name=".MainActivity2" />
+
+        <activity android:name=".GradeResultActivity" />
 
 
 

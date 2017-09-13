@@ -13,6 +13,7 @@ import com.remswork.project.alice.model.Student;
 import java.util.List;
 import java.util.Locale;
 
+@Deprecated
 public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.StudentAdapterViewHolder> {
 
     private List<Student> studentList;
