@@ -49,7 +49,7 @@ public class ActivityAddActivity extends AppCompatActivity implements ActivityAd
                 new Handler(getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                    ActivityAdapter activityAdapter = new ActivityAdapter(ActivityAddActivity.this, activityList);
+                    ActivityAdapter activityAdapter = new ActivityAdapter(ActivityAddActivity.this, activityList, classId, termId);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityAddActivity.this);
                     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

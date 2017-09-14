@@ -68,7 +68,6 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
     private ToggleButton toggleButtonhideandshow;
     private FrameLayout frameLayouthideandshow;
     private Grade grade;
-    ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

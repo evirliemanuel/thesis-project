@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <include
-                layout="@layout/main_header_toolbar"/>
+            <include layout="@layout/main_header_toolbar" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -30,32 +30,32 @@
 
                     <Button
                         android:id="@+id/class_backbutton"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="left|center"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/ic_arrow_back_white_24dp"/>
+                        android:layout_gravity="left|center"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/ic_arrow_back_white_24dp" />
 
 
                     <TextView
-                        android:layout_gravity="left|center"
-                        android:layout_marginLeft="50dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_marginLeft="50dp"
                         android:text="CLASS"
+                        android:textColor="@color/colorWhite"
                         android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorWhite"/>
+                        android:textStyle="bold" />
 
                     <ToggleButton
-                        android:layout_gravity="right|center"
                         android:id="@+id/btn_search_class"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:textOn=""
-                        android:textOff=""
+                        android:layout_gravity="right|center"
                         android:layout_marginRight="16dp"
-                        android:background="@drawable/btn_search"/>
+                        android:background="@drawable/btn_search"
+                        android:textOff=""
+                        android:textOn="" />
 
 
                 </FrameLayout>
@@ -70,10 +70,10 @@
             android:id="@+id/a_class_f_view_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
             card_view:cardElevation="3dp">
 
             <LinearLayout
@@ -84,10 +84,10 @@
 
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -191,11 +191,11 @@
                 android:orientation="vertical">
 
                 <android.support.v7.widget.CardView
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:layout_marginTop="2dp"
                     android:clickable="true">
 
@@ -415,13 +415,12 @@
                 <!--MIDTERM-->
 
 
-
                 <LinearLayout
-                    android:layout_marginRight="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/colorMoca3"
                     android:orientation="vertical">
 
@@ -437,44 +436,43 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:layout_gravity="left|center"
-                                android:layout_marginLeft="16dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="left|center"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="10dp"
                                 android:text="INPUT/IMPORT GRADES"
-                                android:textStyle="bold"
-                                android:textSize="14dp"/>
+                                android:textSize="14dp"
+                                android:textStyle="bold" />
 
                             <ImageView
-                                android:clickable="true"
-                                android:layout_marginRight="20dp"
-                                android:layout_gravity="right|center"
                                 android:layout_width="14dp"
                                 android:layout_height="14dp"
-                                android:background="@drawable/help"/>
+                                android:layout_gravity="right|center"
+                                android:layout_marginRight="20dp"
+                                android:background="@drawable/help"
+                                android:clickable="true" />
 
 
                         </FrameLayout>
 
 
-
                         <android.support.v7.widget.CardView
+                            android:id="@+id/card_toggle_part"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5dp"
-                            card_view:cardElevation="3dp"
-                            android:id="@+id/card_toggle_part">
+                            card_view:cardElevation="3dp">
 
                             <LinearLayout
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
 
                                 <TextView
@@ -524,14 +522,14 @@
                                 <!--ACTIVITY-->
                                 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_activity_formula_supportm"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
-                                    card_view:cardCornerRadius="5dp"
-                                    android:id="@+id/card_activity_formula_supportm">
+                                    card_view:cardCornerRadius="5dp">
 
                                     <LinearLayout
                                         android:id="@+id/viewactivitym"
@@ -556,9 +554,9 @@
                                                 android:background="@drawable/icon_activity" />
 
                                             <LinearLayout
-                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
                                                 android:orientation="vertical">
 
                                                 <TextView
@@ -567,6 +565,7 @@
                                                     android:text="Activity"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
@@ -576,18 +575,18 @@
                                             </LinearLayout>
 
                                             <FrameLayout
-                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginRight="10dp">
+                                                android:layout_marginRight="10dp"
+                                                android:textAlignment="center">
 
                                                 <TextView
                                                     android:id="@+id/totalm1"
-                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="right|center"
+                                                    android:layout_marginRight="10dp"
                                                     android:text="--"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
@@ -600,6 +599,7 @@
 
                                 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_assignment_formula_supportm"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -607,8 +607,7 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp"
-                                    android:id="@+id/card_assignment_formula_supportm">
+                                    card_view:cardCornerRadius="5dp">
 
                                     <LinearLayout
                                         android:id="@+id/viewassignmentm"
@@ -632,9 +631,9 @@
                                                 android:background="@drawable/icon_assignment" />
 
                                             <LinearLayout
-                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
                                                 android:orientation="vertical">
 
                                                 <TextView
@@ -643,6 +642,7 @@
                                                     android:text="Assignment"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
@@ -652,18 +652,18 @@
                                             </LinearLayout>
 
                                             <FrameLayout
-                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginRight="10dp">
+                                                android:layout_marginRight="10dp"
+                                                android:textAlignment="center">
 
                                                 <TextView
                                                     android:id="@+id/totalm2"
-                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="right|center"
+                                                    android:layout_marginRight="10dp"
                                                     android:text="--"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
@@ -675,6 +675,7 @@
                                 <!--ATTENDANCE-->
                                 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_attendance_formula_supportm"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -682,8 +683,7 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp"
-                                    android:id="@+id/card_attendance_formula_supportm">
+                                    card_view:cardCornerRadius="5dp">
 
                                     <LinearLayout
                                         android:id="@+id/viewattendancem"
@@ -708,9 +708,9 @@
                                                 android:background="@drawable/icon_attendance" />
 
                                             <LinearLayout
-                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
                                                 android:orientation="vertical">
 
                                                 <TextView
@@ -719,6 +719,7 @@
                                                     android:text="Attendance"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
@@ -728,18 +729,18 @@
                                             </LinearLayout>
 
                                             <FrameLayout
-                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginRight="10dp">
+                                                android:layout_marginRight="10dp"
+                                                android:textAlignment="center">
 
                                                 <TextView
                                                     android:id="@+id/totalm3"
-                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="right|center"
+                                                    android:layout_marginRight="10dp"
                                                     android:text="--"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
@@ -752,6 +753,7 @@
                                 <!--EXAM-->
                                 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_exam_formula_supportm"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -759,8 +761,7 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp"
-                                    android:id="@+id/card_exam_formula_supportm">
+                                    card_view:cardCornerRadius="5dp">
 
                                     <LinearLayout
                                         android:id="@+id/viewexamm"
@@ -785,9 +786,9 @@
                                                 android:background="@drawable/icon_exam" />
 
                                             <LinearLayout
-                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
                                                 android:orientation="vertical">
 
                                                 <TextView
@@ -796,6 +797,7 @@
                                                     android:text="Exam"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
@@ -805,18 +807,18 @@
                                             </LinearLayout>
 
                                             <FrameLayout
-                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginRight="10dp">
+                                                android:layout_marginRight="10dp"
+                                                android:textAlignment="center">
 
                                                 <TextView
                                                     android:id="@+id/totalm4"
-                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="right|center"
+                                                    android:layout_marginRight="10dp"
                                                     android:text="--"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
@@ -829,6 +831,7 @@
                                 <!--PROJECT-->
                                 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_project_formula_supportm"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
@@ -836,8 +839,7 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp"
-                                    android:id="@+id/card_project_formula_supportm">
+                                    card_view:cardCornerRadius="5dp">
 
                                     <LinearLayout
                                         android:id="@+id/viewprojectm"
@@ -861,9 +863,9 @@
                                                 android:background="@drawable/icon_project" />
 
                                             <LinearLayout
-                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
                                                 android:orientation="vertical">
 
                                                 <TextView
@@ -872,6 +874,7 @@
                                                     android:text="Project"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
@@ -881,18 +884,18 @@
                                             </LinearLayout>
 
                                             <FrameLayout
-                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginRight="10dp">
+                                                android:layout_marginRight="10dp"
+                                                android:textAlignment="center">
 
                                                 <TextView
                                                     android:id="@+id/totalm5"
-                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="right|center"
+                                                    android:layout_marginRight="10dp"
                                                     android:text="--"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
@@ -905,6 +908,7 @@
                                 <!--QUIZ-->
                                 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/card_quiz_formula_supportm"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="16dp"
@@ -913,8 +917,7 @@
                                     android:layout_marginTop="5dp"
                                     android:clickable="true"
                                     android:contextClickable="true"
-                                    card_view:cardCornerRadius="5dp"
-                                    android:id="@+id/card_quiz_formula_supportm">
+                                    card_view:cardCornerRadius="5dp">
 
                                     <LinearLayout
                                         android:id="@+id/viewquizm"
@@ -939,9 +942,9 @@
                                                 android:background="@drawable/icon_quiz" />
 
                                             <LinearLayout
-                                                android:layout_gravity="center"
                                                 android:layout_width="200dp"
                                                 android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
                                                 android:orientation="vertical">
 
                                                 <TextView
@@ -950,6 +953,7 @@
                                                     android:text="Quiz"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
+
                                                 <TextView
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
@@ -959,18 +963,18 @@
                                             </LinearLayout>
 
                                             <FrameLayout
-                                                android:textAlignment="center"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_gravity="center"
-                                                android:layout_marginRight="10dp">
+                                                android:layout_marginRight="10dp"
+                                                android:textAlignment="center">
 
                                                 <TextView
                                                     android:id="@+id/totalm6"
-                                                    android:layout_marginRight="10dp"
                                                     android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content"
                                                     android:layout_gravity="right|center"
+                                                    android:layout_marginRight="10dp"
                                                     android:text="--"
                                                     android:textSize="22sp"
                                                     android:textStyle="bold" />
@@ -987,23 +991,23 @@
 
                     </LinearLayout>
 
-            <!--FINAL TERM-->
+                    <!--FINAL TERM-->
                     <android.support.v7.widget.CardView
 
+                        android:id="@+id/card_toggle_part2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
-                        card_view:cardElevation="16dp"
-                        android:id="@+id/card_toggle_part2">
+                        card_view:cardElevation="16dp">
 
                         <LinearLayout
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -1056,6 +1060,7 @@
                         <!--ACTIVITY-->
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_activity_formula_supportf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -1063,8 +1068,7 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp"
-                            android:id="@+id/card_activity_formula_supportf">
+                            card_view:cardCornerRadius="5dp">
 
                             <LinearLayout
                                 android:id="@+id/viewactivityf"
@@ -1088,9 +1092,9 @@
                                         android:background="@drawable/icon_activity" />
 
                                     <LinearLayout
-                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -1099,6 +1103,7 @@
                                             android:text="Activity"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -1108,18 +1113,18 @@
                                     </LinearLayout>
 
                                     <FrameLayout
-                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginRight="10dp">
+                                        android:layout_marginRight="10dp"
+                                        android:textAlignment="center">
 
                                         <TextView
                                             android:id="@+id/totalf1"
-                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right|center"
+                                            android:layout_marginRight="10dp"
                                             android:text="--"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
@@ -1132,6 +1137,7 @@
 
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_assignment_formula_supportf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -1139,14 +1145,12 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp"
-                            android:id="@+id/card_assignment_formula_supportf">
+                            card_view:cardCornerRadius="5dp">
 
                             <LinearLayout
                                 android:id="@+id/viewassignmentf"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                >
+                                android:layout_height="wrap_content">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1165,9 +1169,9 @@
                                         android:background="@drawable/icon_assignment" />
 
                                     <LinearLayout
-                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -1176,6 +1180,7 @@
                                             android:text="Assignment"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -1185,18 +1190,18 @@
                                     </LinearLayout>
 
                                     <FrameLayout
-                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginRight="10dp">
+                                        android:layout_marginRight="10dp"
+                                        android:textAlignment="center">
 
                                         <TextView
                                             android:id="@+id/totalf2"
-                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right|center"
+                                            android:layout_marginRight="10dp"
                                             android:text="--"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
@@ -1208,6 +1213,7 @@
                         <!--ATTENDANCE-->
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_attendance_formula_supportf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -1215,14 +1221,12 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp"
-                            android:id="@+id/card_attendance_formula_supportf">
+                            card_view:cardCornerRadius="5dp">
 
                             <LinearLayout
                                 android:id="@+id/viewattendancef"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                         >
+                                android:layout_height="wrap_content">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1241,9 +1245,9 @@
                                         android:background="@drawable/icon_attendance" />
 
                                     <LinearLayout
-                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -1252,6 +1256,7 @@
                                             android:text="Attendance"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -1261,18 +1266,18 @@
                                     </LinearLayout>
 
                                     <FrameLayout
-                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginRight="10dp">
+                                        android:layout_marginRight="10dp"
+                                        android:textAlignment="center">
 
                                         <TextView
                                             android:id="@+id/totalf3"
-                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right|center"
+                                            android:layout_marginRight="10dp"
                                             android:text="--"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
@@ -1285,6 +1290,7 @@
                         <!--EXAM-->
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_exam_formula_supportf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -1292,14 +1298,12 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp"
-                            android:id="@+id/card_exam_formula_supportf">
+                            card_view:cardCornerRadius="5dp">
 
                             <LinearLayout
                                 android:id="@+id/viewexamf"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                              >
+                                android:layout_height="wrap_content">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1318,9 +1322,9 @@
                                         android:background="@drawable/icon_exam" />
 
                                     <LinearLayout
-                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -1329,6 +1333,7 @@
                                             android:text="Exam"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -1338,18 +1343,18 @@
                                     </LinearLayout>
 
                                     <FrameLayout
-                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginRight="10dp">
+                                        android:layout_marginRight="10dp"
+                                        android:textAlignment="center">
 
                                         <TextView
                                             android:id="@+id/totalf4"
-                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right|center"
+                                            android:layout_marginRight="10dp"
                                             android:text="--"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
@@ -1362,6 +1367,7 @@
                         <!--PROJECT-->
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_project_formula_supportf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -1369,14 +1375,12 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp"
-                            android:id="@+id/card_project_formula_supportf">
+                            card_view:cardCornerRadius="5dp">
 
                             <LinearLayout
                                 android:id="@+id/viewprojectf"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                            >
+                                android:layout_height="wrap_content">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1395,9 +1399,9 @@
                                         android:background="@drawable/icon_project" />
 
                                     <LinearLayout
-                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -1406,6 +1410,7 @@
                                             android:text="Project"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -1415,18 +1420,18 @@
                                     </LinearLayout>
 
                                     <FrameLayout
-                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginRight="10dp">
+                                        android:layout_marginRight="10dp"
+                                        android:textAlignment="center">
 
                                         <TextView
                                             android:id="@+id/totalf5"
-                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right|center"
+                                            android:layout_marginRight="10dp"
                                             android:text="--"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
@@ -1439,6 +1444,7 @@
                         <!--QUIZ-->
                         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/card_quiz_formula_supportf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="25dp"
@@ -1447,14 +1453,12 @@
                             android:layout_marginTop="5dp"
                             android:clickable="true"
                             android:contextClickable="true"
-                            card_view:cardCornerRadius="5dp"
-                            android:id="@+id/card_quiz_formula_supportf">
+                            card_view:cardCornerRadius="5dp">
 
                             <LinearLayout
                                 android:id="@+id/viewquizf"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                               >
+                                android:layout_height="wrap_content">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -1473,9 +1477,9 @@
                                         android:background="@drawable/icon_quiz" />
 
                                     <LinearLayout
-                                        android:layout_gravity="center"
                                         android:layout_width="200dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
                                         android:orientation="vertical">
 
                                         <TextView
@@ -1484,6 +1488,7 @@
                                             android:text="Quiz"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -1493,18 +1498,18 @@
                                     </LinearLayout>
 
                                     <FrameLayout
-                                        android:textAlignment="center"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
-                                        android:layout_marginRight="10dp">
+                                        android:layout_marginRight="10dp"
+                                        android:textAlignment="center">
 
                                         <TextView
                                             android:id="@+id/totalf6"
-                                            android:layout_marginRight="10dp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="right|center"
+                                            android:layout_marginRight="10dp"
                                             android:text="--"
                                             android:textSize="22sp"
                                             android:textStyle="bold" />
@@ -1523,12 +1528,22 @@
             </LinearLayout>
 
 
-
-
         </ScrollView>
 
     </LinearLayout>
 
+    <FrameLayout
+        android:id="@+id/screen_time_not"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A6FFFFFF"
+        android:clickable="true">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
 
-</LinearLayout>
+</FrameLayout>

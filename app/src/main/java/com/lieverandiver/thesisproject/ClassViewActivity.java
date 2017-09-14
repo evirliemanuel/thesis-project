@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -113,6 +114,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
 
     private CardView cToggle;
     private CardView cToggle2;
+    private FrameLayout scrnBlock;
 
     private CardView mcvActivity;
     private CardView mcvAssignment;
@@ -196,6 +198,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
         fcvProject = (CardView) findViewById(R.id.card_project_formula_supportf);
         fcvQuiz = (CardView) findViewById(R.id.card_quiz_formula_supportf);
 
+        scrnBlock = (FrameLayout) findViewById(R.id.screen_time_not);
 
         btnBack.setOnClickListener(this);
         cToggle.setOnClickListener(this);
@@ -340,7 +343,10 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                             textViewExamM.setText(totalExamSize);
                             textViewProjectM.setText(totalProjectSize);
                             textViewQuizM.setText(totalQuizSize);
-                        }
+
+                        }else
+                            viewGrade.setEnabled(false);
+
                         if(fFormula != null) {
 
                             if(fFormula.getActivityPercentage() > 0)
@@ -375,6 +381,7 @@ public class ClassViewActivity extends AppCompatActivity implements View.OnClick
                         txtViewSectionName.setText(sectionName);
                         txtViewDepName.setText(departmentName);
 
+                        scrnBlock.setVisibility(View.GONE);
                     }
                 });
             } catch (GradingFactorException e) {

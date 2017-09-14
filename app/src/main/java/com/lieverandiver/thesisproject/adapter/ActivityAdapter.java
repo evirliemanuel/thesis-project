@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +18,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lieverandiver.thesisproject.R;
+import com.remswork.project.alice.exception.ClassException;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
 import com.remswork.project.alice.model.ActivityResult;
+import com.remswork.project.alice.model.Grade;
+import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.ActivityService;
+import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.GradeService;
 import com.remswork.project.alice.service.impl.ActivityServiceImpl;
+import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.GradeServiceImpl;
 
 import java.nio.InvalidMarkException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder> {
 
@@ -33,13 +43,19 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
     private List<Activity> activityList;
     private Context context;
     private OnClickListener onClickListener;
+    private final ActivityService activityService = new ActivityServiceImpl();
+    private final GradeService gradeService = new GradeServiceImpl();
+    private long classId;
+    private long termId;
 
-    public ActivityAdapter(Context context, List<Activity> activityList) {
+    public ActivityAdapter(Context context, List<Activity> activityList, long classId, long termId) {
         layoutInflater = LayoutInflater.from(context);
         this.activityList = activityList;
         if(context instanceof OnClickListener)
             onClickListener = (OnClickListener) context;
         this.context = context;
+        this.classId = classId;
+        this.termId = termId;
     }
 
     @Override
@@ -73,6 +89,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
         private ImageView btnOption;
         private Activity activity;
         private int position;
+        private Grade grade;
 
         ActivityViewHolder(View itemView) {
             super(itemView);
@@ -166,7 +183,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
 
                         public void onClick(DialogInterface dialog, int whichButton) {
                             try{
-                                ActivityService activityService = new ActivityServiceImpl();
+//                                final ActivityService activityService = new ActivityServiceImpl();
                                 activityService.deleteActivityById(activity.getId());
                                 List<Activity> cActivityList = new ArrayList<>();
                                 activityList.remove(position);
@@ -177,6 +194,70 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
                                 activityList = cActivityList;
                                 textViewTitle.setEnabled(false);
                                 linearLayoutOption.setVisibility(View.GONE);
+
+                                Set<Student> tempList = new HashSet<>();
+                                try {
+                                    ClassService classService = new ClassServiceImpl();
+                                    tempList = classService.getStudentList(classId);
+                                }catch (ClassException e) {
+                                    e.printStackTrace();
+                                }
+                                for(Student student : tempList) {
+
+                                    final long studentId = student.getId();
+                                    //Adding Grade for activity
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                final List<Activity> activityList = activityService.getActivityListByClassId(classId);
+                                                final double fActivity[] = new double[activityList.size()];
+                                                final long sId = studentId;
+                                                double tempTotal = 0;
+
+                                                try {
+                                                    List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                                    grade = (tempList.size() > 0 ? tempList.get(0) : null);
+                                                } catch (GradingFactorException e) {
+                                                    e.printStackTrace();
+                                                    grade = null;
+                                                }
+                                                if (grade == null) {
+                                                    Grade _grade = new Grade();
+                                                    grade = gradeService.addGrade(_grade, classId, studentId, 1L);
+                                                }
+
+                                                final Grade lGrade = grade;
+                                                final long gradeId = grade.getId();
+
+                                                Log.i("STUDENT ID :", sId + "");
+                                                Log.i("Grade ID :", gradeId + "");
+
+                                                for (int i = 0; i < fActivity.length; i++) {
+                                                    final double total = activityList.get(i).getItemTotal();
+                                                    final double score = activityService
+                                                            .getActivityResultByActivityAndStudentId(
+                                                                    activityList.get(i).getId(), sId).getScore();
+                                                    fActivity[i] = (score / total) * 100;
+                                                    Log.i("Activity[" + i + "] :", fActivity[i] + "");
+                                                }
+                                                for (int i = 0; i < fActivity.length; i++)
+                                                    tempTotal += fActivity[i];
+
+                                                //after looping
+                                                if(fActivity.length > 0)
+                                                    tempTotal /= fActivity.length;
+                                                else
+                                                    tempTotal = 0;
+                                                Log.i("Total", tempTotal + "");
+                                                lGrade.setActivityScore(tempTotal);
+                                                gradeService.updateGradeById(gradeId, lGrade);
+                                            } catch (GradingFactorException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }).start();
+                                }
                             }catch (GradingFactorException e){
                                 e.printStackTrace();
                             }

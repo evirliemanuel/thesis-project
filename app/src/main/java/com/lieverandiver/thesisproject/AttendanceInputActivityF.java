@@ -9,6 +9,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -16,12 +17,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lieverandiver.thesisproject.adapter.AttendanceInputAdapter;
+import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Attendance;
+import com.remswork.project.alice.model.Grade;
 import com.remswork.project.alice.model.Student;
 import com.remswork.project.alice.service.AttendanceService;
 import com.remswork.project.alice.service.ClassService;
+import com.remswork.project.alice.service.GradeService;
 import com.remswork.project.alice.service.impl.AttendanceServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
+import com.remswork.project.alice.service.impl.GradeServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,6 +39,8 @@ public class AttendanceInputActivityF extends AppCompatActivity {
 
     private final ClassService classService = new ClassServiceImpl();
     private final AttendanceService attendanceService = new AttendanceServiceImpl();
+    private final GradeService gradeService = new GradeServiceImpl();
+
     private final List<Student> studentList = new ArrayList<>();
     private AttendanceInputAdapter attendanceInputAdapter;
 
@@ -57,6 +64,7 @@ public class AttendanceInputActivityF extends AppCompatActivity {
     private AttendanceInputListener listener;
     private long classId;
     private long termId;
+    private Grade grade;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,9 +121,65 @@ public class AttendanceInputActivityF extends AppCompatActivity {
                                                 rlDisruptor.setVisibility(View.VISIBLE);
                                                 attendance = attendanceService.addAttendance(attendance, classId, termId);
                                                 for (int i = 0; i < studentList.size(); i++) {
+
+                                                    final long studentId = studentList.get(i).getId();
+
                                                     int status = attendanceInputAdapter.getStatus(i);
                                                     Student student = studentList.get(i);
                                                     attendanceService.addAttendanceResult(status, attendance.getId(), student.getId());
+
+                                                    //Adding Grade for activity
+                                                    new Thread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+
+                                                            try {
+                                                                final List<Attendance> attendanceList
+                                                                        = attendanceService.getAttendanceListByClassId(classId);
+                                                                final double fAttendance[] = new double[attendanceList.size()];
+                                                                final long sId = studentId;
+                                                                double tempTotal = 0;
+
+                                                                try {
+                                                                    List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                                                    grade = (tempList.size() > 0 ? tempList.get(0) : null);
+                                                                } catch (GradingFactorException e) {
+                                                                    e.printStackTrace();
+                                                                    grade = null;
+                                                                }
+                                                                if (grade == null) {
+                                                                    Grade _grade = new Grade();
+                                                                    grade = gradeService.addGrade(_grade, classId, studentId, 1L);
+                                                                }
+
+                                                                final Grade lGrade = grade;
+                                                                final long gradeId = grade.getId();
+
+                                                                Log.i("STUDENT ID :", sId + "");
+                                                                Log.i("Grade ID :", gradeId + "");
+
+                                                                for (int i = 0; i < fAttendance.length; i++) {
+                                                                    final double total = 1;
+                                                                    final double status = attendanceService
+                                                                            .getAttendanceResultByAttendanceAndStudentId(
+                                                                                    attendanceList.get(i).getId(), sId).getStatus();
+                                                                    final double score = (status == 1 ? 1 : 0);
+                                                                    fAttendance[i] = (score / total) * 100;
+                                                                    Log.i("Attendance[" + i + "] :", fAttendance[i] + "");
+                                                                }
+                                                                for (int i = 0; i < fAttendance.length; i++)
+                                                                    tempTotal += fAttendance[i];
+
+                                                                //after looping
+                                                                tempTotal /= fAttendance.length;
+                                                                Log.i("Total", tempTotal + "");
+                                                                lGrade.setAttendanceScore(tempTotal);
+                                                                gradeService.updateGradeById(gradeId, lGrade);
+                                                            } catch (GradingFactorException e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                        }
+                                                    }).start();
                                                 }
                                                 cardmessage.setVisibility(View.VISIBLE);
 //                                                txMessageStatus.setText("Success");
