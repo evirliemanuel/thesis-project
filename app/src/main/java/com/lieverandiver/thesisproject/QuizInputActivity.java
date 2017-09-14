@@ -34,6 +34,8 @@ import com.remswork.project.alice.service.impl.GradeServiceImpl;
 import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 import com.remswork.project.alice.service.impl.QuizServiceImpl;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -156,10 +158,16 @@ public class QuizInputActivity extends AppCompatActivity implements View.OnClick
                                             tempTotal += fQuiz[i];
 
                                         //after looping
-                                        tempTotal /= fQuiz.length;
-                                        Log.i("Total", tempTotal + "");
-                                        lGrade.setQuizScore(tempTotal);
-                                        gradeService.updateGradeById(gradeId, lGrade);
+                                        if(fQuiz.length > 0)
+                                            tempTotal /= fQuiz.length;
+                                        else
+                                            tempTotal = 0;
+                                        DecimalFormat formatter = new DecimalFormat();
+                                        formatter.setRoundingMode(RoundingMode.FLOOR);
+                                        formatter.format(tempTotal);
+
+                                        lGrade.setActivityScore(tempTotal);
+                                        lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
                                     } catch (GradingFactorException e) {
                                         e.printStackTrace();
                                     }

@@ -31,7 +31,9 @@ import com.remswork.project.alice.service.impl.ActivityServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
 import com.remswork.project.alice.service.impl.GradeServiceImpl;
 
+import java.math.RoundingMode;
 import java.nio.InvalidMarkException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -249,8 +251,12 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
                                                     tempTotal /= fActivity.length;
                                                 else
                                                     tempTotal = 0;
-                                                Log.i("Total", tempTotal + "");
+                                                DecimalFormat formatter = new DecimalFormat();
+                                                formatter.setRoundingMode(RoundingMode.FLOOR);
+                                                formatter.format(tempTotal);
+
                                                 lGrade.setActivityScore(tempTotal);
+                                                lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
                                                 gradeService.updateGradeById(gradeId, lGrade);
                                             } catch (GradingFactorException e) {
                                                 e.printStackTrace();

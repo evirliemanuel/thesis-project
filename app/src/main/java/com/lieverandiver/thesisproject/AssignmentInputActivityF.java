@@ -31,6 +31,8 @@ import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
 import com.remswork.project.alice.service.impl.ClassServiceImpl;
 import com.remswork.project.alice.service.impl.GradeServiceImpl;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -101,7 +103,7 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
                     studentAdapter.onValidate(true);
 
                     if (studentAdapter.isNoError()) {
-                        assignment = assignmentService.addAssignment(assignment, classId, 1L);
+                        assignment = assignmentService.addAssignment(assignment, classId, 2L);
                         for (int i = 0; i < studentList.size(); i++) {
                             //Student id
                             final long studentId = studentList.get(i).getId();
@@ -122,7 +124,7 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
                                         double tempTotal = 0;
 
                                         try {
-                                            List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
+                                            List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 2L);
                                             grade = (tempList.size() > 0 ? tempList.get(0) : null);
                                         } catch (GradingFactorException e) {
                                             e.printStackTrace();
@@ -151,9 +153,16 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
                                             tempTotal += fAssignment[i];
 
                                         //after looping
-                                        tempTotal /= fAssignment.length;
-                                        Log.i("Total", tempTotal + "");
-                                        lGrade.setAssignmentScore(tempTotal);
+                                        if(fAssignment.length > 0)
+                                            tempTotal /= fAssignment.length;
+                                        else
+                                            tempTotal = 0;
+                                        DecimalFormat formatter = new DecimalFormat();
+                                        formatter.setRoundingMode(RoundingMode.FLOOR);
+                                        formatter.format(tempTotal);
+
+                                        lGrade.setActivityScore(tempTotal);
+                                        lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
                                         gradeService.updateGradeById(gradeId, lGrade);
                                     } catch (GradingFactorException e) {
                                         e.printStackTrace();

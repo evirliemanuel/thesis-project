@@ -80,6 +80,8 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassAdapter
                         public void run() {
                             if(_class.getSubject() != null)
                                 textViewSubject.setText(_class.getSubject().getName());
+                            if(_class.getSection() != null)
+                                textViewSimpleText.setText(_class.getSection().getName());
                             buttonClick.setOnClickListener(ClassAdapterViewHolder.this);
                             imageScreen.setVisibility(View.GONE);
                         }

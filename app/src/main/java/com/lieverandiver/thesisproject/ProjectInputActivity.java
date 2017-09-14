@@ -34,6 +34,8 @@ import com.remswork.project.alice.service.impl.ExamServiceImpl;
 import com.remswork.project.alice.service.impl.GradeServiceImpl;
 import com.remswork.project.alice.service.impl.ProjectServiceImpl;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -158,9 +160,16 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
                                             tempTotal += fProject[i];
 
                                         //after looping
-                                        tempTotal /= fProject.length;
-                                        Log.i("Total", tempTotal + "");
-                                        lGrade.setProjectScore(tempTotal);
+                                        if(fProject.length > 0)
+                                            tempTotal /= fProject.length;
+                                        else
+                                            tempTotal = 0;
+                                        DecimalFormat formatter = new DecimalFormat();
+                                        formatter.setRoundingMode(RoundingMode.FLOOR);
+                                        formatter.format(tempTotal);
+
+                                        lGrade.setActivityScore(tempTotal);
+                                        lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
                                         gradeService.updateGradeById(gradeId, lGrade);
                                     } catch (GradingFactorException e) {
                                         e.printStackTrace();
