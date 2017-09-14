@@ -266,7 +266,7 @@ public class ProjectInputActivityF extends AppCompatActivity implements View.OnC
             recyclerViewStudentInput.setItemAnimator(new DefaultItemAnimator());
 
             String date = String.format(Locale.ENGLISH, "%02d/%02d/%d" , Calendar.getInstance().get(Calendar.MONTH),
-                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1,
                     Calendar.getInstance().get(Calendar.YEAR));
             textViewDate.setText(date);
 

@@ -109,8 +109,8 @@ public class AttendanceInputAdapter extends RecyclerView.Adapter<AttendanceInput
 
         public void setView(final Student student, final int position) {
             this.student = student;
-            String name = student.getFirstName() + " " + student.getMiddleName().substring(0, 1) +
-                    " " + student.getLastName();
+            String name = student.getLastName() + " " + student.getFirstName() +
+                    "," + student.getMiddleName().substring(0, 1) + ".";
             txName.setText(name);
 
             frameLayoutAbsent.setVisibility(View.GONE);

@@ -75,7 +75,7 @@
 
             <TextView
                 android:textStyle="bold"
-                android:layout_marginRight="45dp"
+                android:layout_marginRight="16dp"
                 android:layout_gravity="right|center"
                 android:textSize="16dp"
                 android:text="Grade"

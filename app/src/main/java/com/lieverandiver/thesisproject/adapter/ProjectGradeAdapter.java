@@ -12,13 +12,13 @@ import com.remswork.project.alice.model.Grade;
 
 import java.util.List;
 
-public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewHolder> {
+public class ProjectGradeAdapter extends RecyclerView.Adapter<ProjectGradeAdapter.GradeViewHolder> {
 
     private Context context;
     private List<Grade> gradeList;
     private LayoutInflater layoutInflater;
 
-    public GradeAdapter2(Context context, List<Grade> gradeList, long termId) {
+    public ProjectGradeAdapter(Context context, List<Grade> gradeList, long termId) {
         this.gradeList = gradeList;
         this.context = context;
         layoutInflater = LayoutInflater.from(context);

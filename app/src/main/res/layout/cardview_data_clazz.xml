@@ -62,7 +62,7 @@
                     android:id="@+id/fragment_slidebar_cardview_clazz_text_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="3dp"
                     android:text="Subject Name"
                     android:textColor="@color/colorMidNightBlue"
                     android:textSize="16sp" />

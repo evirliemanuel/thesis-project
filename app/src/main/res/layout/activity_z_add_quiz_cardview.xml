@@ -96,7 +96,7 @@
         <ImageView
             android:clickable="true"
             android:id="@+id/add_option"
-            android:background="@drawable/optioneditdelete"
+            android:background="@drawable/icon_pencil"
             android:layout_marginRight="6dp"
             android:layout_gravity="right|center"
             android:layout_width="30dp"

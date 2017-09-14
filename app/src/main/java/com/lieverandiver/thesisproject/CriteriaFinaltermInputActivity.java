@@ -127,7 +127,6 @@ public class CriteriaFinaltermInputActivity extends AppCompatActivity implements
 
     private void init() {
 
-        buttonTryAgin = (Button) findViewById(R.id.criteria_tryagain);
         cardViewFailed = (CardView) findViewById(R.id.criteria_failed);
 
         buttonTryAgin.setOnClickListener(this);

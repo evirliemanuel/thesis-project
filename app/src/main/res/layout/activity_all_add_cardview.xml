@@ -96,15 +96,15 @@
 
         <ImageView
             android:id="@+id/add_option"
-            android:background="@drawable/optioneditdelete"
-            android:layout_marginRight="6dp"
+            android:background="@drawable/icon_pencil"
+            android:layout_marginRight="10dp"
             android:layout_gravity="right|center"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_width="20dp"
+            android:layout_height="25dp" />
     </FrameLayout>
 
     <LinearLayout
-        android:background="@color/colorLightGray"
+        android:background="@color/colorWhite"
         android:id="@+id/add_linearoption"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
@@ -125,7 +125,7 @@
                 android:background="#e74c3c"
                 android:layout_gravity="left|center"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp" />
+                android:layout_height="25dp" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_gravity="right"
@@ -138,14 +138,14 @@
                     android:background="#ecf0f1"
                     android:layout_marginRight="5dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp" />
+                    android:layout_height="25dp" />
 
                 <Button
                     android:id="@+id/add_cardview_save"
                     android:text="Save"
                     android:background="#2980b9"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="25dp"
                     android:enabled="false"/>
 
             </LinearLayout>

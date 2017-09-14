@@ -315,20 +315,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-
-                            <Button
-                                android:id="@+id/criteria_tryagain"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="10dp"
-                                android:text="TRY AGAIN"
-                                android:textColor="#FFFFFF"
-                                android:background="@drawable/tryagain_button"
-                                android:layout_gravity="center"
-                                android:layout_width="wrap_content"
-                                android:layout_height="35dp"
-
                                 />
-
 
                         </FrameLayout>
 

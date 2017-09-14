@@ -181,12 +181,10 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
             case input_back2:
                 Intent intent = getIntent().setClass(this, AssignmentAddActivityF.class);
                 startActivity(intent);
-                this.finish();
                 break;
             case input_ok2:
                intent = getIntent().setClass(this, AssignmentAddActivityF.class);
                 startActivity(intent);
-                this.finish();
                 break;
 
             case input_tryagainemp2:
@@ -268,7 +266,7 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
             recyclerViewStudentInput.setItemAnimator(new DefaultItemAnimator());
 
             String date = String.format(Locale.ENGLISH, "%02d/%02d/%d" , Calendar.getInstance().get(Calendar.MONTH),
-                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+ 1,
                     Calendar.getInstance().get(Calendar.YEAR));
             textViewDate.setText(date);
 
