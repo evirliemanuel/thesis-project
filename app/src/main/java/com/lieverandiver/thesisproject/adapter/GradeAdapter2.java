@@ -10,7 +10,10 @@ import android.widget.TextView;
 import com.lieverandiver.thesisproject.R;
 import com.remswork.project.alice.model.Grade;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewHolder> {
 
@@ -57,8 +60,11 @@ public class GradeAdapter2 extends RecyclerView.Adapter<GradeAdapter2.GradeViewH
             String name = String.format("%s, %s %s", grade.getStudent().getLastName(),
                     grade.getStudent().getFirstName(),
                     grade.getStudent().getMiddleName().substring(0, 1)) + ".";
+            DecimalFormat format = new DecimalFormat(".##");
+            format.setRoundingMode(RoundingMode.UP);
+            String score = String.format(Locale.ENGLISH, "%s", format.format(grade.getTotalScore()));
             txName.setText(name);
-            txtGrdScore.setText(grade.getTotalScore() + "");
+            txtGrdScore.setText(score);
         }
 
         public void setScore(double score) {
