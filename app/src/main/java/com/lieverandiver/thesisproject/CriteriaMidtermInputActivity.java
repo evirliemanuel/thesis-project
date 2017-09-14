@@ -110,7 +110,6 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
     private int activeListener;
 
     private CardView cardViewFailed;
-    private Button buttonTryAgin;
 
     private int percent[] = new int[6];
     private String[] values = new String[]{
@@ -149,9 +148,6 @@ public class CriteriaMidtermInputActivity extends AppCompatActivity implements R
     private void init() {
 
         cardViewFailed = (CardView) findViewById(R.id.criteria_failed);
-
-        buttonTryAgin.setOnClickListener(this);
-
         laSave = (LinearLayout) findViewById(R.id.midterm_save);
         txtSubjectName = (TextView) findViewById(R.id.midterm_subjectname);
         txtTotalPercent = (TextView) findViewById(R.id.total_percentm);
