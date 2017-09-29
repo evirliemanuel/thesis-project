@@ -19,6 +19,7 @@ import com.remswork.project.alice.service.impl.AssignmentServiceImpl;
 
 import java.util.List;
 
+import static com.lieverandiver.thesisproject.R.color.Assignment;
 import static com.lieverandiver.thesisproject.R.id.add_add2;
 import static com.lieverandiver.thesisproject.R.id.add_back2;
 import static com.lieverandiver.thesisproject.R.id.add_grade1;

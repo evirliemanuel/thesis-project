@@ -128,10 +128,10 @@ public class CriteriaFinaltermInputActivity extends AppCompatActivity implements
 
         cardViewFailed = (CardView) findViewById(R.id.criteria_failed);
         laSave = (LinearLayout) findViewById(R.id.midterm_save);
-        txtSubjectName = (TextView) findViewById(R.id.midterm_subjectname);
+//        txtSubjectName = (TextView) findViewById(R.id.midterm_subjectname);
         txtTotalPercent = (TextView) findViewById(R.id.total_percentm);
-        txTermTitle = (TextView) findViewById(R.id.term_type_cri);
-        spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
+//        txTermTitle = (TextView) findViewById(R.id.term_type_cri);
+//        spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
 
         sbActivity = (SeekBar) findViewById(activity_seekbarm);
         sbAssignment = (SeekBar) findViewById(R.id.assignment_seekbarm);

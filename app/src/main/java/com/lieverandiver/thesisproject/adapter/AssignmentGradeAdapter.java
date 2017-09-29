@@ -58,7 +58,7 @@ public class AssignmentGradeAdapter extends RecyclerView.Adapter<AssignmentGrade
                     grade.getStudent().getFirstName(),
                     grade.getStudent().getMiddleName().substring(0, 1)) + ".";
             txName.setText(name);
-            txtGrdScore.setText(grade.getTotalScore() + "");
+            txtGrdScore.setText(grade.getAssignmentScore() + "");
         }
 
         public void setScore(double score) {

@@ -87,9 +87,9 @@ public class Teacher_GradingFactor_Activity_Midterm extends AppCompatActivity{
 
             linearLayoutm = (LinearLayout) findViewById(R.id.midterm_save);
 
-            textViewm1 = (TextView) findViewById(R.id.midterm_subjectname);
-            textViewm2 = (TextView) findViewById(R.id.txtv_midterm_percent);
-            spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
+//            textViewm1 = (TextView) findViewById(R.id.midterm_subjectname);
+//            textViewm2 = (TextView) findViewById(R.id.txtv_midterm_percent);
+//            spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
             textViewm3 = (TextView) findViewById(R.id.total_percentm);
 
             textViewm1.setText(subject.getName());
