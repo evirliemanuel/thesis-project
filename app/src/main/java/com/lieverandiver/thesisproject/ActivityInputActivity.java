@@ -114,13 +114,11 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-
                                     try {
                                         final List<Activity> activityList = activityService.getActivityListByClassId(classId);
                                         final double fActivity[] = new double[activityList.size()];
                                         final long sId = studentId;
                                         double tempTotal = 0;
-
                                         try {
                                             List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
                                             grade = (tempList.size() > 0 ? tempList.get(0) : null);
@@ -132,20 +130,14 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
                                             Grade _grade = new Grade();
                                             grade = gradeService.addGrade(_grade, classId, studentId, 1L);
                                         }
-
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
 
-                                        Log.i("STUDENT ID :", sId + "");
-                                        Log.i("Grade ID :", gradeId + "");
-
                                         for (int i = 0; i < fActivity.length; i++) {
                                             final double total = activityList.get(i).getItemTotal();
-                                            final double score = activityService
-                                                    .getActivityResultByActivityAndStudentId(
+                                            final double score = activityService.getActivityResultByActivityAndStudentId(
                                                             activityList.get(i).getId(), sId).getScore();
                                             fActivity[i] = (score / total) * 100;
-                                            Log.i("Activity[" + i + "] :", fActivity[i] + "");
                                         }
                                         for (int i = 0; i < fActivity.length; i++)
                                             tempTotal += fActivity[i];
@@ -155,9 +147,6 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
                                             tempTotal /= fActivity.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat("#.##");
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);

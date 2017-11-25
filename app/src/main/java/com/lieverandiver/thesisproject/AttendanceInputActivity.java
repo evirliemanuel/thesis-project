@@ -136,7 +136,6 @@ public class AttendanceInputActivity extends AppCompatActivity {
                                                     new Thread(new Runnable() {
                                                         @Override
                                                         public void run() {
-
                                                             try {
                                                                 final List<Attendance> attendanceList
                                                                         = attendanceService.getAttendanceListByClassId(classId);
@@ -159,9 +158,6 @@ public class AttendanceInputActivity extends AppCompatActivity {
                                                                 final Grade lGrade = grade;
                                                                 final long gradeId = grade.getId();
 
-                                                                Log.i("STUDENT ID :", sId + "");
-                                                                Log.i("Grade ID :", gradeId + "");
-
                                                                 for (int i = 0; i < fAttendance.length; i++) {
                                                                     final double total = 1;
                                                                     final double status = attendanceService
@@ -169,7 +165,6 @@ public class AttendanceInputActivity extends AppCompatActivity {
                                                                                     attendanceList.get(i).getId(), sId).getStatus();
                                                                     final double score = (status == 1 ? 1 : 0);
                                                                     fAttendance[i] = (score / total) * 100;
-                                                                    Log.i("Attendance[" + i + "] :", fAttendance[i] + "");
                                                                 }
                                                                 for (int i = 0; i < fAttendance.length; i++)
                                                                     tempTotal += fAttendance[i];
@@ -179,9 +174,6 @@ public class AttendanceInputActivity extends AppCompatActivity {
                                                                     tempTotal /= fAttendance.length;
                                                                 else
                                                                     tempTotal = 0;
-                                                                DecimalFormat formatter = new DecimalFormat();
-                                                                formatter.setRoundingMode(RoundingMode.FLOOR);
-                                                                formatter.format(tempTotal);
 
                                                                 lGrade.setActivityScore(tempTotal);
                                                                 lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);

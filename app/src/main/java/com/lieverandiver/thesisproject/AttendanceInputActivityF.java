@@ -157,9 +157,6 @@ public class AttendanceInputActivityF extends AppCompatActivity {
                                                                 final Grade lGrade = grade;
                                                                 final long gradeId = grade.getId();
 
-                                                                Log.i("STUDENT ID :", sId + "");
-                                                                Log.i("Grade ID :", gradeId + "");
-
                                                                 for (int i = 0; i < fAttendance.length; i++) {
                                                                     final double total = 1;
                                                                     final double status = attendanceService
@@ -177,9 +174,6 @@ public class AttendanceInputActivityF extends AppCompatActivity {
                                                                     tempTotal /= fAttendance.length;
                                                                 else
                                                                     tempTotal = 0;
-                                                                DecimalFormat formatter = new DecimalFormat();
-                                                                formatter.setRoundingMode(RoundingMode.FLOOR);
-                                                                formatter.format(tempTotal);
 
                                                                 lGrade.setActivityScore(tempTotal);
                                                                 lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);

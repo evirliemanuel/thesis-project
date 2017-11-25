@@ -157,9 +157,6 @@ public class ActivityInputActivityF extends AppCompatActivity implements View.On
                                             tempTotal /= fActivity.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat();
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);

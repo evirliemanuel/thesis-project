@@ -132,7 +132,6 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-
                                     try {
                                         final List<Exam> examList = examService.getExamListByClassId(classId);
                                         final double fExam[] = new double[examList.size()];
@@ -154,9 +153,6 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
 
-                                        Log.i("STUDENT ID :", sId + "");
-                                        Log.i("Grade ID :", gradeId + "");
-
                                         for (int i = 0; i < fExam.length; i++) {
                                             final double total = examList.get(i).getItemTotal();
                                             final double score = examService
@@ -173,9 +169,6 @@ public class ExamInputActivity extends AppCompatActivity implements View.OnClick
                                             tempTotal /= fExam.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat();
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);

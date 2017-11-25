@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.lieverandiver.thesisproject.adapter.ExamInputAdapter;
 import com.lieverandiver.thesisproject.adapter.ExamInputAdapterF;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Exam;
@@ -42,10 +41,6 @@ import static com.lieverandiver.thesisproject.R.id.input_back4;
 import static com.lieverandiver.thesisproject.R.id.input_ok4;
 import static com.lieverandiver.thesisproject.R.id.input_tryagain4;
 import static com.lieverandiver.thesisproject.R.id.input_tryagainemp4;
-
-/**
- * Created by Verlie on 8/31/2017.
- */
 
 public class ExamInputActivityF extends AppCompatActivity implements View.OnClickListener {
 
@@ -138,16 +133,12 @@ public class ExamInputActivityF extends AppCompatActivity implements View.OnClic
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
 
-                                        Log.i("STUDENT ID :", sId + "");
-                                        Log.i("Grade ID :", gradeId + "");
-
                                         for (int i = 0; i < fExam.length; i++) {
                                             final double total = examList.get(i).getItemTotal();
                                             final double score = examService
                                                     .getExamResultByExamAndStudentId(
                                                             examList.get(i).getId(), sId).getScore();
                                             fExam[i] = (score / total) * 100;
-                                            Log.i("Exam[" + i + "] :", fExam[i] + "");
                                         }
                                         for (int i = 0; i < fExam.length; i++)
                                             tempTotal += fExam[i];
@@ -157,9 +148,6 @@ public class ExamInputActivityF extends AppCompatActivity implements View.OnClic
                                             tempTotal /= fExam.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat();
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);

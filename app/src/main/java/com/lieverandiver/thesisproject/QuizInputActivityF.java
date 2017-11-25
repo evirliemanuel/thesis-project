@@ -139,16 +139,12 @@ public class QuizInputActivityF extends AppCompatActivity implements View.OnClic
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
 
-                                        Log.i("STUDENT ID :", sId + "");
-                                        Log.i("Grade ID :", gradeId + "");
-
                                         for (int i = 0; i < fQuiz.length; i++) {
                                             final double total = quizList.get(i).getItemTotal();
                                             final double score = quizService
                                                     .getQuizResultByQuizAndStudentId(
                                                             quizList.get(i).getId(), sId).getScore();
                                             fQuiz[i] = (score / total) * 100;
-                                            Log.i("Quiz[" + i + "] :", fQuiz[i] + "");
                                         }
                                         for (int i = 0; i < fQuiz.length; i++)
                                             tempTotal += fQuiz[i];
@@ -158,12 +154,10 @@ public class QuizInputActivityF extends AppCompatActivity implements View.OnClic
                                             tempTotal /= fQuiz.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat();
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
+                                        gradeService.updateGradeById(gradeId, lGrade);
                                     } catch (GradingFactorException e) {
                                         e.printStackTrace();
                                     }

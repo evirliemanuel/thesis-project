@@ -134,12 +134,8 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
                                             Grade _grade = new Grade();
                                             grade = gradeService.addGrade(_grade, classId, studentId, 1L);
                                         }
-
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
-
-                                        Log.i("STUDENT ID :", sId + "");
-                                        Log.i("Grade ID :", gradeId + "");
 
                                         for (int i = 0; i < fAssignment.length; i++) {
                                             final double total = assignmentList.get(i).getItemTotal();
@@ -147,7 +143,6 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
                                                     .getAssignmentResultByAssignmentAndStudentId(
                                                             assignmentList.get(i).getId(), sId).getScore();
                                             fAssignment[i] = (score / total) * 100;
-                                            Log.i("Assignment[" + i + "] :", fAssignment[i] + "");
                                         }
                                         for (int i = 0; i < fAssignment.length; i++)
                                             tempTotal += fAssignment[i];
@@ -157,9 +152,6 @@ public class AssignmentInputActivityF extends AppCompatActivity implements View.
                                             tempTotal /= fAssignment.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat();
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);

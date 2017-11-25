@@ -139,12 +139,8 @@ public class QuizInputActivity extends AppCompatActivity implements View.OnClick
                                             Grade _grade = new Grade();
                                             grade = gradeService.addGrade(_grade, classId, studentId, 1L);
                                         }
-
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
-
-                                        Log.i("STUDENT ID :", sId + "");
-                                        Log.i("Grade ID :", gradeId + "");
 
                                         for (int i = 0; i < fQuiz.length; i++) {
                                             final double total = quizList.get(i).getItemTotal();
@@ -152,7 +148,6 @@ public class QuizInputActivity extends AppCompatActivity implements View.OnClick
                                                     .getQuizResultByQuizAndStudentId(
                                                             quizList.get(i).getId(), sId).getScore();
                                             fQuiz[i] = (score / total) * 100;
-                                            Log.i("Quiz[" + i + "] :", fQuiz[i] + "");
                                         }
                                         for (int i = 0; i < fQuiz.length; i++)
                                             tempTotal += fQuiz[i];
@@ -162,12 +157,10 @@ public class QuizInputActivity extends AppCompatActivity implements View.OnClick
                                             tempTotal /= fQuiz.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat();
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
+                                        gradeService.updateGradeById(gradeId, lGrade);
                                     } catch (GradingFactorException e) {
                                         e.printStackTrace();
                                     }

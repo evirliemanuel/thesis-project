@@ -145,16 +145,12 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
 
-                                        Log.i("STUDENT ID :", sId + "");
-                                        Log.i("Grade ID :", gradeId + "");
-
                                         for (int i = 0; i < fProject.length; i++) {
                                             final double total = projectList.get(i).getItemTotal();
                                             final double score = projectService
                                                     .getProjectResultByProjectAndStudentId(
                                                             projectList.get(i).getId(), sId).getScore();
                                             fProject[i] = (score / total) * 100;
-                                            Log.i("Project[" + i + "] :", fProject[i] + "");
                                         }
                                         for (int i = 0; i < fProject.length; i++)
                                             tempTotal += fProject[i];
@@ -164,9 +160,6 @@ public class ProjectInputActivity extends AppCompatActivity implements View.OnCl
                                             tempTotal /= fProject.length;
                                         else
                                             tempTotal = 0;
-                                        DecimalFormat formatter = new DecimalFormat();
-                                        formatter.setRoundingMode(RoundingMode.FLOOR);
-                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
