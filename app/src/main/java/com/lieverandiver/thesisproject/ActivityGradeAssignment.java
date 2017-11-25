@@ -39,7 +39,7 @@ public class ActivityGradeAssignment extends AppCompatActivity {
     final FormulaService formulaService = new FormulaServiceImpl();
     final StudentService studentService = new StudentServiceImpl();
 
-    private double assignmentGrade;
+    private double activityGrade;
     private boolean gradeIsReadyAct;
     private RecyclerView rvData;
     private AssignmentGradeAdapter gradeAdapter;

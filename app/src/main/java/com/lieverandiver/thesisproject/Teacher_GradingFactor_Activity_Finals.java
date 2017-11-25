@@ -86,7 +86,7 @@ public class Teacher_GradingFactor_Activity_Finals extends AppCompatActivity{
 
             textViewm1 = (TextView) findViewById(R.id.finals_subjectname);
             textViewm2 = (TextView) findViewById(R.id.txtv_final_percent);
-            spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
+//            spinnerm = (Spinner) findViewById(R.id.midterm_spinner_percent);
             textViewm3 = (TextView) findViewById(R.id.total_percentf);
 
             textViewm1.setText(subject.getName());

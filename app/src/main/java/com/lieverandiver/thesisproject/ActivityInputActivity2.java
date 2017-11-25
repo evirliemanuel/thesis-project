@@ -18,9 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.evm.project.schapp.helper.ActivityGradeManager;
-import com.evm.project.schapp.helper.GradeManager;
-import com.evm.project.schapp.helper.GradingFactory;
 import com.lieverandiver.thesisproject.adapter.ActivityInputAdapter;
 import com.remswork.project.alice.exception.GradingFactorException;
 import com.remswork.project.alice.model.Activity;
@@ -49,7 +46,7 @@ import static com.lieverandiver.thesisproject.R.id.input_tryagainemp1;
  * Created by Verlie on 8/31/2017.
  */
 
-public class ActivityInputActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityInputActivity2 extends AppCompatActivity implements View.OnClickListener {
 
     private final ClassService classService = new ClassServiceImpl();
     private final ActivityService activityService = new ActivityServiceImpl();
@@ -116,17 +113,26 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
                             Student student = studentList.get(i);
                             activityService.addActivityResult(score, activity.getId(), student.getId());
 
-<<<<<<< HEAD
                             //Adding Grade for activity
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
+
                                     try {
+                                        // list of activity of specific class
                                         final List<Activity> activityList = activityService.getActivityListByClassId(classId);
+
+                                        //grade of each activity
                                         final double fActivity[] = new double[activityList.size()];
+
+                                        // current student id
                                         final long sId = studentId;
+
+                                        //total grade
                                         double tempTotal = 0;
+
                                         try {
+                                            //list always return 0 or 1 result
                                             List<Grade> tempList = gradeService.getGradeListByClass(classId, sId, 1L);
                                             grade = (tempList.size() > 0 ? tempList.get(0) : null);
                                         } catch (GradingFactorException e) {
@@ -137,14 +143,20 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
                                             Grade _grade = new Grade();
                                             grade = gradeService.addGrade(_grade, classId, studentId, 1L);
                                         }
+
                                         final Grade lGrade = grade;
                                         final long gradeId = grade.getId();
 
+                                        Log.i("STUDENT ID :", sId + "");
+                                        Log.i("Grade ID :", gradeId + "");
+
                                         for (int i = 0; i < fActivity.length; i++) {
                                             final double total = activityList.get(i).getItemTotal();
-                                            final double score = activityService.getActivityResultByActivityAndStudentId(
+                                            final double score = activityService
+                                                    .getActivityResultByActivityAndStudentId(
                                                             activityList.get(i).getId(), sId).getScore();
                                             fActivity[i] = (score / total) * 100;
+                                            Log.i("Activity[" + i + "] :", fActivity[i] + "");
                                         }
                                         for (int i = 0; i < fActivity.length; i++)
                                             tempTotal += fActivity[i];
@@ -154,6 +166,9 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
                                             tempTotal /= fActivity.length;
                                         else
                                             tempTotal = 0;
+                                        DecimalFormat formatter = new DecimalFormat("#.##");
+                                        formatter.setRoundingMode(RoundingMode.FLOOR);
+                                        formatter.format(tempTotal);
 
                                         lGrade.setActivityScore(tempTotal);
                                         lGrade.setTotalScore(lGrade.getTotalScore() + tempTotal);
@@ -163,33 +178,11 @@ public class ActivityInputActivity extends AppCompatActivity implements View.OnC
                                     }
                                 }
                             }).start();
-=======
-                            final List<Activity> activityList = activityService.getActivityListByClassId(classId);
-                            try {
-                                //list always return 0 or 1 result
-                                List<Grade> tempList = gradeService.getGradeListByClass(classId, student.getId(), 1L);
-                                grade = (tempList.size() > 0 ? tempList.get(0) : null);
-                            } catch (GradingFactorException e) {
-                                e.printStackTrace();
-                                grade = null;
-                            }
-                            if (grade == null) {
-                                Grade _grade = new Grade();
-                                grade = gradeService.addGrade(_grade, classId, studentId, 1L);
-                            }
-
-                            ActivityGradeManager gradeManager = new ActivityGradeManager(student, grade, activityList);
-                            //gradeManager.compute();
-
-                            new Thread(gradeManager).start();
-                            //GradingFactory gradingFactory = new GradingFactory(gradeManager);
-
->>>>>>> 8d8f1f6d0ec473353f7b10de5946f8f5141b662f
                         }
                         dialogSucces.setVisibility(View.VISIBLE);
-                        Toast.makeText(ActivityInputActivity.this, "Success", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityInputActivity2.this, "Success", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(ActivityInputActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ActivityInputActivity2.this, "Failed", Toast.LENGTH_LONG).show();
                         dialogFailed.setVisibility(View.VISIBLE);
                     }
                 } catch (Exception e) {
